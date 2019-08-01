@@ -126,7 +126,7 @@ function SEO({
       meta={metaTags}
     >
       <link
-        href="https://fonts.googleapis.com/css?family=Merriweather:400,700&display=swap"
+        href="https://fonts.googleapis.com/css?family=Merriweather:700,700i&display=swap"
         rel="stylesheet"
       />
       {children}
