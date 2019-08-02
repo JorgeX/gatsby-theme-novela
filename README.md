@@ -138,7 +138,7 @@ Once you've setup the `gatsby-theme-novela` in your plugins you can start creati
   avatar: ./avatars/thiago-costa.png
 ```
 
-\*At least one Author must have `featured: true`. This author will have their Name, Bio, and Avatar visible on the home pag
+\*At least one Author must have `featured: true`. This author will have their Name, Bio, and Avatar visible on the home page
 
 ### Post
 
