@@ -26,18 +26,25 @@ Novela is built by the team at [Narative](https://www.narative.co), and built fo
 
 - [Getting Started](#getting-started)
 
-  - [Installation](#step-1-installation)
-  - [Folder structure](#step-2-folder-structure)
-  - [Using Novela Theme](#step-3-using-narativegatsby-theme-novela)
-  - [Adding an Author](#step-4-adding-an-author)
-  - [Adding a Post](#step-5-adding-a-post)
-  - [Configuring Site Metadata](#step-6-configuring-sitemetadata)
+  - With Gatsby Starter Novela
 
-- [Customization](#customization)
+    - [Installation](#step-1-starter-installation)
+    - [Develop & Build](#step-2-develop--build)
 
-  - [Adding your logo](#adding-your-logo)
+  - From scatch
+
+    - [Installation](#step-1-installation)
+    - [Folder structure](#step-2-folder-structure)
+    - [Using Novela Theme](#step-3-using-narativegatsby-theme-novela)
+    - [Adding an Author](#step-4-adding-an-author)
+    - [Adding a Post](#step-5-adding-a-post)
+    - [Configuring Site Metadata](#step-6-configuring-sitemetadata)
+
+* [Customization](#customization)
+
   - [Changing styles](#changing-styles)
   - [Component shadowing](#component-shadowing)
+  - [Adding your logo](#adding-your-logo)
 
 - [Data Models](#data-models)
 
@@ -50,7 +57,6 @@ Novela is built by the team at [Narative](https://www.narative.co), and built fo
 
 ## Why use Novela?
 
-tes
 There are many Gatsby themes to choose from. Here’s why we think you won’t regret choosing Novela:
 
 ### Multiple Homepage Layouts
@@ -83,7 +89,47 @@ Navigable by cursor or keyboard, readable via screens and screen readers, Novela
 
 <img src="https://raw.githubusercontent.com/narative/gatsby-theme-novela-example/master/assets/gatsby-theme-novela-accessibility.gif" alt="gatsby-novela-theme accessibility demonstration" />
 
-# Getting Started
+# Getting Started with Gatsby Starter Novela
+
+This guide will take you through setting up Novela with Gatsby Starter Novela.
+
+### Step 1: Starter installation
+
+##### With `gatsby-cli`:
+
+```sh
+gatsby new novela-site https://github.com/narative/gatsby-starter-novela
+```
+
+##### With `git clone`:
+
+```sh
+git clone git@github.com:narative/gatsby-starter-novela.git novela-site
+
+cd novela-site
+
+yarn
+```
+
+### Step 2: Develop & Build
+
+Once installed or cloned locally and all packages are installed you can begin developing your site.
+
+```sh
+# Run localhost
+yarn develop
+
+# Build your Gatsby site
+yarn build
+```
+
+To learn more about adding Authors, Posts, and Site Metadata see:
+
+- [Adding an Author](#step-4-adding-an-author)
+- [Adding a Post](#step-5-adding-a-post)
+- [Configuring Site Metadata](#step-6-configuring-sitemetadata)
+
+# Getting Started from scratch
 
 This guide will take you through adding Novela to a new project. You do not require any Gatsby starters or similar, but you can add Novela to an existing Gatsby project.
 
@@ -106,18 +152,18 @@ Once you've installed React, Gatsby, and Novela you'll want to add your first Po
 ```
   novela-site
   └── content
-    └── authors
-      ├── avatars
-        └── avatar.jpg
-      └── authors.yml
-    └── posts
-      └── 2020-01-01-my-first-novela-post
-        ├── images
-          └── novela-hero.jpg
-        └── index.mdx
-  ├── node_modules
-  ├── gatsby-config.js
-  └── package.json
+    ├── authors
+    │  ├── avatars
+    │  │    └── avatar.jpg
+    │  └── authors.yml
+    ├── posts
+    │  └── 2020-01-01-my-first-novela-post
+    │       ├── images
+    │       │   └── novela-hero.jpg
+    │       └── index.mdx
+    ├── node_modules
+    ├── gatsby-config.js
+    └── package.json
 ```
 
 ### Step 3: Using `@narative/gatsby-theme-novela`
@@ -144,9 +190,9 @@ In [Step 2]() we created the folder structure of our project. We can now add an 
   novela-site
   └── content
     └── authors
-      ├── avatars
-        └── brotzky-avatar.jpg
-      └── authors.yml
+        ├── avatars
+        │    └── brotzky-avatar.jpg
+        └── authors.yml
 ```
 
 In `authors.yml` add an Author. There **must** be at least one `featured` Author.
@@ -230,6 +276,48 @@ If you ran into problems you can reference the [example repository](https://gith
 
 # Customization
 
+Once you've created the Logo component it should automatically appear in your site.
+
+The technique we have used is called Component Shadowing and is a core feature of Gatsby Themes.
+
+### Changing styles
+
+Novela allows you to change the default theme styling by updating the [theme-ui](https://theme-ui.com/) values. If you're familiar with Styled Components or Emotion it's the same as adapting the theme you pass to `ThemeProvider`.
+
+First, you must create a theme file and then you can override `novelaTheme` values.
+[See all Novela theme values](https://github.com/narative/gatsby-theme-novela/tree/master/src/gatsby-plugin-theme-ui)
+
+```js
+// src/gatsby-plugin-theme-ui/index.js
+
+import novelaTheme from "@narative/gatsby-theme-novela/src/gatsby-plugin-theme-ui";
+
+export default {
+  ...novelaTheme,
+  initialColorMode: `dark`,
+  colors: {
+    ...novelaTheme.colors,
+    primary: "#000",
+    secondary: "#73737D",
+    accent: "#6166DC",
+    grey: "#73737D",
+    background: "#fff",
+  },
+};
+```
+
+### Component Shadowing
+
+> This feature allows users to override a component in order to customize its rendering.
+
+> Component Shadowing let’s you replace the theme’s original file, gatsby-theme-novela/src/components/Logo.js, with your own to implement any changes you need.
+
+Any [component](https://github.com/narative/gatsby-theme-novela/tree/master/src/components) or [section](https://github.com/narative/gatsby-theme-novela/tree/master/src/sections) is able to be replaced with your own custom component.
+
+This opens up a full customization of Novela to your designed needs. You can copy any component directly from Novela and alter it how you like, or you can create your own component to replace Novela's entirely.
+
+A basic example of component shadowing is explained below by [adding your logo](#adding-your-logo).
+
 ### Adding your logo
 
 Your logo must be in SVG (vector) format in order to add it to the theme. This is required because we will be making a React component containing your SVG Logo.
@@ -266,18 +354,6 @@ export default function Logo() {
   );
 }
 ```
-
-Once you've created the Logo component it should automatically appear in your site.
-
-The technique we have used is called Component Shadowing and is a core feature of Gatsby Themes.
-
-### Changing styles
-
-WIP
-
-### Component Shadowing
-
-WIP
 
 <br />
 
