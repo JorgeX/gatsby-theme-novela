@@ -50,7 +50,6 @@ Novela is built by the team at [Narative](https://www.narative.co), and built fo
 
 ## Why use Novela?
 
-tes
 There are many Gatsby themes to choose from. Here’s why we think you won’t regret choosing Novela:
 
 ### Multiple Homepage Layouts
