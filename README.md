@@ -283,7 +283,7 @@ WIP
 
 # Data Models
 
-### Novela Theme
+## Novela Theme
 
 It is recommended to use the Default options, but if your project requires something else you can configure them to your need.
 
@@ -308,7 +308,7 @@ plugins: [
 ];
 ```
 
-### Author
+## Author
 
 [View Author example](https://github.com/narative/gatsby-theme-novela-example/blob/master/content/authors/authors.yml)
 
@@ -334,7 +334,7 @@ plugins: [
   avatar: ./avatars/thiago-costa.png
 ```
 
-### Post
+## Post
 
 | Key     | Required |    Type    |          Description          |
 | ------- | :------: | :--------: | :---------------------------: |
@@ -361,7 +361,7 @@ excerpt: This is a love story about Narative and Gatsby
 # ...
 ```
 
-### Site Metadata
+## Site Metadata
 
 | Key           | Required |    Type    |                                                               Description                                                               |
 | ------------- | :------: | :--------: | :-------------------------------------------------------------------------------------------------------------------------------------: |
