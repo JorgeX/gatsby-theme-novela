@@ -162,11 +162,7 @@ In `authors.yml` add an Author. There **must** be at least one `featured` Author
   featured: true
 ```
 
-<<<<<<< HEAD
 ### Step 5: Adding a Post
-=======
-\*At least one Author must have `featured: true`. This author will have their Name, Bio, and Avatar visible on the home page
->>>>>>> 0caa1af7e8bbe9da4200003e51af373c1b1504e8
 
 Once you have at least one Author set in `authors.yml` you can add your first Post! Start by creating a new folder in `content/posts`. You can name it anything you like but we recommend including the date at the front to easily organize your posts. Once you've created your folder you can add an `index.mdx` file and an `images` folder that will contian all images, including your Post's hero image.
 
