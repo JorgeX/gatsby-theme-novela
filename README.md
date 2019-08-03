@@ -232,38 +232,52 @@ If you ran into problems you can reference the [example repository](https://gith
 
 ### Adding your logo
 
-WIP
+Your logo must be in SVG (vector) format in order to add it to the theme. This is required because we will be making a React component containing your SVG Logo.
+
+Start by creating the component file at:
+
+```
+  novela-site
+  └── src
+    └── @narative
+      └── gatsby-theme-novela
+        └── components
+          └── Logo
+            └── index.js
+```
+
+It is important you create the exact folder structure so Gatsby knows to shadow this component. Once the file is created you can create your Logo component.
+
+```jsx
+import React from "react";
+
+/**
+ * Paste in your SVG logo and return it from this component.
+ * Make sure you have a height set for your logo.
+ * It is recommended to keep the height within 25-35px.
+ */
+export default function Logo() {
+  return (
+    <svg viewBox="0 0 106 28" height="30px">
+      <path d="M62.9 12h2.8v10...." />
+      <path fill="#fff" d="M25 14h-..." />
+      <path d="M14 0C6.3..." fill="#639" />
+    </svg>
+  );
+}
+```
+
+Once you've created the Logo component it should automatically appear in your site.
+
+The technique we have used is called Component Shadowing and is a core feature of Gatsby Themes.
 
 ### Changing styles
 
 WIP
 
-If you want to customize Novela it's possible thanks to how Gatsby themes work. To customize the styling
-you must create a folder, `gatsby-plugin-theme-ui` and apply your Theme UI overrides there.
-
-```
-  my-gatsby-site
-  └── src
-    └── gatsby-plugin-theme-ui
-      └── index.js
-```
-
-To preserve the default styles make sure you import the `theme` from `gatsby-theme-novela`.
-Here you are able to override the styles for colors, fonts, prism, components, and more.
-
 ### Component Shadowing
 
 WIP
-
-[Component Shadowing](https://www.gatsbyjs.org/blog/2019-04-29-component-shadowing/) allows users to override a component in order to customize its rendering.
-
-> Gatsby Themes introduce a concept called Component Shadowing. This feature allows users to override a component in order to customize its rendering.
-
-> With other theming approaches it’s impossible to change aspects of a theme if a configuration option hasn’t been built in. Component Shadowing provides a powerful escape hatch to let users make quick, one-off changes that might not make sense to support in the theme itself.
-
-> Component Shadowing let’s you replace the theme’s original file, gatsby-theme-blog/src/components/bio.js, with your own to implement any changes you need.
-
-To learn more about Component Shadowing we recommend reading [Gatsby's blog post about it](https://www.gatsbyjs.org/blog/2019-04-29-component-shadowing/) and the [official documentation](https://www.gatsbyjs.org/docs/theme-api/#shadowing).
 
 <br />
 
