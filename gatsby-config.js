@@ -3,7 +3,6 @@ module.exports = ({
   contentPosts = "content/posts",
 }) => ({
   mapping: {
-    "MarkdownRemark.frontmatter.author": `AuthorsYaml`,
     "Mdx.frontmatter.author": `AuthorsYaml`,
   },
   plugins: [

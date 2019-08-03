@@ -6,6 +6,10 @@ const log = (msg, section) =>
 
 const path = require("path");
 const createPaginatedPages = require("gatsby-paginate");
+const AdmZip = require("adm-zip");
+const request = require("request");
+
+const hostedContent = "https://novela-content.netlify.com/content.zip";
 
 const templatesDir = path.resolve(__dirname, "../../src/templates");
 const templates = {
@@ -98,16 +102,37 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
   }
 
   log("Querying", "articles");
-  const result = await graphql(articlesQuery);
-  const articles = result.data.articles.edges;
-  const authors = result.data.authors.edges;
 
-  if (articles.length === 0) {
-    throw new Error("You must ahve at least one article");
-  }
+  let results;
+  let authors;
+  let articles;
 
-  if (authors.length === 0) {
-    throw new Error("You must have at least one author");
+  try {
+    results = await graphql(articlesQuery);
+
+    if (!results.data) {
+      throw new Error(`
+        You must have at least one Author and Post
+      `);
+    }
+
+    authors = results.data.authors.edges;
+    articles = results.data.articles.edges;
+
+    if (articles.length === 0) {
+      throw new Error("You must have at least one article");
+    }
+
+    if (authors.length === 0) {
+      throw new Error("You must have at least one author");
+    }
+  } catch (error) {
+    throw new Error(`
+      You must have at least one Author and Post. As reference you can view the
+      example repository. Look at the content folder in the example repo.
+
+      https://github.com/narative/gatsby-theme-novela-example
+    `);
   }
 
   log("Creating", "articles page");
@@ -138,10 +163,10 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
       ).node;
     } catch (error) {
       throw new Error(`
-          We could not find the Author for "${article.title}".
-          Double check the author field is specified in your post and the name
-          matches a specified author.
-        `);
+        We could not find the Author for "${article.title}".
+        Double check the author field is specified in your post and the name
+        matches a specified author.
+      `);
     }
 
     let next = articles.slice(index + 1, index + 3);

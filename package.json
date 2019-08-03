@@ -2,7 +2,7 @@
   "name": "@narative/gatsby-theme-novela",
   "author": "dennis@narative.co",
   "repository": "https://github.com/narative/gatsby-theme-novela",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "index.js",
   "license": "MIT",
   "keywords": [
@@ -37,6 +37,7 @@
     "@mdx-js/mdx": "^1.1.0",
     "@mdx-js/react": "^1.0.27",
     "@theme-ui/prism": "^0.2.21",
+    "adm-zip": "^0.4.13",
     "babel-plugin-emotion": "^10.0.14",
     "gatsby-image": "^2.2.7",
     "gatsby-mdx": "^1.0.0",
@@ -63,6 +64,7 @@
     "react-helmet": "^5.2.1",
     "react-outside-click-handler": "^1.2.4",
     "remark-slug": "^5.1.2",
+    "request": "^2.88.0",
     "theme-ui": "^0.2.21",
     "typeface-merriweather": "^0.0.72"
   }
