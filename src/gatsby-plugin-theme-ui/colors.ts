@@ -19,7 +19,7 @@ export default {
     number: `#e4854d`,
     constant: `#b3bac5`,
     punctuation: `#5FA8AA`,
-    token: `#fff`,
+    plain: `#fff`,
     keyword: `#d49fd4`,
     boolean: `#ff5874`,
     function: `#5F8DC3`,

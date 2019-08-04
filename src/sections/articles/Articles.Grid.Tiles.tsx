@@ -5,7 +5,7 @@ import { css } from "@emotion/core";
 import { Link } from "gatsby";
 
 import Heading from "@components/Heading";
-import Media from "@components/Media/Media.Img";
+import Image from "@components/Image";
 
 import mediaqueries from "@styles/media";
 
@@ -64,17 +64,16 @@ const GridItem = ({ article, narrow }) => {
   article = article.node;
 
   const hasOverflow = narrow && article.title.length > 35;
+  const imageSource = narrow
+    ? article.hero.narrow.fluid
+    : article.hero.regular.fluid;
 
   return (
     <ArticleLink to={article.slug} data-a11y="false">
       <Item>
-        <Image narrow={narrow}>
-          <Media
-            src={
-              narrow ? article.hero.narrow.fluid : article.hero.regular.fluid
-            }
-          />
-        </Image>
+        <ImageContainer narrow={narrow}>
+          <Image src={imageSource} />
+        </ImageContainer>
         <Title dark hasOverflow={hasOverflow}>
           {article.title}
         </Title>
@@ -105,7 +104,7 @@ const limitToTwoLines = css`
   `}
 `;
 
-const Grid = styled.div`
+const Grid = styled.div<{ reverse: boolean }>`
   position: relative;
   display: grid;
   grid-template-columns: ${p =>
@@ -124,7 +123,7 @@ const Grid = styled.div`
   `}
 `;
 
-const Image = styled.div`
+const ImageContainer = styled.div<{ narrow: boolean }>`
   position: relative;
   height: 280px;
   box-shadow: 0 30px 60px -10px rgba(0, 0, 0, ${p => (p.narrow ? 0.22 : 0.3)}),
@@ -238,7 +237,7 @@ const ArticleLink = styled(Link)`
   transition: transform 0.33s var(--ease-out-quart);
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 
-  &:hover ${Image}, &:focus ${Image} {
+  &:hover ${ImageContainer}, &:focus ${ImageContainer} {
     transform: translateY(-1px);
     box-shadow: 0 50px 80px -20px rgba(0, 0, 0, 0.27),
       0 30px 50px -30px rgba(0, 0, 0, 0.3);
@@ -262,7 +261,7 @@ const ArticleLink = styled(Link)`
   }
 
   ${mediaqueries.phablet`
-    &:hover ${Image} {
+    &:hover ${ImageContainer} {
       transform: none;
       box-shadow: initial;
     }

@@ -2,7 +2,6 @@ import merge from "lodash/merge";
 
 import colors from "./colors";
 import styles from "./styles";
-import prism from "./prism";
 
 export default merge({
   initialColorMode: `light`,
@@ -23,5 +22,4 @@ export default merge({
     ["desktop_large", 1440],
   ],
   styles,
-  prism,
 });

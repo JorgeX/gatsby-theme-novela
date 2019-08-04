@@ -4,7 +4,7 @@ import throttle from "lodash/throttle";
 import { graphql, useStaticQuery } from "gatsby";
 
 import Layout from "@components/Layout";
-import { RichText } from "@components/Media";
+import MDXRenderer from "@components/MDX";
 import Progress from "@components/Progress";
 import Section from "@components/Section";
 
@@ -88,9 +88,9 @@ function Article({ pageContext, location }) {
         <ArticleControls />
       </MobileControls>
       <ArticleBody ref={contentSectionRef}>
-        <RichText content={article.body}>
+        <MDXRenderer content={article.body}>
           <ArticleShare author={author} />
-        </RichText>
+        </MDXRenderer>
       </ArticleBody>
       {next.length > 0 && (
         <NextArticle narrow>
@@ -140,7 +140,7 @@ const FooterNext = styled.h3`
   opacity: 0.25;
   margin-bottom: 100px;
   font-weight: 400;
-  color: #000;
+  color: ${p => p.theme.colors.primary};
 
   ${mediaqueries.tablet`
     margin-bottom: 60px;
@@ -149,7 +149,7 @@ const FooterNext = styled.h3`
   &::after {
     content: '';
     position: absolute;
-    background: #000;
+    background: ${p => p.theme.colors.horizontalRule};
     width: ${(910 / 1140) * 100}%;
     height: 1px;
     right: 0;

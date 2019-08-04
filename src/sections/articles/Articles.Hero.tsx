@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 
 import Section from "@components/Section";
 import Heading from "@components/Heading";
-import Media from "@components/Media/Media.Img";
+import Image from "@components/Image";
 
 import mediaqueries from "@styles/media";
 
@@ -67,7 +67,7 @@ function ArticlesHero() {
         <BioContainer>
           <BioAvatar>
             <BioAvatarInner>
-              <Media src={author.avatar.image.fluid} />
+              <Image src={author.avatar.image.fluid} />
             </BioAvatarInner>
           </BioAvatar>
           <BioText>{author.bio}</BioText>

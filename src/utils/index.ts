@@ -256,39 +256,14 @@ export function getSelectionText() {
   return text;
 }
 
-export function useActiveListItem(initial: number, list: any[]): number {
-  const [active, setActive] = useState<number>(initial);
-  const length: number = list.length;
-
-  useEffect(() => {
-    function handleKeyDown(event: KeyboardEvent) {
-      switch (event.key) {
-        case "ArrowUp":
-          setActive(currentActive => {
-            if (currentActive === 0) return length - 1;
-
-            return currentActive - 1;
-          });
-          break;
-        case "ArrowDown":
-          setActive(currentActive => {
-            if (currentActive === length - 1) return 0;
-
-            return currentActive + 1;
-          });
-          break;
-      }
-    }
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [length]);
-
-  if (active >= length) {
-    setActive(length - 1);
-  }
-
-  return active > 0 ? active : 0;
+/**
+ * Utility function to go from a regular string to a kebabe-case string
+ * thisIsMyInput
+ * this-is-my-output
+ */
+export function toKebabCase(str: string): string {
+  return str
+    .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+    .map(x => x.toLowerCase())
+    .join("-");
 }

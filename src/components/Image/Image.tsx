@@ -30,7 +30,7 @@ const StyledGatsbyImag = styled(GatsbyImg)`
  *
  * todo : lazyload the default img tag
  */
-const Img: React.SFC<IImg> = ({ src, alt, ...props }) => {
+const Image: React.SFC<IImg> = ({ src, alt, ...props }) => {
   // We're going to build our final component's props dynamically.
   // So create a nice default set of props that are relevant to Gatsby and non Gatsby images
   const imgProps = {
@@ -66,4 +66,4 @@ const Img: React.SFC<IImg> = ({ src, alt, ...props }) => {
   return isGatsby ? <Compontent {...imgProps} /> : <img {...imgProps} />;
 };
 
-export default Img;
+export default Image;

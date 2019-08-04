@@ -4,7 +4,7 @@ import { css } from "@emotion/core";
 import { Link } from "gatsby";
 
 import Heading from "@components/Heading";
-import Media from "@components/Media/Media.Img";
+import Image from "@components/Image";
 
 import mediaqueries from "@styles/media";
 
@@ -25,9 +25,9 @@ function ArticlesGridRows({ articles }: { articles: IArticleNode[] }) {
       {articles.map(({ node: article }) => (
         <ArticleLink to={article.slug} data-a11y="false">
           <GridRow>
-            <Image>
-              <Media src={article.hero.regular.fluid} />
-            </Image>
+            <ImageContainer>
+              <Image src={article.hero.regular.fluid} />
+            </ImageContainer>
             <div>
               <Title dark>{article.title}</Title>
               <Excerpt>{article.excerpt}</Excerpt>
@@ -58,7 +58,7 @@ const limitToTwoLines = css`
   `}
 `;
 
-const Image = styled.div`
+const ImageContainer = styled.div`
   position: relative;
   height: 220px;
   box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.2),
@@ -173,7 +173,7 @@ const ArticleLink = styled(Link)`
   transition: transform 0.33s var(--ease-out-quart);
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 
-  &:hover ${Image}, &:focus ${Image} {
+  &:hover ${ImageContainer}, &:focus ${ImageContainer} {
     transform: translateY(-1px);
     box-shadow: 0 50px 80px -20px rgba(0, 0, 0, 0.27),
       0 30px 50px -30px rgba(0, 0, 0, 0.3);
@@ -203,7 +203,7 @@ const ArticleLink = styled(Link)`
   ${mediaqueries.phablet`
     margin-bottom: 40px;
     
-    &:hover ${Image} {
+    &:hover ${ImageContainer} {
       transform: none;
       box-shadow: initial;
     }

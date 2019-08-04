@@ -116,7 +116,7 @@ function SEO({
 
   if (timeToRead) {
     metaTags.push({ name: "twitter:label1", value: "Reading time" });
-    metaTags.push({ name: "twitter:data1", value: timeToRead });
+    metaTags.push({ name: "twitter:data1", value: `${timeToRead} min read` });
   }
 
   return (

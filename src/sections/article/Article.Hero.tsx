@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 
 import Heading from "@components/Heading";
-import Media from "@components/Media/Media.Img";
+import Image from "@components/Image";
 
 import mediaqueries from "@styles/media";
 
@@ -21,16 +21,16 @@ const ArticleHero = ({
         <HeroHeading>{article.title}</HeroHeading>
         <HeroSubtitle>
           <HeroAvatar>
-            <Media src={author.avatar.image.fluid} />
+            <Image src={author.avatar.image.fluid} />
           </HeroAvatar>
           <strong>{author.name}</strong>
           <HideOnMobile>,&nbsp;</HideOnMobile> {article.date} ·{" "}
           {article.timeToRead} min read
         </HeroSubtitle>
       </Header>
-      <Image id="ArticleImage__Hero">
-        <Media src={article.hero.full.fluid} />
-      </Image>
+      <HeroImage id="ArticleImage__Hero">
+        <Image src={article.hero.full.fluid} />
+      </HeroImage>
     </Hero>
   );
 };
@@ -114,7 +114,8 @@ const HideOnMobile = styled.span`
     display: none;
   `}
 `;
-const Image = styled.div`
+
+const HeroImage = styled.div`
   position: relative;
   z-index: 1;
   width: 100%;

@@ -158,9 +158,11 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
     let author;
 
     try {
-      author = authors.find(
-        ({ node: author }) => author.name === article.author,
-      ).node;
+      author = authors.find(({ node: author }) => {
+        return (
+          author && author.name.toLowerCase() === article.author.toLowerCase()
+        );
+      }).node;
     } catch (error) {
       throw new Error(`
         We could not find the Author for "${article.title}".

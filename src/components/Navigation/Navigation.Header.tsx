@@ -19,7 +19,6 @@ function NavigationHeader() {
     const previousPathWasHomepage =
       previousPath === "/" || (previousPath && previousPath.includes("/page/"));
     const isNotPaginated = !location.pathname.includes("/page/");
-
     setShowBackArrow(previousPathWasHomepage && isNotPaginated);
   }, []);
 
@@ -34,7 +33,7 @@ function NavigationHeader() {
         >
           {showBackArrow && (
             <BackArrowIconContainer>
-              <BackArrowIcon />
+              <BackArrowIcon fill={fill} />
             </BackArrowIconContainer>
           )}
           <Logo fill={fill} />
@@ -144,12 +143,12 @@ const BackArrowIconContainer = styled.div`
     }
   }
 
-  ${mediaqueries.desktop_large`
+  ${mediaqueries.desktop_medium`
     display: none;
   `}
 `;
 
-const BackArrowIcon = () => (
+const BackArrowIcon = ({ fill }) => (
   <svg
     width="24"
     height="24"
@@ -159,7 +158,7 @@ const BackArrowIcon = () => (
   >
     <path
       d="M15.41 16.09L10.83 11.5L15.41 6.91L14 5.5L8 11.5L14 17.5L15.41 16.09Z"
-      fill="black"
+      fill={fill}
     />
   </svg>
 );

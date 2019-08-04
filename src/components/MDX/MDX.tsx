@@ -1,21 +1,34 @@
 import React from "react";
+
 import { MDXRenderer } from "gatsby-plugin-mdx";
+import { MDXProvider } from "@mdx-js/react";
+
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
 import { useColorMode } from "theme-ui";
 
 import mediaqueries from "@styles/media";
-
 import { IRichText } from "@typings";
+import { toKebabCase } from "@utils";
+
+import CodeBlock from "./MDX.Code";
+import PreBlock from "./MDX.Pre";
 
 function RichText({ content, children, ...props }: React.SFC<IRichText>) {
   const [colorMode] = useColorMode();
 
   return (
-    <Content isDark={colorMode === "dark"} {...props}>
-      <MDXRenderer>{content}</MDXRenderer>
-      {children}
-    </Content>
+    <MDXProvider
+      components={{
+        code: CodeBlock,
+        pre: PreBlock,
+      }}
+    >
+      <MDXBody isDark={colorMode === "dark"} {...props}>
+        <MDXRenderer>{content}</MDXRenderer>
+        {children}
+      </MDXBody>
+    </MDXProvider>
   );
 }
 
@@ -55,8 +68,9 @@ const transitionColor = css`
   transition: color 0.25s ease;
 `;
 
-const Content = styled.div<{ isDark: boolean }>`
+const MDXBody = styled.div<{ isDark: boolean }>`
   position: relative;
+  z-index: 10;
   ${selectionColor};
 
   h1,
@@ -178,6 +192,28 @@ const Content = styled.div<{ isDark: boolean }>`
     font-size: 14px;
     margin: 50px auto;
     border-radius: 5px;
+    font-family: ${p => p.theme.fonts.monospace};
+    background: ${p => p.theme.colors.prism.background};
+
+    .token-line {
+      ${p => {
+        return Object.keys(p.theme.colors.prism)
+          .map(key => {
+            return `.${toKebabCase(key)}{color:${p.theme.colors.prism[key]};}`;
+          })
+          .reduce((curr, next) => curr + next, ``);
+      }};
+
+      & > span {
+        color: #dcd9e6;
+      }
+    }
+
+    .token-line.highlight-line {
+      margin: 0 -32px;
+      padding: 0 32px;
+      background: rgba(255, 255, 255, 0.05);
+    }
 
     .operator + .maybe-class-name {
       color: #ffcf74 !important;
