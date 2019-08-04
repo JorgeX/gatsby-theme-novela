@@ -8,22 +8,20 @@ import { css } from "@emotion/core";
 import { useColorMode } from "theme-ui";
 
 import mediaqueries from "@styles/media";
-import { IRichText } from "@typings";
 import { toKebabCase } from "@utils";
 
 import CodeBlock from "./MDX.Code";
 import PreBlock from "./MDX.Pre";
 
-function RichText({ content, children, ...props }: React.SFC<IRichText>) {
+function MDX({ content, children, ...props }) {
   const [colorMode] = useColorMode();
+  const components = {
+    code: CodeBlock,
+    pre: PreBlock,
+  };
 
   return (
-    <MDXProvider
-      components={{
-        code: CodeBlock,
-        pre: PreBlock,
-      }}
-    >
+    <MDXProvider components={components}>
       <MDXBody isDark={colorMode === "dark"} {...props}>
         <MDXRenderer>{content}</MDXRenderer>
         {children}
@@ -32,7 +30,7 @@ function RichText({ content, children, ...props }: React.SFC<IRichText>) {
   );
 }
 
-export default RichText;
+export default MDX;
 
 const imageWidths = {
   regular: "680px",
