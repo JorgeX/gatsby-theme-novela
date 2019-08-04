@@ -147,8 +147,9 @@ yarn add react react-dom gatsby @narative/gatsby-theme-novela
 
 ### Step 2: Folder structure
 
-Once you've installed React, Gatsby, and Novela you'll want to add your first Post. Every Post requires an Author. The recommended project structure for your content and site looks like this:
+Once you've installed React, Gatsby, and Novela you'll want to add your first Author and Post.
 
+The recommended project structure for your content and site looks like this:
 ```
   novela-site
   └── content
@@ -168,7 +169,8 @@ Once you've installed React, Gatsby, and Novela you'll want to add your first Po
 
 ### Step 3: Using `@narative/gatsby-theme-novela`
 
-You must add `@narative/gatsby-theme-novela` as a plugin in your `gatsby-config.js`. `@narative/gatsby-theme-novela` is configurable through plugin options but we will use the defaults for now.
+You must add `@narative/gatsby-theme-novela` as a plugin in `gatsby-config.js`.
+`@narative/gatsby-theme-novela` is configurable through plugin options but we will use the defaults for now.
 
 ```js
 // gatsby-config.js
@@ -180,11 +182,11 @@ module.exports = {
 
 ---
 
-Once you've setup the `@narative/gatsby-theme-novela` to your `gatsby-config.js` you can start creating your first posts. In order to create a post you also need at least one author.
+Once you've setup `@narative/gatsby-theme-novela` plugin in `gatsby-config.js` you can start creating your first Posts. In order to create a Post you also need at least one Author.
 
 ### Step 4: Adding an Author
 
-In [Step 2]() we created the folder structure of our project. We can now add an Author by populating `/content/authors/authors.yml`:
+In [step 2](#step-2-folder-structure) we created the folder structure of our project. We can now add an Author by populating `/content/authors/authors.yml`:
 
 ```
   novela-site
@@ -210,7 +212,9 @@ In `authors.yml` add an Author. There **must** be at least one `featured` Author
 
 ### Step 5: Adding a Post
 
-Once you have at least one Author set in `authors.yml` you can add your first Post! Start by creating a new folder in `content/posts`. You can name it anything you like but we recommend including the date at the front to easily organize your posts. Once you've created your folder you can add an `index.mdx` file and an `images` folder that will contian all images, including your Post's hero image.
+Once you have at least one Author defined in `authors.yml` you can add your first Post.
+
+Start by creating a new folder in `content/posts`. You can name it anything you like but we recommend including the date at the front to organize your posts. Once you've created your folder you can add an `index.mdx` file and an `images` folder.
 
 `/content/posts/2020-01-01/index.mdx`
 
@@ -230,7 +234,7 @@ excerpt: This is a love story about Narative and Gatsby
 
 ### Step 6: Configuring siteMetadata
 
-In order to configure the theme to properly genreate the pages and meta tags you must add specific data in your `siteMetadata`. If you skip this step the site will not load properly and your SEO score will rank really low.
+In order to configure the theme to properly genreate the pages and meta tags you must add specific data to `siteMetadata`.
 
 The fields that are unique to Novela are `hero.heading`, `hero.maxWidth`, and `social`.
 
