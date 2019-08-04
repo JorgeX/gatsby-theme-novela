@@ -1,8 +1,8 @@
-import React, { Component, ReactNode } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "@emotion/styled";
 
 interface OverlapProps {
-  children: ReactNode[];
+  children: React.ReactNode[];
 }
 
 interface OverlapState {
@@ -20,64 +20,23 @@ interface OverlapState {
  * we want to hide the top element.
  */
 
-class HandleOverlap extends Component<OverlapProps, OverlapState> {
-  asideRef: React.RefObject<HTMLElement> = React.createRef();
-  ticking = false;
-
-  state = { isOverlapping: false };
-
-  componentDidMount() {
-    window.addEventListener("scroll", this.onScroll);
-    window.addEventListener("resize", this.onScroll);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("scroll", this.onScroll);
-    window.removeEventListener("resize", this.onScroll);
-  }
-
-  onScroll = () => {
-    // Elements we want to include for the overlap
-    const ctas = Array.from(document.getElementsByClassName("CallToAction"));
-    const images = Array.from(document.querySelectorAll("img"));
-
-    const nodesToNotOverlap = [...ctas, ...images];
-    const noNodesAreVisible = !nodesToNotOverlap.some(this.isVisible);
-
-    nodesToNotOverlap.forEach(
-      (node: HTMLElement): void | null => {
-        const isOverlapping = this.collide(this.asideRef.current, node);
-
-        if (noNodesAreVisible) {
-          return this.setState({ isOverlapping });
-        }
-        /**
-         * If the node is not in the viewport don't fire state events for it,
-         * otherwise we run into issues with multiple nodes on the page.
-         */
-        if (!this.isVisible(node)) {
-          this.ticking = false;
-          return null;
-        }
-
-        this.setState({ isOverlapping });
-      },
-    );
-  };
+function HandleOverlap(props: OverlapProps) {
+  const asideRef = useRef<HTMLDivElement>(null);
+  const [isOverlapping, setIsOverlapping] = useState<OverlapState>(false);
 
   // Is the current element within the window's frame? That's all we care about!
-  isVisible = (element: HTMLElement): boolean => {
+  function isVisible(element: HTMLElement): boolean {
     const rect = element.getBoundingClientRect();
 
     return rect.top < window.innerHeight && rect.bottom >= 0;
-  };
+  }
 
   /**
    * This is a nice stackoverflow answer that sums up the overlapping feature. All
    * we've added is a small BUFFER because we don't want it to disppear as it touches.
    * We prefer to start the fade out a few pixels before!
    */
-  collide = (fixedElement: HTMLElement, node: HTMLElement): boolean => {
+  function collide(fixedElement: HTMLElement, node: HTMLElement): boolean {
     const BUFFER = 40;
     const rect1 = fixedElement.getBoundingClientRect();
     const rect2 = node.getBoundingClientRect();
@@ -88,20 +47,55 @@ class HandleOverlap extends Component<OverlapProps, OverlapState> {
       rect1.bottom + BUFFER < rect2.top ||
       rect1.left > rect2.right
     );
-  };
-
-  render() {
-    return (
-      <Frame isOverlapping={this.state.isOverlapping} ref={this.asideRef}>
-        {this.props.children}
-      </Frame>
-    );
   }
+
+  useEffect(() => {
+    const onScroll = () => {
+      // Elements we want to include for the overlap
+      const ctas = Array.from(document.getElementsByClassName("CallToAction"));
+      const images = Array.from(document.querySelectorAll("img"));
+
+      const nodesToNotOverlap = [...ctas, ...images];
+      const noNodesAreVisible = !nodesToNotOverlap.some(isVisible);
+
+      nodesToNotOverlap.forEach(
+        (node: HTMLElement): void | null => {
+          const isOverlapping = collide(asideRef.current, node);
+
+          if (noNodesAreVisible) {
+            return setIsOverlapping(isOverlapping);
+          }
+          /**
+           * If the node is not in the viewport don't fire state events for it,
+           * otherwise we run into issues with multiple nodes on the page.
+           */
+          if (!isVisible(node)) {
+            return null;
+          }
+
+          setIsOverlapping(isOverlapping);
+        },
+      );
+    };
+    window.addEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [asideRef]);
+
+  return (
+    <OverlapContainer isOverlapping={isOverlapping} ref={asideRef}>
+      {props.children}
+    </OverlapContainer>
+  );
 }
 
 export default HandleOverlap;
 
-const Frame = styled.div<{ isOverlapping: boolean }>`
+const OverlapContainer = styled.div<{ isOverlapping: boolean }>`
   user-select: ${p => (p.isOverlapping ? "none" : "initial")};
   pointer-events: ${p => (p.isOverlapping ? "none" : "initial")};
   opacity: ${p => (p.isOverlapping ? 0 : 1)};

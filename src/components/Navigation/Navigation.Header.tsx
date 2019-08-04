@@ -113,14 +113,6 @@ function SharePageButton() {
   );
 }
 
-function CloseLink({ fill }: { fill: string }) {
-  return (
-    <CloseLinkContainer to="/">
-      <CloseIcon fill={fill} />
-    </CloseLinkContainer>
-  );
-}
-
 const CloseLinkContainer = styled(Link)`
   ${mediaqueries.tablet_up`
     display: none;
@@ -158,31 +150,6 @@ const BackArrowIcon = ({ fill }) => (
   >
     <path
       d="M15.41 16.09L10.83 11.5L15.41 6.91L14 5.5L8 11.5L14 17.5L15.41 16.09Z"
-      fill={fill}
-    />
-  </svg>
-);
-
-const CloseIcon = ({ fill }) => (
-  <svg
-    width="24"
-    height="25"
-    viewBox="0 0 24 25"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
-      d="M0 0.188477H24V24.2789H0V0.188477Z"
-      stroke="black"
-      stroke-opacity="0.01"
-      stroke-width="0"
-    />
-    <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
-      d="M19 6.58848L17.6 5.18848L12 10.7885L6.4 5.18848L5 6.58848L10.6 12.1885L5 17.7885L6.4 19.1885L12 13.5885L17.6 19.1885L19 17.7885L13.4 12.1885L19 6.58848Z"
       fill={fill}
     />
   </svg>
@@ -379,8 +346,8 @@ const MoonOrSun = styled.div<{ isDark: boolean }>`
     transform: scale(${p => (p.isDark ? 1 : 0)});
     transition: all 0.35s ease;
 
-    ${mediaqueries.tablet`
-      transform: scale(${p => (p.isDark ? 0.92 : 0)});
+    ${p => mediaqueries.tablet`
+      transform: scale(${p.isDark ? 0.92 : 0});
     `}
   }
 `;
@@ -400,11 +367,11 @@ const MoonMask = styled.div<{ isDark: boolean }>`
 `;
 
 const Hidden = styled.span`
+  position: absolute;
+  display: inline-block;
+  opacity: 0;
   width: 0px;
   height: 0px;
   visibility: hidden;
-  opacity: 0;
-  display: inline-block;
   overflow: hidden;
-  position: absolute;
 `;

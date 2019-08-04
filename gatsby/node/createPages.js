@@ -6,10 +6,6 @@ const log = (msg, section) =>
 
 const path = require("path");
 const createPaginatedPages = require("gatsby-paginate");
-const AdmZip = require("adm-zip");
-const request = require("request");
-
-const hostedContent = "https://novela-content.netlify.com/content.zip";
 
 const templatesDir = path.resolve(__dirname, "../../src/templates");
 const templates = {

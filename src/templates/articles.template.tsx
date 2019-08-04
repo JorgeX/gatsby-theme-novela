@@ -10,12 +10,6 @@ import ArticlesHero from "../sections/articles/Articles.Hero";
 import ArticlesGridLayoutProvider from "../sections/articles/Articles.Grid.Context";
 import ArticlesGrid from "../sections/articles/Articles.Grid";
 
-/**
- * This template is used to present our wonderful articles that we pull
- * from Contentful. This is not located in the /pages folder because we're
- * using it in the createPages lifecycle event
- */
-
 function ArticlesPage({ location, pageContext }) {
   const articles = pageContext.group;
 

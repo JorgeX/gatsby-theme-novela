@@ -153,9 +153,9 @@ class Paginator extends Component<IPaginator, {}> {
 
 export default Paginator;
 
-const paginationItemMixin = css`
+const paginationItemMixin = p => css`
   line-height: 1;
-  color: ${p => p.theme.colors.primary};
+  color: ${p.theme.colors.primary};
   padding: 0;
   width: 6.8rem;
   height: 6.8rem;

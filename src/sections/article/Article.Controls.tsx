@@ -26,7 +26,6 @@ function DarkModeToggle() {
 
   return (
     <IconWrapper
-      isDark={isDark}
       onClick={toggleColorMode}
       aria-label="Toggle dark and light mode"
     >
@@ -62,7 +61,6 @@ function SharePageButton() {
 
   return (
     <IconWrapper
-      isDark={isDark}
       onClick={copyToClipboardOnClick}
       data-a11y="false"
       aria-label="Copy URL to clipboard"
@@ -218,8 +216,8 @@ const MoonOrSun = styled.div<{ isDark: boolean }>`
     transform: scale(${p => (p.isDark ? 1 : 0)});
     transition: all 0.35s ease;
 
-    ${mediaqueries.tablet`
-      transform: scale(${p => (p.isDark ? 0.92 : 0)});
+    ${p => mediaqueries.tablet`
+      transform: scale(${p.isDark ? 0.92 : 0});
     `}
   }
 `;
