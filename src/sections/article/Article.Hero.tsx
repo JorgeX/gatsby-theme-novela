@@ -57,7 +57,13 @@ const HeroAvatar = styled.div`
 const Header = styled.header`
   margin: 100px auto 120px;
   padding-left: 68px;
-  max-width: 680px;
+  max-width: 749px;
+
+  ${mediaqueries.desktop`
+    padding-left: 53px;
+    max-width: calc(507px + 53px);
+    margin: 100px auto 70px;
+  `}
 
   ${mediaqueries.tablet`
     padding-left: 0;

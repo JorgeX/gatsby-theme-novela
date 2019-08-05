@@ -10,7 +10,7 @@ module.exports = async ({ reporter }, themeOptions) => {
     reporter.warn(`
       Missing directory for Authors.
       We are creating the "${authorsPath}" directory for you.
-      Pleasure ensure you add your authors within "${authorsPath}"
+      Please ensure you add your authors within "${authorsPath}"
     `);
 
     fs.mkdirSync(authorsPath, { recursive: true });
@@ -20,7 +20,7 @@ module.exports = async ({ reporter }, themeOptions) => {
     reporter.warn(`
       Missing directory for Posts.
       We are creating the "${postsPath}" directory for you.
-      Pleasure ensure you add your posts within "${postsPath}"
+      Please ensure you add your posts within "${postsPath}"
     `);
 
     fs.mkdirSync(postsPath, { recursive: true });

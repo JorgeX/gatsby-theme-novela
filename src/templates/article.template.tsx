@@ -122,6 +122,10 @@ const ArticleBody = styled.article`
   padding-left: 68px;
   transition: background 0.2s linear;
 
+  ${mediaqueries.desktop`
+    padding-left: 53px;
+  `}
+  
   ${mediaqueries.tablet`
     padding: 70px 0 80px;
   `}

@@ -106,7 +106,7 @@ function ArticelShare({ author }: MenuFloatProps) {
         window.removeEventListener(event, handleMenuFloatSettings),
       );
     };
-  }, []);
+  }, [show]);
 
   /**
    * Small workaround to set the focus once the x and y positiosn are set.

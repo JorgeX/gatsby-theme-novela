@@ -89,6 +89,7 @@ const articlesQuery = `{
 
 module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
   const basePath = themeOptions.basePath || `/`;
+  log("Creating site at", basePath);
 
   function buildPaginatedPath(index, basePath) {
     if (basePath === "/") {
@@ -154,16 +155,16 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
     let author;
 
     try {
-      author = authors.find(({ node: author }) => {
-        return (
-          author && author.name.toLowerCase() === article.author.toLowerCase()
-        );
-      }).node;
+      author = authors.find(
+        ({ node: author }) =>
+          author && author.name.toLowerCase() === article.author.toLowerCase(),
+      ).node;
     } catch (error) {
       throw new Error(`
         We could not find the Author for "${article.title}".
         Double check the author field is specified in your post and the name
         matches a specified author.
+        Provided author: ${article.title}
       `);
     }
 

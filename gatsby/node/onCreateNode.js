@@ -1,7 +1,6 @@
 "use strict";
 
 const crypto = require(`crypto`);
-const { createFilePath } = require(`gatsby-source-filesystem`);
 
 // Create fields for post slugs and source
 // This will change with schema customization with work
@@ -19,20 +18,15 @@ module.exports = ({ node, actions, getNode, createNodeId }, themeOptions) => {
   const fileNode = getNode(node.parent);
   const source = fileNode.sourceInstanceName;
 
-  if (node.internal.type === `Mdx` && `content/${source}` === contentPath) {
+  if (node.internal.type === `Mdx` && source === contentPath) {
     const slugify = str => {
       const slug = str
         .toLowerCase()
         .replace(/[^a-z0-9]+/g, "-")
         .replace(/(^-|-$)+/g, "");
+
       return `/${basePath}/${slug}`.replace(/\/\/+/g, "/");
     };
-
-    const slug = createFilePath({
-      node: fileNode,
-      getNode,
-      basePath,
-    });
 
     const fieldData = {
       slug: slugify(node.frontmatter.title),
@@ -55,7 +49,7 @@ module.exports = ({ node, actions, getNode, createNodeId }, themeOptions) => {
           .update(JSON.stringify(fieldData))
           .digest(`hex`),
         content: JSON.stringify(fieldData),
-        description: `Blog Posts`,
+        description: `Article Posts`,
       },
     });
 

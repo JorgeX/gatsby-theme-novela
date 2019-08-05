@@ -217,7 +217,49 @@ export const getHighlightedTextPositioning = () => {
   return { x, y };
 };
 
+function isOrContains(node, container) {
+  while (node) {
+    if (node === container) {
+      return true;
+    }
+    node = node.parentNode;
+  }
+  return false;
+}
+
+function elementContainsSelection(el) {
+  var sel;
+  if (window.getSelection) {
+    sel = window.getSelection();
+    if (sel.rangeCount > 0) {
+      for (var i = 0; i < sel.rangeCount; ++i) {
+        if (!isOrContains(sel.getRangeAt(i).commonAncestorContainer, el)) {
+          return false;
+        }
+      }
+      return true;
+    }
+  } else if ((sel = document.selection) && sel.type != "Control") {
+    return isOrContains(sel.createRange().parentElement(), el);
+  }
+  return false;
+}
+
 export const getSelectionDimensions = () => {
+  const isSelectedInPrism = Array.from(
+    document.getElementsByClassName("prism-code"),
+  )
+    .map(el => elementContainsSelection(el))
+    .some(bool => bool);
+
+  console.log(isSelectedInPrism);
+  if (isSelectedInPrism) {
+    return {
+      width: 0,
+      height: 0,
+    };
+  }
+
   let doc: any = window.document;
   let sel = doc.selection;
   let range;

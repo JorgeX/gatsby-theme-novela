@@ -26,9 +26,9 @@ function CodeBlock({ codeString, language, metastring }) {
 
   return (
     <Highlight {...defaultProps} code={codeString} language={language}>
-      {({ className, style, tokens, getLineProps, getTokenProps }) => {
+      {({ className, tokens, getLineProps, getTokenProps }) => {
         return (
-          <pre className={className} style={style}>
+          <pre className={className}>
             {tokens.map((line, index) => {
               const { className } = getLineProps({
                 line,
@@ -38,16 +38,7 @@ function CodeBlock({ codeString, language, metastring }) {
 
               return (
                 <div key={index} className={className}>
-                  <span
-                    style={{
-                      display: "inline-block",
-                      width: "32px",
-                      userSelect: "none",
-                      opacity: 0.3,
-                    }}
-                  >
-                    {index + 1}
-                  </span>
+                  <span className="number-line">{index + 1}</span>
                   {line.map((token, key) => {
                     const { className, children } = getTokenProps({
                       token,

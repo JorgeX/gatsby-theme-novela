@@ -43,6 +43,10 @@ const articleWidth = css`
   max-width: 680px;
   margin: 0 auto;
 
+  ${mediaqueries.desktop`
+    max-width: 507px;
+  `}
+
   ${mediaqueries.tablet`
     max-width: 486px;
   `};
@@ -183,6 +187,7 @@ const MDXBody = styled.div<{ isDark: boolean }>`
   }
 
   .prism-code {
+    overflow: scroll;
     width: 100%;
     max-width: 744px;
     margin: 0 auto;
@@ -194,6 +199,7 @@ const MDXBody = styled.div<{ isDark: boolean }>`
     background: ${p => p.theme.colors.prism.background};
 
     .token-line {
+      border-left: 3px solid transparent;
       ${p => {
         return Object.keys(p.theme.colors.prism)
           .map(key => {
@@ -203,14 +209,32 @@ const MDXBody = styled.div<{ isDark: boolean }>`
       }};
 
       & > span {
-        color: #dcd9e6;
       }
+    }
+    
+    .number-line {
+      display: inline-block;
+      width: 32px;
+      user-select: none;
+      opacity: 0.3;
+      color: #dcd9e6;
+
+
+      ${mediaqueries.tablet`
+        display: none;
+      `};
     }
 
     .token-line.highlight-line {
       margin: 0 -32px;
       padding: 0 32px;
-      background: rgba(255, 255, 255, 0.05);
+      background: ${p => p.theme.colors.prism.highlight};
+      border-left: 3px solid ${p => p.theme.colors.prism.highlightBorder};
+
+      ${mediaqueries.tablet`
+        margin: 0 -20px;
+        padding: 0 20px;
+      `};
     }
 
     .operator + .maybe-class-name {
@@ -228,6 +252,7 @@ const MDXBody = styled.div<{ isDark: boolean }>`
 
     ${mediaqueries.phablet`
       border-radius: 0;
+      margin: 35px auto;
       padding: 35px 20px;
     `};
   }
