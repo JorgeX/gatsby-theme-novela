@@ -418,10 +418,11 @@ plugins: [
 
 | Key     | Required |    Type    |          Description          |
 | ------- | :------: | :--------: | :---------------------------: |
-| title   | required |   String   |      Also used for slug       |
-| author  | required | String Ref | _Must match a defined Author_ |
+| title   | required |   String   |      Used as title and generates a default slug. Must be unique.      |
+| slug   | optional |   String   |      Define a custom slug that will override the default title slug.       |
+| author  | required | String Ref | _Must match a defined Author_ name. |
 | date    | required |    Date    |       YYYY-MM-DD format       |
-| hero    | required |   Image    |                               |
+| hero    | required |   Image    |         1200px minimum width recommended                      |
 | excerpt | required |   String   |      140 character limit      |
 
 [View Post example](https://github.com/narative/gatsby-theme-novela-example/blob/master/content/posts/2019-04-31-understanding-the-gatsby-lifecycle/index.mdx)
