@@ -252,7 +252,6 @@ export const getSelectionDimensions = () => {
     .map(el => elementContainsSelection(el))
     .some(bool => bool);
 
-  console.log(isSelectedInPrism);
   if (isSelectedInPrism) {
     return {
       width: 0,
