@@ -2,16 +2,16 @@ import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import styled from "@emotion/styled";
 
-import * as SocialIcons from "../../icons/";
+import Icons from "../../icons/";
 import mediaqueries from "@styles/media";
 
 const icons = {
-  dribbble: SocialIcons.DribbbleIcon,
-  linkedin: SocialIcons.LinkedinIcon,
-  twitter: SocialIcons.TwitterIcon,
-  facebook: SocialIcons.FacebookIcon,
-  instagram: SocialIcons.InstagramIcon,
-  github: SocialIcons.GithubIcon,
+  dribbble: Icons.Dribbble,
+  linkedin: Icons.LinkedIn,
+  twitter: Icons.Twitter,
+  facebook: Icons.Facebook,
+  instagram: Icons.Instagram,
+  github: Icons.Github,
 };
 
 const socialQuery = graphql`

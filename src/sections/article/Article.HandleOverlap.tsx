@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "@emotion/styled";
+import throttle from "lodash/throttle";
 
 interface OverlapProps {
   children: React.ReactNode[];
@@ -50,7 +51,7 @@ function HandleOverlap(props: OverlapProps) {
   }
 
   useEffect(() => {
-    const onScroll = () => {
+    const handleScroll = throttle(() => {
       // Elements we want to include for the overlap
       const ctas = Array.from(document.getElementsByClassName("CallToAction"));
       const images = Array.from(document.querySelectorAll("img"));
@@ -76,13 +77,14 @@ function HandleOverlap(props: OverlapProps) {
           setIsOverlapping(isOverlapping);
         },
       );
-    };
-    window.addEventListener("scroll", onScroll);
-    window.addEventListener("resize", onScroll);
+    }, 20);
+
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
     };
   }, [asideRef]);
 

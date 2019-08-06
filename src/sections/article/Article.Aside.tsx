@@ -47,7 +47,7 @@ function Aside({ contentHeight, children }: AsideProps) {
     const imageOffsetFromTopOfWindow = imageRect.top + window.scrollY;
     setImageOffset(imageOffsetFromTopOfWindow);
 
-    const handleScroll = (event: Event) => {
+    const handleScroll = throttle(() => {
       const el = progressRef.current;
       const top = el.getBoundingClientRect().top;
       const height = el.offsetHeight;
@@ -65,7 +65,7 @@ function Aside({ contentHeight, children }: AsideProps) {
       if (top + height / 2 <= windowHeight / 2) {
         return setShouldFixAside(true);
       }
-    };
+    }, 20);
 
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleScroll);

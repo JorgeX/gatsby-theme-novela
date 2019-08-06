@@ -21,7 +21,7 @@ import { toKebabCase } from "@utils";
 const components = {
   a: Anchor,
   blockquote: Blockquote,
-  h1: Headings.h1,
+  h1: Headings.h2, // h1 reserved article title
   h2: Headings.h2,
   h3: Headings.h3,
   h4: Headings.h4,

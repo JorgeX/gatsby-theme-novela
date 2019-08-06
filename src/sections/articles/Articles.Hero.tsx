@@ -3,31 +3,14 @@ import { graphql, useStaticQuery } from "gatsby";
 import styled from "@emotion/styled";
 
 import Section from "@components/Section";
-import Headings from "@components/Headings";
-import Image from "@components/Image";
-
+import Bio from "@components/Bio";
+import Icons from "@icons";
 import mediaqueries from "@styles/media";
 
 import { GridLayoutContext } from "./Articles.Grid.Context";
 
 const authorQuery = graphql`
   {
-    author: allAuthorsYaml(filter: { featured: { eq: true } }) {
-      edges {
-        node {
-          bio
-          id
-          name
-          avatar {
-            image: childImageSharp {
-              fluid(maxWidth: 100, quality: 100) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
-        }
-      }
-    }
     site: allSite {
       edges {
         node {
@@ -54,24 +37,16 @@ function ArticlesHero() {
   useEffect(() => getGridLayout(), []);
 
   const results = useStaticQuery(authorQuery);
-  const author = results.author.edges[0].node;
   const hero = results.site.edges[0].node.siteMetadata.hero;
   const tilesIsActive = hasSetGridLayout && gridLayout === "tiles";
 
   return (
     <Section relative id="Articles__Hero">
       <HeadingContainer style={{ maxWidth: `${hero.maxWidth}px` }}>
-        <Headings.h1>{hero.heading}</Headings.h1>
+        <HeroHeading>{hero.heading}</HeroHeading>
       </HeadingContainer>
       <SubheadingContainer>
-        <BioContainer>
-          <BioAvatar>
-            <BioAvatarInner>
-              <Image src={author.avatar.image.fluid} />
-            </BioAvatarInner>
-          </BioAvatar>
-          <BioText>{author.bio}</BioText>
-        </BioContainer>
+        <Bio />
         <GridControlsContainer>
           <GridButton
             onClick={() => setGridLayout("tiles")}
@@ -80,7 +55,7 @@ function ArticlesHero() {
             title="Show articles in Tile grid"
             aria-label="Show articles in Tile grid"
           >
-            <TilesIcon />
+            <Icons.Tiles />
           </GridButton>
           <GridButton
             onClick={() => setGridLayout("rows")}
@@ -89,7 +64,7 @@ function ArticlesHero() {
             title="Show articles in Row grid"
             aria-label="Show articles in Row grid"
           >
-            <RowsIcon />
+            <Icons.Rows />
           </GridButton>
         </GridControlsContainer>
       </SubheadingContainer>
@@ -118,50 +93,6 @@ const SubheadingContainer = styled.div`
   `};
 `;
 
-const BioContainer = styled.div`
-  display: flex;
-  align-items: center;
-  position: relative;
-  left: -10px;
-`;
-
-const BioAvatar = styled.div`
-  position: relative;
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.25);
-  margin-right: 16px;
-  margin: 10px 26px 10px 10px;
-
-  &::after {
-    content: "";
-    position: absolute;
-    left: -5px;
-    top: -5px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 1px solid rgba(0, 0, 0, 0.25);
-  }
-`;
-
-const BioAvatarInner = styled.div`
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.25);
-  margin-right: 16px;
-  overflow: hidden;
-`;
-
-const BioText = styled.p`
-  max-width: 430px;
-  font-size: 14px;
-  line-height: 1.45;
-  color: ${p => p.theme.colors.grey};
-`;
-
 const GridControlsContainer = styled.div`
   display: flex;
   align-items: center;
@@ -180,6 +111,22 @@ const HeadingContainer = styled.div`
 
   ${mediaqueries.tablet`
     width: 100%;
+  `}
+`;
+
+const HeroHeading = styled.h1`
+  font-style: normal;
+  font-weight: 600;
+  font-size: 52px;
+  line-height: 1.15;
+  color: ${p => p.theme.colors.primary};
+
+  ${mediaqueries.desktop`
+    font-size: 38px
+  `}
+
+  ${mediaqueries.phablet`
+    font-size: 32px;
   `}
 `;
 
