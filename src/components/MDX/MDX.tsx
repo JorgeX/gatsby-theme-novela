@@ -75,13 +75,7 @@ const ARTICLE_WIDTH = css`
   `};
 `;
 
-const MDXBody = styled.div`
-  position: relative;
-  z-index: 10;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-
+const HeadingsCSS = css`
   h1,
   h2,
   h3,
@@ -115,7 +109,9 @@ const MDXBody = styled.div`
   h6 {
     ${ARTICLE_WIDTH};
   }
+`;
 
+const PrismCSS = p => css`
   .prism-code {
     overflow: scroll;
     width: 100%;
@@ -125,18 +121,17 @@ const MDXBody = styled.div`
     font-size: 14px;
     margin: 15px auto 50px;
     border-radius: 5px;
-    font-family: ${p => p.theme.fonts.monospace};
-    background: ${p => p.theme.colors.prism.background};
+    font-family: ${p.theme.fonts.monospace};
+    background: ${p.theme.colors.prism.background};
 
     .token-line {
       border-left: 3px solid transparent;
-      ${p => {
-        return Object.keys(p.theme.colors.prism)
-          .map(key => {
-            return `.${toKebabCase(key)}{color:${p.theme.colors.prism[key]};}`;
-          })
-          .reduce((curr, next) => curr + next, ``);
-      }};
+
+      ${Object.keys(p.theme.colors.prism)
+        .map(key => {
+          return `.${toKebabCase(key)}{color:${p.theme.colors.prism[key]};}`;
+        })
+        .reduce((curr, next) => curr + next, ``)};
 
       & > span {
       }
@@ -157,8 +152,8 @@ const MDXBody = styled.div`
     .token-line.highlight-line {
       margin: 0 -32px;
       padding: 0 32px;
-      background: ${p => p.theme.colors.prism.highlight};
-      border-left: 3px solid ${p => p.theme.colors.prism.highlightBorder};
+      background: ${p.theme.colors.prism.highlight};
+      border-left: 3px solid ${p.theme.colors.prism.highlightBorder};
 
       ${mediaqueries.tablet`
         margin: 0 -20px;
@@ -185,7 +180,9 @@ const MDXBody = styled.div`
       padding: 35px 20px;
     `};
   }
+`;
 
+const ImageCSS = css`
   .gatsby-resp-image-background-image {
     display: none !important;
   }
@@ -235,4 +232,22 @@ const MDXBody = styled.div`
     max-width: ${IMAGE_WIDTHS.full};
     border-radius: 0;
   }
+`;
+
+/**
+ * MDXBody
+ * Here we're applying "global" selectors to make sure we maintain an article
+ * body type feel. We're also applying all the Prism selecotors and styles within
+ * the MDXBody.
+ */
+const MDXBody = styled.div`
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  ${HeadingsCSS}
+  ${PrismCSS}
+  ${ImageCSS}
 `;
