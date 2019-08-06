@@ -21,7 +21,7 @@ function calculateLinesToHighlight(meta) {
   }
 }
 
-function CodeBlock({ codeString, language, metastring }) {
+function CodePrism({ codeString, language, metastring }) {
   const shouldHighlightLine = calculateLinesToHighlight(metastring);
 
   return (
@@ -61,4 +61,4 @@ function CodeBlock({ codeString, language, metastring }) {
   );
 }
 
-export default CodeBlock;
+export default CodePrism;

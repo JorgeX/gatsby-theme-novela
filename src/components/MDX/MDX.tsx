@@ -7,23 +7,43 @@ import styled from "@emotion/styled";
 import { css } from "@emotion/core";
 import { useColorMode } from "theme-ui";
 
+import Anchor from "@components/Anchor";
+import Blockquote from "@components/Blockquote";
+import Code from "@components/Code";
+import Headings from "@components/Headings";
+import HorizontalRule from "@components/HorizontalRule";
+import Lists from "@components/Lists";
+import Paragraph from "@components/Paragraph";
+
 import mediaqueries from "@styles/media";
 import { toKebabCase } from "@utils";
 
-import CodeBlock from "./MDX.Code";
-import PreBlock from "./MDX.Pre";
+const components = {
+  a: Anchor,
+  blockquote: Blockquote,
+  h1: Headings.h1,
+  h2: Headings.h2,
+  h3: Headings.h3,
+  h4: Headings.h4,
+  h5: Headings.h5,
+  h6: Headings.h6,
+  hr: HorizontalRule,
+  ol: Lists.ol,
+  ul: Lists.ul,
+  p: Paragraph,
+  code: Code.Prism,
+  pre: Code.Pre,
+};
 
 function MDX({ content, children, ...props }) {
   const [colorMode] = useColorMode();
-  const components = {
-    code: CodeBlock,
-    pre: PreBlock,
-  };
 
   return (
     <MDXProvider components={components}>
-      <MDXBody isDark={colorMode === "dark"} {...props}>
-        <MDXRenderer>{content}</MDXRenderer>
+      <MDXBody>
+        <MDXRenderer isDark={colorMode === "dark"} {...props}>
+          {content}
+        </MDXRenderer>
         {children}
       </MDXBody>
     </MDXProvider>
@@ -32,16 +52,15 @@ function MDX({ content, children, ...props }) {
 
 export default MDX;
 
-const imageWidths = {
+const IMAGE_WIDTHS = {
   regular: "680px",
   large: "1004px",
   full: "100vw",
 };
 
-const articleWidth = css`
+const ARTICLE_WIDTH = css`
   width: 100%;
   max-width: 680px;
-  margin: 0 auto;
 
   ${mediaqueries.desktop`
     max-width: 507px;
@@ -56,24 +75,12 @@ const articleWidth = css`
   `};
 `;
 
-const selectionColor = css`
-  &::selection {
-    background: #c9e1f4; /* WebKit/Blink Browsers */
-  }
-
-  &::-moz-selection {
-    background: #c9e1f4; /* Gecko Browsers */
-  }
-`;
-
-const transitionColor = css`
-  transition: color 0.25s ease;
-`;
-
-const MDXBody = styled.div<{ isDark: boolean }>`
+const MDXBody = styled.div`
   position: relative;
   z-index: 10;
-  ${selectionColor};
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 
   h1,
   h2,
@@ -81,109 +88,32 @@ const MDXBody = styled.div<{ isDark: boolean }>`
   h4,
   h5,
   h6 {
-    ${articleWidth};
-    font-family: ${p => p.theme.fonts.serif};
-    color: ${p => p.theme.colors.primary};
-    font-weight: 800;
+    margin: 0 auto;
   }
 
   h1,
   h1 *,
   h2,
   h2 * {
-    font-size: 2.2rem;
-    line-height: 1.45;
-    margin-bottom: 2rem;
-    padding-top: 20px;
+    margin: 25px auto 18px;
 
-    ${mediaqueries.desktop_up`
-      font-size: 3.2rem;
-      paddng-top: 65px;
-      margin-bottom: 2.5rem;
+    ${mediaqueries.tablet`
+      margin: 30px auto 18px;
     `};
   }
 
   h3,
   h3 * {
-    font-size: 2.2rem;
-    line-height: 1.45;
-    margin-bottom: 1rem;
-
-    ${mediaqueries.desktop`
-      margin-top: 0;
-      margin-bottom: 0.75rem;
-    `};
+    margin: 20px auto 10px;
   }
 
-  a,
-  a * {
-    color: ${p => p.theme.colors.accent};
-    ${transitionColor};
-
-    &:visited {
-      color: ${p => p.theme.colors.accent};
-      opacity: 0.85;
-    }
-
-    &:hover,
-    &:focus {
-      text-decoration: underline;
-    }
-  }
-
-  figure {
-    margin-bottom: 0;
-
-    img {
-      margin-bottom: 15px;
-    }
-
-    figcaption {
-      ${articleWidth};
-      font-family: ${p => p.theme.fonts.sansSerif};
-      color: #000;
-      opacity: 0.5;
-      font-size: 16px;
-      display: block;
-      margin-bottom: 75px;
-
-      ${mediaqueries.tablet`
-        margin-bottom: 30px;
-        font-size: 18px;
-      `};
-    }
-  }
-
-  blockquote {
-    ${transitionColor};
-    margin: 50px auto;
-    color: ${p => p.theme.colors.articleText};
-    font-family: ${p => p.theme.fonts.serif};
-    font-style: italic;
-
-    ${mediaqueries.tablet`
-      margin: 15px auto 45px;
-    `};
-
-    p {
-      max-width: 880px;
-      padding-right: 100px;
-      width: 100%;
-      margin: 50px auto;
-      font-size: 36px;
-      line-height: 1.32;
-      font-weight: bold;
-
-      ${mediaqueries.tablet`
-        font-size: 26px;
-        padding: 0 180px;
-      `};
-
-      ${mediaqueries.phablet`
-        font-size: 36px;
-        padding: 0 20px 0 40px;
-      `};
-    }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    ${ARTICLE_WIDTH};
   }
 
   .prism-code {
@@ -193,7 +123,7 @@ const MDXBody = styled.div<{ isDark: boolean }>`
     margin: 0 auto;
     padding: 32px;
     font-size: 14px;
-    margin: 50px auto;
+    margin: 15px auto 50px;
     border-radius: 5px;
     font-family: ${p => p.theme.fonts.monospace};
     background: ${p => p.theme.colors.prism.background};
@@ -211,14 +141,13 @@ const MDXBody = styled.div<{ isDark: boolean }>`
       & > span {
       }
     }
-    
+
     .number-line {
       display: inline-block;
       width: 32px;
       user-select: none;
       opacity: 0.3;
       color: #dcd9e6;
-
 
       ${mediaqueries.tablet`
         display: none;
@@ -257,95 +186,6 @@ const MDXBody = styled.div<{ isDark: boolean }>`
     `};
   }
 
-  ul,
-  ol {
-    ${articleWidth} list-style: none;
-    counter-reset: list;
-    color: ${p => p.theme.colors.articleText};
-    ${transitionColor};
-    position: relative;
-    padding-left: 30px;
-    margin-bottom: 30px;
-
-    ${mediaqueries.tablet`
-      padding-left: 0px;
-    `};
-
-    ${mediaqueries.phablet`
-      padding-left: 20px;
-    `};
-
-    li {
-      position: relative;
-      margin-bottom: 15px;
-
-      ${mediaqueries.tablet`
-        padding-left: 30px;
-      `};
-
-      ${mediaqueries.phablet`
-        padding-left: 30px;
-      `};
-
-      p {
-        ${mediaqueries.tablet`
-          padding: 0;
-        `};
-      }
-    }
-
-    li > * {
-      display: inline;
-    }
-
-    li::before {
-      width: 3rem;
-      display: inline-block;
-      position: absolute;
-      color: ${p => p.theme.colors.secondary};
-    }
-  }
-
-  ul li::before {
-    content: "";
-    position: absolute;
-    left: -30px;
-    top: 8px;
-    height: 8px;
-    width: 8px;
-    background: ${p => p.theme.colors.secondary};
-
-    ${mediaqueries.tablet`
-      left: 0;
-    `};
-  }
-
-  ol li::before {
-    counter-increment: list;
-    content: counter(list) ".";
-    font-weight: 600;
-    position: absolute;
-    left: -3rem;
-    top: -0.3rem;
-    font-size: 2rem;
-
-    ${mediaqueries.tablet`
-      left: 0;
-    `};
-  }
-
-  p {
-    ${articleWidth};
-    margin-bottom: 35px;
-    line-height: 1.756;
-    font-size: 18px;
-    color: ${p => p.theme.colors.articleText};
-
-    b {
-      font-weight: 800;
-    }
-  }
-
   .gatsby-resp-image-background-image {
     display: none !important;
   }
@@ -356,7 +196,7 @@ const MDXBody = styled.div<{ isDark: boolean }>`
     max-width: 100%;
     height: auto;
     z-index: 0;
-    margin: 45px auto 85px;
+    margin: 15px auto 50px;
     border-radius: 5px;
 
     ${mediaqueries.tablet`
@@ -364,94 +204,35 @@ const MDXBody = styled.div<{ isDark: boolean }>`
     `};
   }
 
-  .image__container {
+  .Image__Container {
     text-align: center;
   }
 
-  img.image__with_shadow {
+  img.Image__With-Shadow {
     box-shadow: 0px 15px 60px rgba(0, 0, 0, 0.15);
   }
 
-  img.image__regular {
+  img.Image__Regular {
     width: 100%;
-    max-width: ${imageWidths.regular};
+    max-width: ${IMAGE_WIDTHS.regular};
 
     ${mediaqueries.tablet`
       width: calc(100vw - 40px);
     `};
   }
 
-  img.image__large {
+  img.Image__Large {
     width: 100%;
-    max-width: ${imageWidths.large};
+    max-width: ${IMAGE_WIDTHS.large};
 
     ${mediaqueries.tablet`
       border-radius: 0;
     `};
   }
 
-  img.image__full {
+  img.Image__Full {
     width: 100%;
-    max-width: ${imageWidths.full};
+    max-width: ${IMAGE_WIDTHS.full};
     border-radius: 0;
-  }
-
-  table {
-    ${articleWidth};
-    width: 100%;
-    border-collapse: collapse;
-    border-top: 1px solid #dfe3e8;
-  }
-
-  tbody {
-    display: table-row-group;
-    vertical-align: middle;
-    border-color: inherit;
-    color: #000;
-  }
-
-  th {
-    text-transform: uppercase;
-    font-weight: 600;
-  }
-
-  tr {
-    &:hover {
-      background-color: #f4f6f8;
-    }
-  }
-
-  td {
-    padding: 10px 8px;
-    border-bottom: 1px solid #dfe3e8;
-    vertical-align: top;
-    white-space: nowrap;
-  }
-
-  hr {
-    width: 250px;
-    height: 1px;
-    margin: 30px auto;
-    opacity: 0.33;
-  }
-
-  hr {
-    ${articleWidth};
-    position: relative;
-    width: 100%;
-    margin: 25px auto 60px;
-    border: 0;
-    height: 14.36px;
-    background-image: url("${p =>
-      p.isDark
-        ? "data:image/svg+xml,%3Csvg width='10' height='15' viewBox='0 0 10 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0.432617' y='13.8564' width='16' height='1' transform='rotate(-60 0.432617 13.8564)' fill='%2350525B'/%3E%3C/svg%3E%0A"
-        : "data:image/svg+xml,%3Csvg width='10' height='15' viewBox='0 0 10 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0.567383' y='14.1777' width='16' height='1' transform='rotate(-60 0.567383 14.1777)' fill='%232D2E33'/%3E%3C/svg%3E"}");
-    background-repeat: repeat-x;
-    box-sizing: border-box;
-
-    ${mediaqueries.tablet`
-      width: calc(100vw - 40px);
-      margin: 0px auto 50px;
-    `};
   }
 `;

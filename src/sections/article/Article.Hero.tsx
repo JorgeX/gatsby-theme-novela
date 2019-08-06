@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-import Heading from "@components/Heading";
+import Headings from "@components/Headings";
 import Image from "@components/Image";
 
 import mediaqueries from "@styles/media";
@@ -81,7 +81,7 @@ const Header = styled.header`
   }
 `;
 
-const HeroHeading = styled(Heading.h1)`
+const HeroHeading = styled(Headings.h1)`
   font-size: 48px;
   font-family: ${p => p.theme.fonts.serif};
   margin-bottom: 25px;

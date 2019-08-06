@@ -4,7 +4,7 @@ import { css } from "@emotion/core";
 
 import { Link } from "gatsby";
 
-import Heading from "@components/Heading";
+import Headings from "@components/Headings";
 import Image from "@components/Image";
 
 import mediaqueries from "@styles/media";
@@ -169,7 +169,7 @@ const Item = styled.div`
   `}
 `;
 
-const Title = styled(Heading.h2)`
+const Title = styled(Headings.h2)`
   font-size: 21px;
   font-family: ${p => p.theme.fonts.serif};
   margin-bottom: ${p => (p.hasOverflow ? "45px" : "10px")};

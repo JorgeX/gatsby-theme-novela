@@ -1,6 +1,6 @@
 import React from "react";
 
-import CodeBlock from "./MDX.Code";
+import CodeBlock from "./Code.Prism";
 
 function preToCodeBlock(preProps) {
   if (
@@ -28,7 +28,7 @@ function preToCodeBlock(preProps) {
   }
 }
 
-function PreBlock(preProps) {
+function CodePre(preProps) {
   const props = preToCodeBlock(preProps);
 
   if (props) {
@@ -38,4 +38,4 @@ function PreBlock(preProps) {
   }
 }
 
-export default PreBlock;
+export default CodePre;

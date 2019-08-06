@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from "gatsby";
 import styled from "@emotion/styled";
 
 import Section from "@components/Section";
-import Heading from "@components/Heading";
+import Headings from "@components/Headings";
 import Image from "@components/Image";
 
 import mediaqueries from "@styles/media";
@@ -61,7 +61,7 @@ function ArticlesHero() {
   return (
     <Section relative id="Articles__Hero">
       <HeadingContainer style={{ maxWidth: `${hero.maxWidth}px` }}>
-        <Heading.h1>{hero.heading}</Heading.h1>
+        <Headings.h1>{hero.heading}</Headings.h1>
       </HeadingContainer>
       <SubheadingContainer>
         <BioContainer>

@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { css } from "@emotion/core";
 import { Link } from "gatsby";
 
-import Heading from "@components/Heading";
+import Headings from "@components/Headings";
 import Image from "@components/Image";
 
 import mediaqueries from "@styles/media";
@@ -117,7 +117,7 @@ const GridRow = styled.div`
   `}
 `;
 
-const Title = styled(Heading.h2)`
+const Title = styled(Headings.h2)`
   font-size: 24px;
   margin-bottom: 15px;
   transition: color 0.3s ease-in-out;
