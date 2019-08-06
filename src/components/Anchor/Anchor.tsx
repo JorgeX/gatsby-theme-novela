@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { articleWidth } from "@components/MDX/MDX";
 
 const Anchor = styled.a`
   transition: color 0.25s ease;

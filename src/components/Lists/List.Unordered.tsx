@@ -6,9 +6,9 @@ const UnorderedList = styled.ul`
   counter-reset: list;
   color: ${p => p.theme.colors.articleText};
   position: relative;
-  padding-left: 30px;
-  padding-bottom: 30px;
+  padding: 15px 0 30px 30px;
   transition: color 0.25s ease;
+  margin: 0 auto;
 
   width: 100%;
   max-width: 680px;
