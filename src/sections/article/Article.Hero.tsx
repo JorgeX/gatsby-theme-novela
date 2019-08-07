@@ -7,7 +7,7 @@ import Headings from "@components/Headings";
 import Image from "@components/Image";
 import Icons from "@icons";
 import mediaqueries from "@styles/media";
-import { IArticleNode, IAuthor } from "@typings";
+import { IArticle, IAuthor } from "@typings";
 
 import ArticleAuthors from "./Article.Authors";
 
@@ -65,7 +65,7 @@ const ArticleHero = ({
   article,
   authors,
 }: {
-  article: IArticleNode;
+  article: IArticle;
   authors: IAuthor[];
 }) => {
   const hasCoAUthors = authors.length > 1;

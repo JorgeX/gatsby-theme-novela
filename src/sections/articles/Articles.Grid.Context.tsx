@@ -1,9 +1,9 @@
 import React, { createContext, useState, useEffect } from "react";
-import { IArticleNode } from "@typings";
+import { IArticle } from "@typings";
 
 interface GridLayoutProviderProps {
   children: React.ReactChild;
-  articles: IArticleNode[];
+  articles: IArticle[];
 }
 
 export const GridLayoutContext = createContext({

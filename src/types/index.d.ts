@@ -59,7 +59,7 @@ export interface IAuthor {
   };
 }
 
-export interface IArticleNode {
+export interface IArticle {
   node: {
     slug: string;
     authors: IAuthor[];
@@ -75,9 +75,9 @@ export interface IArticleNode {
   };
 }
 
-interface IArticleNodeQuery {
+interface IArticleQuery {
   edges: {
-    node: IArticleNode;
+    node: IArticle;
   }[];
 }
 

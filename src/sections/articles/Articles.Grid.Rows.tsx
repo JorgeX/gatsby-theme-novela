@@ -8,7 +8,7 @@ import Image from "@components/Image";
 
 import mediaqueries from "@styles/media";
 
-import { IArticleNode } from "@typings";
+import { IArticle } from "@typings";
 
 /**
  * [LONG ROW]
@@ -17,7 +17,7 @@ import { IArticleNode } from "@typings";
  * ...
  */
 
-function ArticlesGridRows({ articles }: { articles: IArticleNode[] }) {
+function ArticlesGridRows({ articles }: { articles: IArticle[] }) {
   if (!articles) return null;
 
   return (

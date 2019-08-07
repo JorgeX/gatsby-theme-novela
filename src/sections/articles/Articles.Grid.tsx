@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styled from "@emotion/styled";
 
-import { IArticleNode } from "@typings";
+import { IArticle } from "@typings";
 
 import ArticlesGridTiles from "./Articles.Grid.Tiles";
 import ArticlesGridRows from "./Articles.Grid.Rows";
@@ -12,7 +12,7 @@ function ArticlesGrid({
   articles,
   basePath,
 }: {
-  articles: IArticleNode[];
+  articles: IArticle[];
   basePath: string;
 }) {
   const { gridLayout, hasSetGridLayout } = useContext(GridLayoutContext);

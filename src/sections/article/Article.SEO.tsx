@@ -2,15 +2,15 @@ import React from "react";
 
 import SEO from "@components/SEO";
 
-import { IArticleNode, IAuthorNode } from "@typings";
+import { IArticle, IAuthor } from "@typings";
 
 function ArticleSEO({
   article,
   authors,
   location,
 }: {
-  article: IArticleNode;
-  authors: IAuthorNode[];
+  article: IArticle;
+  authors: IAuthor[];
   location: any;
 }) {
   const authorsData = authors.map(author => ({

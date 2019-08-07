@@ -8,7 +8,7 @@ import Image from "@components/Image";
 
 import mediaqueries from "@styles/media";
 
-import { IArticleNode } from "@typings";
+import { IArticle } from "@typings";
 
 /**
  * Sits at the bottom of our Article page. Shows the next 2 on desktop and the
@@ -22,7 +22,7 @@ import { IArticleNode } from "@typings";
  *  [.....LONG.....], [..SHORT..]
  *  [..............], [.........]
  */
-const ArticlesNext = ({ articles }: { articles: IArticleNode[] }) => {
+const ArticlesNext = ({ articles }: { articles: IArticle[] }) => {
   if (!articles) return null;
   const numberOfArticles = articles.length;
   return (
@@ -39,7 +39,7 @@ const GridItem = ({
   article,
   narrow,
 }: {
-  article: IArticleNode;
+  article: IArticle;
   narrow?: boolean;
 }) => {
   if (!article) return null;

@@ -9,7 +9,7 @@ import Image from "@components/Image";
 
 import mediaqueries from "@styles/media";
 
-import { IArticleNode } from "@typings";
+import { IArticle } from "@typings";
 
 /**
  *  [LONG], [SHORT]
@@ -23,7 +23,7 @@ import { IArticleNode } from "@typings";
  *
  * TODO: Figure out CSS grid for reverse grid row items and inserting a quote inside.
  */
-function ArticlesGridTiles({ articles }: { articles: IArticleNode[] }) {
+function ArticlesGridTiles({ articles }: { articles: IArticle[] }) {
   if (!articles) return null;
 
   return (
