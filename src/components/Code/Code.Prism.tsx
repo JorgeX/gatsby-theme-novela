@@ -3,6 +3,7 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import styled from "@emotion/styled";
 
 import Icons from "@icons";
+import mediaqueries from "@styles/media";
 import { copyToClipboard } from "@utils";
 
 const RE = /{([\d,-]+)}/;
@@ -101,9 +102,9 @@ function Copy({ toCopy }: { toCopy: string }) {
 
 const CopyButton = styled.button`
   position: absolute;
-  right: 26px;
-  top: 27px;
-  padding: 5px 8px 4px;
+  right: 22px;
+  top: 24px;
+  padding: 8px 12px 7px;
   border-radius: 5px;
   color: #6f7177;
   transition: background 0.3s ease;
@@ -111,4 +112,8 @@ const CopyButton = styled.button`
   &:hover {
     background: rgba(255, 255, 255, 0.07);
   }
+
+  ${mediaqueries.tablet`
+    display: none;
+  `}
 `;

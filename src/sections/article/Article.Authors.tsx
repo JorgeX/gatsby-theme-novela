@@ -128,6 +128,7 @@ const CoAuthorsList = styled.div`
 
 const CoAuthorsListOpen = styled.ul`
   position: absolute;
+  z-index: 2;
   left: -21px;
   right: -21px;
   top: -19px;
@@ -156,9 +157,11 @@ const CoAuthorAvatarOpen = styled.div`
   margin-right: 15px;
   background: ${p => p.theme.colors.grey};
   overflow: hidden;
+  pointer-events: none;
 
   .gatsby-image-wrapper > div {
     padding-bottom: 100% !important;
+    overflow: hidden;
   }
 `;
 
@@ -167,13 +170,16 @@ const CoAuthorAvatar = styled.div`
   height: 25px;
   width: 25px;
   border-radius: 50%;
+  z-index: 1;
   background: ${p => p.theme.colors.grey};
   box-shadow: 0 0 0 2px ${p => p.theme.colors.background};
   transition: box-shadow 0.25s ease;
   overflow: hidden;
+  pointer-events: none;
 
   .gatsby-image-wrapper > div {
     padding-bottom: 100% !important;
+    overflow: hidden;
   }
 
   ${mediaqueries.phablet`
@@ -233,6 +239,7 @@ const CoAuthorsContainer = styled.div<{ isOpen: boolean }>`
   align-items: center;
   font-size: 18px;
   color: ${p => p.theme.colors.grey};
+  cursor: pointer;
 
   &::before {
     content: "";

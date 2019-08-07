@@ -9,7 +9,7 @@ const Blockquote = styled.blockquote`
   font-style: italic;
 
   ${mediaqueries.tablet`
-    margin: 15px auto 45px;
+    margin: 10px auto 35px;
   `};
 
   & > p {

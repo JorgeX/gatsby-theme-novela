@@ -176,8 +176,8 @@ const PrismCSS = p => css`
 
     ${mediaqueries.phablet`
       border-radius: 0;
-      margin: 35px auto;
-      padding: 35px 20px;
+      margin: 0 auto 25px;
+      padding: 25px 20px;
     `};
   }
 `;

@@ -8,13 +8,7 @@ import ArticlesGridRows from "./Articles.Grid.Rows";
 
 import { GridLayoutContext } from "./Articles.Grid.Context";
 
-function ArticlesGrid({
-  articles,
-  basePath,
-}: {
-  articles: IArticle[];
-  basePath: string;
-}) {
+function ArticlesGrid({ articles }: { articles: IArticle[] }) {
   const { gridLayout, hasSetGridLayout } = useContext(GridLayoutContext);
   /**
    * We have to wait until we read from localStorage to see which layout

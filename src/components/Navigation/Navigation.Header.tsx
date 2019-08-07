@@ -32,6 +32,7 @@ function NavigationHeader() {
           data-a11y="false"
           title="Navigate back to the homepage"
           aria-label="Navigate back to the homepage"
+          showBackArrow={showBackArrow}
         >
           {showBackArrow && (
             <BackArrowIconContainer>
@@ -109,10 +110,6 @@ function SharePageButton() {
 }
 
 const BackArrowIconContainer = styled.div`
-  position: absolute;
-  left: -44px;
-  top: 0;
-  bottom: 0;
   transition: 0.2s transform var(--ease-out-quad);
   opacity: 0;
   padding-right: 30px;
@@ -145,8 +142,15 @@ const NavContainer = styled.div`
   }
 `;
 
-const LogoLink = styled(Link)`
+const LogoLink = styled(Link)<{ showBackArrow: boolean }>`
   position: relative;
+  display: flex;
+  align-items: center;
+  left: ${p => (p.showBackArrow ? "-54px" : 0)};
+
+  ${mediaqueries.desktop_medium`
+    left: 0
+  `}
 
   &[data-a11y="true"]:focus::after {
     content: "";
