@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
+import styled from "@emotion/styled";
+
+import Icons from "@icons";
+import { copyToClipboard } from "@utils";
 
 const RE = /{([\d,-]+)}/;
 
@@ -28,33 +32,36 @@ function CodePrism({ codeString, language, metastring }) {
     <Highlight {...defaultProps} code={codeString} language={language}>
       {({ className, tokens, getLineProps, getTokenProps }) => {
         return (
-          <pre className={className}>
-            {tokens.map((line, index) => {
-              const { className } = getLineProps({
-                line,
-                key: index,
-                className: shouldHighlightLine(index) ? "highlight-line" : "",
-              });
+          <div>
+            <pre className={className} style={{ position: "relative" }}>
+              <Copy toCopy={codeString} />
+              {tokens.map((line, index) => {
+                const { className } = getLineProps({
+                  line,
+                  key: index,
+                  className: shouldHighlightLine(index) ? "highlight-line" : "",
+                });
 
-              return (
-                <div key={index} className={className}>
-                  <span className="number-line">{index + 1}</span>
-                  {line.map((token, key) => {
-                    const { className, children } = getTokenProps({
-                      token,
-                      key,
-                    });
+                return (
+                  <div key={index} className={className}>
+                    <span className="number-line">{index + 1}</span>
+                    {line.map((token, key) => {
+                      const { className, children } = getTokenProps({
+                        token,
+                        key,
+                      });
 
-                    return (
-                      <span key={key} className={className}>
-                        {children}
-                      </span>
-                    );
-                  })}
-                </div>
-              );
-            })}
-          </pre>
+                      return (
+                        <span key={key} className={className}>
+                          {children}
+                        </span>
+                      );
+                    })}
+                  </div>
+                );
+              })}
+            </pre>
+          </div>
         );
       }}
     </Highlight>
@@ -62,3 +69,46 @@ function CodePrism({ codeString, language, metastring }) {
 }
 
 export default CodePrism;
+
+function Copy({ toCopy }: { toCopy: string }) {
+  const [hasCopied, setHasCopied] = useState<boolean>(false);
+
+  function copyToClipboardOnClick() {
+    if (hasCopied) return;
+
+    copyToClipboard(toCopy);
+    setHasCopied(true);
+
+    setTimeout(() => {
+      setHasCopied(false);
+    }, 2000);
+  }
+
+  return (
+    <CopyButton onClick={copyToClipboardOnClick}>
+      {hasCopied ? (
+        <>
+          Copied <Icons.Copied fill="#6f7177" />
+        </>
+      ) : (
+        <>
+          Copy <Icons.Copy fill="#6f7177" />
+        </>
+      )}
+    </CopyButton>
+  );
+}
+
+const CopyButton = styled.button`
+  position: absolute;
+  right: 26px;
+  top: 27px;
+  padding: 5px 8px 4px;
+  border-radius: 5px;
+  color: #6f7177;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.07);
+  }
+`;

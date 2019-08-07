@@ -318,3 +318,15 @@ export function toKebabCase(str: string): string {
     .map(x => x.toLowerCase())
     .join("-");
 }
+
+export function copyToClipboard(toCopy: string) {
+  const el = document.createElement(`textarea`);
+  el.value = toCopy;
+  el.setAttribute(`readonly`, ``);
+  el.style.position = `absolute`;
+  el.style.left = `-9999px`;
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand(`copy`);
+  document.body.removeChild(el);
+}

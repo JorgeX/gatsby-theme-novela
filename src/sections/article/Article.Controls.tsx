@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { useColorMode } from "theme-ui";
 
 import mediaqueries from "@styles/media";
+import { copyToClipboard } from "@utils";
 
 function ArticleControls() {
   return (
@@ -43,13 +44,7 @@ function SharePageButton() {
   function copyToClipboardOnClick() {
     if (hasCopied) return;
 
-    const tempInput = document.createElement("input");
-    document.body.appendChild(tempInput);
-    tempInput.setAttribute("value", window.location.href);
-    tempInput.select();
-    document.execCommand("copy");
-    document.body.removeChild(tempInput);
-
+    copyToClipboard(window.location.href);
     setHasCopied(true);
 
     setTimeout(() => {

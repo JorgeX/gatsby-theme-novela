@@ -9,6 +9,7 @@ import Github from "./social/Github.Icon";
 
 // UI
 import ChevronLeft from "./ui/ChevronLeft.Icon";
+import Copied from "./ui/Copied.Icon";
 import Copy from "./ui/Copy.Icon";
 import Link from "./ui/Link.Icon";
 import ToggleOpen from "./ui/ToggleOpen.Icon";
@@ -26,6 +27,7 @@ export default {
   Github,
 
   ChevronLeft,
+  Copied,
   Copy,
   Link,
   ToggleClose,
