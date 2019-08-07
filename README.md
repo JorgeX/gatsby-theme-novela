@@ -73,6 +73,11 @@ Out of the box, Novela includes both light and dark designs that can be toggled 
 
 Consistent, easy-to-read code let you quickly customize every color and setting.
 
+
+### Show code effortlessly
+
+High quality embedded codeblocks that make authoring technical blog posts a breeze.
+
 ### Highlight-to-Share
 
 Users can select text within an article to copy or share to platforms like Twitter and LinkedIn.
@@ -420,7 +425,7 @@ plugins: [
 | ------- | :------: | :--------: | :---------------------------: |
 | title   | required |   String   |      Used as title and generates a default slug. Must be unique.      |
 | slug   | optional |   String   |      Define a custom slug that will override the default title slug.       |
-| author  | required | String Ref | _Must match a defined Author_ name. |
+| author  | required | String Ref | Must **match** a defined Author name. Co-author posts by adding comma seperated Author names.|
 | date    | required |    Date    |       YYYY-MM-DD format       |
 | hero    | required |   Image    |         1200px minimum width recommended                      |
 | excerpt | required |   String   |      140 character limit      |
@@ -431,7 +436,7 @@ plugins: [
 # novela-site/content/posts/2020-01-01/index.mdx
 ---
 title: Why Narative loves Gatsby
-author: Dennis Brotzky
+author: Dennis Brotzky, Thiago Costa, Brad Tiller
 date: 2019-04-27
 hero: ./images/narative-gatsby-hero.jpg
 excerpt: This is a love story about Narative and Gatsby
