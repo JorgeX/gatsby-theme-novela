@@ -10,7 +10,7 @@ module.exports = ({ actions }) => {
         "@icons": path.resolve(__dirname, "../../src/icons/"),
         "@styles": path.resolve(__dirname, "../../src/styles/"),
         "@utils": path.resolve(__dirname, "../../src/utils/"),
-        "@typings": path.resolve(__dirname, "../../src/typings/"),
+        "@typings": path.resolve(__dirname, "../../src/types/"),
       },
       extensions: [".js", ".json", ".ts", ".tsx"],
     },
