@@ -252,7 +252,17 @@ export const getSelectionDimensions = () => {
     .map(el => elementContainsSelection(el))
     .some(bool => bool);
 
-  if (isSelectedInPrism) {
+  const isSelectedInArticle = Array.from(
+    document.getElementsByTagName("article"),
+  )
+    .map(el => elementContainsSelection(el))
+    .some(bool => bool);
+
+  /**
+   * we don't want to show the ArticleShare option when it's outside of
+   * the article body or within prism code.
+   */
+  if (isSelectedInPrism || !isSelectedInArticle) {
     return {
       width: 0,
       height: 0,
