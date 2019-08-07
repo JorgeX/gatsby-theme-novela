@@ -11,6 +11,8 @@ import Github from "./social/Github.Icon";
 import ChevronLeft from "./ui/ChevronLeft.Icon";
 import Copy from "./ui/Copy.Icon";
 import Link from "./ui/Link.Icon";
+import ToggleOpen from "./ui/ToggleOpen.Icon";
+import ToggleClose from "./ui/ToggleClose.Icon";
 import Rows from "./ui/Rows.Icon";
 import Tiles from "./ui/Tiles.Icon";
 
@@ -26,6 +28,8 @@ export default {
   ChevronLeft,
   Copy,
   Link,
+  ToggleClose,
+  ToggleOpen,
   Rows,
   Tiles,
 };

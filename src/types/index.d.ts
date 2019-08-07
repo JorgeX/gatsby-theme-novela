@@ -1,21 +1,5 @@
 import { ReactNode } from "react";
 
-interface IMeta {
-  title: string;
-  description: string;
-  image: {
-    file: {
-      url: string;
-    };
-  };
-}
-
-interface IMetaQuery {
-  edges: {
-    node: { seo: IMeta };
-  }[];
-}
-
 export interface IPaginator {
   pageCount: number;
   index: number;
@@ -64,39 +48,36 @@ interface IGraphqlFluidImage {
   prevuew: ISharpFixedOrFluidAttrs;
 }
 
-interface IAuthor {
-  name: string;
-  slug: string;
-  bio: string;
-  avatar: {
-    image: ISharpFluidAtKey;
+export interface IAuthor {
+  node: {
+    name: string;
+    slug: string;
+    bio: string;
+    avatar: {
+      image: ISharpFluidAtKey;
+    };
   };
 }
 
 export interface IArticleNode {
-  slug: string;
-  author: string;
-  excerpt: string;
-  body: string;
-  id: string;
-  hero: {
-    full: ISharpFluidAttrs;
-    preview: ISharpFluidAttrs;
+  node: {
+    slug: string;
+    authors: IAuthor[];
+    excerpt: string;
+    body: string;
+    id: string;
+    hero: {
+      full: ISharpFluidAttrs;
+      preview: ISharpFluidAttrs;
+    };
+    timeToRead: number;
+    date: string;
   };
-  timeToRead: number;
-  date: string;
 }
 
 interface IArticleNodeQuery {
   edges: {
     node: IArticleNode;
-  }[];
-}
-
-export interface IMicrodataBreadcrumb {
-  levels: {
-    item: string;
-    name: string;
   }[];
 }
 

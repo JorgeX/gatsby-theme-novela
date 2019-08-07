@@ -152,19 +152,23 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
     const article = node;
 
     // Match the Author to the one specified in the article
-    let author;
+    let authorsThatWroteTheArticle;
 
     try {
-      author = authors.find(
-        ({ node: author }) =>
-          author && author.name.toLowerCase() === article.author.toLowerCase(),
-      ).node;
+      authorsThatWroteTheArticle = authors.filter(({ node: author }) => {
+        const allAuthors = article.author
+          .split(",")
+          .map(a => a.trim().toLowerCase());
+
+        return allAuthors.some(a => a === author.name.toLowerCase());
+      });
     } catch (error) {
       throw new Error(`
-        We could not find the Author for "${article.title}".
+        We could not find the Author for: "${article.title}".
         Double check the author field is specified in your post and the name
         matches a specified author.
-        Provided author: ${article.title}
+        Provided author: ${article.author}
+        ${error}
       `);
     }
 
@@ -184,7 +188,7 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
       component: templates.article,
       context: {
         article,
-        author,
+        authors: authorsThatWroteTheArticle,
         basePath,
         slug: article.slug,
         id: article.id,

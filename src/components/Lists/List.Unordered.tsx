@@ -53,7 +53,7 @@ const UnorderedList = styled.ul`
     width: 3rem;
     display: inline-block;
     position: absolute;
-    color: ${p => p.theme.colors.secondary};
+    color: ${p => p.theme.colors.text};
   }
 
   li::before {
@@ -63,7 +63,7 @@ const UnorderedList = styled.ul`
     top: 8px;
     height: 8px;
     width: 8px;
-    background: ${p => p.theme.colors.secondary};
+    background: ${p => p.theme.colors.text};
 
     ${mediaqueries.tablet`
       left: 0;

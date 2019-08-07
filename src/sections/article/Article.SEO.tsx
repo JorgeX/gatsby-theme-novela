@@ -6,13 +6,18 @@ import { IArticleNode, IAuthorNode } from "@typings";
 
 function ArticleSEO({
   article,
-  author,
+  authors,
   location,
 }: {
   article: IArticleNode;
-  author: IAuthorNode;
+  authors: IAuthorNode[];
   location: any;
 }) {
+  const authorsData = authors.map(author => ({
+    "@type": "Person",
+    name: author.name,
+  }));
+
   const microdata = `{
     "@context": "https://schema.org",
     "@type": "Article",
@@ -23,10 +28,7 @@ function ArticleSEO({
     "headline": "${article.title}",
     "image": "${article.hero.seo.fixed.src}",
     "datePublished": "${article.dateForSEO}",
-    "author": {
-      "@type": "Person",
-      "name": "${author.name}"
-    },
+    "author": ${authorsData},
     "description": "${article.excerpt.replace(/"/g, '\\"')}"
   }
 `.replace(/\s/g, "");

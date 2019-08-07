@@ -14,12 +14,12 @@ export default {
   track: "rgba(8, 8, 11, 0.3)",
   progress: "#000",
   card: "#fff",
-  horizontalRule: "rgba(8, 8, 11, 0.3)",
+  horizontalRule: "rgba(8, 8, 11, 0.15)",
   modes: {
     dark: {
       grey: "#73737D",
       primary: "#fff",
-      secondary: "#73737D",
+      secondary: "#fff",
       accent: "#E9DAAC",
       background: "#111216",
       hover: "rgba(255, 255, 255, 0.07)",
