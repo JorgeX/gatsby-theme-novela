@@ -22,7 +22,6 @@ function ImageZoom(props) {
       display: "block",
       marginLeft: "auto",
       marginRight: "auto",
-      visibility: "visible",
     },
   };
 
