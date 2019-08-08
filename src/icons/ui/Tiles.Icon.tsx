@@ -1,6 +1,6 @@
 import React from "react";
 
-const RowsIcon = ({ fill }) => (
+const TilesIcon = ({ fill }) => (
   <svg
     width="26"
     height="26"
@@ -15,4 +15,4 @@ const RowsIcon = ({ fill }) => (
   </svg>
 );
 
-export default RowsIcon;
+export default TilesIcon;

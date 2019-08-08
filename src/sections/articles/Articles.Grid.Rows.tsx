@@ -23,7 +23,7 @@ function ArticlesGridRows({ articles }: { articles: IArticle[] }) {
   return (
     <>
       {articles.map(({ node: article }) => (
-        <ArticleLink to={article.slug} data-a11y="false">
+        <ArticleLink key={article.title} to={article.slug} data-a11y="false">
           <GridRow>
             <ImageContainer>
               <Image src={article.hero.regular.fluid} />
@@ -32,7 +32,7 @@ function ArticlesGridRows({ articles }: { articles: IArticle[] }) {
               <Title dark>{article.title}</Title>
               <Excerpt>{article.excerpt}</Excerpt>
               <MetaData>
-                {article.date} · {article.timeToRead} min read
+                {article.date} · {article.timeToRead} min readshowBackArrow
               </MetaData>
             </div>
           </GridRow>

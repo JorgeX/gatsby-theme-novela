@@ -38,7 +38,7 @@ function HandleOverlap(props: OverlapProps) {
    * We prefer to start the fade out a few pixels before!
    */
   function collide(fixedElement: HTMLElement, node: HTMLElement): boolean {
-    const BUFFER = 40;
+    const BUFFER = 80;
     const rect1 = fixedElement.getBoundingClientRect();
     const rect2 = node.getBoundingClientRect();
 
@@ -101,5 +101,5 @@ const OverlapContainer = styled.div<{ isOverlapping: boolean }>`
   user-select: ${p => (p.isOverlapping ? "none" : "initial")};
   pointer-events: ${p => (p.isOverlapping ? "none" : "initial")};
   opacity: ${p => (p.isOverlapping ? 0 : 1)};
-  transition: ${p => (p.isOverlapping ? "opacity 0.3s" : "opacity 0.15s")};
+  transition: ${p => (p.isOverlapping ? "opacity 0.25s" : "opacity 0.25s")};
 `;

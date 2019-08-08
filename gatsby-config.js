@@ -35,7 +35,12 @@ module.exports = ({
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,
-            options: { maxWidth: 680 },
+            options: {
+              maxWidth: 10000,
+              linkImagesToOriginal: false,
+              quality: 80,
+              withWebp: true,
+            },
           },
           { resolve: `gatsby-remark-copy-linked-files` },
           { resolve: `gatsby-remark-numbered-footnotes` },
