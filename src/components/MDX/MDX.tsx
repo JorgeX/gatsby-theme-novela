@@ -18,7 +18,21 @@ import Paragraph from "@components/Paragraph";
 import mediaqueries from "@styles/media";
 import { toKebabCase } from "@utils";
 
+import ImageZoom from "react-medium-image-zoom";
+
+function img(props) {
+  const image = {
+    ...props,
+    style: { display: "block", marginLeft: "auto", marginRight: "auto" },
+  };
+  return (
+    <div>
+      <ImageZoom image={image} zoomImage={image} />
+    </div>
+  );
+}
 const components = {
+  img: img,
   a: Anchor,
   blockquote: Blockquote,
   h1: Headings.h2, // h1 reserved article title
@@ -169,9 +183,14 @@ const PrismCSS = p => css`
       color: #5fa8aa !important;
     }
 
+    ${mediaqueries.desktop`
+      left: -26px;
+    `};
+
     ${mediaqueries.tablet`
       max-width: 526px;
       padding: 20px 20px;
+      left: 0;
     `};
 
     ${mediaqueries.phablet`
@@ -201,6 +220,35 @@ const ImageCSS = css`
     `};
   }
 
+  div.Image__Small {
+    display: inline-block;
+    position: relative;
+    max-width: 100%;
+    height: auto;
+    z-index: 0;
+    margin: 15px auto 50px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 680px;
+
+    ${mediaqueries.tablet`
+      margin: 10px auto 45px;
+    `};
+
+    ${mediaqueries.desktop`
+      max-width: 507px;
+    `}
+
+    ${mediaqueries.tablet`
+      max-width: 486px;
+      margin: 0 auto 25px;
+    `};
+
+    ${mediaqueries.phablet`
+      padding: 0 20px;
+    `};
+  }
+
   .Image__Container {
     text-align: center;
   }
@@ -209,28 +257,44 @@ const ImageCSS = css`
     box-shadow: 0px 15px 60px rgba(0, 0, 0, 0.15);
   }
 
-  img.Image__Regular {
-    width: 100%;
-    max-width: ${IMAGE_WIDTHS.regular};
-
-    ${mediaqueries.tablet`
-      width: calc(100vw - 40px);
-    `};
-  }
-
-  img.Image__Large {
+  div.Image__Medium {
+    position: relative;
+    margin: 15px auto 50px;
     width: 100%;
     max-width: ${IMAGE_WIDTHS.large};
 
+    ${mediaqueries.desktop_medium`
+      left: -34px;
+    `};
+
+    ${mediaqueries.desktop`
+      left: -26px;
+    `};
+
     ${mediaqueries.tablet`
       border-radius: 0;
+      left: 0;
+      margin: 0 auto 25px;
     `};
   }
 
-  img.Image__Full {
-    width: 100%;
+  div.Image__Large {
+    position: relative;
+    left: -68px;
+    width: ${IMAGE_WIDTHS.full};
     max-width: ${IMAGE_WIDTHS.full};
-    border-radius: 0;
+
+    img {
+      border-radius: 0;
+    }
+
+    ${mediaqueries.desktop`
+      left: -53px;
+    `};
+
+    ${mediaqueries.tablet`
+      left: 0;
+    `};
   }
 `;
 

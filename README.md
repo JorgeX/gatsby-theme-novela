@@ -45,6 +45,7 @@ Novela is built by the team at [Narative](https://www.narative.co), and built fo
   - [Changing styles](#changing-styles)
   - [Component shadowing](#component-shadowing)
   - [Adding your logo](#adding-your-logo)
+  - [Using images](#using-images)
 
 - [Data Models](#data-models)
 
@@ -72,7 +73,6 @@ Out of the box, Novela includes both light and dark designs that can be toggled 
 ### Simple Customization with [Theme UI](https://theme-ui.com/)
 
 Consistent, easy-to-read code let you quickly customize every color and setting.
-
 
 ### Show code effortlessly
 
@@ -155,6 +155,7 @@ yarn add react react-dom gatsby @narative/gatsby-theme-novela
 Once you've installed React, Gatsby, and Novela you'll want to add your first Author and Post.
 
 The recommended project structure for your content and site looks like this:
+
 ```
   novela-site
   └── content
@@ -327,6 +328,32 @@ This opens up a full customization of Novela to your designed needs. You can cop
 
 A basic example of component shadowing is explained below by [adding your logo](#adding-your-logo).
 
+### Using images
+
+Images can be added to Posts and customized to fit your content. Define a regular Markdown image that will default to Small or write HTML to customize the sizes. All images can be clicked to zoom.
+
+```html
+![This is the alt text for small image](./images/small.jpg)
+
+<div className="Image__Small">
+  <img src="./images/medium.jpg" alt="This is the alt text small image" />
+</div>
+
+<div className="Image__Medium">
+  <img src="./images/medium.jpg" alt="This is the alt text medium image" />
+</div>
+
+<div className="Image__Large">
+  <img src="./images/large.jpg" alt="This is the alt text large image" />
+</div>
+```
+
+| Size   |   Class Name    |          Desciption           |
+| ------ | :-------------: | :---------------------------: |
+| small  | Image\_\_Small  |       Width of the text       |
+| medium | Image\_\_Medium | Larger than width of the text |
+| large  | Image\_\_Large  |       Full width image        |
+
 ### Adding your logo
 
 Your logo must be in SVG (vector) format in order to add it to the theme. This is required because we will be making a React component containing your SVG Logo.
@@ -374,8 +401,8 @@ It is recommended to use the Default options, but if your project requires somet
 
 | Option         |     Default     |                                        Description                                        |
 | -------------- | :-------------: | :---------------------------------------------------------------------------------------: |
-| contentPosts |  content/posts  |                     Define where you want to pull your Post data from                     |
-| contentAuthors   | content/authors |                    Define where you want to pull your Author data from                    |
+| contentPosts   |  content/posts  |                     Define where you want to pull your Post data from                     |
+| contentAuthors | content/authors |                    Define where you want to pull your Author data from                    |
 | basePath       |        /        | Where should the site be served from? `/blog` will change all paths to start with `/blog` |
 
 [View Theme option example](https://github.com/narative/gatsby-theme-novela-example/blob/master/gatsby-config.js#L36)
@@ -421,14 +448,14 @@ plugins: [
 
 ## Post
 
-| Key     | Required |    Type    |          Description          |
-| ------- | :------: | :--------: | :---------------------------: |
-| title   | required |   String   |      Used as title and generates a default slug. Must be unique.      |
-| slug   | optional |   String   |      Define a custom slug that will override the default title slug.       |
-| author  | required | String Ref | Must **match** a defined Author name. Co-author posts by adding comma seperated Author names.|
-| date    | required |    Date    |       YYYY-MM-DD format       |
-| hero    | required |   Image    |         1200px minimum width recommended                      |
-| excerpt | required |   String   |      140 character limit      |
+| Key     | Required |    Type    |                                          Description                                          |
+| ------- | :------: | :--------: | :-------------------------------------------------------------------------------------------: |
+| title   | required |   String   |                  Used as title and generates a default slug. Must be unique.                  |
+| slug    | optional |   String   |                Define a custom slug that will override the default title slug.                |
+| author  | required | String Ref | Must **match** a defined Author name. Co-author posts by adding comma seperated Author names. |
+| date    | required |    Date    |                                       YYYY-MM-DD format                                       |
+| hero    | required |   Image    |                               1200px minimum width recommended                                |
+| excerpt | required |   String   |                                      140 character limit                                      |
 
 [View Post example](https://github.com/narative/gatsby-theme-novela-example/blob/master/content/posts/2019-04-31-understanding-the-gatsby-lifecycle/index.mdx)
 
