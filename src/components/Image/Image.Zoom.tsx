@@ -1,17 +1,20 @@
 import React from "react";
 import ImageWithZoom from "react-medium-image-zoom";
+import { useThemeUI } from "theme-ui";
 
-function hideImageZoomBackground() {
+function handleImageZoomBackground(background: string) {
   const images = Array.from(document.getElementsByClassName("Image__Zoom"));
 
   images.map(img => {
     if (img.previousElementSibling.tagName === "DIV") {
-      img.previousElementSibling.style.display = "none";
+      img.previousElementSibling.style.background = background;
     }
   });
 }
 
 function ImageZoom(props) {
+  const { theme } = useThemeUI();
+
   const image = {
     ...props,
     className: "Image__Zoom",
@@ -27,7 +30,7 @@ function ImageZoom(props) {
     <ImageWithZoom
       image={image}
       zoomImage={image}
-      onZoom={hideImageZoomBackground}
+      onZoom={() => handleImageZoomBackground(theme.colors.background)}
       defaultStyles={{
         zoomImage: {
           borderRadius: "5px",
