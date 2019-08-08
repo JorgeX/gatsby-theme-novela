@@ -32,7 +32,7 @@ function NavigationHeader() {
           data-a11y="false"
           title="Navigate back to the homepage"
           aria-label="Navigate back to the homepage"
-          showBackArrow={showBackArrow ? "true" : "false"}
+          back={showBackArrow ? "true" : "false"}
         >
           {showBackArrow && (
             <BackArrowIconContainer>
@@ -142,11 +142,11 @@ const NavContainer = styled.div`
   }
 `;
 
-const LogoLink = styled(Link)<{ showBackArrow: string }>`
+const LogoLink = styled(Link)<{ back: string }>`
   position: relative;
   display: flex;
   align-items: center;
-  left: ${p => (p.showBackArrow === "true" ? "-54px" : 0)};
+  left: ${p => (p.back === "true" ? "-54px" : 0)};
 
   ${mediaqueries.desktop_medium`
     left: 0

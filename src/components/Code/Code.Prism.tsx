@@ -1,12 +1,24 @@
 import React, { useState } from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import styled from "@emotion/styled";
+import { css } from "@emotion/core";
 
 import Icons from "@icons";
 import mediaqueries from "@styles/media";
 import { copyToClipboard } from "@utils";
 
 const RE = /{([\d,-]+)}/;
+
+const wrapperStyles = css`
+  overflow: auto;
+`;
+
+const preStyles = css`
+  float: left;
+  min-width: 100%;
+  overflow: initial;
+  position: relative;
+`;
 
 function calculateLinesToHighlight(meta) {
   if (RE.test(meta)) {
@@ -33,8 +45,8 @@ function CodePrism({ codeString, language, metastring }) {
     <Highlight {...defaultProps} code={codeString} language={language}>
       {({ className, tokens, getLineProps, getTokenProps }) => {
         return (
-          <div>
-            <pre className={className} style={{ position: "relative" }}>
+          <div css={wrapperStyles}>
+            <pre className={className} css={preStyles}>
               <Copy toCopy={codeString} />
               {tokens.map((line, index) => {
                 const { className } = getLineProps({
