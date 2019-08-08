@@ -188,6 +188,10 @@ const PrismCSS = p => css`
       overflow: initial;
       width: unset;
       max-width: unset;
+      float: left;
+      min-width: 100%;
+      overflow: initial;
+      position: relative;
     `};
   }
 `;
