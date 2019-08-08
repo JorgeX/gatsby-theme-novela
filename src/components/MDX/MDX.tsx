@@ -14,25 +14,13 @@ import Headings from "@components/Headings";
 import HorizontalRule from "@components/HorizontalRule";
 import Lists from "@components/Lists";
 import Paragraph from "@components/Paragraph";
+import { ImageZoom } from "@components/Image";
 
 import mediaqueries from "@styles/media";
 import { toKebabCase } from "@utils";
 
-import ImageZoom from "react-medium-image-zoom";
-
-function img(props) {
-  const image = {
-    ...props,
-    style: { display: "block", marginLeft: "auto", marginRight: "auto" },
-  };
-  return (
-    <div>
-      <ImageZoom image={image} zoomImage={image} />
-    </div>
-  );
-}
 const components = {
-  img: img,
+  img: ImageZoom,
   a: Anchor,
   blockquote: Blockquote,
   h1: Headings.h2, // h1 reserved article title
@@ -283,6 +271,7 @@ const ImageCSS = css`
     left: -68px;
     width: ${IMAGE_WIDTHS.full};
     max-width: ${IMAGE_WIDTHS.full};
+    pointer-events: none;
 
     img {
       border-radius: 0;

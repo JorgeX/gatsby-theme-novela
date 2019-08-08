@@ -181,4 +181,8 @@ export const globalStyles = css`
       }
     }
   }
+
+  img.Image__Zoom ~ div {
+    background: transparent !important;
+  }
 `;
