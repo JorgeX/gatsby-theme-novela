@@ -9,6 +9,8 @@ import {
   getHighlightedTextPositioning,
   getSelectionDimensions,
   getSelectionText,
+  getWindowDimensions,
+  getBreakpointFromTheme,
 } from "@utils";
 
 interface MenuFloatState {
@@ -24,7 +26,7 @@ interface MenuFloatState {
 const MENU_WIDTH: number = 225;
 const MENU_HEIGHT: number = 46;
 
-function ArticelShare(s) {
+function ArticelShare() {
   const [colorMode] = useColorMode();
   const [text, setText] = useState("");
   const [focus, setFocus] = useState(false);
@@ -69,6 +71,23 @@ function ArticelShare(s) {
 
         const { width, height } = getSelectionDimensions();
         const { x, y } = getHighlightedTextPositioning();
+        const { width: windowWidth } = getWindowDimensions();
+        const tablet = getBreakpointFromTheme("tablet");
+        const desktop = getBreakpointFromTheme("desktop");
+
+        /**
+         * Because the article is offset to the side to compensate for the progress bar
+         * we need to calculate the offset of the menu share in the same way.
+         */
+        let paddingOffset = 0;
+
+        if (windowWidth > tablet) {
+          paddingOffset = 53;
+        }
+
+        if (windowWidth > desktop) {
+          paddingOffset = 68;
+        }
 
         /**
          * Get the X and Y offsets of the editors Left and Top positions
@@ -77,12 +96,12 @@ function ArticelShare(s) {
          * the middle of the text area
          */
         const offset: { x: number; y: number } = {
-          x: height > 29 ? paragraphOffset : x,
+          x: height > 29 ? paragraphOffset + paddingOffset : x,
           y: y - articleBox.y - 160,
         };
 
         setPosition({
-          x: offset.x + width / 2 - MENU_WIDTH / 2,
+          x: offset.x + width / 2 - MENU_WIDTH / 2 - paddingOffset,
           y: offset.y - MENU_HEIGHT - 5,
           show: width > 1,
         });
