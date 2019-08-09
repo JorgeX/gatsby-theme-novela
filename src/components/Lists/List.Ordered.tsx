@@ -9,6 +9,7 @@ const OrderedList = styled.ol`
   padding: 15px 0 30px 30px;
   margin: 0 auto;
   transition: color 0.25s ease;
+  font-size: 18px;
 
   width: 100%;
   max-width: 680px;

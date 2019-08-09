@@ -9,6 +9,7 @@ const UnorderedList = styled.ul`
   padding: 15px 0 30px 30px;
   transition: color 0.25s ease;
   margin: 0 auto;
+  font-size: 18px;
 
   width: 100%;
   max-width: 680px;

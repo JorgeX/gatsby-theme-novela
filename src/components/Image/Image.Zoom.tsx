@@ -20,8 +20,8 @@ function ImageZoom(props) {
     className: "Image__Zoom",
     style: {
       display: "block",
-      marginLeft: "auto",
-      marginRight: "auto",
+      margin: "0 auto",
+      width: "100%",
     },
   };
 
