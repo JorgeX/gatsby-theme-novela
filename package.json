@@ -1,5 +1,5 @@
 {
-  "name": "gatsby-starter-theme-workspace",
+  "name": "gatsby-theme-novela-workspace",
   "private": true,
   "version": "0.0.1",
   "main": "index.js",
@@ -8,10 +8,10 @@
     "develop": "yarn start",
     "start": "yarn workspace www develop",
     "build": "yarn workspace www build",
-    "publish": "yarn workspace gatsby-theme-novela publish"
+    "publish": "yarn workspace @narative/gatsby-theme-novela publish"
   },
   "workspaces": [
-    "gatsby-theme-novela",
+    "@narative/gatsby-theme-novela",
     "www"
   ]
 }
