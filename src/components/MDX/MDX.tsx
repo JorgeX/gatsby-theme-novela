@@ -278,6 +278,7 @@ const ImageCSS = css`
     left: -68px;
     width: ${IMAGE_WIDTHS.full};
     max-width: ${IMAGE_WIDTHS.full};
+    margin: 25px auto 60px;
     pointer-events: none;
 
     img {
@@ -290,6 +291,7 @@ const ImageCSS = css`
 
     ${mediaqueries.tablet`
       left: 0;
+      margin: 0 auto 25px;
     `};
   }
 `;
