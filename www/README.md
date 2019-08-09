@@ -64,7 +64,7 @@ And then configuring your `gatsby-config.js` plugins to include the theme and co
 // gatsby-config.js
 plugins: [
   {
-    resolve: "gatsby-theme-novela",
+    resolve: "@narative/gatsby-theme-novela",
     options: {
       contentPosts: "content/posts",
       contentAuthors: "content/authors",
@@ -205,7 +205,7 @@ module.exports = {
      * basePath will define where the theme is served from
      */
     {
-      resolve: "gatsby-theme-novela",
+      resolve: "@narative/gatsby-theme-novela",
       options: {
         contentPosts: "content/posts",
         contentAuthors: "content/authors",
