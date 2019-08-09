@@ -159,18 +159,18 @@ The recommended project structure for your content and site looks like this:
 ```
   novela-site
   └── content
-      ├── authors
-      │  ├── avatars
-      │  │    └── avatar.jpg
-      │  └── authors.yml
-      ├── posts
-      │  └── 2020-01-01-my-first-novela-post
-      │       ├── images
-      │       │   └── novela-hero.jpg
-      │       └── index.mdx
-      ├── node_modules
-      ├── gatsby-config.js
-      └── package.json
+    ├── authors
+    │  ├── avatars
+    │  │    └── avatar.jpg
+    │  └── authors.yml
+    ├── posts
+    │  └── 2020-01-01-my-first-novela-post
+    │       ├── images
+    │       │   └── novela-hero.jpg
+    │       └── index.mdx
+    ├── node_modules
+    ├── gatsby-config.js
+    └── package.json
 ```
 
 ### Step 3: Using `@narative/gatsby-theme-novela`
