@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
-import { Link } from "gatsby";
+import { Link, navigate } from "gatsby";
 import { useColorMode } from "theme-ui";
 
 import Section from "@components/Section";
@@ -12,16 +12,19 @@ import { copyToClipboard } from "@utils";
 
 function NavigationHeader() {
   const [showBackArrow, setShowBackArrow] = useState<boolean>(false);
+  const [previousPath, setPreviousPath] = useState<string>("/");
 
   const [colorMode] = useColorMode();
   const fill = colorMode === "dark" ? "#fff" : "#000";
 
   useEffect(() => {
-    const previousPath = localStorage.getItem("previousPath");
+    const prev = localStorage.getItem("previousPath");
     const previousPathWasHomepage =
-      previousPath === "/" || (previousPath && previousPath.includes("/page/"));
+      prev === "/" || (prev && prev.includes("/page/"));
     const isNotPaginated = !location.pathname.includes("/page/");
+
     setShowBackArrow(previousPathWasHomepage && isNotPaginated);
+    setPreviousPath(prev);
   }, []);
 
   return (
@@ -43,8 +46,13 @@ function NavigationHeader() {
           <Hidden>Navigate back to the homepage</Hidden>
         </LogoLink>
         <NavControls>
-          <SharePageButton />
-          <DarkModeToggle />
+          <DesktopControls>
+            <SharePageButton />
+            <DarkModeToggle />
+          </DesktopControls>
+          <MobileControls onClick={() => navigate(previousPath)}>
+            <Icons.Ex fill={fill} />
+          </MobileControls>
         </NavControls>
       </NavContainer>
     </Section>
@@ -174,6 +182,24 @@ const LogoLink = styled(Link)<{ back: string }>`
 const NavControls = styled.div`
   display: flex;
   align-items: center;
+`;
+
+const MobileControls = styled.div`
+  display: flex;
+  align-items: center;
+
+  ${mediaqueries.tablet_up`
+    display: none;
+  `}
+`;
+
+const DesktopControls = styled.div`
+  display: flex;
+  align-items: center;
+
+  ${mediaqueries.phablet`
+    display: none;
+  `}
 `;
 
 const ToolTip = styled.div<{ isDark: boolean; hasCopied: boolean }>`
