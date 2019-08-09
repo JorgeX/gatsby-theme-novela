@@ -33,7 +33,7 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: "gatsby-theme-novela",
+      resolve: "@narative/gatsby-theme-novela",
       options: {
         contentPosts: "content/posts",
         contentAuthors: "content/authors",
