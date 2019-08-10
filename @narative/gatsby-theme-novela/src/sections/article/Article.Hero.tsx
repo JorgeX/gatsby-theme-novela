@@ -21,7 +21,7 @@ const ArticleHero = ({ article, authors }: ArticleHeroProps) => {
     <Hero>
       <Header>
         <HeroHeading>{article.title}</HeroHeading>
-        <HeroSubtitle>
+        <HeroSubtitle hasCoAUthors={hasCoAUthors}>
           <ArticleAuthors authors={authors} />
           <ArticleMeta hasCoAUthors={hasCoAUthors}>
             {article.date} · {article.timeToRead} min read
@@ -119,7 +119,7 @@ const HeroHeading = styled(Headings.h1)`
   `}
 `;
 
-const HeroSubtitle = styled.div`
+const HeroSubtitle = styled.div<{ hasCoAUthors: boolean }>`
   position: relative;
   display: flex;
   font-size: 18px;
@@ -129,17 +129,21 @@ const HeroSubtitle = styled.div`
     font-size: 14px;
     flex-direction: column;
 
-    &::before {
-      content: '';
-      position: absolute;
-      left: -20px;
-      right: -20px;
-      top: -10px;
-      bottom: -10px;
-      border: 1px solid ${p.theme.colors.horizontalRule};
-      opacity: 0.5;
-      border-radius: 5px;
-    }
+    ${p.hasCoAUthors &&
+      `
+        &::before {
+          content: '';
+          position: absolute;
+          left: -20px;
+          right: -20px;
+          top: -10px;
+          bottom: -10px;
+          border: 1px solid ${p.theme.colors.horizontalRule};
+          opacity: 0.5;
+          border-radius: 5px;
+        }
+    `}
+
 
     strong {
       display: block;

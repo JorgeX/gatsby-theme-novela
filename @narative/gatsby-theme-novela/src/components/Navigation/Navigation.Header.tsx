@@ -46,13 +46,20 @@ function NavigationHeader() {
           <Hidden>Navigate back to the homepage</Hidden>
         </LogoLink>
         <NavControls>
-          <DesktopControls>
-            <SharePageButton />
-            <DarkModeToggle />
-          </DesktopControls>
-          <MobileControls onClick={() => navigate(previousPath)}>
-            <Icons.Ex fill={fill} />
-          </MobileControls>
+          {showBackArrow ? (
+            <button
+              onClick={() => navigate(previousPath)}
+              title="Navigate back to the homepage"
+              aria-label="Navigate back to the homepage"
+            >
+              <Icons.Ex fill={fill} />
+            </button>
+          ) : (
+            <>
+              <SharePageButton />
+              <DarkModeToggle />
+            </>
+          )}
         </NavControls>
       </NavContainer>
     </Section>
@@ -182,24 +189,6 @@ const LogoLink = styled(Link)<{ back: string }>`
 const NavControls = styled.div`
   display: flex;
   align-items: center;
-`;
-
-const MobileControls = styled.div`
-  display: flex;
-  align-items: center;
-
-  ${mediaqueries.tablet_up`
-    display: none;
-  `}
-`;
-
-const DesktopControls = styled.div`
-  display: flex;
-  align-items: center;
-
-  ${mediaqueries.phablet`
-    display: none;
-  `}
 `;
 
 const ToolTip = styled.div<{ isDark: boolean; hasCopied: boolean }>`

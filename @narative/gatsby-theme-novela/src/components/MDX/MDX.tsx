@@ -147,7 +147,8 @@ const PrismCSS = p => css`
       color: #dcd9e6;
 
       ${mediaqueries.tablet`
-        display: none;
+        opacity: 0;
+        width: 0;
       `};
     }
 
@@ -270,6 +271,10 @@ const ImageCSS = css`
       border-radius: 0;
       left: 0;
       margin: 0 auto 25px;
+
+      img {
+        border-radius: 0;
+      }
     `};
   }
 
