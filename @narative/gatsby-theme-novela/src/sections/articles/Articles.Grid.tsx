@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styled from "@emotion/styled";
 
-import { IArticle } from "@typings";
+import { IArticle } from "@types";
 
 import ArticlesGridTiles from "./Articles.Grid.Tiles";
 import ArticlesGridRows from "./Articles.Grid.Rows";

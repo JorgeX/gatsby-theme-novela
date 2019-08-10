@@ -5,7 +5,7 @@ import Headings from "@components/Headings";
 import Image from "@components/Image";
 
 import mediaqueries from "@styles/media";
-import { IArticle, IAuthor } from "@typings";
+import { IArticle, IAuthor } from "@types";
 
 import ArticleAuthors from "./Article.Authors";
 
@@ -58,8 +58,8 @@ const Hero = styled.div`
       position: absolute;
       left: 0;
       top: 10px;
-      border-top-left-radius: 15px;
-      border-top-right-radius: 15px;
+      border-top-left-radius: 25px;
+      border-top-right-radius: 25px;
       transition: background 0.25s ease;
     }
   `}

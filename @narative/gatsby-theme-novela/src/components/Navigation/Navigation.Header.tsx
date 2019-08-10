@@ -187,8 +187,13 @@ const LogoLink = styled(Link)<{ back: string }>`
 `;
 
 const NavControls = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
+
+  ${mediaqueries.phablet`
+    right: -5px;
+  `}
 `;
 
 const ToolTip = styled.div<{ isDark: boolean; hasCopied: boolean }>`

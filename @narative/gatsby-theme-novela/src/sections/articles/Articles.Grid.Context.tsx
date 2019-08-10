@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
-import { IArticle } from "@typings";
+import { IArticle } from "@types";
 
 interface GridLayoutProviderProps {
   children: React.ReactChild;

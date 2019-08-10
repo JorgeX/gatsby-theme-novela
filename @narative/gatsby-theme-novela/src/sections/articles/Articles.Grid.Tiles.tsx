@@ -9,7 +9,7 @@ import Image from "@components/Image";
 
 import mediaqueries from "@styles/media";
 
-import { IArticle } from "@typings";
+import { IArticle } from "@types";
 
 /**
  *  [LONG], [SHORT]

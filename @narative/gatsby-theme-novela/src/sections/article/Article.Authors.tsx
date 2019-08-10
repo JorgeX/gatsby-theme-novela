@@ -6,7 +6,7 @@ import { useColorMode } from "theme-ui";
 import Image from "@components/Image";
 import Icons from "@icons";
 import mediaqueries from "@styles/media";
-import { IAuthor } from "@typings";
+import { IAuthor } from "@types";
 
 /**
  * Novela supports multiple authors and therefore we need to ensure

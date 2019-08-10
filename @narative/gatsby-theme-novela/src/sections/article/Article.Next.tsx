@@ -8,7 +8,7 @@ import Image from "@components/Image";
 
 import mediaqueries from "@styles/media";
 
-import { IArticle } from "@typings";
+import { IArticle } from "@types";
 
 /**
  * Sits at the bottom of our Article page. Shows the next 2 on desktop and the

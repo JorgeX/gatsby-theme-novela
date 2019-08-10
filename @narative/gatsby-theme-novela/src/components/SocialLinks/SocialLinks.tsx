@@ -1,9 +1,16 @@
 import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
 import styled from "@emotion/styled";
 
-import Icons from "../../icons/";
+import Icons from "@icons";
 import mediaqueries from "@styles/media";
+
+interface SocialLinksProps {
+  links: {
+    name: string;
+    url: string;
+  }[];
+  fill: string;
+}
 
 const icons = {
   dribbble: Icons.Dribbble,
@@ -14,30 +21,12 @@ const icons = {
   github: Icons.Github,
 };
 
-const socialQuery = graphql`
-  {
-    allSite {
-      edges {
-        node {
-          siteMetadata {
-            social {
-              name
-              url
-            }
-          }
-        }
-      }
-    }
-  }
-`;
-
-function SocialLinks({ fill = "#73737D" }: { fill: string }) {
-  const result = useStaticQuery(socialQuery);
-  const socialOptions = result.allSite.edges[0].node.siteMetadata.social;
+function SocialLinks({ links, fill = "#73737D" }: SocialLinksProps) {
+  if (!links) return null;
 
   return (
     <>
-      {socialOptions.map(option => {
+      {links.map(option => {
         const Icon = icons[option.name];
 
         return (

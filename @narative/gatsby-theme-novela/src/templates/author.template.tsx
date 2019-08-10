@@ -6,25 +6,23 @@ import SEO from "@components/SEO";
 import Layout from "@components/Layout";
 import Paginator from "@components/Navigation/Navigation.Paginator";
 
-import ArticlesHero from "../sections/articles/Articles.Hero";
-import ArticlesGridLayoutProvider from "../sections/articles/Articles.Grid.Context";
-import ArticlesGrid from "../sections/articles/Articles.Grid";
+import AuthorHero from "../sections/author/Author.Hero";
+import AuthorArticles from "../sections/author/Author.Articles";
 
 function ArticlesPage({ location, pageContext }) {
+  const author = pageContext.additionalContext.author;
   const articles = pageContext.group;
 
   return (
-    <ArticlesGridLayoutProvider articles={articles}>
-      <Layout>
-        <SEO pathname={location.pathname} />
-        <ArticlesHero />
-        <Section narrow>
-          <ArticlesGrid articles={articles} />
-          <Paginator {...pageContext} />
-        </Section>
-        <ArticlesGradient />
-      </Layout>
-    </ArticlesGridLayoutProvider>
+    <Layout>
+      <SEO pathname={location.pathname} />
+      <Section narrow>
+        <AuthorHero author={author} />
+        <AuthorArticles articles={articles} />
+        <Paginator {...pageContext} />
+      </Section>
+      <ArticlesGradient />
+    </Layout>
   );
 }
 

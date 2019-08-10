@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 
 import GatsbyImg from "gatsby-image";
 
-import { IImg } from "@typings";
+import { IImg } from "@types";
 
 /**
  * To soften the blur-up we get from the default configuration of gatbsy image

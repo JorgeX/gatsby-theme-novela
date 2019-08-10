@@ -2,7 +2,7 @@ import React from "react";
 
 import SEO from "@components/SEO";
 
-import { IArticle, IAuthor } from "@typings";
+import { IArticle, IAuthor } from "@types";
 
 function ArticleSEO({
   article,

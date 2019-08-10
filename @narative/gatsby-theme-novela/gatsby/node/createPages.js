@@ -11,6 +11,7 @@ const templatesDir = path.resolve(__dirname, "../../src/templates");
 const templates = {
   articles: path.resolve(templatesDir, "articles.template.tsx"),
   article: path.resolve(templatesDir, "article.template.tsx"),
+  author: path.resolve(templatesDir, "author.template.tsx"),
 };
 
 // How many posts per page? This is hardcoded for now.
@@ -74,9 +75,18 @@ const articlesQuery = `{
         bio
         id
         name
+        social {
+          name
+          url
+        }
         avatar {
           image: childImageSharp {
             fluid(maxWidth: 50, quality: 100) {
+              ${GatsbyImageSharpFluid_withWebp}
+            }
+          }
+          full: childImageSharp {
+            fluid(maxWidth: 328, quality: 100) {
               ${GatsbyImageSharpFluid_withWebp}
             }
           }
@@ -98,14 +108,22 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
     return index > 1 ? `${basePath}/page/${index}` : basePath;
   }
 
+  function slugify(str) {
+    const slug = str
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)+/g, "");
+
+    return `${basePath}/${slug}`.replace(/\/\/+/g, "/");
+  }
+
   log("Querying", "articles");
 
-  let results;
   let authors;
   let articles;
 
   try {
-    results = await graphql(articlesQuery);
+    const results = await graphql(articlesQuery);
 
     if (!results.data) {
       throw new Error(`
@@ -147,10 +165,30 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
     },
   });
 
-  log("Creating", "article posts");
-  articles.forEach(({ node }, index) => {
-    const article = node;
+  authors.forEach(({ node: author }) => {
+    const articlesTheAuthorHasWritten = articles.filter(({ node: article }) =>
+      article.author.toLowerCase().includes(author.name.toLowerCase()),
+    );
+    const path = `/authors${slugify(author.name)}`;
 
+    createPaginatedPages({
+      edges: articlesTheAuthorHasWritten,
+      pathPrefix: path,
+      createPage,
+      pageLength,
+      pageTemplate: templates.author,
+      buildPath: buildPaginatedPath,
+      context: {
+        author,
+        originalPath: path,
+        skip: pageLength,
+        limit: pageLength,
+      },
+    });
+  });
+
+  log("Creating", "article posts");
+  articles.forEach(({ node: article }, index) => {
     // Match the Author to the one specified in the article
     let authorsThatWroteTheArticle;
 

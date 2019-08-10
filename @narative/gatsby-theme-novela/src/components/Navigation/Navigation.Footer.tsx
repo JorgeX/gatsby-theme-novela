@@ -14,6 +14,10 @@ const siteQuery = graphql`
         node {
           siteMetadata {
             name
+            social {
+              name
+              url
+            }
           }
         }
       }
@@ -23,7 +27,7 @@ const siteQuery = graphql`
 
 function Footer() {
   const results = useStaticQuery(siteQuery);
-  const name = results.allSite.edges[0].node.siteMetadata.name;
+  const { name, social } = results.allSite.edges[0].node.siteMetadata;
 
   return (
     <>
@@ -35,7 +39,7 @@ function Footer() {
             © {new Date().getFullYear()} {name}
           </FooterText>
           <div>
-            <SocialLinks />
+            <SocialLinks links={social} />
           </div>
         </FooterContainer>
       </Section>
@@ -96,5 +100,5 @@ const FooterGradient = styled.div`
   z-index: 0;
   pointer-events: none;
   background: ${p => p.theme.colors.gradient};
-  transition: background 0.3s var(--ease-in-out-quad);
+  transition: background 0.25s ease;
 `;
