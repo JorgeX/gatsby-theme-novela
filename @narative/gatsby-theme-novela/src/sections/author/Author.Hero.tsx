@@ -16,13 +16,13 @@ const AuthorHero = ({ author }: AuthorHeroProps) => {
   return (
     <Hero>
       <HeroImage>
-        <Image src={author.avatar.full.fluid} />
+        <Image src={author.avatar.large.fluid} />
       </HeroImage>
       <Heading>{author.name}</Heading>
       <Subheading>{author.bio}</Subheading>
-      <div>
+      <Social>
         <SocialLinks links={author.social} />
-      </div>
+      </Social>
     </Hero>
   );
 };
@@ -78,13 +78,23 @@ const Heading = styled.h1`
 `;
 
 const Subheading = styled.p`
-  margin: 0 auto 35px;
+  margin: 0 auto;
   max-width: 450px;
   color: ${p => p.theme.colors.grey};
   font-size: 18px;
   font-family: ${p => p.theme.fonts.sansSerif};
   line-height: 1.4;
   text-align: center;
+
+  ${mediaqueries.phablet`
+    font-size: 14px;
+  `}
+`;
+
+const Social = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 35px;
 
   ${mediaqueries.phablet`
     font-size: 14px;

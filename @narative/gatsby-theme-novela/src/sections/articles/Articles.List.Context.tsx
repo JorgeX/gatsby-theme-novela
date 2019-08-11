@@ -1,9 +1,8 @@
-import React, { createContext, useState, useEffect } from "react";
-import { IArticle } from "@types";
+import React, { createContext, useState } from "react";
+import { graphql, useStaticQuery } from "gatsby";
 
 interface GridLayoutProviderProps {
   children: React.ReactChild;
-  articles: IArticle[];
 }
 
 export const GridLayoutContext = createContext({
@@ -13,7 +12,21 @@ export const GridLayoutContext = createContext({
   getGridLayout: () => {},
 });
 
-function GridLayoutProvider({ children, articles }: GridLayoutProviderProps) {
+const articlesQuery = graphql`
+  {
+    articles: allArticle {
+      edges {
+        node {
+          id
+        }
+      }
+    }
+  }
+`;
+
+function GridLayoutProvider({ children }: GridLayoutProviderProps) {
+  const results = useStaticQuery(articlesQuery);
+  const articles = results.articles.edges;
   const initialLayout = articles.length === 1 ? "rows" : "tiles";
 
   const [gridLayout, setGridLayout] = useState<string>(initialLayout);
@@ -28,8 +41,6 @@ function GridLayoutProvider({ children, articles }: GridLayoutProviderProps) {
     setGridLayout(localStorage.getItem("gridLayout") || initialLayout);
     setHasSetGridLayout(true);
   }
-
-  useEffect(() => getGridLayoutAndSave(), []);
 
   return (
     <GridLayoutContext.Provider

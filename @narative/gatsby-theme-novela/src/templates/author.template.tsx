@@ -19,16 +19,18 @@ function ArticlesPage({ location, pageContext }) {
       <Section narrow>
         <AuthorHero author={author} />
         <AuthorArticles articles={articles} />
-        <Paginator {...pageContext} />
+        <AuthorPaginator>
+          <Paginator {...pageContext} />
+        </AuthorPaginator>
       </Section>
-      <ArticlesGradient />
+      <AuthorsGradient />
     </Layout>
   );
 }
 
 export default ArticlesPage;
 
-const ArticlesGradient = styled.div`
+const AuthorsGradient = styled.div`
   position: absolute;
   bottom: 0;
   left: 0;
@@ -38,4 +40,8 @@ const ArticlesGradient = styled.div`
   pointer-events: none;
   background: ${p => p.theme.colors.gradient};
   transition: background 0.25s ease;
+`;
+
+const AuthorPaginator = styled.div`
+  text-align: center;
 `;

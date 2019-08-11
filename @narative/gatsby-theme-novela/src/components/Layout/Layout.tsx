@@ -5,6 +5,7 @@ import styled from "@emotion/styled";
 
 import NavigationFooter from "@components/Navigation/Navigation.Footer";
 import NavigationHeader from "@components/Navigation/Navigation.Header";
+import ArticlesContextProvider from "../../sections/articles/Articles.List.Context";
 
 import { globalStyles } from "@styles";
 import theme from "../../gatsby-plugin-theme-ui";
@@ -29,12 +30,14 @@ function Layout({ children }: LayoutProps) {
 
   return (
     <ThemeProvider theme={finalTheme}>
-      <Container>
-        <Global styles={globalStyles} />
-        <NavigationHeader />
-        {children}
-        <NavigationFooter />
-      </Container>
+      <ArticlesContextProvider>
+        <Container>
+          <Global styles={globalStyles} />
+          <NavigationHeader />
+          {children}
+          <NavigationFooter />
+        </Container>
+      </ArticlesContextProvider>
     </ThemeProvider>
   );
 }

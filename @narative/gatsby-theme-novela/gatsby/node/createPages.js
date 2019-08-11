@@ -69,7 +69,7 @@ const articlesQuery = `{
       }
     }
   }
-  authors: allAuthorsYaml {
+  authors: allAuthor {
     edges {
       node {
         bio
@@ -79,13 +79,19 @@ const articlesQuery = `{
           name
           url
         }
+        slug
         avatar {
-          image: childImageSharp {
+          small: childImageSharp {
             fluid(maxWidth: 50, quality: 100) {
               ${GatsbyImageSharpFluid_withWebp}
             }
           }
-          full: childImageSharp {
+          medium: childImageSharp {
+            fluid(maxWidth: 100, quality: 100) {
+              ${GatsbyImageSharpFluid_withWebp}
+            }
+          }
+          large: childImageSharp {
             fluid(maxWidth: 328, quality: 100) {
               ${GatsbyImageSharpFluid_withWebp}
             }
