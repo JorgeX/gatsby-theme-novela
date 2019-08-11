@@ -13,7 +13,7 @@ export default {
   articleText: "#08080B",
   track: "rgba(8, 8, 11, 0.3)",
   progress: "#000",
-  card: "#fafafa",
+  card: "#fff",
   horizontalRule: "rgba(8, 8, 11, 0.15)",
   modes: {
     dark: {
