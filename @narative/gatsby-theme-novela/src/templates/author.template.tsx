@@ -6,30 +6,31 @@ import SEO from "@components/SEO";
 import Layout from "@components/Layout";
 import Paginator from "@components/Navigation/Navigation.Paginator";
 
-import ArticlesHero from "../sections/articles/Articles.Hero";
-import ArticlesList from "../sections/articles/Articles.List";
+import AuthorHero from "../sections/author/Author.Hero";
+import AuthorArticles from "../sections/author/Author.Articles";
 
 function ArticlesPage({ location, pageContext }) {
+  const author = pageContext.additionalContext.author;
   const articles = pageContext.group;
 
   return (
     <Layout>
       <SEO pathname={location.pathname} />
-      <ArticlesHero />
       <Section narrow>
-        <ArticlesList articles={articles} />
-        <ArticlesPaginator show={pageContext.pageCount > 1}>
+        <AuthorHero author={author} />
+        <AuthorArticles articles={articles} />
+        <AuthorPaginator>
           <Paginator {...pageContext} />
-        </ArticlesPaginator>
+        </AuthorPaginator>
       </Section>
-      <ArticlesGradient />
+      <AuthorsGradient />
     </Layout>
   );
 }
 
 export default ArticlesPage;
 
-const ArticlesGradient = styled.div`
+const AuthorsGradient = styled.div`
   position: absolute;
   bottom: 0;
   left: 0;
@@ -41,6 +42,6 @@ const ArticlesGradient = styled.div`
   transition: background 0.25s ease;
 `;
 
-const ArticlesPaginator = styled.div<{ show: boolean }>`
-  ${p => p.show && `margin-top: 95px;`}
+const AuthorPaginator = styled.div`
+  text-align: center;
 `;

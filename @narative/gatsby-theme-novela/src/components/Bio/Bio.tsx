@@ -1,21 +1,21 @@
 import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
+import { graphql, Link, useStaticQuery } from "gatsby";
 import styled from "@emotion/styled";
 
 import Image from "@components/Image";
 
-import mediaqueries from "@styles/media";
-
 const authorQuery = graphql`
   {
-    author: allAuthorsYaml(filter: { featured: { eq: true } }) {
+    author: allAuthor(filter: { featured: { eq: true } }) {
       edges {
         node {
+          authorsPage
           bio
           id
           name
+          slug
           avatar {
-            image: childImageSharp {
+            medium: childImageSharp {
               fluid(maxWidth: 100, quality: 100) {
                 ...GatsbyImageSharpFluid_withWebp
               }
@@ -33,9 +33,9 @@ function ArticlesHero() {
 
   return (
     <BioContainer>
-      <BioAvatar>
+      <BioAvatar as={author.authorsPage ? Link : "div"} to={author.slug}>
         <BioAvatarInner>
-          <Image src={author.avatar.image.fluid} />
+          <Image src={author.avatar.medium.fluid} />
         </BioAvatarInner>
       </BioAvatar>
       <BioText>{author.bio}</BioText>
@@ -53,6 +53,7 @@ const BioContainer = styled.div`
 `;
 
 const BioAvatar = styled.div`
+  display: block;
   position: relative;
   height: 40px;
   width: 40px;

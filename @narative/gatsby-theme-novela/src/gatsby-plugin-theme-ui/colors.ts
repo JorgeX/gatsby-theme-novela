@@ -6,7 +6,7 @@ export default {
   primary: "#000",
   secondary: "#73737D",
   grey: "#73737D",
-  background: "#fff",
+  background: "#fafafa",
   accent: "#6166DC",
   hover: "rgba(0, 0, 0, 0.07)",
   gradient: "linear-gradient(180deg, rgba(217, 219, 224, 0) 0%, #D9DBE0 100%)",

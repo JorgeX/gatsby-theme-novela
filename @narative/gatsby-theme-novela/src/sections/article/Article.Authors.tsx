@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import styled from "@emotion/styled";
 import OutsideClickHandler from "react-outside-click-handler";
 import { useColorMode } from "theme-ui";
+import { Link } from "gatsby";
 
 import Image from "@components/Image";
 import Icons from "@icons";
 import mediaqueries from "@styles/media";
-import { IAuthor } from "@typings";
+import { IAuthor } from "@types";
 
 /**
  * Novela supports multiple authors and therefore we need to ensure
@@ -21,13 +22,16 @@ function ArticleAuthors({ authors }: { authors: IAuthor[] }) {
   }
 
   return (
-    <>
+    <AuthorLink
+      as={authors[0].node.authorsPage ? Link : "div"}
+      to={authors[0].node.slug}
+    >
       <AuthorAvatar>
-        <Image src={authors[0].node.avatar.image.fluid} />
+        <Image src={authors[0].node.avatar.small.fluid} />
       </AuthorAvatar>
       <strong>{authors[0].node.name}</strong>
       <HideOnMobile>,&nbsp;</HideOnMobile>
-    </>
+    </AuthorLink>
   );
 }
 
@@ -52,7 +56,7 @@ function CoAuthors({ authors }: { authors: IAuthor[] }) {
             style={{ left: `${index * 15}px` }}
             key={author.node.name}
           >
-            <Image src={author.node.avatar.image.fluid} />
+            <Image src={author.node.avatar.small.fluid} />
           </CoAuthorAvatar>
         ))}
       </CoAuthorsList>
@@ -69,10 +73,15 @@ function CoAuthors({ authors }: { authors: IAuthor[] }) {
             </IconOpenContainer>
             {authors.map(author => (
               <CoAuthorsListItemOpen key={author.node.name}>
-                <CoAuthorAvatarOpen>
-                  <Image src={author.node.avatar.image.fluid} />
-                </CoAuthorAvatarOpen>
-                <AuthorNameOpen>{author.node.name}</AuthorNameOpen>
+                <AuthorLink
+                  as={author.node.authorsPage ? Link : "div"}
+                  to={author.node.slug}
+                >
+                  <CoAuthorAvatarOpen>
+                    <Image src={author.node.avatar.small.fluid} />
+                  </CoAuthorAvatarOpen>
+                  <AuthorNameOpen>{author.node.name}</AuthorNameOpen>
+                </AuthorLink>
               </CoAuthorsListItemOpen>
             ))}
           </CoAuthorsListOpen>
@@ -116,6 +125,20 @@ const AuthorAvatar = styled.div`
   `}
 `;
 
+const AuthorLink = styled.div`
+  display: flex;
+  align-items: center;
+  color: inherit;
+
+  strong {
+    transition: color 0.25s ease;
+  }
+
+  &:hover strong {
+    color: ${p => p.theme.colors.primary};
+  }
+`;
+
 const CoAuthorsList = styled.div`
   position: relative;
   height: 25px;
@@ -142,8 +165,9 @@ const CoAuthorsListOpen = styled.ul`
 `;
 
 const CoAuthorsListItemOpen = styled.li`
-  display: flex;
-  align-items: center;
+  a {
+    width: 100%;
+  }
 
   &:not(:last-child) {
     margin-bottom: 10px;

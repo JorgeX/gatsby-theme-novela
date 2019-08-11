@@ -9,25 +9,49 @@ module.exports = ({ node, actions, getNode, createNodeId }, themeOptions) => {
   const contentPath = themeOptions.contentPath || "content/posts";
   const basePath = themeOptions.basePath || "/";
 
-  // Make sure it's an MDX node
-  if (node.internal.type !== `Mdx`) {
-    return;
+  function slugify(str) {
+    const slug = str
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)+/g, "");
+
+    return `/${basePath}/${slug}`.replace(/\/\/+/g, "/");
   }
 
   // Create source field (according to contentPath)
   const fileNode = getNode(node.parent);
-  const source = fileNode.sourceInstanceName;
+  const source = fileNode && fileNode.sourceInstanceName;
 
-  if (node.internal.type === `Mdx` && source === contentPath) {
-    const slugify = str => {
-      const slug = str
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, "-")
-        .replace(/(^-|-$)+/g, "");
-
-      return `/${basePath}/${slug}`.replace(/\/\/+/g, "/");
+  if (node.internal.type === `AuthorsYaml`) {
+    const fieldData = {
+      ...node,
+      authorsPage: themeOptions.authorsPage || false,
+      slug: `/authors${slugify(node.name)}`,
     };
 
+    createNode({
+      ...fieldData,
+      // Required fields.
+      id: createNodeId(`${node.id} >>> Author`),
+      parent: node.id,
+      children: [],
+      internal: {
+        type: `Author`,
+        contentDigest: crypto
+          .createHash(`md5`)
+          .update(JSON.stringify(fieldData))
+          .digest(`hex`),
+        content: JSON.stringify(fieldData),
+        description: `Author`,
+      },
+    });
+
+    createParentChildLink({ parent: fileNode, child: node });
+
+    return;
+  }
+
+  if (node.internal.type === `Mdx` && source === contentPath) {
     const fieldData = {
       slug: slugify(node.frontmatter.slug || node.frontmatter.title),
       author: node.frontmatter.author,

@@ -50,11 +50,14 @@ interface IGraphqlFluidImage {
 
 export interface IAuthor {
   node: {
+    authorsPage?: boolean;
+    featured?: boolean;
     name: string;
     slug: string;
     bio: string;
     avatar: {
-      image: ISharpFluidAtKey;
+      image: ISharpFluidAttrs;
+      full: ISharpFluidAttrs;
     };
   };
 }
@@ -69,6 +72,8 @@ export interface IArticle {
     hero: {
       full: ISharpFluidAttrs;
       preview: ISharpFluidAttrs;
+      regular: ISharpFluidAttrs;
+      seo: ISharpFluidAttrs;
     };
     timeToRead: number;
     date: string;

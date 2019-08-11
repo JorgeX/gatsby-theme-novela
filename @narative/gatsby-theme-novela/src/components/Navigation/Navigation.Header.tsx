@@ -8,7 +8,11 @@ import Logo from "@components/Logo";
 
 import Icons from "@icons";
 import mediaqueries from "@styles/media";
-import { copyToClipboard } from "@utils";
+import {
+  copyToClipboard,
+  getWindowDimensions,
+  getBreakpointFromTheme,
+} from "@utils";
 
 function NavigationHeader() {
   const [showBackArrow, setShowBackArrow] = useState<boolean>(false);
@@ -18,12 +22,17 @@ function NavigationHeader() {
   const fill = colorMode === "dark" ? "#fff" : "#000";
 
   useEffect(() => {
+    const { width } = getWindowDimensions();
+    const phablet = getBreakpointFromTheme("phablet");
+
     const prev = localStorage.getItem("previousPath");
     const previousPathWasHomepage =
       prev === "/" || (prev && prev.includes("/page/"));
     const isNotPaginated = !location.pathname.includes("/page/");
 
-    setShowBackArrow(previousPathWasHomepage && isNotPaginated);
+    setShowBackArrow(
+      previousPathWasHomepage && isNotPaginated && width <= phablet,
+    );
     setPreviousPath(prev);
   }, []);
 
@@ -187,8 +196,13 @@ const LogoLink = styled(Link)<{ back: string }>`
 `;
 
 const NavControls = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
+
+  ${mediaqueries.phablet`
+    right: -5px;
+  `}
 `;
 
 const ToolTip = styled.div<{ isDark: boolean; hasCopied: boolean }>`
@@ -322,7 +336,7 @@ const MoonMask = styled.div<{ isDark: boolean }>`
   background: ${p => p.theme.colors.background};
   transform: translate(${p => (p.isDark ? "14px, -14px" : "0, 0")});
   opacity: ${p => (p.isDark ? 0 : 1)};
-  transition: background 0.25s var(--ease-in-out-quad), transform 0.45s ease;
+  transition: background 0.25s ease, transform 0.45s ease;
 `;
 
 const Hidden = styled.span`

@@ -11,6 +11,7 @@ const templatesDir = path.resolve(__dirname, "../../src/templates");
 const templates = {
   articles: path.resolve(templatesDir, "articles.template.tsx"),
   article: path.resolve(templatesDir, "article.template.tsx"),
+  author: path.resolve(templatesDir, "author.template.tsx"),
 };
 
 // How many posts per page? This is hardcoded for now.
@@ -68,15 +69,31 @@ const articlesQuery = `{
       }
     }
   }
-  authors: allAuthorsYaml {
+  authors: allAuthor {
     edges {
       node {
+        authorsPage
         bio
         id
         name
+        social {
+          name
+          url
+        }
+        slug
         avatar {
-          image: childImageSharp {
+          small: childImageSharp {
             fluid(maxWidth: 50, quality: 100) {
+              ${GatsbyImageSharpFluid_withWebp}
+            }
+          }
+          medium: childImageSharp {
+            fluid(maxWidth: 100, quality: 100) {
+              ${GatsbyImageSharpFluid_withWebp}
+            }
+          }
+          large: childImageSharp {
+            fluid(maxWidth: 328, quality: 100) {
               ${GatsbyImageSharpFluid_withWebp}
             }
           }
@@ -87,25 +104,39 @@ const articlesQuery = `{
 }
 `;
 
+function buildPaginatedPath(index, basePath) {
+  if (basePath === "/") {
+    return index > 1 ? `${basePath}page/${index}` : basePath;
+  }
+  return index > 1 ? `${basePath}/page/${index}` : basePath;
+}
+
+function slugify(str, base) {
+  const slug = str
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)+/g, "");
+
+  return `${base}/${slug}`.replace(/\/\/+/g, "/");
+}
+
 module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
   const basePath = themeOptions.basePath || `/`;
+  const authorsPath = themeOptions.authorsPath || `/authors`;
+  const authorsPage = themeOptions.authorsPage;
+
   log("Creating site at", basePath);
 
-  function buildPaginatedPath(index, basePath) {
-    if (basePath === "/") {
-      return index > 1 ? `${basePath}page/${index}` : basePath;
-    }
-    return index > 1 ? `${basePath}/page/${index}` : basePath;
+  if (authorsPage) {
+    log("Creating authors at", authorsPath);
   }
 
-  log("Querying", "articles");
-
-  let results;
   let authors;
   let articles;
 
   try {
-    results = await graphql(articlesQuery);
+    log("Querying", "articles");
+    const results = await graphql(articlesQuery);
 
     if (!results.data) {
       throw new Error(`
@@ -148,9 +179,7 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
   });
 
   log("Creating", "article posts");
-  articles.forEach(({ node }, index) => {
-    const article = node;
-
+  articles.forEach(({ node: article }, index) => {
     // Match the Author to the one specified in the article
     let authorsThatWroteTheArticle;
 
@@ -197,4 +226,30 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
       },
     });
   });
+
+  if (authorsPage) {
+    log("Creating", "authors page");
+
+    authors.forEach(({ node: author }) => {
+      const articlesTheAuthorHasWritten = articles.filter(({ node: article }) =>
+        article.author.toLowerCase().includes(author.name.toLowerCase()),
+      );
+      const path = slugify(author.name, authorsPath);
+
+      createPaginatedPages({
+        edges: articlesTheAuthorHasWritten,
+        pathPrefix: path,
+        createPage,
+        pageLength,
+        pageTemplate: templates.author,
+        buildPath: buildPaginatedPath,
+        context: {
+          author,
+          originalPath: path,
+          skip: pageLength,
+          limit: pageLength,
+        },
+      });
+    });
+  }
 };
