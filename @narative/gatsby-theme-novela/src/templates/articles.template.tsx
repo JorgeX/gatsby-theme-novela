@@ -18,7 +18,9 @@ function ArticlesPage({ location, pageContext }) {
       <ArticlesHero />
       <Section narrow>
         <ArticlesList articles={articles} />
-        <Paginator {...pageContext} />
+        <ArticlesPaginator show={pageContext.pageCount > 1}>
+          <Paginator {...pageContext} />
+        </ArticlesPaginator>
       </Section>
       <ArticlesGradient />
     </Layout>
@@ -37,4 +39,8 @@ const ArticlesGradient = styled.div`
   pointer-events: none;
   background: ${p => p.theme.colors.gradient};
   transition: background 0.25s ease;
+`;
+
+const ArticlesPaginator = styled.div<{ show: boolean }>`
+  ${p => p.show && `margin-top: 95px;`}
 `;

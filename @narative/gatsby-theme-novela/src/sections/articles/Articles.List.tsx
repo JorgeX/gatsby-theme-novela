@@ -67,8 +67,8 @@ function ArticlesList({ articles, alwaysShowAllDetails }: ArticlesListProps) {
     >
       {articlePairs.map((ap, index) => (
         <List key={index} gridLayout={gridLayout} reverse={index % 2 !== 0}>
-          <ListItem article={ap[0]} />
-          <ListItem article={ap[1]} narrow />
+          <ListItem article={ap[0]} narrow={index % 2 !== 0} />
+          <ListItem article={ap[1]} narrow={index % 2 !== 1} />
         </List>
       ))}
     </ArticlesListContainer>
@@ -155,7 +155,7 @@ const listTile = p => css`
   column-gap: 30px;
 
   &:not(:last-child) {
-    margin-bottom: 80px;
+    margin-bottom: 75px;
   }
 
   ${mediaqueries.desktop_medium`
@@ -164,7 +164,10 @@ const listTile = p => css`
 
   ${mediaqueries.tablet`
     grid-template-columns: 1fr;
-    margin-bottom: 0;
+    
+    &:not(:last-child) {
+      margin-bottom: 0;
+    }
   `}
 `;
 

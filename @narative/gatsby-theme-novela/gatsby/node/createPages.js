@@ -103,32 +103,38 @@ const articlesQuery = `{
 }
 `;
 
+function buildPaginatedPath(index, basePath) {
+  if (basePath === "/") {
+    return index > 1 ? `${basePath}page/${index}` : basePath;
+  }
+  return index > 1 ? `${basePath}/page/${index}` : basePath;
+}
+
+function slugify(str, base) {
+  const slug = str
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)+/g, "");
+
+  return `${base}/${slug}`.replace(/\/\/+/g, "/");
+}
+
 module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
   const basePath = themeOptions.basePath || `/`;
+  const authorsPath = themeOptions.authorsPath || `/authors`;
+  const authorsPage = themeOptions.authorsPage;
+
   log("Creating site at", basePath);
 
-  function buildPaginatedPath(index, basePath) {
-    if (basePath === "/") {
-      return index > 1 ? `${basePath}page/${index}` : basePath;
-    }
-    return index > 1 ? `${basePath}/page/${index}` : basePath;
+  if (authorsPage) {
+    log("Creating authors at", authorsPath);
   }
-
-  function slugify(str) {
-    const slug = str
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/(^-|-$)+/g, "");
-
-    return `${basePath}/${slug}`.replace(/\/\/+/g, "/");
-  }
-
-  log("Querying", "articles");
 
   let authors;
   let articles;
 
   try {
+    log("Querying", "articles");
     const results = await graphql(articlesQuery);
 
     if (!results.data) {
@@ -169,28 +175,6 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
       skip: pageLength,
       limit: pageLength,
     },
-  });
-
-  authors.forEach(({ node: author }) => {
-    const articlesTheAuthorHasWritten = articles.filter(({ node: article }) =>
-      article.author.toLowerCase().includes(author.name.toLowerCase()),
-    );
-    const path = `/authors${slugify(author.name)}`;
-
-    createPaginatedPages({
-      edges: articlesTheAuthorHasWritten,
-      pathPrefix: path,
-      createPage,
-      pageLength,
-      pageTemplate: templates.author,
-      buildPath: buildPaginatedPath,
-      context: {
-        author,
-        originalPath: path,
-        skip: pageLength,
-        limit: pageLength,
-      },
-    });
   });
 
   log("Creating", "article posts");
@@ -241,4 +225,30 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
       },
     });
   });
+
+  if (authorsPage) {
+    log("Creating", "authors page");
+
+    authors.forEach(({ node: author }) => {
+      const articlesTheAuthorHasWritten = articles.filter(({ node: article }) =>
+        article.author.toLowerCase().includes(author.name.toLowerCase()),
+      );
+      const path = slugify(author.name, authorsPath);
+
+      createPaginatedPages({
+        edges: articlesTheAuthorHasWritten,
+        pathPrefix: path,
+        createPage,
+        pageLength,
+        pageTemplate: templates.author,
+        buildPath: buildPaginatedPath,
+        context: {
+          author,
+          originalPath: path,
+          skip: pageLength,
+          limit: pageLength,
+        },
+      });
+    });
+  }
 };

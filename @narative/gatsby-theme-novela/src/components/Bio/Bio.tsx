@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
+import { graphql, Link, useStaticQuery } from "gatsby";
 import styled from "@emotion/styled";
 
 import Image from "@components/Image";
@@ -32,7 +32,7 @@ function ArticlesHero() {
 
   return (
     <BioContainer>
-      <BioAvatar>
+      <BioAvatar to={author.slug}>
         <BioAvatarInner>
           <Image src={author.avatar.medium.fluid} />
         </BioAvatarInner>
@@ -51,7 +51,8 @@ const BioContainer = styled.div`
   left: -10px;
 `;
 
-const BioAvatar = styled.div`
+const BioAvatar = styled(Link)`
+  display: block;
   position: relative;
   height: 40px;
   width: 40px;
