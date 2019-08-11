@@ -71,7 +71,7 @@ function SEO({
     path ? `${site.siteUrl}${path}` : site.siteUrl;
 
   // If no image is provided lets looks for a default novela static image
-  image = image ? image : "novela-preview.jpg";
+  image = image ? image : "/preview.jpg";
 
   const metaTags = [
     { charset: "utf-8" },
