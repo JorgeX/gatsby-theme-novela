@@ -32,7 +32,7 @@ const siteQuery = graphql`
   }
 `;
 
-function Article({ pageContext, location }) {
+function Article({ pageContext, location, ...rest }) {
   const contentSectionRef = useRef<HTMLElement>(null);
 
   const [hasCalculated, setHasCalculated] = useState<boolean>(false);

@@ -25,6 +25,7 @@ module.exports = ({ node, actions, getNode, createNodeId }, themeOptions) => {
   if (node.internal.type === `AuthorsYaml`) {
     const fieldData = {
       ...node,
+      authorsPage: themeOptions.authorsPage || false,
       slug: `/authors${slugify(node.name)}`,
     };
 

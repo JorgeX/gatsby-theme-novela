@@ -9,6 +9,7 @@ const authorQuery = graphql`
     author: allAuthor(filter: { featured: { eq: true } }) {
       edges {
         node {
+          authorsPage
           bio
           id
           name
@@ -32,7 +33,7 @@ function ArticlesHero() {
 
   return (
     <BioContainer>
-      <BioAvatar to={author.slug}>
+      <BioAvatar as={author.authorsPage ? Link : "div"} to={author.slug}>
         <BioAvatarInner>
           <Image src={author.avatar.medium.fluid} />
         </BioAvatarInner>
@@ -51,7 +52,7 @@ const BioContainer = styled.div`
   left: -10px;
 `;
 
-const BioAvatar = styled(Link)`
+const BioAvatar = styled.div`
   display: block;
   position: relative;
   height: 40px;

@@ -50,6 +50,7 @@ interface IGraphqlFluidImage {
 
 export interface IAuthor {
   node: {
+    authorsPage?: boolean;
     featured?: boolean;
     name: string;
     slug: string;

@@ -42,6 +42,7 @@ Novela is built by the team at [Narative](https://www.narative.co), and built fo
 
 * [Customization](#customization)
 
+  - [Enabling Author Pages](#enabling-author-pages)
   - [Changing styles](#changing-styles)
   - [Component shadowing](#component-shadowing)
   - [Adding your logo](#adding-your-logo)
@@ -290,6 +291,23 @@ Once you've created the Logo component it should automatically appear in your si
 
 The technique we have used is called Component Shadowing and is a core feature of Gatsby Themes.
 
+### Enabling Author pages
+
+By default Author pages are not enabled. They can be enabled through the plugin option `authorsPage`
+
+```js
+module.exports = {
+  plugins: [
+    {
+      resolve: "@narative/gatsby-theme-novela",
+      options: {
+        authorsPage: true,
+      },
+    },
+  ],
+};
+```
+
 ### Changing styles
 
 Novela allows you to change the default theme styling by updating the [theme-ui](https://theme-ui.com/) values. If you're familiar with Styled Components or Emotion it's the same as adapting the theme you pass to `ThemeProvider`.
@@ -403,6 +421,8 @@ It is recommended to use the Default options, but if your project requires somet
 | -------------- | :-------------: | :---------------------------------------------------------------------------------------: |
 | contentPosts   |  content/posts  |                     Define where you want to pull your Post data from                     |
 | contentAuthors | content/authors |                    Define where you want to pull your Author data from                    |
+| authorsPage    |      false      |                                    Create Author pages                                    |
+| authorsPath    |    /authors     |                              Where should Author pages live?                              |
 | basePath       |        /        | Where should the site be served from? `/blog` will change all paths to start with `/blog` |
 
 [View Theme option example](https://github.com/narative/gatsby-theme-novela-example/blob/master/gatsby-config.js#L36)

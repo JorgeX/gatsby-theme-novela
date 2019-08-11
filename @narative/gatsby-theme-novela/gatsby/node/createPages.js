@@ -72,6 +72,7 @@ const articlesQuery = `{
   authors: allAuthor {
     edges {
       node {
+        authorsPage
         bio
         id
         name

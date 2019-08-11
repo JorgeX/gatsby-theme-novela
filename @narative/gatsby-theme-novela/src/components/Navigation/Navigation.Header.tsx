@@ -8,7 +8,11 @@ import Logo from "@components/Logo";
 
 import Icons from "@icons";
 import mediaqueries from "@styles/media";
-import { copyToClipboard } from "@utils";
+import {
+  copyToClipboard,
+  getWindowDimensions,
+  getBreakpointFromTheme,
+} from "@utils";
 
 function NavigationHeader() {
   const [showBackArrow, setShowBackArrow] = useState<boolean>(false);
@@ -18,12 +22,17 @@ function NavigationHeader() {
   const fill = colorMode === "dark" ? "#fff" : "#000";
 
   useEffect(() => {
+    const { width } = getWindowDimensions();
+    const phablet = getBreakpointFromTheme("phablet");
+
     const prev = localStorage.getItem("previousPath");
     const previousPathWasHomepage =
       prev === "/" || (prev && prev.includes("/page/"));
     const isNotPaginated = !location.pathname.includes("/page/");
 
-    setShowBackArrow(previousPathWasHomepage && isNotPaginated);
+    setShowBackArrow(
+      previousPathWasHomepage && isNotPaginated && width <= phablet,
+    );
     setPreviousPath(prev);
   }, []);
 

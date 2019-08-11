@@ -22,7 +22,10 @@ function ArticleAuthors({ authors }: { authors: IAuthor[] }) {
   }
 
   return (
-    <AuthorLink to={authors[0].node.slug}>
+    <AuthorLink
+      as={authors[0].node.authorsPage ? Link : "div"}
+      to={authors[0].node.slug}
+    >
       <AuthorAvatar>
         <Image src={authors[0].node.avatar.small.fluid} />
       </AuthorAvatar>
@@ -70,7 +73,10 @@ function CoAuthors({ authors }: { authors: IAuthor[] }) {
             </IconOpenContainer>
             {authors.map(author => (
               <CoAuthorsListItemOpen key={author.node.name}>
-                <AuthorLink to={author.node.slug}>
+                <AuthorLink
+                  as={author.node.authorsPage ? Link : "div"}
+                  to={author.node.slug}
+                >
                   <CoAuthorAvatarOpen>
                     <Image src={author.node.avatar.small.fluid} />
                   </CoAuthorAvatarOpen>
@@ -119,7 +125,7 @@ const AuthorAvatar = styled.div`
   `}
 `;
 
-const AuthorLink = styled(Link)`
+const AuthorLink = styled.div`
   display: flex;
   align-items: center;
   color: inherit;
