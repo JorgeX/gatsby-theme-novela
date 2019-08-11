@@ -14,13 +14,13 @@ import { IArticle } from "@types";
  * Sits at the bottom of our Article page. Shows the next 2 on desktop and the
  * next 1 on mobile!
  *
- * If you haven't noticed, this is basically a stripped down copy and paste
- * of Articles.Grid.tsx. It works well for now but eventually we may want to
- * abstract the <Grid>...items</Grid> since there's duplicate code.
- *
  *  [..............], [.........]
  *  [.....LONG.....], [..SHORT..]
  *  [..............], [.........]
+ *
+ * This does NOT use Articles.List because there's a special case of only have 1 article
+ * as the next one suggested article, which requires special styling we didn't want to
+ * mix into the generic list component.
  */
 const ArticlesNext = ({ articles }: { articles: IArticle[] }) => {
   if (!articles) return null;
