@@ -7,8 +7,7 @@
   "scripts": {
     "develop": "yarn start",
     "start": "yarn workspace www develop",
-    "build": "yarn workspace www build",
-    "publish": "yarn workspace @narative/gatsby-theme-novela publish"
+    "build": "yarn workspace www build"
   },
   "workspaces": [
     "@narative/gatsby-theme-novela",

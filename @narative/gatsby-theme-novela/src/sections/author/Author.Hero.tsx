@@ -42,9 +42,8 @@ const Hero = styled.div`
 const HeroImage = styled.div`
   position: relative;
   z-index: 1;
-  width: 100%;
-  max-height: 164px;
-  max-width: 164px;
+  height: 164px;
+  width: 164px;
   margin-bottom: 35px;
   border-radius: 50%;
   overflow: hidden;
@@ -52,13 +51,13 @@ const HeroImage = styled.div`
   box-shadow: 0px 15.619px 31.2381px rgba(0, 0, 0, 0.15);
 
   ${mediaqueries.tablet`
-    max-width: 146px;
-    max-height: 146px;
+    width: 146px;
+    height: 146px;
   `}
 
   ${mediaqueries.phablet`
-    max-width: 136px;
-    max-height: 136px;
+    width: 136px;
+    height: 136px;
     margin-bottom: 25px;
   `}
 `;
