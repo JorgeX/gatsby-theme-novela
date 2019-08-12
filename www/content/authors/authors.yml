@@ -20,7 +20,7 @@
   bio: |
     Written by You. This is where your author bio lives. Share your work, your
     joys and of course, your Twitter handle.
-  avatar: ./avatars/thiago-costa.png
+  avatar: ./avatars/thiago-costa.jpg
   social:
     - name: github
       url: https://github.com
@@ -37,7 +37,7 @@
   bio: |
     Written by You. This is where your author bio lives. Share your work, your
     joys and of course, your Twitter handle.
-  avatar: ./avatars/brad-tiller.png
+  avatar: ./avatars/brad-tiller.jpg
   social:
     - name: github
       url: https://github.com
@@ -54,7 +54,7 @@
   bio: |
     Written by You. This is where your author bio lives. Share your work, your
     joys and of course, your Twitter handle.
-  avatar: ./avatars/mack-mansouri.png
+  avatar: ./avatars/mack-mansouri.jpg
   social:
     - name: github
       url: https://github.com

@@ -47,7 +47,7 @@ const Hero = styled.div`
       position: absolute;
       left: 0;
       top: 0;
-      transition: background 0.25s ease;
+      transition: ${p.theme.colorModeTransition};
     }
 
     &::after {
@@ -60,7 +60,7 @@ const Hero = styled.div`
       top: 10px;
       border-top-left-radius: 25px;
       border-top-right-radius: 25px;
-      transition: background 0.25s ease;
+      transition: ${p.theme.colorModeTransition};
     }
   `}
 `;

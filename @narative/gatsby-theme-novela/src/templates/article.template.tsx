@@ -89,7 +89,7 @@ function Article({ pageContext, location, ...rest }) {
       </MobileControls>
       <ArticleBody ref={contentSectionRef}>
         <MDXRenderer content={article.body}>
-          <ArticleShare authors={authors} />
+          <ArticleShare />
         </MDXRenderer>
       </ArticleBody>
       {next.length > 0 && (

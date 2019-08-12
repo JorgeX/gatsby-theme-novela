@@ -131,7 +131,7 @@ const AuthorLink = styled.div`
   color: inherit;
 
   strong {
-    transition: color 0.25s ease;
+    transition: ${p => p.theme.colorModeTransition};
   }
 
   &:hover strong {

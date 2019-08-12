@@ -8,7 +8,7 @@ const OrderedList = styled.ol`
   position: relative;
   padding: 15px 0 30px 30px;
   margin: 0 auto;
-  transition: color 0.25s ease;
+  transition: ${p => p.theme.colorModeTransition};
   font-size: 18px;
 
   width: 100%;

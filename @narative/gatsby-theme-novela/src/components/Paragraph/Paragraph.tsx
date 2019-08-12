@@ -5,7 +5,7 @@ const Paragraph = styled.p`
   line-height: 1.756;
   font-size: 18px;
   color: ${p => p.theme.colors.articleText};
-  transition: color 0.25s ease;
+  transition: ${p => p.theme.colorModeTransition};
   margin: 0 auto 35px;
   width: 100%;
   max-width: 680px;

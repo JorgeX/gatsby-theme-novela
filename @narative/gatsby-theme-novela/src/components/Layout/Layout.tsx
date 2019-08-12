@@ -47,6 +47,6 @@ export default Layout;
 const Container = styled.div`
   position: relative;
   background: ${p => p.theme.colors.background};
-  transition: background 0.25s ease;
+  transition: ${p => p.theme.colorModeTransition};
   min-height: 100vh;
 `;

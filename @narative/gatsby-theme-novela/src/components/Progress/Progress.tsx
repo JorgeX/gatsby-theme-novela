@@ -29,17 +29,17 @@ function Progress({ contentHeight }: IProgress) {
   }, [contentHeight]);
 
   return (
-    <Frame tabIndex={-1}>
+    <ProgressContainer tabIndex={-1}>
       <Trackline aria-hidden="true">
         <ProgressLine style={{ transform: `translateY(${progress}%)` }} />
       </Trackline>
-    </Frame>
+    </ProgressContainer>
   );
 }
 
 export default Progress;
 
-const Frame = styled.div`
+const ProgressContainer = styled.div`
   position: relative;
   outline: none;
   user-select: none;

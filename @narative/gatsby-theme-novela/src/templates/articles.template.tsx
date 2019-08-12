@@ -38,7 +38,7 @@ const ArticlesGradient = styled.div`
   z-index: 0;
   pointer-events: none;
   background: ${p => p.theme.colors.gradient};
-  transition: background 0.25s ease;
+  transition: ${p => p.theme.colorModeTransition};
 `;
 
 const ArticlesPaginator = styled.div<{ show: boolean }>`

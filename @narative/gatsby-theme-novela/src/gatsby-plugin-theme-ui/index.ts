@@ -20,8 +20,12 @@ const fonts = {
   monospace: `"Operator Mono", Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace`,
 };
 
+const colorModeTransition =
+  "background 0.25s var(--ease-in-out-quad), color 0.25s var(--ease-in-out-quad)";
+
 export default merge({
   initialColorMode: `light`,
+  colorModeTransition,
   colors,
   fonts,
   breakpoints,
