@@ -100,10 +100,9 @@ export function useResize() {
       () => setDimensions(getWindowDimensions()),
       50,
     );
+
     window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    return () => window.removeEventListener("resize", handleResize);
   });
 
   return dimensions;

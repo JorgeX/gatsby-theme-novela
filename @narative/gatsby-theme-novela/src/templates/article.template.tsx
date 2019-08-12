@@ -72,8 +72,8 @@ function Article({ pageContext, location, ...rest }) {
     }, 20);
 
     calculateBodySize();
-
     window.addEventListener("resize", calculateBodySize);
+
     return () => window.removeEventListener("resize", calculateBodySize);
   }, []);
 

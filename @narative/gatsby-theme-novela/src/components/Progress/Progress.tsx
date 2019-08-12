@@ -18,13 +18,14 @@ function Progress({ contentHeight }: IProgress) {
       setProgress(clamp(+percentComplete.toFixed(2), -2, 104));
     }, 20);
 
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", handleScroll);
-
-    () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
-    };
+    if (contentHeight) {
+      window.addEventListener("scroll", handleScroll);
+      window.addEventListener("resize", handleScroll);
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+        window.removeEventListener("resize", handleScroll);
+      };
+    }
   }, [contentHeight]);
 
   return (
