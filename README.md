@@ -50,8 +50,8 @@ Novela is built by the team at [Narative](https://www.narative.co), and built fo
 
 - [Data Models](#data-models)
 
-  - [Authors](#authors)
-  - [Posts](#posts)
+  - [Author](#author)
+  - [Post](#post)
   - [Site Metadata](#site-metadata)
 
 <br />
