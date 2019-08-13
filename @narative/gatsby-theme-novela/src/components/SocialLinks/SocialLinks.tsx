@@ -19,6 +19,7 @@ const icons = {
   facebook: Icons.Facebook,
   instagram: Icons.Instagram,
   github: Icons.Github,
+  youtube: Icons.YouTube,
 };
 
 function SocialLinks({ links, fill = "#73737D" }: SocialLinksProps) {

@@ -29,6 +29,10 @@ module.exports = {
         name: `dribbble`,
         url: `https://dribbble.com/narativestudio`,
       },
+      {
+        name: `youtube`,
+        url: `https://youtube.com`,
+      },
     ],
   },
   plugins: [

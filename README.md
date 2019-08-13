@@ -444,12 +444,13 @@ plugins: [
 
 [View Author example](https://github.com/narative/gatsby-theme-novela-example/blob/master/content/authors/authors.yml)
 
-| Key      | Required |  Type   |                                 Desciption                                  |
-| -------- | :------: | :-----: | :-------------------------------------------------------------------------: |
-| name     | required | String  | The Author's full name which is used should be used as a reference in Posts |
-| bio      | required | String  |            The Author's bio which is displayed on the home page             |
-| avatar   | required |  Image  |                             The Author's avatar                             |
-| featured | optional | Boolean |              If `true` the Author will appear on the homepage               |
+| Key      | Required |  Type   |                                                             Desciption                                                             |
+| -------- | :------: | :-----: | :--------------------------------------------------------------------------------------------------------------------------------: |
+| name     | required | String  |                            The Author's full name which is used should be used as a reference in Posts                             |
+| bio      | required | String  |                                        The Author's bio which is displayed on the home page                                        |
+| avatar   | required |  Image  |                                                        The Author's avatar                                                         |
+| featured | optional | Boolean |                                          If `true` the Author will appear on the homepage                                          |
+| social   | optional |  Array  | A list of social accounts and urls. Supported names include github, twitter, linkedin, facebook, instagram, youtube, and dribbble. |
 
 ```yml
 - name: Dennis Brotzky
@@ -458,9 +459,14 @@ plugins: [
     joys and of course, your Twitter handle.
   avatar: ./avatars/dennis-brotzky.jpg
   featured: true
+  social:
+    - name: github
+      url: https://github.com
+    - name: twitter
+      url: https://twitter.com
 
 - name: Thiago Costa
-  bio: |f
+  bio: |
     Written by You. This is where your author bio lives. Share your work, your
     joys and of course, your Twitter handle.
   avatar: ./avatars/thiago-costa.png
@@ -496,15 +502,15 @@ excerpt: This is a love story about Narative and Gatsby
 
 ## Site Metadata
 
-| Key           | Required |    Type    |                                                               Description                                                               |
-| ------------- | :------: | :--------: | :-------------------------------------------------------------------------------------------------------------------------------------: |
-| title         | required |   String   |                                                      Used for the <title></title>                                                       |
-| name          | required | String Ref |                                     Used in multiple locations including meta tags and site footer                                      |
-| siteUrl       | required |    Date    |                                                            Used in meta tags                                                            |
-| description   | required |   Image    |                                                            Used in meta tags                                                            |
-| hero.heading  | required |   String   |                                                            Used in the Hero                                                             |
-| hero.maxWidth | optional |   number   |                                                    Used in the Hero. Defaults to 652                                                    |
-| social        | required |   Array    | [{ name, url}]. Supported names include github, twitter, linkedin, facebook, instagram, and dribbble. Used in site footer and meta tags |
+| Key           | Required |    Type    |                                                                   Description                                                                    |
+| ------------- | :------: | :--------: | :----------------------------------------------------------------------------------------------------------------------------------------------: |
+| title         | required |   String   |                                                           Used for the <title></title>                                                           |
+| name          | required | String Ref |                                          Used in multiple locations including meta tags and site footer                                          |
+| siteUrl       | required |    Date    |                                                                Used in meta tags                                                                 |
+| description   | required |   Image    |                                                                Used in meta tags                                                                 |
+| hero.heading  | required |   String   |                                                                 Used in the Hero                                                                 |
+| hero.maxWidth | optional |   number   |                                                        Used in the Hero. Defaults to 652                                                         |
+| social        | required |   Array    | [{ name, url}]. Supported names include github, twitter, linkedin, facebook, instagram, youtube, and dribbble. Used in site footer and meta tags |
 
 [View Site Metadata example](https://github.com/narative/gatsby-theme-novela-example/blob/master/gatsby-config.js)
 

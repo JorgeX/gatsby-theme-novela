@@ -1,5 +1,4 @@
 import React, { createContext, useState } from "react";
-import { graphql, useStaticQuery } from "gatsby";
 
 interface GridLayoutProviderProps {
   children: React.ReactChild;
@@ -12,22 +11,8 @@ export const GridLayoutContext = createContext({
   getGridLayout: () => {},
 });
 
-const articlesQuery = graphql`
-  {
-    articles: allArticle {
-      edges {
-        node {
-          id
-        }
-      }
-    }
-  }
-`;
-
 function GridLayoutProvider({ children }: GridLayoutProviderProps) {
-  const results = useStaticQuery(articlesQuery);
-  const articles = results.articles.edges;
-  const initialLayout = articles.length === 1 ? "rows" : "tiles";
+  const initialLayout = "tiles";
 
   const [gridLayout, setGridLayout] = useState<string>(initialLayout);
   const [hasSetGridLayout, setHasSetGridLayout] = useState<boolean>(false);

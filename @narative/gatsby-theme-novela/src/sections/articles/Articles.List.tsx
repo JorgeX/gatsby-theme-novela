@@ -38,6 +38,7 @@ interface ArticlesListItemProps {
 function ArticlesList({ articles, alwaysShowAllDetails }: ArticlesListProps) {
   if (!articles) return null;
 
+  const hasOnlyOneArticle = articles.length === 1;
   const { gridLayout = "tiles", hasSetGridLayout, getGridLayout } = useContext(
     GridLayoutContext,
   );
@@ -47,7 +48,7 @@ function ArticlesList({ articles, alwaysShowAllDetails }: ArticlesListProps) {
   let articlePairs = [];
   let pair = null;
 
-  if (articles.length === 1) {
+  if (hasOnlyOneArticle) {
     articlePairs = [articles];
   } else {
     articles.forEach(article => {
@@ -66,7 +67,12 @@ function ArticlesList({ articles, alwaysShowAllDetails }: ArticlesListProps) {
       alwaysShowAllDetails={alwaysShowAllDetails}
     >
       {articlePairs.map((ap, index) => (
-        <List key={index} gridLayout={gridLayout} reverse={index % 2 !== 0}>
+        <List
+          key={index}
+          gridLayout={gridLayout}
+          hasOnlyOneArticle={hasOnlyOneArticle}
+          reverse={index % 2 !== 0}
+        >
           <ListItem article={ap[0]} narrow={index % 2 !== 0} />
           <ListItem article={ap[1]} narrow={index % 2 !== 1} />
         </List>
@@ -220,12 +226,17 @@ const listItemTile = p => css`
   `}
 `;
 
+// If only 1 article, dont create 2 rows.
 const listRow = p => css`
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: ${p.hasOnlyOneArticle ? "1fr" : "1fr 1fr"};
 `;
 
-const List = styled.div<{ reverse: boolean; gridLayout: string }>`
+const List = styled.div<{
+  reverse: boolean;
+  gridLayout: string;
+  hasOnlyOneArticle: boolean;
+}>`
   ${p => (p.gridLayout === "tiles" ? listTile : listRow)}
 `;
 
