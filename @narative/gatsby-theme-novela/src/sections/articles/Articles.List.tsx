@@ -43,40 +43,41 @@ function ArticlesList({ articles, alwaysShowAllDetails }: ArticlesListProps) {
     GridLayoutContext,
   );
 
+  /**
+   * We're taking the flat array of articles [{}, {}, {}...]
+   * and turning it into an array of pairs of articles [[{}, {}], [{}, {}], [{}, {}]...]
+   * This makes it simpler to create the grid we want
+   */
+  const articlePairs = articles.reduce((result, value, index, array) => {
+    if (index % 2 === 0) {
+      result.push(array.slice(index, index + 2));
+    }
+    return result;
+  }, []);
+
   useEffect(() => getGridLayout(), []);
-
-  let articlePairs = [];
-  let pair = null;
-
-  if (hasOnlyOneArticle) {
-    articlePairs = [articles];
-  } else {
-    articles.forEach(article => {
-      if (pair) {
-        articlePairs.push([pair, article]);
-        pair = null;
-      } else {
-        pair = article;
-      }
-    });
-  }
 
   return (
     <ArticlesListContainer
       style={{ opacity: hasSetGridLayout ? 1 : 0 }}
       alwaysShowAllDetails={alwaysShowAllDetails}
     >
-      {articlePairs.map((ap, index) => (
-        <List
-          key={index}
-          gridLayout={gridLayout}
-          hasOnlyOneArticle={hasOnlyOneArticle}
-          reverse={index % 2 !== 0}
-        >
-          <ListItem article={ap[0]} narrow={index % 2 !== 0} />
-          <ListItem article={ap[1]} narrow={index % 2 !== 1} />
-        </List>
-      ))}
+      {articlePairs.map((ap, index) => {
+        const isEven = index % 2 !== 0;
+        const isOdd = index % 2 !== 1;
+
+        return (
+          <List
+            key={index}
+            gridLayout={gridLayout}
+            hasOnlyOneArticle={hasOnlyOneArticle}
+            reverse={isEven}
+          >
+            <ListItem article={ap[0]} narrow={isEven} />
+            <ListItem article={ap[1]} narrow={isOdd} />
+          </List>
+        );
+      })}
     </ArticlesListContainer>
   );
 }
