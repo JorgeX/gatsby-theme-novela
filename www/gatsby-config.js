@@ -1,3 +1,10 @@
+require("dotenv").config();
+
+const contentfulConfig = {
+  spaceId: process.env.CONTENTFUL_SPACE_ID,
+  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+};
+
 module.exports = {
   siteMetadata: {
     title: `Novela by Narative`,
@@ -62,6 +69,10 @@ module.exports = {
       options: {
         trackingId: "UA-118232427-3",
       },
+    },
+    {
+      resolve: "gatsby-source-contentful",
+      options: contentfulConfig,
     },
   ],
 };
