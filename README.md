@@ -274,9 +274,51 @@ Contentful provides the flexibility of a headless CMS which allows you to write 
 
 You will need to setup your Contentful space and import the Novela model.
 
+#### Setting up gatsby-source-contentful in your project
+
+In order to use Contentful you must first set up the plugin in your project
+
+```sh
+yarn add gatsby-source-contentful dotenv
+```
+
+Then pass in the enviroment variables `.env` variables to the plugin
+
+```
+CONTENTFUL_SPACE_ID=
+CONTENTFUL_ACCESS_TOKEN=
+```
+
+```js
+// gatsby-config.js
+require("dotenv").config();
+
+plugins: [
+  {
+    resolve: "gatsby-source-contentful",
+    options: {
+      spaceId: process.env.CONTENTFUL_SPACE_ID,
+      accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+    },
+  },
+  {
+    resolve: "@narative/gatsby-theme-novela",
+    options: {
+      sources: {
+        contentful: true,
+      },
+    },
+  },
+];
+```
+
+Finally, import the Contentful Model from Novela to get started:
+
 #### [Novela Contentful Data](https://github.com/narative/gatsby-theme-novela/tree/master/%40narative/gatsby-theme-novela/contentful)
 
 [Contentful space import docs](https://github.com/contentful/contentful-cli/tree/master/docs/space/import)
+
+Once you have your project setup with `gatsby-source-contentful` and `@narative/gatsby-theme-novela` and your Contentful space is setup with the imported model you are good to go.
 
 # Customization
 
