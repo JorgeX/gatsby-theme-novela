@@ -61,6 +61,7 @@ module.exports.local = {
           bio
           id
           name
+          featured
           social {
             url
           }

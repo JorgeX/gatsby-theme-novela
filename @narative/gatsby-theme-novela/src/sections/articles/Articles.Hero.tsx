@@ -28,9 +28,7 @@ const authorQuery = graphql`
 `;
 
 function ArticlesHero({ authors }: IAuthor) {
-  const { gridLayout = "tiles", hasSetGridLayout, setGridLayout } = useContext(
-    GridLayoutContext,
-  );
+  const { gridLayout = "tiles", hasSetGridLayout, setGridLayout } = useContext(GridLayoutContext);
 
   const results = useStaticQuery(authorQuery);
   const hero = results.site.edges[0].node.siteMetadata.hero;

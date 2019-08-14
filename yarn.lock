@@ -1655,9 +1655,9 @@ aggregate-error@^1.0.0:
     indent-string "^3.0.0"
 
 airbnb-prop-types@^2.13.2:
-  version "2.14.0"
-  resolved "https://registry.yarnpkg.com/airbnb-prop-types/-/airbnb-prop-types-2.14.0.tgz#3d45cb1459f4ce78fdf1240563d1aa2315391168"
-  integrity sha512-Yb09vUkr3KP9r9NqfRuYtDYZG76wt8mhTUi2Vfzsghk+qkg01/gOc9NU8n63ZcMCLzpAdMEXyKjCHlxV62yN1A==
+  version "2.15.0"
+  resolved "https://registry.yarnpkg.com/airbnb-prop-types/-/airbnb-prop-types-2.15.0.tgz#5287820043af1eb469f5b0af0d6f70da6c52aaef"
+  integrity sha512-jUh2/hfKsRjNFC4XONQrxo/n/3GG4Tn6Hl0WlFQN5PY9OMC9loSCoAYKnZsWaP8wEfd5xcrPloK0Zg6iS1xwVA==
   dependencies:
     array.prototype.find "^2.1.0"
     function.prototype.name "^1.1.1"
@@ -1668,7 +1668,7 @@ airbnb-prop-types@^2.13.2:
     object.entries "^1.1.0"
     prop-types "^15.7.2"
     prop-types-exact "^1.2.0"
-    react-is "^16.8.6"
+    react-is "^16.9.0"
 
 ajax-request@^1.2.0:
   version "1.2.3"
@@ -3617,9 +3617,9 @@ contentful-import@^7.5.1:
     yargs "^12.0.1"
 
 contentful-management@^5.9.0:
-  version "5.9.0"
-  resolved "https://registry.yarnpkg.com/contentful-management/-/contentful-management-5.9.0.tgz#3c83b06941eaecf672f35f980bc36883931667e7"
-  integrity sha512-VbX8IJydvTnvoVu2+cL1KTAnfVCenPTjYruCVu/cg9Lyn1TXR/vYJY0mGZGif9stQgfFsmBwWuF5R4PX3Bjkqw==
+  version "5.9.1"
+  resolved "https://registry.yarnpkg.com/contentful-management/-/contentful-management-5.9.1.tgz#68270563d4d41abf4297deb596883597f3eeeb1d"
+  integrity sha512-bY15TPpJfnEMo0Ss2F42P33+Eb2JorLH7Mb/naF6PuPBeAa66p10MKRyDBL6KEkP3sHkwZbcOGhQ7RbKrR0vCQ==
   dependencies:
     axios "^0.19.0"
     contentful-sdk-core "^6.3.6"
@@ -6727,9 +6727,9 @@ got@^8.0.0, got@^8.3.1, got@^8.3.2:
     url-to-options "^1.0.1"
 
 graceful-fs@^4.1.10, graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.1.tgz#1c1f0c364882c868f5bff6512146328336a11b1d"
-  integrity sha512-b9usnbDGnD928gJB3LrCmxoibr3VE4U2SMo5PBuBnokWyDADTqDPXg4YpwKF1trpH+UbGp7QLicO3+aWEy0+mw==
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.2.tgz#6f0952605d0140c1cfdb138ed005775b92d67b02"
+  integrity sha512-IItsdsea19BoLC7ELy13q1iJFNmd7ofZH5+X/pJr90/nRoPEX0DJo1dHDbgtYWOhJhcCgMDTOw84RZ72q6lB+Q==
 
 "graceful-readlink@>= 1.0.0":
   version "1.0.1"
@@ -11396,7 +11396,7 @@ react-hot-loader@^4.12.11:
     shallowequal "^1.1.0"
     source-map "^0.7.3"
 
-react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.6:
+react-is@^16.7.0, react-is@^16.8.1, react-is@^16.9.0:
   version "16.9.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.9.0.tgz#21ca9561399aad0ff1a7701c01683e8ca981edcb"
   integrity sha512-tJBzzzIgnnRfEm046qRcURvwQnZVXmuCbscxUO5RWrGTXpon2d4c8mI0D8WE6ydVIm29JiLB6+RslkIvym9Rjw==
