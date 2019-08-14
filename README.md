@@ -62,7 +62,7 @@ Novela is built by the team at [Narative](https://www.narative.co), and built fo
   - [Post](#post)
   - [Site Metadata](#site-metadata)
 
-- [Future](#future)
+- [Future](#the-future)
 
   <br />
 
