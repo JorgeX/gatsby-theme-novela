@@ -13,16 +13,15 @@ module.exports = ({
     `gatsby-transformer-sharp`,
     `gatsby-transformer-remark`,
     `gatsby-transformer-yaml`,
-
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: `gatsby-source-filesystem`,
       options: {
         path: contentPosts,
         name: contentPosts,
       },
     },
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: `gatsby-source-filesystem`,
       options: {
         path: contentAuthors,
         name: contentAuthors,
@@ -45,6 +44,13 @@ module.exports = ({
           { resolve: `gatsby-remark-copy-linked-files` },
           { resolve: `gatsby-remark-numbered-footnotes` },
           { resolve: `gatsby-remark-smartypants` },
+          {
+            resolve: 'gatsby-remark-external-links',
+            options: {
+              target: '_blank',
+              rel: 'noreferrer',
+            },
+          },
         ],
         remarkPlugins: [require(`remark-slug`)],
       },
