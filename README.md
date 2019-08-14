@@ -260,11 +260,11 @@ If you ran into problems you can reference the [example repository](https://gith
 
 # Data Sources
 
-With the flexibility of Gatsby, Novela is able to pull for different data sources to fit your need. Right now we support Contentful and your local file system. All data sources can be combined together or used individually.
+With the flexibility of Gatsby, Novela is able to pull different data sources to build your website. Right now we support Contentful and your local file system. All data sources can be combined together or used seperately.
 
 ### Local
 
-The default data source for Novela. Write MDX and YAML in order to generate posts and authors. This is the fastest and simplist way to get started.
+Local is the default data source for Novela. Write MDX and YAML in order to generate posts and authors. This is the fastest and simplist way to get started.
 
 To learn how to use the local file system the [Installation](#installation) steps.
 
@@ -274,23 +274,26 @@ Contentful provides the flexibility of a headless CMS which allows you to write 
 
 You will need to setup your Contentful space and import the Novela model.
 
-#### Setting up gatsby-source-contentful in your project
+#### Setting up `gatsby-source-contentful` in your project
 
-In order to use Contentful you must first set up the plugin in your project
+In order to use Contentful you must first install the plugin and `dotenv` in your project
 
 ```sh
 yarn add gatsby-source-contentful dotenv
 ```
 
-Then pass in the enviroment variables `.env` variables to the plugin
+Then pass in the enviroment variables `.env` to the plugin
+
+#### `.env`
 
 ```
 CONTENTFUL_SPACE_ID=
 CONTENTFUL_ACCESS_TOKEN=
 ```
 
+#### `gatsby-config.js`
+
 ```js
-// gatsby-config.js
 require("dotenv").config();
 
 plugins: [
@@ -312,7 +315,7 @@ plugins: [
 ];
 ```
 
-Finally, import the Contentful Model from Novela to get started:
+Finally, import the Contentful Model from Novela to get started. Novela Contentful Queries will not work without this exact data model.
 
 #### [Novela Contentful Data](https://github.com/narative/gatsby-theme-novela/tree/master/%40narative/gatsby-theme-novela/contentful)
 
