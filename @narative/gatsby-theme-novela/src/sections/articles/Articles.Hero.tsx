@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import styled from "@emotion/styled";
 
@@ -6,6 +6,7 @@ import Section from "@components/Section";
 import Bio from "@components/Bio";
 import Icons from "@icons";
 import mediaqueries from "@styles/media";
+import { IAuthor } from "@types";
 
 import { GridLayoutContext } from "./Articles.List.Context";
 
@@ -26,7 +27,7 @@ const authorQuery = graphql`
   }
 `;
 
-function ArticlesHero() {
+function ArticlesHero({ authors }: IAuthor) {
   const { gridLayout = "tiles", hasSetGridLayout, setGridLayout } = useContext(
     GridLayoutContext,
   );
@@ -34,6 +35,14 @@ function ArticlesHero() {
   const results = useStaticQuery(authorQuery);
   const hero = results.site.edges[0].node.siteMetadata.hero;
   const tilesIsActive = hasSetGridLayout && gridLayout === "tiles";
+  const featuredAuthor = authors.find(author => author.featured);
+
+  if (!featuredAuthor) {
+    throw new Error(`
+      No featured Author found.
+      Please ensure you have at least featured Author.
+  `);
+  }
 
   return (
     <Section relative id="Articles__Hero">
@@ -41,7 +50,7 @@ function ArticlesHero() {
         <HeroHeading>{hero.heading}</HeroHeading>
       </HeadingContainer>
       <SubheadingContainer>
-        <Bio />
+        <Bio author={featuredAuthor} />
         <GridControlsContainer>
           <GridButton
             onClick={() => setGridLayout("tiles")}

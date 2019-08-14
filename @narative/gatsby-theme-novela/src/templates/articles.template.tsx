@@ -11,11 +11,12 @@ import ArticlesList from "../sections/articles/Articles.List";
 
 function ArticlesPage({ location, pageContext }) {
   const articles = pageContext.group;
+  const authors = pageContext.additionalContext.authors;
 
   return (
     <Layout>
       <SEO pathname={location.pathname} />
-      <ArticlesHero />
+      <ArticlesHero authors={authors} />
       <Section narrow>
         <ArticlesList articles={articles} />
         <ArticlesPaginator show={pageContext.pageCount > 1}>

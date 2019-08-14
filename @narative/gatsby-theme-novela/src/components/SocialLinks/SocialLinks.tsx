@@ -22,25 +22,30 @@ const icons = {
   youtube: Icons.YouTube,
 };
 
+const getHostname = url => {
+  return new URL(url.toLowerCase()).hostname.replace("www.", "").split(".")[0];
+};
+
 function SocialLinks({ links, fill = "#73737D" }: SocialLinksProps) {
   if (!links) return null;
 
   return (
     <>
       {links.map(option => {
-        const Icon = icons[option.name];
+        const name = getHostname(option.url);
+        const Icon = icons[name];
 
         return (
           <SocialIconContainer
-            key={option.name}
+            key={option.url}
             target="_blank"
             rel="noopener"
             data-a11y="false"
-            aria-label={`Link to ${option.name}`}
+            aria-label={`Link to ${option.url}`}
             href={option.url}
           >
             <Icon fill={fill} />
-            <Hidden>Link to ${option.name}</Hidden>
+            <Hidden>Link to ${option.url}</Hidden>
           </SocialIconContainer>
         );
       })}

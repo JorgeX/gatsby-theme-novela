@@ -1,11 +1,9 @@
 module.exports = ({
   contentAuthors = "content/authors",
   contentPosts = "content/posts",
-}) => ({
-  mapping: {
-    "Mdx.frontmatter.author": `AuthorsYaml`,
-  },
-  plugins: [
+  contentful,
+}) => {
+  const plugins = [
     `gatsby-plugin-typescript`,
     `gatsby-image`,
     `gatsby-plugin-react-helmet`,
@@ -56,5 +54,19 @@ module.exports = ({
       },
     },
     `gatsby-plugin-theme-ui`,
-  ],
-});
+  ];
+
+  if (contentful) {
+    plugins.push({
+      resolve: "gatsby-source-contentful",
+      options: contentful,
+    });
+  }
+
+  return {
+    mapping: {
+      "Mdx.frontmatter.author": `AuthorsYaml`,
+    },
+    plugins,
+  };
+};

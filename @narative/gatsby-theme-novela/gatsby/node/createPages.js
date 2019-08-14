@@ -14,95 +14,10 @@ const templates = {
   author: path.resolve(templatesDir, "author.template.tsx"),
 };
 
-// How many posts per page? This is hardcoded for now.
-const pageLength = 6;
+const query = require("../data/data.query");
+const normalize = require("../data/data.normalize");
 
-// https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby-transformer-sharp/src/fragments.js
-const GatsbyImageSharpFluid_withWebp = `
-  base64
-  aspectRatio
-  src
-  srcSet
-  srcWebp
-  srcSetWebp
-  sizes
-`;
-
-const articlesQuery = `{
-  articles: allArticle(
-    sort: { fields: [date, title], order: DESC }
-    limit: 1000
-  ) {
-    edges {
-      node {
-        id
-        slug
-        title
-        author
-        date(formatString: "MMMM Do, YYYY")
-        dateForSEO: date
-        timeToRead
-        excerpt
-        body
-        hero {
-          full: childImageSharp {
-            fluid(maxWidth: 944, maxHeight: 425, quality: 90) {
-              ${GatsbyImageSharpFluid_withWebp}
-            }
-          }
-          regular: childImageSharp {
-            fluid(maxWidth: 653, quality: 90) {
-              ${GatsbyImageSharpFluid_withWebp}
-            }
-          }
-          narrow: childImageSharp {
-            fluid(maxWidth: 457, quality: 90) {
-              ${GatsbyImageSharpFluid_withWebp}
-            }
-          }
-          seo: childImageSharp {
-            fixed(width: 1200, quality: 100) {
-              src
-            }
-          }
-        }
-      }
-    }
-  }
-  authors: allAuthor {
-    edges {
-      node {
-        authorsPage
-        bio
-        id
-        name
-        social {
-          name
-          url
-        }
-        slug
-        avatar {
-          small: childImageSharp {
-            fluid(maxWidth: 50, quality: 100) {
-              ${GatsbyImageSharpFluid_withWebp}
-            }
-          }
-          medium: childImageSharp {
-            fluid(maxWidth: 100, quality: 100) {
-              ${GatsbyImageSharpFluid_withWebp}
-            }
-          }
-          large: childImageSharp {
-            fluid(maxWidth: 328, quality: 100) {
-              ${GatsbyImageSharpFluid_withWebp}
-            }
-          }
-        }
-      }
-    }
-  }
-}
-`;
+/////////////////// Utility functions ///////////////////
 
 function buildPaginatedPath(index, basePath) {
   if (basePath === "/") {
@@ -120,49 +35,105 @@ function slugify(str, base) {
   return `${base}/${slug}`.replace(/\/\/+/g, "/");
 }
 
+function getUniqueListBy(arr, key) {
+  return [...new Map(arr.map(item => [item[key], item])).values()];
+}
+
+const byDate = (a, b) => new Date(b.dateForSEO) - new Date(a.dateForSEO);
+
+/////////////////////////////////////////////////////////
+
 module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
   const basePath = themeOptions.basePath || `/`;
   const authorsPath = themeOptions.authorsPath || `/authors`;
   const authorsPage = themeOptions.authorsPage;
+  const pageLength = themeOptions.pageLength || 6;
 
-  log("Creating site at", basePath);
-
-  if (authorsPage) {
-    log("Creating authors at", authorsPath);
-  }
+  // Defaulting to look at the local MDX files as sources.
+  const { local = true, contentful = false } =
+    (themeOptions && themeOptions.sources) || {};
 
   let authors;
   let articles;
 
-  try {
-    log("Querying", "articles");
-    const results = await graphql(articlesQuery);
+  const dataSources = {
+    local: { authors: [], articles: [] },
+    contentful: { authors: [], articles: [] },
+    netlify: { authors: [], articles: [] },
+  };
 
-    if (!results.data) {
-      throw new Error(`
-        You must have at least one Author and Post
-      `);
+  log("Config basePath", basePath);
+  if (authorsPage) log("Config authorsPath", authorsPath);
+
+  if (local) {
+    try {
+      log("Querying Authors & Aritcles source:", "Local");
+      const localAuthors = await graphql(query.local.authors);
+      const localArticles = await graphql(query.local.articles);
+
+      dataSources.local.authors = localAuthors.data.authors.edges.map(
+        normalize.local.authors,
+      );
+
+      dataSources.local.articles = localArticles.data.articles.edges.map(
+        normalize.local.articles,
+      );
+    } catch (error) {
+      console.error(error);
     }
-
-    authors = results.data.authors.edges;
-    articles = results.data.articles.edges;
-
-    if (articles.length === 0) {
-      throw new Error("You must have at least one article");
-    }
-
-    if (authors.length === 0) {
-      throw new Error("You must have at least one author");
-    }
-  } catch (error) {
-    throw new Error(`
-      You must have at least one Author and Post. As reference you can view the
-      example repository. Look at the content folder in the example repo.
-
-      https://github.com/narative/gatsby-theme-novela-example
-    `);
   }
 
+  if (contentful) {
+    try {
+      log("Querying Authors & Aritcles source:", "Contentful");
+      const contentfulAuthors = await graphql(query.contentful.authors);
+      const contentfulArticles = await graphql(query.contentful.articles);
+
+      dataSources.contentful.authors = contentfulAuthors.data.authors.edges.map(
+        normalize.contentful.authors,
+      );
+
+      dataSources.contentful.articles = contentfulArticles.data.articles.edges.map(
+        normalize.contentful.articles,
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  // Combining together all the articles from different sources
+  articles = [
+    ...dataSources.local.articles,
+    ...dataSources.contentful.articles,
+    ...dataSources.netlify.articles,
+  ].sort(byDate);
+
+  // Combining together all the authors from different sources
+  authors = getUniqueListBy(
+    [
+      ...dataSources.local.authors,
+      ...dataSources.contentful.authors,
+      ...dataSources.netlify.authors,
+    ],
+    "name",
+  );
+
+  if (articles.length === 0 || authors.length === 0) {
+    throw new Error(`
+    You must have at least one Author and Post. As reference you can view the
+    example repository. Look at the content folder in the example repo.
+    https://github.com/narative/gatsby-theme-novela-example
+  `);
+  }
+
+  /**
+   * Once we've queried all our data sources and normalized them to the same structure
+   * we can begin creating our pages. First, we'll want to create all main articles pages
+   * that have pagination.
+   * /articles
+   * /articles/page/1
+   * ...
+   */
   log("Creating", "articles page");
   createPaginatedPages({
     edges: articles,
@@ -172,19 +143,23 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
     pageTemplate: templates.articles,
     buildPath: buildPaginatedPath,
     context: {
+      authors,
       basePath,
       skip: pageLength,
       limit: pageLength,
     },
   });
 
+  /**
+   * Once the list of articles have bene created, we need to make individual article posts.
+   * To do this, we need to find the corresponding authors since we allow for co-authors.
+   */
   log("Creating", "article posts");
-  articles.forEach(({ node: article }, index) => {
+  articles.forEach((article, index) => {
     // Match the Author to the one specified in the article
     let authorsThatWroteTheArticle;
-
     try {
-      authorsThatWroteTheArticle = authors.filter(({ node: author }) => {
+      authorsThatWroteTheArticle = authors.filter(author => {
         const allAuthors = article.author
           .split(",")
           .map(a => a.trim().toLowerCase());
@@ -201,15 +176,16 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
       `);
     }
 
+    /**
+     * We need a way to find the next artiles to suggest at the bottom of the articles page.
+     * To accomplish this there is some special logic surrounding what to show next.
+     */
     let next = articles.slice(index + 1, index + 3);
-
     // If it's the last item in the list, there will be no articles. So grab the first 2
     if (next.length === 0) next = articles.slice(0, 2);
-
     // If there's 1 item in the list, grab the first article
     if (next.length === 1 && articles.length !== 2)
       next = [...next, articles[0]];
-
     if (articles.length === 1) next = [];
 
     createPage({
@@ -227,11 +203,15 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
     });
   });
 
+  /**
+   * By default the author's page is not enabled. This can be enabled through the theme options.
+   * If enabled, each author will get their own page and a list of the articles they have written.
+   */
   if (authorsPage) {
     log("Creating", "authors page");
 
-    authors.forEach(({ node: author }) => {
-      const articlesTheAuthorHasWritten = articles.filter(({ node: article }) =>
+    authors.forEach(author => {
+      const articlesTheAuthorHasWritten = articles.filter(article =>
         article.author.toLowerCase().includes(author.name.toLowerCase()),
       );
       const path = slugify(author.name, authorsPath);

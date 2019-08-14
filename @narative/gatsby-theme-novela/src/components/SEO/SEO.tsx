@@ -41,7 +41,6 @@ const seoQuery = graphql`
           siteMetadata {
             description
             social {
-              name
               url
             }
             siteUrl

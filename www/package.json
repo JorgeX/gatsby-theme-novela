@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build && cp -R _redirects public/",
-    "develop": "gatsby develop",
+    "develop": "rm -rf .cache && gatsby develop",
     "clean": "gatsby clean"
   },
   "dependencies": {
