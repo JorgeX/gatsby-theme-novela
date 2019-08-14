@@ -16,10 +16,12 @@ interface ArticleHeroProps {
 
 const ArticleHero = ({ article, authors }: ArticleHeroProps) => {
   const hasCoAUthors = authors.length > 1;
+  const hasHeroImage =
+    Object.keys(article.hero.full).length !== 0 && article.hero.full.constructor === Object;
 
   return (
     <Hero>
-      <Header>
+      <Header hasHeroImage={hasHeroImage}>
         <HeroHeading>{article.title}</HeroHeading>
         <HeroSubtitle hasCoAUthors={hasCoAUthors}>
           <ArticleAuthors authors={authors} />
@@ -73,10 +75,10 @@ const ArticleMeta = styled.div<{ hasCoAUthors: boolean }>`
   `}
 `;
 
-const Header = styled.header`
+const Header = styled.header<{ hasHeroImage: boolean }>`
   position: relative;
   z-index: 10;
-  margin: 100px auto 120px;
+  margin: ${p => (p.hasHeroImage ? "100px auto 120px" : "100px auto 0px")};
   padding-left: 68px;
   max-width: 749px;
 
@@ -160,8 +162,7 @@ const HeroImage = styled.div`
   max-height: 424px;
   max-width: 944px;
   margin: 0 auto;
-  box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.2),
-    0 18px 36px -18px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.2), 0 18px 36px -18px rgba(0, 0, 0, 0.22);
 
   ${mediaqueries.tablet`
     max-width: 100%;
