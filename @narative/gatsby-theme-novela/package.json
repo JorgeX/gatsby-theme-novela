@@ -20,7 +20,10 @@
     "build": "gatsby build",
     "clean": "gatsby clean",
     "develop": "gatsby develop",
-    "publish": "npm publish --access public"
+    "publish": "npm publish --access public",
+    "contentful:import": "contentful space import --config contentful.json",
+    "contentful:export": "contentful space export --config contentful.json --skip-content --skip-roles --skip-webhooks",
+    "contentful:export:model": "contentful space export --config contentful.json"
   },
   "peerDependencies": {
     "gatsby": "^2.13.41",
@@ -39,6 +42,7 @@
     "@mdx-js/react": "^1.0.27",
     "adm-zip": "^0.4.13",
     "babel-plugin-emotion": "^10.0.14",
+    "contentful-cli": "^0.36.0",
     "gatsby-image": "^2.2.7",
     "gatsby-paginate": "^1.1.0",
     "gatsby-plugin-emotion": "^4.1.2",
