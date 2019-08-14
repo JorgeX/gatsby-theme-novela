@@ -15,7 +15,6 @@ const siteQuery = graphql`
           siteMetadata {
             name
             social {
-              name
               url
             }
           }

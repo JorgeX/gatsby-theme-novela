@@ -19,27 +19,24 @@ function ArticleAuthors({ authors }: { authors: IAuthor[] }) {
   // Special dropdown UI for multiple authors
   if (hasCoAuthors) {
     return <CoAuthors authors={authors} />;
+  } else {
+    return (
+      <AuthorLink
+        as={authors[0].authorsPage ? Link : "div"}
+        to={authors[0].slug}
+      >
+        <AuthorAvatar>
+          <Image src={authors[0].avatar.small} />
+        </AuthorAvatar>
+        <strong>{authors[0].name}</strong>
+        <HideOnMobile>,&nbsp;</HideOnMobile>
+      </AuthorLink>
+    );
   }
-
-  return (
-    <AuthorLink
-      as={authors[0].node.authorsPage ? Link : "div"}
-      to={authors[0].node.slug}
-    >
-      <AuthorAvatar>
-        <Image src={authors[0].node.avatar.small.fluid} />
-      </AuthorAvatar>
-      <strong>{authors[0].node.name}</strong>
-      <HideOnMobile>,&nbsp;</HideOnMobile>
-    </AuthorLink>
-  );
 }
 
 export default ArticleAuthors;
 
-/**
- *
- */
 function CoAuthors({ authors }: { authors: IAuthor[] }) {
   const [isOpen, setIsOpen] = useState(false);
   const [colorMode] = useColorMode();
@@ -52,11 +49,8 @@ function CoAuthors({ authors }: { authors: IAuthor[] }) {
     <CoAuthorsContainer onClick={() => setIsOpen(!isOpen)} isOpen={isOpen}>
       <CoAuthorsList style={listWidth}>
         {authors.map((author, index) => (
-          <CoAuthorAvatar
-            style={{ left: `${index * 15}px` }}
-            key={author.node.name}
-          >
-            <Image src={author.node.avatar.small.fluid} />
+          <CoAuthorAvatar style={{ left: `${index * 15}px` }} key={author.name}>
+            <Image src={author.avatar.small} />
           </CoAuthorAvatar>
         ))}
       </CoAuthorsList>
@@ -72,15 +66,15 @@ function CoAuthors({ authors }: { authors: IAuthor[] }) {
               <Icons.ToggleClose fill={fill} />
             </IconOpenContainer>
             {authors.map(author => (
-              <CoAuthorsListItemOpen key={author.node.name}>
+              <CoAuthorsListItemOpen key={author.name}>
                 <AuthorLink
-                  as={author.node.authorsPage ? Link : "div"}
-                  to={author.node.slug}
+                  as={author.authorsPage ? Link : "div"}
+                  to={author.slug}
                 >
                   <CoAuthorAvatarOpen>
-                    <Image src={author.node.avatar.small.fluid} />
+                    <Image src={author.avatar.small} />
                   </CoAuthorAvatarOpen>
-                  <AuthorNameOpen>{author.node.name}</AuthorNameOpen>
+                  <AuthorNameOpen>{author.name}</AuthorNameOpen>
                 </AuthorLink>
               </CoAuthorsListItemOpen>
             ))}
@@ -100,9 +94,9 @@ function generateAuthorNames(authors: IAuthor[]) {
   return authors
     .map(author => {
       if (authors.length > 2) {
-        return author.node.name.split(" ")[0];
+        return author.name.split(" ")[0];
       } else {
-        return author.node.name;
+        return author.name;
       }
     })
     .join(", ");

@@ -24,6 +24,8 @@ Novela is built by the team at [Narative](https://www.narative.co), and built fo
 
 ### Table of Contents
 
+- [Why Novela?](#why-use-novela)
+
 - [Getting Started](#getting-started)
 
   - With Gatsby Starter Novela
@@ -40,7 +42,12 @@ Novela is built by the team at [Narative](https://www.narative.co), and built fo
     - [Adding a Post](#step-5-adding-a-post)
     - [Configuring Site Metadata](#step-6-configuring-sitemetadata)
 
-* [Customization](#customization)
+- [Data Sources](#data-sources)
+
+  - [Local](#local)
+  - [Contentful](#contentful)
+
+- [Customization](#customization)
 
   - [Enabling Author Pages](#enabling-author-pages)
   - [Changing styles](#changing-styles)
@@ -50,50 +57,14 @@ Novela is built by the team at [Narative](https://www.narative.co), and built fo
 
 - [Data Models](#data-models)
 
+  - [Theme Options](#theme-options)
   - [Author](#author)
   - [Post](#post)
   - [Site Metadata](#site-metadata)
 
-<br />
-<br />
+- [Future](#future)
 
-## Why use Novela?
-
-There are many Gatsby themes to choose from. Here’s why we think you won’t regret choosing Novela:
-
-### Multiple Homepage Layouts
-
-Choose between a variable width grid or a simpler list style to display each story.
-
-### Toggleable Light and Dark Mode
-
-Out of the box, Novela includes both light and dark designs that can be toggled by the user anywhere across the site.
-
-<img src="https://raw.githubusercontent.com/narative/gatsby-theme-novela-example/master/assets/gatsby-theme-novela-light-dark.gif" alt="gatsby-novela-theme light dark theme demonstration" />
-
-### Simple Customization with [Theme UI](https://theme-ui.com/)
-
-Consistent, easy-to-read code let you quickly customize every color and setting.
-
-### Show code effortlessly
-
-High quality embedded codeblocks that make authoring technical blog posts a breeze.
-
-### Highlight-to-Share
-
-Users can select text within an article to copy or share to platforms like Twitter and LinkedIn.
-
-<img src="https://raw.githubusercontent.com/narative/gatsby-theme-novela-example/master/assets/gatsby-theme-novela-share.jpg" alt="gatsby-novela-theme light dark theme demonstration" />
-
-### Read Time and Progress
-
-Read time is automatically generated for each article based on length, with an animated bar tracking the reader’s progress through each piece.
-
-### Accessibility in Mind
-
-Navigable by cursor or keyboard, readable via screens and screen readers, Novela ensures everyone on the web can read what you write.
-
-<img src="https://raw.githubusercontent.com/narative/gatsby-theme-novela-example/master/assets/gatsby-theme-novela-accessibility.gif" alt="gatsby-novela-theme accessibility demonstration" />
+  <br />
 
 # Getting Started with Gatsby Starter Novela
 
@@ -285,6 +256,73 @@ If you ran into problems you can reference the [example repository](https://gith
 
 <br />
 
+- [Data Sources](#data-sources)
+
+# Data Sources
+
+With the flexibility of Gatsby, Novela is able to pull different data sources to build your website. Right now we support Contentful and your local file system. All data sources can be combined together or used seperately.
+
+### Local
+
+Local is the default data source for Novela. Write MDX and YAML in order to generate posts and authors. This is the fastest and simplist way to get started.
+
+To learn how to use the local file system the [Installation](#installation) steps.
+
+### Contentful
+
+Contentful provides the flexibility of a headless CMS which allows you to write content without committing new files and working in a text editor. The setup process is simple if you are familiar with Contentful.
+
+You will need to setup your Contentful space and import the Novela model.
+
+#### Setting up `gatsby-source-contentful` in your project
+
+In order to use Contentful you must first install the plugin and `dotenv` in your project
+
+```sh
+yarn add gatsby-source-contentful dotenv
+```
+
+Then pass in the enviroment variables `.env` to the plugin
+
+#### `.env`
+
+```
+CONTENTFUL_SPACE_ID=
+CONTENTFUL_ACCESS_TOKEN=
+```
+
+#### `gatsby-config.js`
+
+```js
+require("dotenv").config();
+
+plugins: [
+  {
+    resolve: "gatsby-source-contentful",
+    options: {
+      spaceId: process.env.CONTENTFUL_SPACE_ID,
+      accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+    },
+  },
+  {
+    resolve: "@narative/gatsby-theme-novela",
+    options: {
+      sources: {
+        contentful: true,
+      },
+    },
+  },
+];
+```
+
+Finally, import the Contentful Model from Novela to get started. Novela Contentful Queries will not work without this exact data model.
+
+#### [Novela Contentful Data](https://github.com/narative/gatsby-theme-novela/tree/master/%40narative/gatsby-theme-novela/contentful)
+
+[Contentful space import docs](https://github.com/contentful/contentful-cli/tree/master/docs/space/import)
+
+Once you have your project setup with `gatsby-source-contentful` and `@narative/gatsby-theme-novela` and your Contentful space is setup with the imported model you are good to go.
+
 # Customization
 
 Once you've created the Logo component it should automatically appear in your site.
@@ -413,17 +451,19 @@ export default function Logo() {
 
 # Data Models
 
-## Novela Theme
+## Theme Options
 
 It is recommended to use the Default options, but if your project requires something else you can configure them to your need.
 
-| Option         |     Default     |                                        Description                                        |
-| -------------- | :-------------: | :---------------------------------------------------------------------------------------: |
-| contentPosts   |  content/posts  |                     Define where you want to pull your Post data from                     |
-| contentAuthors | content/authors |                    Define where you want to pull your Author data from                    |
-| authorsPage    |      false      |                                    Create Author pages                                    |
-| authorsPath    |    /authors     |                              Where should Author pages live?                              |
-| basePath       |        /        | Where should the site be served from? `/blog` will change all paths to start with `/blog` |
+| Option             |     Default     |                                        Description                                        |
+| ------------------ | :-------------: | :---------------------------------------------------------------------------------------: |
+| contentPosts       |  content/posts  |                     Define where you want to pull your Post data from                     |
+| contentAuthors     | content/authors |                    Define where you want to pull your Author data from                    |
+| authorsPage        |      false      |                                    Create Author pages                                    |
+| authorsPath        |    /authors     |                              Where should Author pages live?                              |
+| basePath           |        /        | Where should the site be served from? `/blog` will change all paths to start with `/blog` |
+| sources.local      |      true       |                           Enable local file system data source                            |
+| sources.contentful |      false      |                               Enable Contentful data source                               |
 
 [View Theme option example](https://github.com/narative/gatsby-theme-novela-example/blob/master/gatsby-config.js#L36)
 
@@ -435,6 +475,10 @@ plugins: [
       contentPosts: "content/posts",
       contentAuthors: "content/authors",
       basePath: "/",
+      sources: {
+        local: true,
+        contentful: false,
+      },
     },
   },
 ];
@@ -460,10 +504,8 @@ plugins: [
   avatar: ./avatars/dennis-brotzky.jpg
   featured: true
   social:
-    - name: github
-      url: https://github.com
-    - name: twitter
-      url: https://twitter.com
+    - url: https://github.com
+    - url: https://twitter.com
 
 - name: Thiago Costa
   bio: |
@@ -502,15 +544,15 @@ excerpt: This is a love story about Narative and Gatsby
 
 ## Site Metadata
 
-| Key           | Required |    Type    |                                                                   Description                                                                    |
-| ------------- | :------: | :--------: | :----------------------------------------------------------------------------------------------------------------------------------------------: |
-| title         | required |   String   |                                                           Used for the <title></title>                                                           |
-| name          | required | String Ref |                                          Used in multiple locations including meta tags and site footer                                          |
-| siteUrl       | required |    Date    |                                                                Used in meta tags                                                                 |
-| description   | required |   Image    |                                                                Used in meta tags                                                                 |
-| hero.heading  | required |   String   |                                                                 Used in the Hero                                                                 |
-| hero.maxWidth | optional |   number   |                                                        Used in the Hero. Defaults to 652                                                         |
-| social        | required |   Array    | [{ name, url}]. Supported names include github, twitter, linkedin, facebook, instagram, youtube, and dribbble. Used in site footer and meta tags |
+| Key           | Required |    Type    |                                                                Description                                                                 |
+| ------------- | :------: | :--------: | :----------------------------------------------------------------------------------------------------------------------------------------: |
+| title         | required |   String   |                                                        Used for the <title></title>                                                        |
+| name          | required | String Ref |                                       Used in multiple locations including meta tags and site footer                                       |
+| siteUrl       | required |    Date    |                                                             Used in meta tags                                                              |
+| description   | required |   Image    |                                                             Used in meta tags                                                              |
+| hero.heading  | required |   String   |                                                              Used in the Hero                                                              |
+| hero.maxWidth | optional |   number   |                                                     Used in the Hero. Defaults to 652                                                      |
+| social        | required |   Array    | [{ url}]. Supported names include github, twitter, linkedin, facebook, instagram, youtube, and dribbble. Used in site footer and meta tags |
 
 [View Site Metadata example](https://github.com/narative/gatsby-theme-novela-example/blob/master/gatsby-config.js)
 
@@ -537,19 +579,15 @@ module.exports = {
     // Add in the social links that will be displayed in the footer
     social: [
       {
-        name: `twitter`,
         url: `https://twitter.com/narative`,
       },
       {
-        name: `github`,
         url: `https://github.com/narative`,
       },
       {
-        name: `instagram`,
         url: `https://www.instagram.com/narative.co/`,
       },
       {
-        name: `dribbble`,
         url: `https://dribbble.com/narativestudio`,
       },
     ],
@@ -557,7 +595,43 @@ module.exports = {
 };
 ```
 
-<br />
+## Why use Novela?
+
+There are many Gatsby themes to choose from. Here’s why we think you won’t regret choosing Novela:
+
+### Multiple Homepage Layouts
+
+Choose between a variable width grid or a simpler list style to display each story.
+
+### Toggleable Light and Dark Mode
+
+Out of the box, Novela includes both light and dark designs that can be toggled by the user anywhere across the site.
+
+<img src="https://raw.githubusercontent.com/narative/gatsby-theme-novela-example/master/assets/gatsby-theme-novela-light-dark.gif" alt="gatsby-novela-theme light dark theme demonstration" />
+
+### Simple Customization with [Theme UI](https://theme-ui.com/)
+
+Consistent, easy-to-read code let you quickly customize every color and setting.
+
+### Show code effortlessly
+
+High quality embedded codeblocks that make authoring technical blog posts a breeze.
+
+### Highlight-to-Share
+
+Users can select text within an article to copy or share to platforms like Twitter and LinkedIn.
+
+<img src="https://raw.githubusercontent.com/narative/gatsby-theme-novela-example/master/assets/gatsby-theme-novela-share.jpg" alt="gatsby-novela-theme light dark theme demonstration" />
+
+### Read Time and Progress
+
+Read time is automatically generated for each article based on length, with an animated bar tracking the reader’s progress through each piece.
+
+### Accessibility in Mind
+
+Navigable by cursor or keyboard, readable via screens and screen readers, Novela ensures everyone on the web can read what you write.
+
+<img src="https://raw.githubusercontent.com/narative/gatsby-theme-novela-example/master/assets/gatsby-theme-novela-accessibility.gif" alt="gatsby-novela-theme accessibility demonstration" />
 
 # The Future
 

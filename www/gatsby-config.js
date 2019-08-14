@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 module.exports = {
   siteMetadata: {
     title: `Novela by Narative`,
@@ -10,27 +12,21 @@ module.exports = {
     },
     social: [
       {
-        name: `twitter`,
         url: `https://twitter.com/narative`,
       },
       {
-        name: `github`,
         url: `https://github.com/narative`,
       },
       {
-        name: `instagram`,
         url: `https://instagram.com/narative.co`,
       },
       {
-        name: `linkedin`,
         url: `https://www.linkedin.com/company/narative/`,
       },
       {
-        name: `dribbble`,
         url: `https://dribbble.com/narativestudio`,
       },
       {
-        name: `youtube`,
         url: `https://youtube.com`,
       },
     ],
@@ -43,6 +39,10 @@ module.exports = {
         contentAuthors: "content/authors",
         basePath: "/",
         authorsPage: true,
+        sources: {
+          local: true,
+          contentful: true,
+        },
       },
     },
     {
@@ -61,6 +61,13 @@ module.exports = {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: "UA-118232427-3",
+      },
+    },
+    {
+      resolve: "gatsby-source-contentful",
+      options: {
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
   ],

@@ -6,7 +6,7 @@ export interface IPaginator {
   pathPrefix: string;
 }
 
-interface ISharpImage {
+interface IGatsbyImage {
   src: string;
   base64?: string;
   srcWebp?: string;
@@ -15,69 +15,42 @@ interface ISharpImage {
   tracedSVG?: string;
 }
 
-interface ISharpFluidAttrs extends ISharpImage {
+interface IGatsbyImageFluid extends IGatsbyImage {
   maxHeight: number;
   maxWidth: number;
 }
 
-interface ISharpFixedAttrs extends ISharpImage {
+interface IGatsbyImageFixed extends IGatsbyImage {
   height: number;
   width: number;
 }
 
-type ISharpFixedOrFluidAttrs = ISharpFluidAttrs | ISharpFixedAttrs;
-
-export interface ISharpFixedAtKey {
-  fixed: ISharpFixedAttrs;
-}
-
-export interface ISharpFluidAtKey {
-  fluid: ISharpFluidAttrs;
-}
-
-interface IGraphqlSharpFixedImage {
-  childImageSharp: ISharpFixedAtKey;
-}
-
-interface IGraphqlSharpFluidImage {
-  childImageSharp: ISharpFluidAtKey;
-}
-
-interface IGraphqlFluidImage {
-  full: ISharpFixedOrFluidAttrs;
-  prevuew: ISharpFixedOrFluidAttrs;
-}
-
 export interface IAuthor {
-  node: {
-    authorsPage?: boolean;
-    featured?: boolean;
-    name: string;
-    slug: string;
-    bio: string;
-    avatar: {
-      image: ISharpFluidAttrs;
-      full: ISharpFluidAttrs;
-    };
+  authorsPage?: boolean;
+  featured?: boolean;
+  name: string;
+  slug: string;
+  bio: string;
+  avatar: {
+    image: IGatsbyImageFluid;
+    full: IGatsbyImageFluid;
   };
 }
 
 export interface IArticle {
-  node: {
-    slug: string;
-    authors: IAuthor[];
-    excerpt: string;
-    body: string;
-    id: string;
-    hero: {
-      full: ISharpFluidAttrs;
-      preview: ISharpFluidAttrs;
-      regular: ISharpFluidAttrs;
-      seo: ISharpFluidAttrs;
-    };
-    timeToRead: number;
-    date: string;
+  slug: string;
+  authors: IAuthor[];
+  excerpt: string;
+  body: string;
+  id: string;
+  hero: {
+    full: IGatsbyImageFluid;
+    preview: IGatsbyImageFluid;
+    regular: IGatsbyImageFluid;
+    seo: string;
   };
+  timeToRead: number;
+  date: string;
 }
 
 interface IArticleQuery {

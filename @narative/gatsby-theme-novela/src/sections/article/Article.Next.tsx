@@ -43,11 +43,9 @@ const GridItem = ({
   narrow?: boolean;
 }) => {
   if (!article) return null;
-  article = article.node;
+
   const hasOverflow = narrow && article.title.length > 35;
-  const imageSource = narrow
-    ? article.hero.narrow.fluid
-    : article.hero.regular.fluid;
+  const imageSource = narrow ? article.hero.narrow : article.hero.regular;
 
   return (
     <ArticleLink

@@ -29,7 +29,7 @@ const ArticleHero = ({ article, authors }: ArticleHeroProps) => {
         </HeroSubtitle>
       </Header>
       <HeroImage id="ArticleImage__Hero">
-        <Image src={article.hero.full.fluid} />
+        <Image src={article.hero.full} />
       </HeroImage>
     </Hero>
   );

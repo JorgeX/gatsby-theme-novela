@@ -1,7 +1,4 @@
-module.exports = ({
-  contentAuthors = "content/authors",
-  contentPosts = "content/posts",
-}) => ({
+module.exports = ({ contentAuthors = "content/authors", contentPosts = "content/posts" }) => ({
   mapping: {
     "Mdx.frontmatter.author": `AuthorsYaml`,
   },
@@ -45,10 +42,10 @@ module.exports = ({
           { resolve: `gatsby-remark-numbered-footnotes` },
           { resolve: `gatsby-remark-smartypants` },
           {
-            resolve: 'gatsby-remark-external-links',
+            resolve: "gatsby-remark-external-links",
             options: {
-              target: '_blank',
-              rel: 'noreferrer',
+              target: "_blank",
+              rel: "noreferrer",
             },
           },
         ],

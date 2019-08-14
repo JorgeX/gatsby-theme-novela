@@ -1,0 +1,886 @@
+{
+  "contentTypes": [
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "37jvonobvsvd"
+          }
+        },
+        "id": "post",
+        "type": "ContentType",
+        "createdAt": "2019-08-13T17:52:50.755Z",
+        "updatedAt": "2019-08-14T05:08:50.744Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 13,
+        "publishedAt": "2019-08-14T05:08:50.744Z",
+        "firstPublishedAt": "2019-08-13T17:52:51.153Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "44HsEvWtTVjj31u9g6CZX4"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "44HsEvWtTVjj31u9g6CZX4"
+          }
+        },
+        "publishedCounter": 7,
+        "version": 14,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "44HsEvWtTVjj31u9g6CZX4"
+          }
+        }
+      },
+      "displayField": "title",
+      "name": "Post",
+      "description": "",
+      "fields": [
+        {
+          "id": "title",
+          "name": "Title",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "unique": true
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "slug",
+          "name": "Slug",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "unique": true
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "author",
+          "name": "Author",
+          "type": "Array",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false,
+          "items": {
+            "type": "Link",
+            "validations": [
+              {
+                "linkContentType": [
+                  "author"
+                ]
+              }
+            ],
+            "linkType": "Entry"
+          }
+        },
+        {
+          "id": "date",
+          "name": "Date",
+          "type": "Date",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "hero",
+          "name": "Hero",
+          "type": "Link",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "linkMimetypeGroup": [
+                "image"
+              ]
+            }
+          ],
+          "disabled": false,
+          "omitted": false,
+          "linkType": "Asset"
+        },
+        {
+          "id": "excerpt",
+          "name": "Excerpt",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "size": {
+                "min": 1,
+                "max": 200
+              },
+              "message": "Excerpts are cut at 140 characters"
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "body",
+          "name": "Body",
+          "type": "Text",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        }
+      ]
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "37jvonobvsvd"
+          }
+        },
+        "id": "author",
+        "type": "ContentType",
+        "createdAt": "2019-08-13T18:02:58.230Z",
+        "updatedAt": "2019-08-14T05:08:51.331Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 9,
+        "publishedAt": "2019-08-14T05:08:51.331Z",
+        "firstPublishedAt": "2019-08-13T18:02:58.575Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "44HsEvWtTVjj31u9g6CZX4"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "44HsEvWtTVjj31u9g6CZX4"
+          }
+        },
+        "publishedCounter": 5,
+        "version": 10,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "44HsEvWtTVjj31u9g6CZX4"
+          }
+        }
+      },
+      "displayField": "name",
+      "name": "Author",
+      "description": "",
+      "fields": [
+        {
+          "id": "name",
+          "name": "Name",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "bio",
+          "name": "Bio",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "avatar",
+          "name": "Avatar",
+          "type": "Link",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "linkMimetypeGroup": [
+                "image"
+              ]
+            }
+          ],
+          "disabled": false,
+          "omitted": false,
+          "linkType": "Asset"
+        },
+        {
+          "id": "featured",
+          "name": "Featured",
+          "type": "Boolean",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "social",
+          "name": "Social",
+          "type": "Array",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false,
+          "items": {
+            "type": "Symbol",
+            "validations": [
+              {
+                "regexp": {
+                  "pattern": "^(ftp|http|https):\\/\\/(\\w+:{0,1}\\w*@)?(\\S+)(:[0-9]+)?(\\/|\\/([\\w#!:.?+=&%@!\\-\\/]))?$"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "editorInterfaces": [
+    {
+      "sys": {
+        "id": "default",
+        "type": "EditorInterface",
+        "space": {
+          "sys": {
+            "id": "37jvonobvsvd",
+            "type": "Link",
+            "linkType": "Space"
+          }
+        },
+        "version": 14,
+        "createdAt": "2019-08-13T17:52:51.300Z",
+        "createdBy": {
+          "sys": {
+            "id": "44HsEvWtTVjj31u9g6CZX4",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "updatedAt": "2019-08-14T05:08:52.516Z",
+        "updatedBy": {
+          "sys": {
+            "id": "44HsEvWtTVjj31u9g6CZX4",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "id": "post",
+            "type": "Link",
+            "linkType": "ContentType"
+          }
+        },
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        }
+      },
+      "controls": [
+        {
+          "fieldId": "title",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "slug",
+          "widgetId": "slugEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "author",
+          "settings": {
+            "bulkEditing": false
+          },
+          "widgetId": "entryLinksEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "date",
+          "widgetId": "datePicker",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "hero",
+          "widgetId": "assetLinkEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "excerpt",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "body",
+          "widgetId": "markdown",
+          "widgetNamespace": "builtin"
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "default",
+        "type": "EditorInterface",
+        "space": {
+          "sys": {
+            "id": "37jvonobvsvd",
+            "type": "Link",
+            "linkType": "Space"
+          }
+        },
+        "version": 10,
+        "createdAt": "2019-08-13T18:02:58.691Z",
+        "createdBy": {
+          "sys": {
+            "id": "44HsEvWtTVjj31u9g6CZX4",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "updatedAt": "2019-08-14T05:08:52.020Z",
+        "updatedBy": {
+          "sys": {
+            "id": "44HsEvWtTVjj31u9g6CZX4",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "id": "author",
+            "type": "Link",
+            "linkType": "ContentType"
+          }
+        },
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        }
+      },
+      "controls": [
+        {
+          "fieldId": "name",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "bio",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "avatar",
+          "widgetId": "assetLinkEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "featured",
+          "widgetId": "boolean",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "social",
+          "settings": {
+            "helpText": "Insert comma separated values"
+          },
+          "widgetId": "listInput",
+          "widgetNamespace": "builtin"
+        }
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "37jvonobvsvd"
+          }
+        },
+        "id": "4lXa5m6H3che3idCB1Z1vX",
+        "type": "Entry",
+        "createdAt": "2019-08-13T17:52:57.973Z",
+        "updatedAt": "2019-08-14T05:13:55.317Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 88,
+        "publishedAt": "2019-08-14T05:13:55.317Z",
+        "firstPublishedAt": "2019-08-13T18:11:47.649Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "44HsEvWtTVjj31u9g6CZX4"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "44HsEvWtTVjj31u9g6CZX4"
+          }
+        },
+        "publishedCounter": 7,
+        "version": 89,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "44HsEvWtTVjj31u9g6CZX4"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "post"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "My first Contentful Post using Novela by Narative"
+        },
+        "slug": {
+          "en-US": "my-first-contentful-post"
+        },
+        "author": {
+          "en-US": [
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "7Cm1HNoNZbDIxciZTblcIi"
+              }
+            }
+          ]
+        },
+        "date": {
+          "en-US": "2016-02-01T00:00-07:00"
+        },
+        "hero": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "2s6pFNSq0TEmAPBoCuMdOn"
+            }
+          }
+        },
+        "excerpt": {
+          "en-US": "With the growing community interest in Gatsby, we hope to create more resources that make it easier for anyone to grasp the power of this incredible tool."
+        },
+        "body": {
+          "en-US": "\nMy first post using `@narative/gatsby-theme-novela`. Novela is built by the team at [Narative](https://narative.co), and built for everyone that loves the web.\n\n## Headers\n\n# H1\n\nIt is recommended to NOT use H1s as it is reserved for the article heading. Any H1 is set as an H2.\n\n## H2\n\n### H3\n\n#### H4\n\n##### H5\n\n###### H6\n\n## Emphasis\n\nEmphasis, aka italics, with _asterisks_ or _underscores_.\n\nStrong emphasis, aka bold, with **asterisks** or **underscores**.\n\nCombined emphasis with **asterisks and _underscores_**.\n\nStrikethrough uses two tildes. ~~Scratch this.~~\n\n## Lists\n\n1. First ordered list item\n2. Another item\n3. Actual numbers don't matter, just that it's a number\n\n- Unordered list can use asterisks\n\n* Or minuses\n\n- Or pluses\n\n## Links\n\n[I'm an inline-style link](https://www.google.com)\n\n[I'm an inline-style link with title](https://www.google.com \"Google's Homepage\")\n\n[I'm a reference-style link][arbitrary case-insensitive reference text]\n\n[I'm a relative reference to a repository file](../blob/master/LICENSE)\n\n[You can use numbers for reference-style link definitions][1]\n\nOr leave it empty and use the [link text itself].\n\nURLs and URLs in angle brackets will automatically get turned into links.\nhttp://www.example.com or <http://www.example.com> and sometimes\nexample.com (but not on Github, for example).\n\nSome text to show that the reference links can follow later.\n\n[arbitrary case-insensitive reference text]: https://www.mozilla.org\n[1]: http://slashdot.org\n[link text itself]: http://www.reddit.com\n\n## Images\n\n![hero](//images.ctfassets.net/37jvonobvsvd/2s6pFNSq0TEmAPBoCuMdOn/aa0636d9b8ab507feb78193706f46c80/hero.jpg)\n\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry.\n\n## Code and Syntax Highlighting\n\n```javascript\nvar s = \"JavaScript syntax highlighting\";\nalert(s);\n```\n\n```\nNo language indicated, so no syntax highlighting.\nBut let's throw in a <b>tag</b>.\n```\n\n### JSX\n\n```jsx\nimport React from \"react\";\nimport { ThemeProvider } from \"theme-ui\";\nimport theme from \"./theme\";\n\nexport default props => (\n  <ThemeProvider theme={theme}>{props.children}</ThemeProvider>\n);\n```\n\n## Blockquotes\n\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing.\n\n> Blockquotes are very handy in email to emulate reply text.\n> This line is part of the same quote.\n\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum\n\n## Horizontal Rule\n\nHorizontal Rule\n\nThree or more...\n\n---\n\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum\n\n---\n\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum\n"
+        }
+      }
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "37jvonobvsvd"
+          }
+        },
+        "id": "7Cm1HNoNZbDIxciZTblcIi",
+        "type": "Entry",
+        "createdAt": "2019-08-13T18:05:42.319Z",
+        "updatedAt": "2019-08-14T05:09:04.264Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 120,
+        "publishedAt": "2019-08-14T05:09:04.264Z",
+        "firstPublishedAt": "2019-08-13T18:06:57.958Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "44HsEvWtTVjj31u9g6CZX4"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "44HsEvWtTVjj31u9g6CZX4"
+          }
+        },
+        "publishedCounter": 2,
+        "version": 121,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "44HsEvWtTVjj31u9g6CZX4"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "author"
+          }
+        }
+      },
+      "fields": {
+        "name": {
+          "en-US": "Dennis Brotzky"
+        },
+        "bio": {
+          "en-US": "Written by You. This is where your author bio lives. Share your work, your     joys and of course, your Twitter handle."
+        },
+        "avatar": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "6u4ekSNUSpLpXmjrz31yo1"
+            }
+          }
+        },
+        "featured": {
+          "en-US": true
+        },
+        "social": {
+          "en-US": [
+            "https://github.com",
+            "https://dribbble.com",
+            "https://instagram.com",
+            "https://facebook.com",
+            "https://youtube.com",
+            "https://linkedin.com"
+          ]
+        }
+      }
+    }
+  ],
+  "assets": [
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "37jvonobvsvd"
+          }
+        },
+        "id": "20loO7pTcDHEwVs49BiBdX",
+        "type": "Asset",
+        "createdAt": "2019-08-13T17:48:43.043Z",
+        "updatedAt": "2019-08-14T05:08:59.098Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 10,
+        "publishedAt": "2019-08-14T05:08:59.098Z",
+        "firstPublishedAt": "2019-08-13T17:49:09.610Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "44HsEvWtTVjj31u9g6CZX4"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "44HsEvWtTVjj31u9g6CZX4"
+          }
+        },
+        "publishedCounter": 2,
+        "version": 11,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "44HsEvWtTVjj31u9g6CZX4"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "placeholder"
+        },
+        "description": {
+          "en-US": "placeholder"
+        },
+        "file": {
+          "en-US": {
+            "url": "//images.ctfassets.net/37jvonobvsvd/20loO7pTcDHEwVs49BiBdX/5aa1de2ef9ae1c63edb1133a692569d7/Screen_Shot_2019-08-13_at_10.48.55_am.png",
+            "details": {
+              "size": 2893,
+              "image": {
+                "width": 338,
+                "height": 222
+              }
+            },
+            "fileName": "Screen Shot 2019-08-13 at 10.48.55 am.png",
+            "contentType": "image/png"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "37jvonobvsvd"
+          }
+        },
+        "id": "6u4ekSNUSpLpXmjrz31yo1",
+        "type": "Asset",
+        "createdAt": "2019-08-13T18:05:54.397Z",
+        "updatedAt": "2019-08-14T05:09:00.079Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 12,
+        "publishedAt": "2019-08-14T05:09:00.079Z",
+        "firstPublishedAt": "2019-08-13T18:06:17.547Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "44HsEvWtTVjj31u9g6CZX4"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "44HsEvWtTVjj31u9g6CZX4"
+          }
+        },
+        "publishedCounter": 2,
+        "version": 13,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "44HsEvWtTVjj31u9g6CZX4"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "dennis-avatar"
+        },
+        "file": {
+          "en-US": {
+            "url": "//images.ctfassets.net/37jvonobvsvd/6u4ekSNUSpLpXmjrz31yo1/d24e660ce25904c6d57b8ff1e4ec7ed3/dennis.jpg",
+            "details": {
+              "size": 26123,
+              "image": {
+                "width": 400,
+                "height": 400
+              }
+            },
+            "fileName": "dennis.jpg",
+            "contentType": "image/jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "37jvonobvsvd"
+          }
+        },
+        "id": "2s6pFNSq0TEmAPBoCuMdOn",
+        "type": "Asset",
+        "createdAt": "2019-08-13T18:07:23.664Z",
+        "updatedAt": "2019-08-14T05:08:59.475Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 17,
+        "publishedAt": "2019-08-14T05:08:59.475Z",
+        "firstPublishedAt": "2019-08-13T18:10:30.875Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "44HsEvWtTVjj31u9g6CZX4"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "44HsEvWtTVjj31u9g6CZX4"
+          }
+        },
+        "publishedCounter": 2,
+        "version": 18,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "44HsEvWtTVjj31u9g6CZX4"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "hero"
+        },
+        "description": {
+          "en-US": "hero placeholder"
+        },
+        "file": {
+          "en-US": {
+            "url": "//images.ctfassets.net/37jvonobvsvd/2s6pFNSq0TEmAPBoCuMdOn/84c28850408c23f17011aa47f3566630/hero.jpg",
+            "details": {
+              "size": 129796,
+              "image": {
+                "width": 1200,
+                "height": 740
+              }
+            },
+            "fileName": "hero.jpg",
+            "contentType": "image/jpeg"
+          }
+        }
+      }
+    }
+  ],
+  "locales": [
+    {
+      "name": "English (United States)",
+      "code": "en-US",
+      "fallbackCode": null,
+      "default": true,
+      "contentManagementApi": true,
+      "contentDeliveryApi": true,
+      "optional": false,
+      "sys": {
+        "type": "Locale",
+        "id": "4dWdarzjFHgKEuFxQ6KBT8",
+        "version": 1,
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "37jvonobvsvd"
+          }
+        },
+        "environment": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Environment",
+            "id": "master"
+          }
+        },
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "44HsEvWtTVjj31u9g6CZX4"
+          }
+        },
+        "createdAt": "2019-08-13T17:41:45Z",
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "44HsEvWtTVjj31u9g6CZX4"
+          }
+        },
+        "updatedAt": "2019-08-13T17:41:45Z"
+      }
+    }
+  ],
+  "webhooks": [
+  ],
+  "roles": [
+  ]
+}

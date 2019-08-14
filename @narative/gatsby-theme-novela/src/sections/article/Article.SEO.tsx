@@ -26,7 +26,7 @@ function ArticleSEO({
       "@id": "${location.href}"
     },
     "headline": "${article.title}",
-    "image": "${article.hero.seo.fixed.src}",
+    "image": "${article.hero.seo.src}",
     "datePublished": "${article.dateForSEO}",
     "author": ${authorsData},
     "description": "${article.excerpt.replace(/"/g, '\\"')}"
@@ -37,7 +37,7 @@ function ArticleSEO({
     <SEO
       title={article.title}
       description={article.excerpt}
-      image={article.hero.seo.fixed.src}
+      image={article.hero.seo.src}
       timeToRead={article.timeToRead}
       published={article.date}
       pathname={location.href}

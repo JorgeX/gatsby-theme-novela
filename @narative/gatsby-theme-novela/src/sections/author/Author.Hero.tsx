@@ -16,7 +16,7 @@ const AuthorHero = ({ author }: AuthorHeroProps) => {
   return (
     <Hero>
       <HeroImage>
-        <Image src={author.avatar.large.fluid} />
+        <Image src={author.avatar.large} />
       </HeroImage>
       <Heading>{author.name}</Heading>
       <Subheading>{author.bio}</Subheading>

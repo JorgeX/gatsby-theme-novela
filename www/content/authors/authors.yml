@@ -3,18 +3,12 @@
     Written by You. This is where your author bio lives. Share your work, your
     joys and of course, your Twitter handle.
   avatar: ./avatars/dennis-brotzky.jpg
-  featured: true
   social:
-    - name: github
-      url: https://github.com
-    - name: twitter
-      url: https://github.com
-    - name: instagram
-      url: https://github.com
-    - name: dribbble
-      url: https://github.com
-    - name: linkedin
-      url: https://github.com
+    - url: https://github.com
+    - url: https://github.com
+    - url: https://github.com
+    - url: https://github.com
+    - url: https://github.com
 
 - name: Thiago Costa
   bio: |
@@ -22,16 +16,11 @@
     joys and of course, your Twitter handle.
   avatar: ./avatars/thiago-costa.jpg
   social:
-    - name: github
-      url: https://github.com
-    - name: twitter
-      url: https://github.com
-    - name: instagram
-      url: https://github.com
-    - name: dribbble
-      url: https://github.com
-    - name: linkedin
-      url: https://github.com
+    - url: https://github.com
+    - url: https://github.com
+    - url: https://github.com
+    - url: https://github.com
+    - url: https://github.com
 
 - name: Brad Tiller
   bio: |
@@ -39,16 +28,11 @@
     joys and of course, your Twitter handle.
   avatar: ./avatars/brad-tiller.jpg
   social:
-    - name: github
-      url: https://github.com
-    - name: twitter
-      url: https://github.com
-    - name: instagram
-      url: https://github.com
-    - name: dribbble
-      url: https://github.com
-    - name: linkedin
-      url: https://github.com
+    - url: https://github.com
+    - url: https://github.com
+    - url: https://github.com
+    - url: https://github.com
+    - url: https://github.com
 
 - name: Mack Mansouri
   bio: |
@@ -56,13 +40,8 @@
     joys and of course, your Twitter handle.
   avatar: ./avatars/mack-mansouri.jpg
   social:
-    - name: github
-      url: https://github.com
-    - name: twitter
-      url: https://github.com
-    - name: instagram
-      url: https://github.com
-    - name: dribbble
-      url: https://github.com
-    - name: linkedin
-      url: https://github.com
+    - url: https://github.com
+    - url: https://github.com
+    - url: https://github.com
+    - url: https://github.com
+    - url: https://github.com
