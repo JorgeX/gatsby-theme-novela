@@ -26,7 +26,7 @@ Novela is built by the team at [Narative](https://www.narative.co), and built fo
 
 - [Why Novela?](#why-use-novela)
 
-- [Getting Started](#getting-started)
+- [Getting Started](#getting-started-with-gatsby-starter-novela)
 
   - With Gatsby Starter Novela
 
@@ -62,7 +62,7 @@ Novela is built by the team at [Narative](https://www.narative.co), and built fo
   - [Post](#post)
   - [Site Metadata](#site-metadata)
 
-- [Future](#future)
+- [Future](#the-future)
 
   <br />
 
