@@ -459,10 +459,8 @@ plugins: [
   avatar: ./avatars/dennis-brotzky.jpg
   featured: true
   social:
-    - name: github
-      url: https://github.com
-    - name: twitter
-      url: https://twitter.com
+    - url: https://github.com
+    - url: https://twitter.com
 
 - name: Thiago Costa
   bio: |
@@ -501,15 +499,15 @@ excerpt: This is a love story about Narative and Gatsby
 
 ## Site Metadata
 
-| Key           | Required |    Type    |                                                                   Description                                                                    |
-| ------------- | :------: | :--------: | :----------------------------------------------------------------------------------------------------------------------------------------------: |
-| title         | required |   String   |                                                           Used for the <title></title>                                                           |
-| name          | required | String Ref |                                          Used in multiple locations including meta tags and site footer                                          |
-| siteUrl       | required |    Date    |                                                                Used in meta tags                                                                 |
-| description   | required |   Image    |                                                                Used in meta tags                                                                 |
-| hero.heading  | required |   String   |                                                                 Used in the Hero                                                                 |
-| hero.maxWidth | optional |   number   |                                                        Used in the Hero. Defaults to 652                                                         |
-| social        | required |   Array    | [{ name, url}]. Supported names include github, twitter, linkedin, facebook, instagram, youtube, and dribbble. Used in site footer and meta tags |
+| Key           | Required |    Type    |                                                                Description                                                                 |
+| ------------- | :------: | :--------: | :----------------------------------------------------------------------------------------------------------------------------------------: |
+| title         | required |   String   |                                                        Used for the <title></title>                                                        |
+| name          | required | String Ref |                                       Used in multiple locations including meta tags and site footer                                       |
+| siteUrl       | required |    Date    |                                                             Used in meta tags                                                              |
+| description   | required |   Image    |                                                             Used in meta tags                                                              |
+| hero.heading  | required |   String   |                                                              Used in the Hero                                                              |
+| hero.maxWidth | optional |   number   |                                                     Used in the Hero. Defaults to 652                                                      |
+| social        | required |   Array    | [{ url}]. Supported names include github, twitter, linkedin, facebook, instagram, youtube, and dribbble. Used in site footer and meta tags |
 
 [View Site Metadata example](https://github.com/narative/gatsby-theme-novela-example/blob/master/gatsby-config.js)
 
@@ -536,19 +534,15 @@ module.exports = {
     // Add in the social links that will be displayed in the footer
     social: [
       {
-        name: `twitter`,
         url: `https://twitter.com/narative`,
       },
       {
-        name: `github`,
         url: `https://github.com/narative`,
       },
       {
-        name: `instagram`,
         url: `https://www.instagram.com/narative.co/`,
       },
       {
-        name: `dribbble`,
         url: `https://dribbble.com/narativestudio`,
       },
     ],
