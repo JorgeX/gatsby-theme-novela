@@ -351,7 +351,7 @@ module.exports = {
 Novela allows you to change the default theme styling by updating the [theme-ui](https://theme-ui.com/) values. If you're familiar with Styled Components or Emotion it's the same as adapting the theme you pass to `ThemeProvider`.
 
 First, you must create a theme file and then you can override `novelaTheme` values.
-[See all Novela theme values](https://github.com/narative/gatsby-theme-novela/tree/master/src/gatsby-plugin-theme-ui)
+[See all Novela theme values](https://github.com/narative/gatsby-theme-novela/tree/master/%40narative/gatsby-theme-novela/src/gatsby-plugin-theme-ui)
 
 ```js
 // src/gatsby-plugin-theme-ui/index.js
