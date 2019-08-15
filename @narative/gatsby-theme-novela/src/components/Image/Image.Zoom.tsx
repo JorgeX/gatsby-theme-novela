@@ -6,7 +6,10 @@ function handleImageZoomBackground(background: string) {
   const images = Array.from(document.getElementsByClassName("Image__Zoom"));
 
   images.map(img => {
-    if (img.previousElementSibling.tagName === "DIV") {
+    if (
+      img.previousElementSibling &&
+      img.previousElementSibling.tagName === "DIV"
+    ) {
       img.previousElementSibling.style.background = background;
     }
   });
