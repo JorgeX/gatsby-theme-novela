@@ -56,7 +56,7 @@ module.exports = ({ node, actions, getNode, createNodeId }, themeOptions) => {
       author: node.frontmatter.author,
       date: node.frontmatter.date,
       hero: node.frontmatter.hero,
-      secret: node.frontmatter.secret,
+      secret: node.frontmatter.secret || false,
       slug: slugify(node.frontmatter.slug || node.frontmatter.title),
       title: node.frontmatter.title,
     };
