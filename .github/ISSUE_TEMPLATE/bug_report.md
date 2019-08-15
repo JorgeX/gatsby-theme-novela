@@ -10,6 +10,7 @@ assignees: ''
 **Version of Novela you are using**
 
 **Number of posts you have and which data source**
+(Local, Contentful options)
 
 **Describe the bug**
 A clear and concise description of what the bug is.
