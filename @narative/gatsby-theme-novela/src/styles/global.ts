@@ -50,7 +50,6 @@ export const globalStyles = css`
       "Arial", sans-serif;
     font-size: 1.6rem;
     margin: 0;
-    background: #fafafa;
     font-weight: 400;
     height: 100%;
   }

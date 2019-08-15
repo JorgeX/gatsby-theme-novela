@@ -53,11 +53,12 @@ module.exports = ({ node, actions, getNode, createNodeId }, themeOptions) => {
 
   if (node.internal.type === `Mdx` && source === contentPath) {
     const fieldData = {
-      slug: slugify(node.frontmatter.slug || node.frontmatter.title),
       author: node.frontmatter.author,
-      title: node.frontmatter.title,
       date: node.frontmatter.date,
       hero: node.frontmatter.hero,
+      secret: node.frontmatter.secret,
+      slug: slugify(node.frontmatter.slug || node.frontmatter.title),
+      title: node.frontmatter.title,
     };
 
     createNode({

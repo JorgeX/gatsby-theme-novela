@@ -20,6 +20,7 @@ module.exports.local = {
         node {
           id
           slug
+          secret
           title
           author
           date(formatString: "MMMM Do, YYYY")
@@ -103,6 +104,7 @@ module.exports.contentful = {
           excerpt
           title
           slug
+          secret
           date(formatString: "MMMM Do, YYYY")
           dateForSEO: date
           hero {

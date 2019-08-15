@@ -524,6 +524,7 @@ plugins: [
 | date    | required |    Date    |                                       YYYY-MM-DD format                                       |
 | hero    | required |   Image    |                               1200px minimum width recommended                                |
 | excerpt | required |   String   |                                      140 character limit                                      |
+| secret  |  option  |  Boolean   |           If secret the Post will not appear in paginated lists. Defaults to false.           |
 
 [View Post example](https://github.com/narative/gatsby-theme-novela-example/blob/master/content/posts/2019-04-31-understanding-the-gatsby-lifecycle/index.mdx)
 
