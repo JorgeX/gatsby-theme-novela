@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 
 import Headings from "@components/Headings";
-import Image from "@components/Image";
+import Image, { ImagePlaceholder } from "@components/Image";
 
 import mediaqueries from "@styles/media";
 import { IArticle, IAuthor } from "@types";
@@ -17,11 +17,12 @@ interface ArticleHeroProps {
 const ArticleHero = ({ article, authors }: ArticleHeroProps) => {
   const hasCoAUthors = authors.length > 1;
   const hasHeroImage =
-    Object.keys(article.hero.full).length !== 0 && article.hero.full.constructor === Object;
+    Object.keys(article.hero.full).length !== 0 &&
+    article.hero.full.constructor === Object;
 
   return (
     <Hero>
-      <Header hasHeroImage={hasHeroImage}>
+      <Header>
         <HeroHeading>{article.title}</HeroHeading>
         <HeroSubtitle hasCoAUthors={hasCoAUthors}>
           <ArticleAuthors authors={authors} />
@@ -31,7 +32,11 @@ const ArticleHero = ({ article, authors }: ArticleHeroProps) => {
         </HeroSubtitle>
       </Header>
       <HeroImage id="ArticleImage__Hero">
-        <Image src={article.hero.full} />
+        {hasHeroImage ? (
+          <Image src={article.hero.full} />
+        ) : (
+          <ImagePlaceholder />
+        )}
       </HeroImage>
     </Hero>
   );
@@ -75,10 +80,10 @@ const ArticleMeta = styled.div<{ hasCoAUthors: boolean }>`
   `}
 `;
 
-const Header = styled.header<{ hasHeroImage: boolean }>`
+const Header = styled.header`
   position: relative;
   z-index: 10;
-  margin: ${p => (p.hasHeroImage ? "100px auto 120px" : "100px auto 0px")};
+  margin:100px auto 120px;
   padding-left: 68px;
   max-width: 749px;
 
@@ -159,10 +164,12 @@ const HeroImage = styled.div`
   position: relative;
   z-index: 1;
   width: 100%;
-  max-height: 424px;
+  height: 424px;
   max-width: 944px;
+  overflow: hidden;
   margin: 0 auto;
-  box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.2), 0 18px 36px -18px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.2),
+    0 18px 36px -18px rgba(0, 0, 0, 0.22);
 
   ${mediaqueries.tablet`
     max-width: 100%;

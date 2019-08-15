@@ -4,7 +4,7 @@ import { css } from "@emotion/core";
 import { Link } from "gatsby";
 
 import Headings from "@components/Headings";
-import Image from "@components/Image";
+import Image, { ImagePlaceholder } from "@components/Image";
 
 import mediaqueries from "@styles/media";
 import { IArticle } from "@types";
@@ -90,12 +90,14 @@ const ListItem = ({ article, narrow }: ArticlesListItemProps) => {
   const { gridLayout } = useContext(GridLayoutContext);
   const hasOverflow = narrow && article.title.length > 35;
   const imageSource = narrow ? article.hero.narrow : article.hero.regular;
+  const hasHeroImage =
+    Object.keys(imageSource).length !== 0 && imageSource.constructor === Object;
 
   return (
     <ArticleLink to={article.slug} data-a11y="false">
       <Item gridLayout={gridLayout}>
         <ImageContainer narrow={narrow} gridLayout={gridLayout}>
-          <Image src={imageSource} />
+          {hasHeroImage ? <Image src={imageSource} /> : <ImagePlaceholder />}
         </ImageContainer>
         <div>
           <Title dark hasOverflow={hasOverflow} gridLayout={gridLayout}>
