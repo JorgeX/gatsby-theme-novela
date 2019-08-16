@@ -235,11 +235,9 @@ module.exports = {
     },
     social: [
       {
-        name: `twitter`,
         url: `https://twitter.com/narative`,
       },
       {
-        name: `github`,
         url: `https://github.com/narative`,
       },
     ],
