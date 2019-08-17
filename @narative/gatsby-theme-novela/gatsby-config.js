@@ -59,5 +59,11 @@ module.exports = ({ contentAuthors = "content/authors", contentPosts = "content/
       },
     },
     `gatsby-plugin-theme-ui`,
+    {
+      resolve: 'gatsby-plugin-mailchimp',
+      options: {
+      	endpoint: 'Update with your own value',
+      },
+    },
   ],
 });
