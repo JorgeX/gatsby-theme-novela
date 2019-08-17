@@ -62,7 +62,7 @@ module.exports = ({ contentAuthors = "content/authors", contentPosts = "content/
     {
       resolve: 'gatsby-plugin-mailchimp',
       options: {
-      	endpoint: 'Update with your own value',
+      	endpoint: 'https://yourDomainHere.us18.list-manage.com/subscribe/post?u=1512315231251&amp;id=0asd21t12e1',
       },
     },
   ],
