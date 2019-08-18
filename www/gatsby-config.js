@@ -41,7 +41,7 @@ const plugins = [
       authorsPage: true,
       sources: {
         local: true,
-        contentful: true,
+        // contentful: true,
       },
     },
   },
@@ -61,13 +61,6 @@ const plugins = [
     resolve: `gatsby-plugin-google-analytics`,
     options: {
       trackingId: "UA-118232427-3",
-    },
-  },
-  {
-    resolve: "gatsby-source-contentful",
-    options: {
-      spaceId: process.env.CONTENTFUL_SPACE_ID,
-      accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
     },
   },
 ];
