@@ -20,6 +20,7 @@ const icons = {
   instagram: Icons.Instagram,
   github: Icons.Github,
   youtube: Icons.YouTube,
+  medium: Icons.Medium,
 };
 
 const getHostname = url => {
