@@ -378,7 +378,7 @@ export default {
 
 > Component Shadowing let’s you replace the theme’s original file, gatsby-theme-novela/src/components/Logo.js, with your own to implement any changes you need.
 
-Any [component](https://github.com/narative/gatsby-theme-novela/tree/master/src/components) or [section](https://github.com/narative/gatsby-theme-novela/tree/master/src/sections) is able to be replaced with your own custom component.
+Any [component](https://github.com/narative/gatsby-theme-novela/tree/master/%40narative/gatsby-theme-novela/src/components) or [section](https://github.com/narative/gatsby-theme-novela/tree/master/%40narative/gatsby-theme-novela/src/sections) is able to be replaced with your own custom component.
 
 This opens up a full customization of Novela to your designed needs. You can copy any component directly from Novela and alter it how you like, or you can create your own component to replace Novela's entirely.
 
