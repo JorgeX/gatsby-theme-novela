@@ -494,7 +494,7 @@ plugins: [
 | bio      | required | String  |                                        The Author's bio which is displayed on the home page                                        |
 | avatar   | required |  Image  |                                                        The Author's avatar                                                         |
 | featured | optional | Boolean |                                          If `true` the Author will appear on the homepage                                          |
-| social   | optional |  Array  | A list of social accounts and urls. Supported names include github, twitter, linkedin, facebook, instagram, youtube, and dribbble. |
+| social   | optional |  Array  | A list of social accounts and urls. Supported names include github, twitter, linkedin, facebook, instagram, youtube, medium, and dribbble. |
 
 ```yml
 - name: Dennis Brotzky
