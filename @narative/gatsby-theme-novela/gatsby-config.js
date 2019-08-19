@@ -59,5 +59,11 @@ module.exports = ({ contentAuthors = "content/authors", contentPosts = "content/
       },
     },
     `gatsby-plugin-theme-ui`,
+    {
+      resolve: 'gatsby-plugin-mailchimp',
+      options: {
+      	endpoint: 'https://yourDomainHere.us18.list-manage.com/subscribe/post?u=1512315231251&amp;id=0asd21t12e1',
+      },
+    },
   ],
 });
