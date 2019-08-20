@@ -24,6 +24,7 @@ function Layout({ children }: LayoutProps) {
   const [colorMode] = useColorMode();
   let finalTheme = theme;
 
+  console.log({ colorMode });
   if (colorMode === "dark") {
     finalTheme = Object.assign({}, theme, { colors: colors.modes[colorMode] });
   }
