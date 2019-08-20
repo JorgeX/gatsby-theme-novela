@@ -39,9 +39,10 @@ const plugins = [
       contentAuthors: "content/authors",
       basePath: "/",
       authorsPage: true,
+      mailchimp: true,
       sources: {
         local: true,
-        // contentful: true,
+        contentful: false,
       },
     },
   },
@@ -61,6 +62,13 @@ const plugins = [
     resolve: `gatsby-plugin-google-analytics`,
     options: {
       trackingId: "UA-118232427-3",
+    },
+  },
+  {
+    resolve: "gatsby-plugin-mailchimp",
+    options: {
+      endpoint:
+        "https://narative.us19.list-manage.com/subscribe/post?u=65ef169332a03669b9538f6ef&amp;id=c55c426282",
     },
   },
 ];

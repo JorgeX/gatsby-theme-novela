@@ -42,7 +42,7 @@ function Article({ pageContext, location }) {
   const results = useStaticQuery(siteQuery);
   const name = results.allSite.edges[0].node.siteMetadata.name;
 
-  const { article, authors, next } = pageContext;
+  const { article, authors, mailchimp, next } = pageContext;
 
   useEffect(() => {
     const calculateBodySize = throttle(() => {
@@ -93,7 +93,7 @@ function Article({ pageContext, location }) {
           <ArticleShare />
         </MDXRenderer>
       </ArticleBody>
-      <Subscription />
+      {mailchimp && <Subscription />}
       {next.length > 0 && (
         <NextArticle narrow>
           <FooterNext>More articles from {name}</FooterNext>
@@ -155,7 +155,7 @@ const FooterNext = styled.h3`
   &::after {
     content: '';
     position: absolute;
-    background: ${p => p.theme.colors.horizontalRule};
+    background: ${p => p.theme.colors.grey};
     width: ${(910 / 1140) * 100}%;
     height: 1px;
     right: 0;
