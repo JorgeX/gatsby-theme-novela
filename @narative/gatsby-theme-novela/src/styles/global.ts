@@ -1,5 +1,4 @@
 import { css } from "@emotion/core";
-import theme from "../gatsby-plugin-theme-ui";
 
 export const globalStyles = css`
   /**
@@ -64,14 +63,6 @@ export const globalStyles = css`
     outline: none;
   }
 
-  [hidden] {
-    display: none;
-  }
-
-  [unselectable] {
-    user-select: none;
-  }
-
   audio,
   canvas,
   iframe,
@@ -81,23 +72,6 @@ export const globalStyles = css`
     vertical-align: middle;
   }
 
-  select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    border: none;
-    background-color: transparent;
-    width: 100%;
-
-    &::-ms-expand {
-      display: none;
-    }
-
-    option {
-      color: #262626;
-    }
-  }
-
   input,
   textarea,
   select,
@@ -105,10 +79,6 @@ export const globalStyles = css`
     font-family: "-apple-system", "BlinkMacSystemFont", "San Francisco",
       "Helvetica Neue", "Helvetica", "Ubuntu", "Roboto", "Noto", "Segoe UI",
       "Arial", sans-serif;
-
-    &:-webkit-autofill {
-      box-shadow: 0 0 0 1000px white inset !important;
-    }
   }
 
   .underline {
@@ -159,25 +129,8 @@ export const globalStyles = css`
       outline: none;
     }
 
-    &::-webkit-input-placeholder,
-    &:-moz-placeholder,
-    &::-moz-placeholder,
-    &:-ms-input-placeholder,
-    &::-webkit-input-placeholder {
-      color: rgba(0, 0, 0, 0.25);
-    }
-
     &[type="number"] {
       width: auto;
-    }
-
-    &[type="search"] {
-      -webkit-appearance: textfield;
-
-      &::-webkit-search-cancel-button,
-      &::-webkit-search-decoration {
-        -webkit-appearance: none;
-      }
     }
   }
 
