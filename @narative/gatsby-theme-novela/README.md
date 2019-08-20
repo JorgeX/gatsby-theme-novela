@@ -483,6 +483,20 @@ plugins: [
 That's it. You will now have subscription boxes on each of your Posts.
 To disable the subscription box on individual Posts you can set `subscription: false` on the Post.
 
+You can shadow the Subscription component to customize the text displayed. It is recommneded to copy and paste the current component and only alter the text.
+
+You will want to override it here:
+
+```
+  novela-site
+  └── src
+    └── @narative
+      └── gatsby-theme-novela
+        └── components
+          └── Subscription
+            └── index.js
+```
+
 <br />
 
 # Data Models
