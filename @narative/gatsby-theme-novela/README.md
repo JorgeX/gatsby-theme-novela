@@ -52,8 +52,9 @@ Novela is built by the team at [Narative](https://www.narative.co), and built fo
   - [Enabling Author Pages](#enabling-author-pages)
   - [Changing styles](#changing-styles)
   - [Component shadowing](#component-shadowing)
-  - [Adding your logo](#adding-your-logo)
   - [Using images](#using-images)
+  - [Adding your logo](#adding-your-logo)
+  - [Adding Mailchimp](#adding-mailchimp)
 
 - [Data Models](#data-models)
 
@@ -235,9 +236,11 @@ module.exports = {
     },
     social: [
       {
+        name: `twitter`,
         url: `https://twitter.com/narative`,
       },
       {
+        name: `github`,
         url: `https://github.com/narative`,
       },
     ],
@@ -349,7 +352,7 @@ module.exports = {
 Novela allows you to change the default theme styling by updating the [theme-ui](https://theme-ui.com/) values. If you're familiar with Styled Components or Emotion it's the same as adapting the theme you pass to `ThemeProvider`.
 
 First, you must create a theme file and then you can override `novelaTheme` values.
-[See all Novela theme values](https://github.com/narative/gatsby-theme-novela/tree/master/src/gatsby-plugin-theme-ui)
+[See all Novela theme values](https://github.com/narative/gatsby-theme-novela/tree/master/%40narative/gatsby-theme-novela/src/gatsby-plugin-theme-ui)
 
 ```js
 // src/gatsby-plugin-theme-ui/index.js
@@ -376,7 +379,7 @@ export default {
 
 > Component Shadowing let’s you replace the theme’s original file, gatsby-theme-novela/src/components/Logo.js, with your own to implement any changes you need.
 
-Any [component](https://github.com/narative/gatsby-theme-novela/tree/master/src/components) or [section](https://github.com/narative/gatsby-theme-novela/tree/master/src/sections) is able to be replaced with your own custom component.
+Any [component](https://github.com/narative/gatsby-theme-novela/tree/master/%40narative/gatsby-theme-novela/src/components) or [section](https://github.com/narative/gatsby-theme-novela/tree/master/%40narative/gatsby-theme-novela/src/sections) is able to be replaced with your own custom component.
 
 This opens up a full customization of Novela to your designed needs. You can copy any component directly from Novela and alter it how you like, or you can create your own component to replace Novela's entirely.
 
@@ -445,6 +448,41 @@ export default function Logo() {
 }
 ```
 
+### Adding Mailchimp
+
+Want to add a subscription newsletter to your Posts? Novela gives you the option to integrate and build your following in a few easy steps.
+
+Start by downloading [gatsby-plugin-mailchimp](https://github.com/benjaminhoffman/gatsby-plugin-mailchimp):
+
+```sh
+yarn add gatsby-plugin-mailchimp
+```
+
+Then configure the plugins
+
+```js
+plugins: [
+  {
+    resolve: "@narative/gatsby-theme-novela",
+    options: {
+      contentPosts: "content/posts",
+      contentAuthors: "content/authors",
+      basePath: "/",
+      mailchimp: true, // make sure this is true!
+    },
+  },
+  {
+    resolve: "gatsby-plugin-mailchimp",
+    options: {
+      endpoint: "", // add your MC list endpoint here; see plugin repo for instructions
+    },
+  },
+];
+```
+
+That's it. You will now have subscription boxes on each of your Posts.
+To disable the subscription box on individual Posts you can set `subscription: false` on the Post.
+
 <br />
 
 # Data Models
@@ -460,6 +498,7 @@ It is recommended to use the Default options, but if your project requires somet
 | authorsPage        |      false      |                                    Create Author pages                                    |
 | authorsPath        |    /authors     |                              Where should Author pages live?                              |
 | basePath           |        /        | Where should the site be served from? `/blog` will change all paths to start with `/blog` |
+| mailchimp          |      false      |                        Enable Mailchimp subscriptions on each Post                        |
 | sources.local      |      true       |                           Enable local file system data source                            |
 | sources.contentful |      false      |                               Enable Contentful data source                               |
 
@@ -473,9 +512,10 @@ plugins: [
       contentPosts: "content/posts",
       contentAuthors: "content/authors",
       basePath: "/",
+      mailchimp: true,
       sources: {
         local: true,
-        contentful: false,
+        contentful: true,
       },
     },
   },
@@ -486,13 +526,13 @@ plugins: [
 
 [View Author example](https://github.com/narative/gatsby-theme-novela-example/blob/master/content/authors/authors.yml)
 
-| Key      | Required |  Type   |                                                             Desciption                                                             |
-| -------- | :------: | :-----: | :--------------------------------------------------------------------------------------------------------------------------------: |
-| name     | required | String  |                            The Author's full name which is used should be used as a reference in Posts                             |
-| bio      | required | String  |                                        The Author's bio which is displayed on the home page                                        |
-| avatar   | required |  Image  |                                                        The Author's avatar                                                         |
-| featured | optional | Boolean |                                          If `true` the Author will appear on the homepage                                          |
-| social   | optional |  Array  | A list of social accounts and urls. Supported names include github, twitter, linkedin, facebook, instagram, youtube, and dribbble. |
+| Key      | Required |  Type   |                                                                 Desciption                                                                 |
+| -------- | :------: | :-----: | :----------------------------------------------------------------------------------------------------------------------------------------: |
+| name     | required | String  |                                The Author's full name which is used should be used as a reference in Posts                                 |
+| bio      | required | String  |                                            The Author's bio which is displayed on the home page                                            |
+| avatar   | required |  Image  |                                                            The Author's avatar                                                             |
+| featured | optional | Boolean |                                              If `true` the Author will appear on the homepage                                              |
+| social   | optional |  Array  | A list of social accounts and urls. Supported names include github, twitter, linkedin, facebook, instagram, youtube, medium, and dribbble. |
 
 ```yml
 - name: Dennis Brotzky
@@ -514,15 +554,16 @@ plugins: [
 
 ## Post
 
-| Key     | Required |    Type    |                                          Description                                          |
-| ------- | :------: | :--------: | :-------------------------------------------------------------------------------------------: |
-| title   | required |   String   |                  Used as title and generates a default slug. Must be unique.                  |
-| slug    | optional |   String   |                Define a custom slug that will override the default title slug.                |
-| author  | required | String Ref | Must **match** a defined Author name. Co-author posts by adding comma seperated Author names. |
-| date    | required |    Date    |                                       YYYY-MM-DD format                                       |
-| hero    | required |   Image    |                               1200px minimum width recommended                                |
-| excerpt | required |   String   |                                      140 character limit                                      |
-| secret  |  option  |  Boolean   |           If secret the Post will not appear in paginated lists. Defaults to false.           |
+| Key          | Required |    Type    |                                          Description                                          |
+| ------------ | :------: | :--------: | :-------------------------------------------------------------------------------------------: |
+| title        | required |   String   |                  Used as title and generates a default slug. Must be unique.                  |
+| slug         | optional |   String   |                Define a custom slug that will override the default title slug.                |
+| author       | required | String Ref | Must **match** a defined Author name. Co-author posts by adding comma seperated Author names. |
+| date         | required |    Date    |                                       YYYY-MM-DD format                                       |
+| hero         | required |   Image    |                               1200px minimum width recommended                                |
+| excerpt      | required |   String   |                                      140 character limit                                      |
+| subscription | optional |   String   |          If mailchimp is enabled disable the subscription box on an individual Post           |
+| secret       | optional |  Boolean   |           If secret the Post will not appear in paginated lists. Defaults to false.           |
 
 [View Post example](https://github.com/narative/gatsby-theme-novela-example/blob/master/content/posts/2019-04-31-understanding-the-gatsby-lifecycle/index.mdx)
 
@@ -601,6 +642,10 @@ There are many Gatsby themes to choose from. Here’s why we think you won’t r
 ### Multiple Homepage Layouts
 
 Choose between a variable width grid or a simpler list style to display each story.
+
+### Mailchimp integration
+
+Start building an audiene and grow your blog with Mailchimp audiences.
 
 ### Toggleable Light and Dark Mode
 
