@@ -1,7 +1,8 @@
 "use strict";
 require("dotenv").config();
 
-const log = (msg, section) => console.log(`\n\x1b[36m${msg} \x1b[4m${section}\x1b[0m\x1b[0m\n`);
+const log = (msg, section) =>
+  console.log(`\n\x1b[36m${msg} \x1b[4m${section}\x1b[0m\x1b[0m\n`);
 
 const path = require("path");
 const createPaginatedPages = require("gatsby-paginate");
@@ -43,13 +44,17 @@ const byDate = (a, b) => new Date(b.dateForSEO) - new Date(a.dateForSEO);
 /////////////////////////////////////////////////////////
 
 module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
-  const basePath = themeOptions.basePath || `/`;
-  const authorsPath = themeOptions.authorsPath || `/authors`;
-  const authorsPage = themeOptions.authorsPage;
-  const pageLength = themeOptions.pageLength || 6;
+  const {
+    basePath = "/",
+    authorsPath = "/authors",
+    authorsPage = true,
+    pageLength = 6,
+    sources = {},
+    mailchimp = "",
+  } = themeOptions;
 
   // Defaulting to look at the local MDX files as sources.
-  const { local = true, contentful = false } = (themeOptions && themeOptions.sources) || {};
+  const { local = true, contentful = false } = sources;
 
   let authors;
   let articles;
@@ -69,9 +74,13 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
       const localAuthors = await graphql(query.local.authors);
       const localArticles = await graphql(query.local.articles);
 
-      dataSources.local.authors = localAuthors.data.authors.edges.map(normalize.local.authors);
+      dataSources.local.authors = localAuthors.data.authors.edges.map(
+        normalize.local.authors,
+      );
 
-      dataSources.local.articles = localArticles.data.articles.edges.map(normalize.local.articles);
+      dataSources.local.articles = localArticles.data.articles.edges.map(
+        normalize.local.articles,
+      );
     } catch (error) {
       console.error(error);
     }
@@ -156,7 +165,9 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
     let authorsThatWroteTheArticle;
     try {
       authorsThatWroteTheArticle = authors.filter(author => {
-        const allAuthors = article.author.split(",").map(a => a.trim().toLowerCase());
+        const allAuthors = article.author
+          .split(",")
+          .map(a => a.trim().toLowerCase());
 
         return allAuthors.some(a => a === author.name.toLowerCase());
       });
@@ -178,7 +189,8 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
     // If it's the last item in the list, there will be no articles. So grab the first 2
     if (next.length === 0) next = articles.slice(0, 2);
     // If there's 1 item in the list, grab the first article
-    if (next.length === 1 && articles.length !== 2) next = [...next, articles[0]];
+    if (next.length === 1 && articles.length !== 2)
+      next = [...next, articles[0]];
     if (articles.length === 1) next = [];
 
     createPage({
@@ -191,6 +203,7 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
         slug: article.slug,
         id: article.id,
         title: article.title,
+        mailchimp,
         next,
       },
     });
@@ -205,7 +218,9 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
 
     authors.forEach(author => {
       const articlesTheAuthorHasWritten = articles
-        .filter(article => article.author.toLowerCase().includes(author.name.toLowerCase()))
+        .filter(article =>
+          article.author.toLowerCase().includes(author.name.toLowerCase()),
+        )
         .filter(article => !article.secret);
       const path = slugify(author.name, authorsPath);
 

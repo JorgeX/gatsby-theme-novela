@@ -1,4 +1,7 @@
-module.exports = ({ contentAuthors = "content/authors", contentPosts = "content/posts" }) => ({
+module.exports = ({
+  contentAuthors = "content/authors",
+  contentPosts = "content/posts",
+}) => ({
   mapping: {
     "Mdx.frontmatter.author": `AuthorsYaml`,
   },

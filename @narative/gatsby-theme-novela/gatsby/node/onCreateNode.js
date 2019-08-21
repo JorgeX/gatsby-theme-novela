@@ -59,6 +59,7 @@ module.exports = ({ node, actions, getNode, createNodeId }, themeOptions) => {
       secret: node.frontmatter.secret || false,
       slug: slugify(node.frontmatter.slug || node.frontmatter.title),
       title: node.frontmatter.title,
+      subscription: node.frontmatter.subscription !== false,
     };
 
     createNode({

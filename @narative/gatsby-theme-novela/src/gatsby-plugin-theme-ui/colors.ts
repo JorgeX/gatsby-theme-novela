@@ -14,7 +14,11 @@ export default {
   track: "rgba(8, 8, 11, 0.3)",
   progress: "#000",
   card: "#fff",
+  error: "#EE565B",
+  success: "#46B17B",
+  errorBackground: "rgba(238, 86, 91, 0.1)",
   horizontalRule: "rgba(8, 8, 11, 0.15)",
+  inputBackground: "rgba(0, 0, 0, 0.05)",
   modes: {
     dark: {
       grey: "#73737D",
@@ -26,10 +30,14 @@ export default {
       gradient:
         "linear-gradient(180deg, #111216 0%, rgba(66, 81, 98, 0.36) 100%)",
       articleText: "#fff",
-      track: "rgba(255,255,255, 0.3)",
+      track: "rgba(255, 255, 255, 0.3)",
       progress: "#fff",
       card: "#1D2128",
-      horizontalRule: "rgba(255,255,255, 0.15)",
+      error: "#EE565B",
+      success: "#46B17B",
+      errorBackground: "rgba(238, 86, 91, 0.1)",
+      horizontalRule: "rgba(255, 255, 255, 0.15)",
+      inputBackground: "rgba(255, 255, 255, 0.07)",
     },
   },
 };

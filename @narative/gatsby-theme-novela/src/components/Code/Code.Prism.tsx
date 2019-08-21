@@ -86,7 +86,7 @@ function Copy({ toCopy }: { toCopy: string }) {
   }
 
   return (
-    <CopyButton onClick={copyToClipboardOnClick}>
+    <CopyButton onClick={copyToClipboardOnClick} data-a11y="false">
       {hasCopied ? (
         <>
           Copied <Icons.Copied fill="#6f7177" />
@@ -111,6 +111,18 @@ const CopyButton = styled.button`
 
   &:hover {
     background: rgba(255, 255, 255, 0.07);
+  }
+
+  &[data-a11y="true"]:focus::after {
+    content: "";
+    position: absolute;
+    left: -2%;
+    top: -2%;
+    width: 104%;
+    height: 104%;
+    border: 2px solid ${p => p.theme.colors.accent};
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.01);
   }
 
   ${mediaqueries.tablet`
