@@ -6,6 +6,7 @@ import Twitter from "./social/Twitter.Icon";
 import LinkedIn from "./social/LinkedIn.Icon";
 import Medium from "./social/Medium.Icon";
 import Github from "./social/Github.Icon";
+import Unsplash from "./social/Unsplash.Icon";
 import YouTube from "./social/YouTube.Icon";
 
 // UI
@@ -27,6 +28,7 @@ export default {
   LinkedIn,
   Medium,
   Github,
+  Unsplash,
   YouTube,
 
   ChevronLeft,
