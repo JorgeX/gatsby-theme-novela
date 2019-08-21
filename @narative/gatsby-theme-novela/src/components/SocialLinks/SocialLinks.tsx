@@ -21,6 +21,7 @@ const icons = {
   github: Icons.Github,
   youtube: Icons.YouTube,
   medium: Icons.Medium,
+  unsplash: Icons.Unsplash,
 };
 
 const getHostname = url => {
