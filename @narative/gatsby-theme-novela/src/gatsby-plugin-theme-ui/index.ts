@@ -10,14 +10,14 @@ const breakpoints = [
   ["tablet", 735],
   ["desktop", 1070],
   ["desktop_medium", 1280],
-  ["desktop_large", 1440],
+  ["desktop_large", 1440]
 ];
 
 const fonts = {
   serif: "'Merriweather', Georgia, Serif",
   sansSerif:
     "'SF Pro Display', '-apple-system', 'BlinkMacSystemFont', 'San Francisco', 'Helvetica Neue', 'Helvetica', 'Ubuntu', 'Roboto', 'Noto', 'Segoe UI', 'Arial', sans-serif",
-  monospace: `"Operator Mono", Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace`,
+  monospace: `"Operator Mono", Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace`
 };
 
 const colorModeTransition =
@@ -29,5 +29,5 @@ export default merge({
   colors,
   fonts,
   breakpoints,
-  tags,
+  tags
 });
