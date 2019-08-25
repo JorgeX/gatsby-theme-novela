@@ -36,7 +36,9 @@ function SocialLinks({ links, fill = "#73737D" }: SocialLinksProps) {
       {links.map(option => {
         const name = getHostname(option.url);
         const Icon = icons[name];
-
+        if (!Icon) {
+          throw new Error(`unsupported social link name=${name} / url=${option.url}`);
+        }
         return (
           <SocialIconContainer
             key={option.url}
