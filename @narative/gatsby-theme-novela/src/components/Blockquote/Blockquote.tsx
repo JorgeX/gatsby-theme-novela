@@ -13,6 +13,7 @@ const Blockquote = styled.blockquote`
   `};
 
   & > p {
+    font-family: ${p => p.theme.fonts.serif};
     max-width: 880px !important;
     padding-right: 100px;
     padding-bottom: 0;
