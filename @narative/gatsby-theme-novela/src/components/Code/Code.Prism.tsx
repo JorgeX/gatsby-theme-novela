@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import styled from "@emotion/styled";
+import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
+import theme from 'prism-react-renderer/themes/oceanicNext'
 
 import Icons from "@icons";
 import mediaqueries from "@styles/media";
@@ -26,11 +28,23 @@ function calculateLinesToHighlight(meta) {
   }
 }
 
-function CodePrism({ codeString, language, metastring }) {
+function CodePrism({ codeString, language, metastring, ...props }) {
   const shouldHighlightLine = calculateLinesToHighlight(metastring);
 
-  return (
-    <Highlight {...defaultProps} code={codeString} language={language}>
+  if (props['live']) {
+    return (
+      <Container>
+      <LiveProvider code={codeString} noInline={true} theme={theme}>
+        <LiveEditor style={{ marginBottom: '3px', borderRadius: '2px' }} />
+        <LivePreview style={{ fontSize: '18px', borderRadius: '2px' }} />
+        <LiveError  style={{ color: 'tomato' }} />
+      </LiveProvider >
+      </Container>
+    )
+  } else {
+
+    return (
+      <Highlight {...defaultProps} code={codeString} language={language}>
       {({ className, tokens, getLineProps, getTokenProps }) => {
         return (
           <div style={{ overflow: "auto" }}>
@@ -65,8 +79,9 @@ function CodePrism({ codeString, language, metastring }) {
           </div>
         );
       }}
-    </Highlight>
-  );
+      </Highlight>
+    );
+  }
 }
 
 export default CodePrism;
@@ -129,3 +144,37 @@ const CopyButton = styled.button`
     display: none;
   `}
 `;
+
+const Container = styled.div`
+  overflow: scroll;
+  width: 100%;
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 5px;
+  font-size: 13px;
+  margin: 15px auto 50px;
+  border-radius: 5px;
+
+      ${mediaqueries.desktop`
+      left: -26px;
+    `};
+
+    ${mediaqueries.tablet`
+      max-width: 526px;
+      padding: 20px 20px;
+      left: 0;
+    `};
+
+    ${mediaqueries.phablet`
+      border-radius: 0;
+      margin: 0 auto 25px;
+      padding: 25px 20px;
+      overflow: initial;
+      width: unset;
+      max-width: unset;
+      float: left;
+      min-width: 100%;
+      overflow: initial;
+      position: relative;
+    `};
+`
