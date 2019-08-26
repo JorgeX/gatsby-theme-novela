@@ -31,17 +31,17 @@ module.exports.local = {
           body
           hero {
             full: childImageSharp {
-              fluid(maxWidth: 944, maxHeight: 425, quality: 90) {
+              fluid(maxWidth: 944, quality: 100) {
                 ${GatsbyFluid_withWebp}
               }
             }
             regular: childImageSharp {
-              fluid(maxWidth: 653, quality: 90) {
+              fluid(maxWidth: 653, quality: 100) {
                 ${GatsbyFluid_withWebp}
               }
             }
             narrow: childImageSharp {
-              fluid(maxWidth: 457, quality: 90) {
+              fluid(maxWidth: 457, quality: 100) {
                 ${GatsbyFluid_withWebp}
               }
             }
@@ -109,13 +109,13 @@ module.exports.contentful = {
           date(formatString: "MMMM Do, YYYY")
           dateForSEO: date
           hero {
-            full: fluid(maxWidth: 944, maxHeight: 425, quality: 90) {
+            full: fluid(maxWidth: 944, quality: 100) {
               ${GatsbyFluid_withWebp}
             }
-            regular: fluid(maxWidth: 653, quality: 90) {
+            regular: fluid(maxWidth: 653, quality: 100) {
               ${GatsbyFluid_withWebp}
             }
-            narrow: fluid(maxWidth: 457, quality: 90) {
+            narrow: fluid(maxWidth: 457, quality: 100) {
               ${GatsbyFluid_withWebp}
             }
             seo: fixed(width: 1200, quality: 100) {

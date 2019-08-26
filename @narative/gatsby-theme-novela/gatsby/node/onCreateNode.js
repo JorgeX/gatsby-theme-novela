@@ -12,6 +12,8 @@ module.exports = ({ node, actions, getNode, createNodeId }, themeOptions) => {
   function slugify(str) {
     const slug = str
       .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/(^-|-$)+/g, "");
 
@@ -23,10 +25,12 @@ module.exports = ({ node, actions, getNode, createNodeId }, themeOptions) => {
   const source = fileNode && fileNode.sourceInstanceName;
 
   if (node.internal.type === `AuthorsYaml`) {
+    const slug = node.slug ? `/${node.slug}` : slugify(node.name);
+
     const fieldData = {
       ...node,
       authorsPage: themeOptions.authorsPage || false,
-      slug: `/authors${slugify(node.name)}`,
+      slug: `/authors${slug}`,
     };
 
     createNode({

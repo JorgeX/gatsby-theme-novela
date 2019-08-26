@@ -29,6 +29,8 @@ function buildPaginatedPath(index, basePath) {
 function slugify(str, base) {
   const slug = str
     .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)+/g, "");
 
@@ -222,11 +224,11 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
           article.author.toLowerCase().includes(author.name.toLowerCase()),
         )
         .filter(article => !article.secret);
-      const path = slugify(author.name, authorsPath);
+      const path = slugify(author.slug, authorsPath);
 
       createPaginatedPages({
         edges: articlesTheAuthorHasWritten,
-        pathPrefix: path,
+        pathPrefix: author.slug,
         createPage,
         pageLength,
         pageTemplate: templates.author,
