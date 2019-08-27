@@ -57,7 +57,7 @@ export default MDX;
 const IMAGE_WIDTHS = {
   regular: "680px",
   large: "1004px",
-  full: "100vw",
+  full: "100%",
 };
 
 const ARTICLE_WIDTH = css`
