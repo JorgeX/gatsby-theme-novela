@@ -26,6 +26,8 @@ function Layout({ children }: LayoutProps) {
 
   if (colorMode === "dark") {
     finalTheme = Object.assign({}, theme, { colors: colors.modes[colorMode] });
+
+    parent.postMessage({ theme: colorMode }, "*");
   }
 
   return (
