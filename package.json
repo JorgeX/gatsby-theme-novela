@@ -21,6 +21,7 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-unicorn": "^10.0.0",
+    "husky": "^3.0.4",
     "prettier": "^1.18.2"
   },
   "eslintConfig": {
@@ -44,6 +45,11 @@
           }
         }
       ]
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint"
     }
   },
   "prettier": {
