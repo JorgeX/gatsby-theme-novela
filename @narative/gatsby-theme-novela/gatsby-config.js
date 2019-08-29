@@ -28,6 +28,19 @@ module.exports = ({
             }
           }
         `,
+        setup: ({
+          query: {
+            site: { siteMetadata },
+          },
+          ...rest
+        }) => {
+          siteMetadata.feed_url = siteMetadata.siteUrl + '/rss.xml';
+
+          return {
+            ...siteMetadata,
+            ...rest,
+          }
+        },
         feeds: [
           {
             serialize: ({ query: { site, allArticle } }) => {
@@ -58,15 +71,7 @@ module.exports = ({
               }
             `,
             output: "/rss.xml",
-            title: "Laravelista's RSS Feed",
-            description: "A blog without an RSS feed is just blah!",
-            language: "en",
-            copyright: '2019 Laravelista',
-            managingEditor: 'Mario Bašić',
-            webMaster: 'Mario Bašić',
-            feed_url: 'https://blog.laravelista.hr/rss.xml',
-            site_url: 'https://blog.laravelista.hr',
-            image_url: 'https://blog.laravelista.hr/logo-rss.png',
+            title: 'This is broken. It cannot be set from code, only manually for now. See: https://github.com/gatsbyjs/gatsby/issues/17100'
           },
         ],
       },
