@@ -35,6 +35,7 @@ module.exports = ({
           ...rest
         }) => {
           siteMetadata.feed_url = siteMetadata.siteUrl + '/rss.xml';
+          siteMetadata.image_url = siteMetadata.siteUrl + '/rss-logo.png';
 
           return {
             ...siteMetadata,
@@ -70,8 +71,7 @@ module.exports = ({
                 }
               }
             `,
-            output: "/rss.xml",
-            title: 'This is broken. It cannot be set from code, only manually for now. See: https://github.com/gatsbyjs/gatsby/issues/17100'
+            output: "/rss.xml"
           },
         ],
       },
