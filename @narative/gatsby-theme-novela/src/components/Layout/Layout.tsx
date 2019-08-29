@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ThemeProvider, useColorMode } from "theme-ui";
 import { Global } from "@emotion/core";
 import styled from "@emotion/styled";
@@ -27,6 +27,10 @@ function Layout({ children }: LayoutProps) {
   if (colorMode === "dark") {
     finalTheme = Object.assign({}, theme, { colors: colors.modes[colorMode] });
   }
+
+  useEffect(() => {
+    parent.postMessage({ theme: colorMode }, "*");
+  }, [colorMode]);
 
   return (
     <ThemeProvider theme={finalTheme}>
