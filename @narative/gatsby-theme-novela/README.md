@@ -55,7 +55,6 @@ Novela is built by the team at [Narative](https://www.narative.co), and built fo
   - [Using images](#using-images)
   - [Adding your logo](#adding-your-logo)
   - [Adding Mailchimp](#adding-mailchimp)
-  - [Adding RSS image](#adding-rss-image)
 
 - [Data Models](#data-models)
 
@@ -497,10 +496,6 @@ You will want to override it here:
           └── Subscription
             └── index.js
 ```
-
-### Adding RSS image
-
-To add an image to your RSS feed, Create a directory `/static` and inside it place an image called `rss-logo.png`.
 
 <br />
 

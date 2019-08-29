@@ -35,7 +35,7 @@ module.exports = ({
           ...rest
         }) => {
           siteMetadata.feed_url = siteMetadata.siteUrl + '/rss.xml';
-          siteMetadata.image_url = siteMetadata.siteUrl + '/rss-logo.png';
+          siteMetadata.image_url = siteMetadata.siteUrl + '/icons/icon-512x512.png';
 
           return {
             ...siteMetadata,
