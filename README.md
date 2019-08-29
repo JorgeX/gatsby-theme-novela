@@ -1,4 +1,4 @@
-<a href="https://gatsby-theme-novela.netlify.com" target="_blank">
+<a href="https://www.narative.co/labs/novela/" target="_blank">
 <img src="https://raw.githubusercontent.com/narative/gatsby-theme-novela-example/master/assets/gatsby-theme-novela-hero.jpg" alt="gatsby-novela-theme hero image" />
 </a>
 
@@ -11,7 +11,7 @@ With minimal styling and maximum features — including multiple homepage layout
 Novela is built by the team at [Narative](https://www.narative.co), and built for everyone that loves the web.
 
 <div>
-<a href="https://gatsby-theme-novela.netlify.com" target="_blank">
+<a href="https://www.narative.co/labs/novela/" target="_blank">
 <img src="https://raw.githubusercontent.com/narative/gatsby-theme-novela-example/master/assets/gatsby-theme-novela-cta-demo.jpg" alt="gatsby-novela-theme live demo" width="295px" />
 </a>
 </div>
