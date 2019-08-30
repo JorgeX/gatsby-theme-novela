@@ -19,11 +19,11 @@
   "scripts": {
     "build": "gatsby build",
     "clean": "gatsby clean",
-    "develop": "gatsby develop",
-    "publish": "npm publish --access public",
-    "contentful:import": "contentful space import --config contentful.json",
     "contentful:export": "contentful space export --config contentful.json --skip-content --skip-roles --skip-webhooks",
-    "contentful:export:model": "contentful space export --config contentful.json"
+    "contentful:export:model": "contentful space export --config contentful.json",
+    "contentful:import": "contentful space import --config contentful.json",
+    "develop": "gatsby develop",
+    "publish": "npm publish --access public"
   },
   "peerDependencies": {
     "gatsby": "^2.13.41",
