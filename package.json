@@ -36,6 +36,7 @@
     "overrides": [],
     "plugins": [],
     "rules": {
+      "unicorn/no-abusive-eslint-disable": 0,
       "unicorn/filename-case": [
         "error",
         {
