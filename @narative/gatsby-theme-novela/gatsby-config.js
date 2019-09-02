@@ -34,27 +34,31 @@ module.exports = ({
           },
           ...rest
         }) => {
-          siteMetadata.feed_url = siteMetadata.siteUrl + '/rss.xml';
-          siteMetadata.image_url = siteMetadata.siteUrl + '/icons/icon-512x512.png';
+          const siteMetadataModified = siteMetadata;
+          siteMetadataModified.feed_url = `${siteMetadata.siteUrl}/rss.xml`;
+          siteMetadataModified.image_url = `${siteMetadata.siteUrl}/icons/icon-512x512.png`;
 
           return {
-            ...siteMetadata,
+            ...siteMetadataModified,
             ...rest,
-          }
+          };
         },
         feeds: [
           {
             serialize: ({ query: { site, allArticle } }) => {
-              return allArticle.edges.map(edge => {
-                return Object.assign({}, edge.node, {
-                  description: edge.node.excerpt,
-                  date: edge.node.date,
-                  url: site.siteMetadata.siteUrl + edge.node.slug,
-                  guid: site.siteMetadata.siteUrl + edge.node.slug,
-                  // custom_elements: [{ "content:encoded": edge.node.body }],
-                  author: edge.node.author
-                })
-              })
+              return allArticle.edges
+                .filter(edge => !edge.node.secret)
+                .map(edge => {
+                  return {
+                    ...edge.node,
+                    description: edge.node.excerpt,
+                    date: edge.node.date,
+                    url: site.siteMetadata.siteUrl + edge.node.slug,
+                    guid: site.siteMetadata.siteUrl + edge.node.slug,
+                    // custom_elements: [{ "content:encoded": edge.node.body }],
+                    author: edge.node.author,
+                  };
+                });
             },
             query: `
               {
@@ -66,12 +70,13 @@ module.exports = ({
                       slug
                       title
                       author
+                      secret
                     }
                   }
                 }
               }
             `,
-            output: "/rss.xml"
+            output: '/rss.xml',
           },
         ],
       },
