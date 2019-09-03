@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 module.exports = ({
   contentAuthors = 'content/authors',
   contentPosts = 'content/posts',
@@ -35,12 +37,13 @@ module.exports = ({
           ...rest
         }) => {
           siteMetadata.feed_url = siteMetadata.siteUrl + '/rss.xml';
-          siteMetadata.image_url = siteMetadata.siteUrl + '/icons/icon-512x512.png';
+          siteMetadata.image_url =
+            siteMetadata.siteUrl + '/icons/icon-512x512.png';
 
           return {
             ...siteMetadata,
             ...rest,
-          }
+          };
         },
         feeds: [
           {
@@ -52,9 +55,9 @@ module.exports = ({
                   url: site.siteMetadata.siteUrl + edge.node.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.slug,
                   // custom_elements: [{ "content:encoded": edge.node.body }],
-                  author: edge.node.author
-                })
-              })
+                  author: edge.node.author,
+                });
+              });
             },
             query: `
               {
@@ -71,7 +74,7 @@ module.exports = ({
                 }
               }
             `,
-            output: "/rss.xml"
+            output: '/rss.xml',
           },
         ],
       },
