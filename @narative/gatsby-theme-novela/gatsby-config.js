@@ -15,6 +15,7 @@ module.exports = ({
     `gatsby-transformer-sharp`,
     `gatsby-transformer-remark`,
     `gatsby-transformer-yaml`,
+    `gatsby-plugin-theme-ui`,
     {
       resolve: `gatsby-plugin-feed`,
       options: {
@@ -127,6 +128,5 @@ module.exports = ({
         displayName: process.env.NODE_ENV === `development`,
       },
     },
-    `gatsby-plugin-theme-ui`,
   ],
 });
