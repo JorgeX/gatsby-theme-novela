@@ -1,15 +1,13 @@
-import React, { useEffect } from "react";
-import { ThemeProvider, useColorMode } from "theme-ui";
-import { Global } from "@emotion/core";
-import styled from "@emotion/styled";
+import React, { useEffect } from 'react';
+import { Global } from '@emotion/core';
+import styled from '@emotion/styled';
+import { useColorMode } from 'theme-ui';
 
-import NavigationFooter from "@components/Navigation/Navigation.Footer";
-import NavigationHeader from "@components/Navigation/Navigation.Header";
-import ArticlesContextProvider from "../../sections/articles/Articles.List.Context";
+import NavigationFooter from '@components/Navigation/Navigation.Footer';
+import NavigationHeader from '@components/Navigation/Navigation.Header';
+import ArticlesContextProvider from '../../sections/articles/Articles.List.Context';
 
-import { globalStyles } from "@styles";
-import theme from "../../gatsby-plugin-theme-ui";
-import colors from "../../gatsby-plugin-theme-ui/colors";
+import { globalStyles } from '@styles';
 
 interface LayoutProps {
   children: React.ReactChild;
@@ -22,27 +20,20 @@ interface LayoutProps {
  */
 function Layout({ children }: LayoutProps) {
   const [colorMode] = useColorMode();
-  let finalTheme = theme;
-
-  if (colorMode === "dark") {
-    finalTheme = Object.assign({}, theme, { colors: colors.modes[colorMode] });
-  }
 
   useEffect(() => {
-    parent.postMessage({ theme: colorMode }, "*");
+    parent.postMessage({ theme: colorMode }, '*');
   }, [colorMode]);
 
   return (
-    <ThemeProvider theme={finalTheme}>
-      <ArticlesContextProvider>
-        <Container>
-          <Global styles={globalStyles} />
-          <NavigationHeader />
-          {children}
-          <NavigationFooter />
-        </Container>
-      </ArticlesContextProvider>
-    </ThemeProvider>
+    <ArticlesContextProvider>
+      <Container>
+        <Global styles={globalStyles} />
+        <NavigationHeader />
+        {children}
+        <NavigationFooter />
+      </Container>
+    </ArticlesContextProvider>
   );
 }
 

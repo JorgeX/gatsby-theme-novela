@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 module.exports = ({
   contentAuthors = 'content/authors',
   contentPosts = 'content/posts',
@@ -13,6 +15,7 @@ module.exports = ({
     `gatsby-transformer-sharp`,
     `gatsby-transformer-remark`,
     `gatsby-transformer-yaml`,
+    `gatsby-plugin-theme-ui`,
     {
       resolve: `gatsby-plugin-feed`,
       options: {
@@ -34,6 +37,9 @@ module.exports = ({
           },
           ...rest
         }) => {
+          siteMetadata.feed_url = siteMetadata.siteUrl + '/rss.xml';
+          siteMetadata.image_url =
+            siteMetadata.siteUrl + '/icons/icon-512x512.png';
           const siteMetadataModified = siteMetadata;
           siteMetadataModified.feed_url = `${siteMetadata.siteUrl}/rss.xml`;
           siteMetadataModified.image_url = `${siteMetadata.siteUrl}/icons/icon-512x512.png`;
@@ -129,6 +135,5 @@ module.exports = ({
         displayName: process.env.NODE_ENV === `development`,
       },
     },
-    `gatsby-plugin-theme-ui`,
   ],
 });

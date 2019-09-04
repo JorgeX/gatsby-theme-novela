@@ -3,6 +3,7 @@ import React from "react";
 export default props => (
   <html {...props.htmlAttributes}>
     <head>
+
       <meta charSet="utf-8" />
       <meta httpEquiv="x-ua-compatible" content="ie=edge" />
       <meta
