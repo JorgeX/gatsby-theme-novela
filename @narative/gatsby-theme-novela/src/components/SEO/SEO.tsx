@@ -17,9 +17,9 @@
  *
  */
 
-import React from "react";
-import Helmet from "react-helmet";
-import { graphql, useStaticQuery } from "gatsby";
+import React from 'react';
+import Helmet from 'react-helmet';
+import { graphql, useStaticQuery } from 'gatsby';
 
 interface HelmetProps {
   children?: React.ReactChildren;
@@ -52,6 +52,23 @@ const seoQuery = graphql`
   }
 `;
 
+const themeUIDarkModeWorkaroundScript = [
+  {
+    type: 'text/javascript',
+    innerHTML: `
+    (function() {
+      try {
+        var mode = localStorage.getItem('theme-ui-color-mode');
+        console.log('fired', mode)
+        if (!mode) {
+          localStorage.setItem('theme-ui-color-mode', 'light');
+        }
+      } catch (e) {}
+    })();
+  `,
+  },
+];
+
 function SEO({
   title,
   description,
@@ -64,67 +81,68 @@ function SEO({
 }: HelmetProps) {
   const results = useStaticQuery(seoQuery);
   const site = results.allSite.edges[0].node.siteMetadata;
-  const twitter = site.social.find(option => option.name === "twitter") || {};
+  const twitter = site.social.find(option => option.name === 'twitter') || {};
 
   const fullURL = (path: string) =>
     path ? `${site.siteUrl}${path}` : site.siteUrl;
 
   // If no image is provided lets looks for a default novela static image
-  image = image ? image : "/preview.jpg";
+  image = image ? image : '/preview.jpg';
 
   const metaTags = [
-    { charset: "utf-8" },
+    { charset: 'utf-8' },
     {
-      "http-equiv": "X-UA-Compatible",
-      content: "IE=edge",
+      'http-equiv': 'X-UA-Compatible',
+      content: 'IE=edge',
     },
     {
-      name: "viewport",
-      content: "width=device-width, initial-scale=1",
+      name: 'viewport',
+      content: 'width=device-width, initial-scale=1',
     },
     {
-      name: "theme-color",
-      content: "#fff",
+      name: 'theme-color',
+      content: '#fff',
     },
     {
-      rel: "canonical",
+      rel: 'canonical',
       href: fullURL(pathname),
     },
-    { itemprop: "name", content: title || site.title },
-    { itemprop: "description", content: description || site.description },
-    { itemprop: "image", content: fullURL(image) },
-    { name: "description", content: description || site.description },
+    { itemprop: 'name', content: title || site.title },
+    { itemprop: 'description', content: description || site.description },
+    { itemprop: 'image', content: fullURL(image) },
+    { name: 'description', content: description || site.description },
 
-    { name: "twitter:card", content: "summary_large_image" },
-    { name: "twitter:site", content: site.name },
-    { name: "twitter:title", content: title || site.title },
-    { name: "twitter:description", content: description || site.description },
-    { name: "twitter:creator", content: twitter.url },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:site', content: site.name },
+    { name: 'twitter:title', content: title || site.title },
+    { name: 'twitter:description', content: description || site.description },
+    { name: 'twitter:creator', content: twitter.url },
     {
-      name: "twitter:image",
+      name: 'twitter:image',
       content: fullURL(image),
     },
 
-    { property: "og:title", content: title || site.title },
-    { property: "og:url", content: url },
-    { property: "og:image", content: fullURL(image) },
-    { property: "og:description", content: description || site.description },
-    { property: "og:site_name", content: site.name },
+    { property: 'og:title', content: title || site.title },
+    { property: 'og:url', content: url },
+    { property: 'og:image', content: fullURL(image) },
+    { property: 'og:description', content: description || site.description },
+    { property: 'og:site_name', content: site.name },
   ];
 
   if (published) {
-    metaTags.push({ name: "article:published_time", content: published });
+    metaTags.push({ name: 'article:published_time', content: published });
   }
 
   if (timeToRead) {
-    metaTags.push({ name: "twitter:label1", value: "Reading time" });
-    metaTags.push({ name: "twitter:data1", value: `${timeToRead} min read` });
+    metaTags.push({ name: 'twitter:label1', value: 'Reading time' });
+    metaTags.push({ name: 'twitter:data1', value: `${timeToRead} min read` });
   }
 
   return (
     <Helmet
       title={title || site.title}
-      htmlAttributes={{ lang: "en" }}
+      htmlAttributes={{ lang: 'en' }}
+      script={themeUIDarkModeWorkaroundScript}
       meta={metaTags}
     >
       <link
