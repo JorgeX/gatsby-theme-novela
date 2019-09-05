@@ -1,13 +1,13 @@
-import React from "react";
-import styled from "@emotion/styled";
+import React from 'react';
+import styled from '@emotion/styled';
 
-import Headings from "@components/Headings";
-import Image, { ImagePlaceholder } from "@components/Image";
+import Headings from '@components/Headings';
+import Image, { ImagePlaceholder } from '@components/Image';
 
-import mediaqueries from "@styles/media";
-import { IArticle, IAuthor } from "@types";
+import mediaqueries from '@styles/media';
+import { IArticle, IAuthor } from '@types';
 
-import ArticleAuthors from "./Article.Authors";
+import ArticleAuthors from './Article.Authors';
 
 interface ArticleHeroProps {
   article: IArticle;
@@ -73,7 +73,7 @@ const Hero = styled.div`
 `;
 
 const ArticleMeta = styled.div<{ hasCoAUthors: boolean }>`
-  margin-left: ${p => (p.hasCoAUthors ? "10px" : "0")};
+  margin-left: ${p => (p.hasCoAUthors ? '10px' : '0')};
 
   ${mediaqueries.phablet`
     margin-left: 0;

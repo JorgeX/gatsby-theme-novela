@@ -1,15 +1,15 @@
-import React from "react";
-import { Link } from "gatsby";
-import styled from "@emotion/styled";
+import React from 'react';
+import { Link } from 'gatsby';
+import styled from '@emotion/styled';
 
-import Image from "@components/Image";
-import { IAuthor } from "@types";
+import Image from '@components/Image';
+import { IAuthor } from '@types';
 
 function Bio({ author }: IAuthor) {
   return (
     <BioContainer>
       <BioAvatar
-        as={author.authorsPage ? Link : "div"}
+        as={author.authorsPage ? Link : 'div'}
         to={author.slug}
         data-a11y="false"
         aria-label="Author's bio"
@@ -18,7 +18,7 @@ function Bio({ author }: IAuthor) {
           <Image src={author.avatar.medium} />
         </BioAvatarInner>
       </BioAvatar>
-      <BioText>{author.bio}</BioText>
+      <BioText dangerouslySetInnerHTML={{ __html: author.bio }} />
     </BioContainer>
   );
 }
@@ -43,7 +43,7 @@ const BioAvatar = styled.div`
   margin: 10px 26px 10px 10px;
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     left: -5px;
     top: -5px;
@@ -53,8 +53,8 @@ const BioAvatar = styled.div`
     border: 1px solid rgba(0, 0, 0, 0.25);
   }
 
-  &[data-a11y="true"]:focus::after {
-    content: "";
+  &[data-a11y='true']:focus::after {
+    content: '';
     position: absolute;
     left: -5px;
     top: -5px;
@@ -78,4 +78,9 @@ const BioText = styled.p`
   font-size: 14px;
   line-height: 1.45;
   color: ${p => p.theme.colors.grey};
+
+  a {
+    color: ${p => p.theme.colors.grey};
+    text-decoration: underline;
+  }
 `;
