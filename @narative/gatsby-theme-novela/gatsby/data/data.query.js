@@ -107,6 +107,7 @@ module.exports.contentful = {
           excerpt
           title
           slug
+          secret
           date(formatString: "MMMM Do, YYYY")
           dateForSEO: date
           hero {
