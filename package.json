@@ -10,7 +10,7 @@
     "lint": "eslint --ignore-path .gitignore .",
     "start": "yarn workspace www develop",
     "bootstrap": "yarn lerna bootstrap",
-    "publish": "yarn lerna publish"
+    "publish": "yarn lerna version && yarn lerna publish"
   },
   "workspaces": [
     "@narative/gatsby-theme-novela",
