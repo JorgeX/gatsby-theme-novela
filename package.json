@@ -8,7 +8,9 @@
     "build": "yarn workspace www build",
     "dev": "yarn start",
     "lint": "eslint --ignore-path .gitignore .",
-    "start": "yarn workspace www develop"
+    "start": "yarn workspace www develop",
+    "bootstrap": "yarn lerna bootstrap",
+    "publish": "yarn lerna publish"
   },
   "workspaces": [
     "@narative/gatsby-theme-novela",
@@ -25,6 +27,7 @@
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-unicorn": "^10.0.0",
     "husky": "^3.0.4",
+    "lerna": "^3.16.4",
     "prettier": "^1.18.2"
   },
   "eslintConfig": {

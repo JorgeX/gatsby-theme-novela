@@ -1,0 +1,17 @@
+{
+  "useWorkspaces": true,
+  "packages": [
+    "@narative/gatsby-theme-novela"
+  ],
+  "npmClient": "yarn",
+  "command": {
+        "publish": {
+            "ignoreChanges": ["ignored-file", "*.md"],
+            "message": "chore(release): publish"
+          },
+        "bootstrap": {
+          "npmClientArgs": ["--no-package-lock"]
+          }
+      },
+  "version": "0.6.2"
+}
