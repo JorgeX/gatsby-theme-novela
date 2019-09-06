@@ -3,6 +3,7 @@
 module.exports = ({
   contentAuthors = 'content/authors',
   contentPosts = 'content/posts',
+  sources: { local, contentful },
 }) => ({
   mapping: {
     'Mdx.frontmatter.author': `AuthorsYaml`,
@@ -51,22 +52,55 @@ module.exports = ({
         },
         feeds: [
           {
-            serialize: ({ query: { site, allArticle } }) => {
-              return allArticle.edges
-                .filter(edge => !edge.node.secret)
-                .map(edge => {
-                  return {
-                    ...edge.node,
-                    description: edge.node.excerpt,
-                    date: edge.node.date,
-                    url: site.siteMetadata.siteUrl + edge.node.slug,
-                    guid: site.siteMetadata.siteUrl + edge.node.slug,
-                    // custom_elements: [{ "content:encoded": edge.node.body }],
-                    author: edge.node.author,
-                  };
-                });
+            serialize: ({ query: { site, allArticle, allContentfulPost } }) => {
+              if (local && !contentful) {
+                return allArticle.edges
+                  .filter(edge => !edge.node.secret)
+                  .map(edge => {
+                    return {
+                      ...edge.node,
+                      description: edge.node.excerpt,
+                      date: edge.node.date,
+                      url: site.siteMetadata.siteUrl + edge.node.slug,
+                      guid: site.siteMetadata.siteUrl + edge.node.slug,
+                      // custom_elements: [{ "content:encoded": edge.node.body }],
+                      author: edge.node.author,
+                    };
+                  });
+              } else if (!local && contentful) {
+                return allContentfulPost.edges
+                  .filter(edge => !edge.node.secret)
+                  .map(edge => {
+                    return {
+                      ...edge.node,
+                      description: edge.node.excerpt,
+                      date: edge.node.date,
+                      url: site.siteMetadata.siteUrl + edge.node.slug,
+                      guid: site.siteMetadata.siteUrl + edge.node.slug,
+                      // custom_elements: [{ "content:encoded": edge.node.body }],
+                      author: edge.node.author,
+                    };
+                  });
+              } else {
+                const allArticlesData = { ...allArticle, ...allContentfulPost };
+                return allArticlesData.edges
+                  .filter(edge => !edge.node.secret)
+                  .map(edge => {
+                    return {
+                      ...edge.node,
+                      description: edge.node.excerpt,
+                      date: edge.node.date,
+                      url: site.siteMetadata.siteUrl + edge.node.slug,
+                      guid: site.siteMetadata.siteUrl + edge.node.slug,
+                      // custom_elements: [{ "content:encoded": edge.node.body }],
+                      author: edge.node.author,
+                    };
+                  });
+              }
             },
-            query: `
+            query:
+              local && !contentful
+                ? `
               {
                 allArticle(sort: {order: DESC, fields: date}) {
                   edges {
@@ -81,7 +115,58 @@ module.exports = ({
                   }
                 }
               }
-            `,
+              `
+                : !local && contentful
+                ? `
+              {
+                allContentfulPost(sort: {order: DESC, fields: date}) {
+                  edges {
+                    node {
+                      excerpt
+                      date
+                      slug
+                      title
+                      author {
+                        name
+                      }
+                      secret
+                    }
+                  }
+                }
+              }
+              `
+                : `
+              {
+                allArticle(sort: {order: DESC, fields: date}) {
+                  edges {
+                    node {
+                      excerpt
+                      date
+                      slug
+                      title
+                      author
+                      secret
+                    }
+                  }
+                }
+              }
+              {
+                allContentfulPost(sort: {order: DESC, fields: date}) {
+                  edges {
+                    node {
+                      excerpt
+                      date
+                      slug
+                      title
+                      author {
+                        name
+                      }
+                      secret
+                    }
+                  }
+                }
+              }
+              `,
             output: '/rss.xml',
           },
         ],
