@@ -59,7 +59,6 @@ const themeUIDarkModeWorkaroundScript = [
     (function() {
       try {
         var mode = localStorage.getItem('theme-ui-color-mode');
-        console.log('fired', mode)
         if (!mode) {
           localStorage.setItem('theme-ui-color-mode', 'light');
         }

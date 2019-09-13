@@ -5,21 +5,22 @@
   ],
   "npmClient": "yarn",
   "command": {
-        "publish": {
-            "ignoreChanges": ["ignored-file", "*.md"],
-            "message": "chore(release): publish",
-            "yes": true
-          },
-        "bootstrap": {
-          "npmClientArgs": ["--no-package-lock"]
-        },
-        "version": {
-           "allowBranch": "master",
-           "conventionalCommits": true,
-           "createRelease": "github",
-           "yes": true,
-           "message": "chore(release): publish [skip ci]"
-         }
-      },
+    "publish": {
+      "allowBranch": ["master"],
+      "ignoreChanges": ["ignored-file", "*.md"],
+      "message": "chore(release): publish",
+      "yes": true
+    },
+    "bootstrap": {
+      "npmClientArgs": ["--no-package-lock"]
+    },
+    "version": {
+      "allowBranch": "master",
+      "conventionalCommits": true,
+      "createRelease": "github",
+      "yes": true,
+      "message": "chore(release): publish [skip ci]"
+    }
+  },
   "version": "independent"
 }
