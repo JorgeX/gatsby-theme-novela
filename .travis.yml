@@ -25,6 +25,7 @@ matrix:
 
 script:
   - sh -c "if [ '$LINT' = '1' ]; then yarn lint; fi"
+  - commitlint-travis
 
 notifications:
   email: false
