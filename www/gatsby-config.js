@@ -14,6 +14,9 @@ const siteMetadata = {
       url: `https://twitter.com/narative`,
     },
     {
+      url: `https://behance.com/narative`,
+    },
+    {
       url: `https://github.com/narative`,
     },
     {
