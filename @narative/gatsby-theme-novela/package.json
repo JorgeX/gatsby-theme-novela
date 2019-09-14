@@ -2,7 +2,7 @@
   "name": "@narative/gatsby-theme-novela",
   "author": "dennis@narative.co",
   "repository": "https://github.com/narative/gatsby-theme-novela",
-  "version": "0.6.6",
+  "version": "0.7.0",
   "main": "index.js",
   "license": "MIT",
   "keywords": [
