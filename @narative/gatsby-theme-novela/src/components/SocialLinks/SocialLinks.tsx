@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "@emotion/styled";
+import React from 'react';
+import styled from '@emotion/styled';
 
-import Icons from "@icons";
-import mediaqueries from "@styles/media";
+import Icons from '@icons';
+import mediaqueries from '@styles/media';
 
 interface SocialLinksProps {
   links: {
@@ -13,6 +13,7 @@ interface SocialLinksProps {
 }
 
 const icons = {
+  behance: Icons.Behance,
   dribbble: Icons.Dribbble,
   linkedin: Icons.LinkedIn,
   twitter: Icons.Twitter,
@@ -23,14 +24,14 @@ const icons = {
   medium: Icons.Medium,
   unsplash: Icons.Unsplash,
   patreon: Icons.Patreon,
-  paypal: Icons.Paypal
+  paypal: Icons.Paypal,
 };
 
 const getHostname = url => {
-  return new URL(url.toLowerCase()).hostname.replace("www.", "").split(".")[0];
+  return new URL(url.toLowerCase()).hostname.replace('www.', '').split('.')[0];
 };
 
-function SocialLinks({ links, fill = "#73737D" }: SocialLinksProps) {
+function SocialLinks({ links, fill = '#73737D' }: SocialLinksProps) {
   if (!links) return null;
 
   return (
@@ -40,7 +41,7 @@ function SocialLinks({ links, fill = "#73737D" }: SocialLinksProps) {
         const Icon = icons[name];
         if (!Icon) {
           throw new Error(
-            `unsupported social link name=${name} / url=${option.url}`
+            `unsupported social link name=${name} / url=${option.url}`,
           );
         }
         return (
@@ -88,8 +89,8 @@ const SocialIconContainer = styled.a`
     margin-right: 0;
   }
 
-  &[data-a11y="true"]:focus::after {
-    content: "";
+  &[data-a11y='true']:focus::after {
+    content: '';
     position: absolute;
     left: -50%;
     top: -20%;
