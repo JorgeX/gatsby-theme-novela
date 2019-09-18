@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.7.0...@narative/gatsby-theme-novela@0.8.0) (2019-09-18)
+
+
+### Features
+
+* **seo:** Add meta-data to author template ([89a73ed](https://github.com/narative/gatsby-theme-novela/commit/89a73ed))
+
+
+
+
+
 # [0.7.0](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.6.6...@narative/gatsby-theme-novela@0.7.0) (2019-09-14)
 
 
