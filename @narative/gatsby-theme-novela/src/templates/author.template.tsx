@@ -15,7 +15,11 @@ function ArticlesPage({ location, pageContext }) {
 
   return (
     <Layout>
-      <SEO pathname={location.pathname} />
+      <SEO 
+        pathname={location.pathname}
+        title={author.name}
+        description={author.bio} 
+      />
       <Section narrow>
         <AuthorHero author={author} />
         <AuthorArticles articles={articles} />
