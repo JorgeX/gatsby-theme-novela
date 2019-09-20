@@ -406,7 +406,7 @@ Images can be added to Posts and customized to fit your content. Define a regula
 ```
 
 | Size   |   Class Name    |          Desciption           |
-| ------ | :-------------: | :---------------------------: |
+| ------ | :-------------- | :---------------------------- |
 | small  | Image\_\_Small  |       Width of the text       |
 | medium | Image\_\_Medium | Larger than width of the text |
 | large  | Image\_\_Large  |       Full width image        |
@@ -506,7 +506,7 @@ You will want to override it here:
 It is recommended to use the Default options, but if your project requires something else you can configure them to your need.
 
 | Option                 |     Default     |                                                             Description                                                             |
-| ---------------------- | :-------------: | :---------------------------------------------------------------------------------------------------------------------------------: |
+| ---------------------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------- |
 | contentPosts           |  content/posts  |                                          Define where you want to pull your Post data from                                          |
 | contentAuthors         | content/authors |                                         Define where you want to pull your Author data from                                         |
 | authorsPage            |      false      |                                                         Create Author pages                                                         |
@@ -542,7 +542,7 @@ plugins: [
 [View Author example](https://github.com/narative/gatsby-theme-novela-example/blob/master/content/authors/authors.yml)
 
 | Key      | Required |  Type   |                                                                 Desciption                                                                 |
-| -------- | :------: | :-----: | :----------------------------------------------------------------------------------------------------------------------------------------: |
+| -------- | :------: | :----- | :---------------------------------------------------------------------------------------------------------------------------------------- |
 | name     | required | String  |                                The Author's full name which is used should be used as a reference in Posts                                 |
 | bio      | required | String  |                                            The Author's bio which is displayed on the home page                                            |
 | avatar   | required |  Image  |                                                            The Author's avatar                                                             |
@@ -571,7 +571,7 @@ plugins: [
 ## Post
 
 | Key          | Required |    Type    |                                          Description                                          |
-| ------------ | :------: | :--------: | :-------------------------------------------------------------------------------------------: |
+| ------------ | :------: | :-------- | :------------------------------------------------------------------------------------------- |
 | title        | required |   String   |                  Used as title and generates a default slug. Must be unique.                  |
 | slug         | optional |   String   |                Define a custom slug that will override the default title slug.                |
 | author       | required | String Ref | Must **match** a defined Author name. Co-author posts by adding comma seperated Author names. |
@@ -601,7 +601,7 @@ excerpt: This is a love story about Narative and Gatsby
 ## Site Metadata
 
 | Key           | Required |    Type    |                                                                     Description                                                                     |
-| ------------- | :------: | :--------: | :-------------------------------------------------------------------------------------------------------------------------------------------------: |
+| ------------- | :------: | :-------- | :------------------------------------------------------------------------------------------------------------------------------------------------- |
 | title         | required |   String   |                                                            Used for the <title></title>                                                             |
 | name          | required | String Ref |                                           Used in multiple locations including meta tags and site footer                                            |
 | siteUrl       | required |    Date    |                                                                  Used in meta tags                                                                  |
