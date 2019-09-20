@@ -3,7 +3,7 @@
 module.exports = ({
   contentAuthors = 'content/authors',
   contentPosts = 'content/posts',
-  sources: { local, contentful },
+  sources: { local, contentful } = { local: true, contentful: false },
 }) => ({
   mapping: {
     'Mdx.frontmatter.author': `AuthorsYaml`,
