@@ -73,7 +73,7 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
 
   if (local) {
     try {
-      log('Querying Authors & Aritcles source:', 'Local');
+      log('Querying Authors & Articles source:', 'Local');
       const localAuthors = await graphql(query.local.authors);
       const localArticles = await graphql(query.local.articles);
 
@@ -91,7 +91,7 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
 
   if (contentful) {
     try {
-      log('Querying Authors & Aritcles source:', 'Contentful');
+      log('Querying Authors & Articles source:', 'Contentful');
       const contentfulAuthors = await graphql(query.contentful.authors);
       const contentfulArticles = await graphql(query.contentful.articles);
 
