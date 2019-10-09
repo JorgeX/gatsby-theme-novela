@@ -1,0 +1,17 @@
+name: Publish with Lerna
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  CI_Workflow:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Lerna
+      run: npx lerna publish --yes --git-remote pub
+      env:
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
