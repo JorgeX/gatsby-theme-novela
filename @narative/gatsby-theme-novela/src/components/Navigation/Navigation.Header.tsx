@@ -19,6 +19,7 @@ const siteQuery = graphql`
     sitePlugin(name: { eq: "@narative/gatsby-theme-novela" }) {
       pluginOptions {
         rootPath
+        basePath
       }
     }
   }
@@ -31,7 +32,7 @@ function NavigationHeader() {
 
   const [colorMode] = useColorMode();
   const fill = colorMode === "dark" ? "#fff" : "#000";
-  const { rootPath } = sitePlugin.pluginOptions;
+  const { rootPath, basePath } = sitePlugin.pluginOptions;
 
   useEffect(() => {
     const { width } = getWindowDimensions();
@@ -39,7 +40,7 @@ function NavigationHeader() {
 
     const prev = localStorage.getItem("previousPath");
     const previousPathWasHomepage =
-      prev === rootPath || (prev && prev.includes("/page/"));
+      prev === (rootPath || basePath) || (prev && prev.includes("/page/"));
     const isNotPaginated = !location.pathname.includes("/page/");
 
     setShowBackArrow(
@@ -52,7 +53,7 @@ function NavigationHeader() {
     <Section>
       <NavContainer>
         <LogoLink
-          to={rootPath}
+          to={rootPath || basePath}
           data-a11y="false"
           title="Navigate back to the homepage"
           aria-label="Navigate back to the homepage"

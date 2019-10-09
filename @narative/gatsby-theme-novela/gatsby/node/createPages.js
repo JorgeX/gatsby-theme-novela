@@ -48,7 +48,7 @@ const byDate = (a, b) => new Date(b.dateForSEO) - new Date(a.dateForSEO);
 
 module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
   const {
-    rootPath = '/',
+    rootPath,
     basePath = '/',
     authorsPath = '/authors',
     authorsPage = true,
@@ -69,7 +69,12 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
     netlify: { authors: [], articles: [] },
   };
 
-  log('Config rootPath', rootPath);
+  if (rootPath) {
+    log('Config rootPath', rootPath);
+  } else {
+    log('Config rootPath not set, using basePath instead =>', basePath);
+  }
+
   log('Config basePath', basePath);
   if (authorsPage) log('Config authorsPath', authorsPath);
 
