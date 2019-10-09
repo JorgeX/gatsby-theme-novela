@@ -20,6 +20,7 @@ const icons = {
   facebook: Icons.Facebook,
   instagram: Icons.Instagram,
   github: Icons.Github,
+  stackoverflow: Icons.Stackoverflow,
   youtube: Icons.YouTube,
   medium: Icons.Medium,
   unsplash: Icons.Unsplash,
