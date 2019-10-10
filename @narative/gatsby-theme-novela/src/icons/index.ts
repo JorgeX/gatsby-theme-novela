@@ -7,6 +7,7 @@ import Twitter from './social/Twitter.Icon';
 import LinkedIn from './social/LinkedIn.Icon';
 import Medium from './social/Medium.Icon';
 import Github from './social/Github.Icon';
+import Stackoverflow from './social/Stackoverflow.Icon';
 import Unsplash from './social/Unsplash.Icon';
 import YouTube from './social/YouTube.Icon';
 import Patreon from './social/Patreon.Icon';
@@ -32,6 +33,7 @@ export default {
   LinkedIn,
   Medium,
   Github,
+  Stackoverflow,
   Unsplash,
   YouTube,
   Patreon,

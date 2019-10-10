@@ -31,6 +31,9 @@ const siteMetadata = {
     {
       url: `https://youtube.com`,
     },
+    {
+      url: `https://stackoverflow.com`,
+    },
   ],
 };
 
