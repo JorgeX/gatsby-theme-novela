@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.8.3...@narative/gatsby-theme-novela@0.9.0) (2019-10-10)
+
+
+### Features
+
+* add stackoverflow icon ([8cc1311](https://github.com/narative/gatsby-theme-novela/commit/8cc1311))
+* **gatsby-node:** customize plugin schema to use basePath as backup ([b5339ae](https://github.com/narative/gatsby-theme-novela/commit/b5339ae))
+* **navigation:** set rootPath to define site index ([8b0f5c8](https://github.com/narative/gatsby-theme-novela/commit/8b0f5c8))
+
+
+
+
+
 ## [0.8.3](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.8.2...@narative/gatsby-theme-novela@0.8.3) (2019-10-07)
 
 **Note:** Version bump only for package @narative/gatsby-theme-novela

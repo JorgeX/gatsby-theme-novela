@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/narative/gatsby-theme-novela/compare/www@1.1.4...www@1.2.0) (2019-10-10)
+
+
+### Features
+
+* **navigation:** set rootPath to define site index ([8b0f5c8](https://github.com/narative/gatsby-theme-novela/commit/8b0f5c8))
+* add stackoverflow icon ([8cc1311](https://github.com/narative/gatsby-theme-novela/commit/8cc1311))
+
+
+
+
+
 ## [1.1.4](https://github.com/narative/gatsby-theme-novela/compare/www@1.1.3...www@1.1.4) (2019-10-07)
 
 **Note:** Version bump only for package www
