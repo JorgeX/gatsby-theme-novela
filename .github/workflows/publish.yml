@@ -14,6 +14,6 @@ jobs:
     - name: Yarn Install
       run: yarn
     - name: Lerna
-      run: yarn lerna publish --yes --git-remote pub
+      run: yarn lerna publish --yes --registry https//registry.npmjs.org/:_authToken=${NPM_TOKEN}
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
