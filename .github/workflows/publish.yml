@@ -11,7 +11,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+    - name: Yarn Install
+      run: yarn
     - name: Lerna
-      run: npx lerna publish --yes --git-remote pub
+      run: yarn lerna publish --yes --git-remote pub
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
