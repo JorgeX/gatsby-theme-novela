@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.1](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.9.0...@narative/gatsby-theme-novela@0.9.1) (2019-10-13)
+
+
+### Bug Fixes
+
+* font size inflation for mobile view in code box when content overflow container ([f07eeb4](https://github.com/narative/gatsby-theme-novela/commit/f07eeb4))
+
+
+
+
+
 # [0.9.0](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.8.3...@narative/gatsby-theme-novela@0.9.0) (2019-10-10)
 
 
