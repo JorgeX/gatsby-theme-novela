@@ -8,7 +8,7 @@ const log = (message, section) =>
 const path = require('path');
 const createPaginatedPages = require('gatsby-paginate');
 
-const templatesDirectory = path.resolve(__dirname, '../../src/templates');
+const templatesDirectory = path.resolve(__dirname, '../../templates');
 const templates = {
   articles: path.resolve(templatesDirectory, 'articles.template.tsx'),
   article: path.resolve(templatesDirectory, 'article.template.tsx'),
