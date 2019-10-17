@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.2](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.9.1...@narative/gatsby-theme-novela@0.9.2) (2019-10-17)
+
+
+### Bug Fixes
+
+* shadowing graphql queries moving gatsby folder into src ([82f54b7](https://github.com/narative/gatsby-theme-novela/commit/82f54b7))
+
+
+
+
+
 ## [0.9.1](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.9.0...@narative/gatsby-theme-novela@0.9.1) (2019-10-13)
 
 
