@@ -1,0 +1,19 @@
+name: Publish with Lerna
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  CI_Workflow:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Yarn Install
+      run: yarn
+    - name: Lerna
+      run: yarn lerna publish --yes --registry https://registry.npmjs.org/:_authToken=${NPM_TOKEN}
+      env:
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
