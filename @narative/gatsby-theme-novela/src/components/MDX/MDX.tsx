@@ -120,7 +120,7 @@ const HeadingsCSS = css`
 
 const PrismCSS = p => css`
   .prism-code {
-    overflow: scroll;
+    overflow: auto;
     width: 100%;
     max-width: 744px;
     margin: 0 auto;
