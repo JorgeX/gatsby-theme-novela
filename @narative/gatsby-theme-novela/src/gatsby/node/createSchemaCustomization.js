@@ -3,6 +3,7 @@ module.exports = ({ actions }) => {
 
   const typeDefs = `
     type PluginOptions {
+      basePath: String
       rootPath: String
     }
     type SitePlugin implements Node {
