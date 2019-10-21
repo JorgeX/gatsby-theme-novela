@@ -16,7 +16,7 @@ jobs:
     - name: Build
       run: yarn build
     - name: Publish with Lerna
-      run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc && git remote add -f pub https://${GH_TOKEN}@github.com/narative/gatsby-theme-novela.git && git checkout master && yarn lerna publish --yes --git-remote pub
+      run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc && git remote add -f pub https://${GH_TOKEN}@github.com/narative/gatsby-theme-novela.git && git checkout pub/master && yarn lerna publish --yes --git-remote pub
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
