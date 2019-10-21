@@ -6,17 +6,20 @@ on:
     - master
 
 jobs:
-  CI_Workflow:
+  Publish_Workflow:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - name: Checkout repo
+      uses: actions/checkout@v1.0.0
+    - name: Prepare repository
+      run: git checkout "${GITHUB_REF:11}"
     - name: Install dependencies
       run: yarn
     - name: Build
       run: yarn build
     - name: Publish with Lerna
-      run: git remote add -f pub https://${GH_TOKEN}@github.com/narative/gatsby-theme-novela.git && git checkout pub/master && yarn lerna publish --yes --registry https://registry.npmjs.org/:_authToken=${NPM_TOKEN} --git-remote pub
+      run: yarn lerna publish --yes --registry https://registry.npmjs.org/:_authToken=${NPM_TOKEN}
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
