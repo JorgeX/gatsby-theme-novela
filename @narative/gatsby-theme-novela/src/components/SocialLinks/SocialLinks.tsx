@@ -38,7 +38,7 @@ function SocialLinks({ links, fill = '#73737D' }: SocialLinksProps) {
   return (
     <>
       {links.map(option => {
-        const name = getHostname(option.url);
+        const name = option.name || getHostname(option.url);
         const Icon = icons[name];
         if (!Icon) {
           throw new Error(
