@@ -49,7 +49,7 @@ function SocialLinks({ links, fill = '#73737D' }: SocialLinksProps) {
           <SocialIconContainer
             key={option.url}
             target="_blank"
-            rel="noopener"
+            rel="noopener nofollow"
             data-a11y="false"
             aria-label={`Link to ${option.url}`}
             href={option.url}
