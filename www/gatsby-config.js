@@ -34,6 +34,9 @@ const siteMetadata = {
     {
       url: `https://stackoverflow.com`,
     },
+    {
+      url: `https://digitalocean.com`,
+    },
   ],
 };
 
