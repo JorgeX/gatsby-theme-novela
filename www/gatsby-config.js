@@ -38,6 +38,9 @@ const siteMetadata = {
       name: 'stackoverflow',
       url: `https://bit.ly/1x0885j`,
     },
+    {
+      url: `https://digitalocean.com`,
+    },
   ],
 };
 

@@ -12,6 +12,7 @@ import Unsplash from './social/Unsplash.Icon';
 import YouTube from './social/YouTube.Icon';
 import Patreon from './social/Patreon.Icon';
 import Paypal from './social/Paypal.Icon';
+import DigitalOcean from './social/DigitalOcean.Icon';
 
 // UI
 import ChevronLeft from './ui/ChevronLeft.Icon';
@@ -38,6 +39,7 @@ export default {
   YouTube,
   Patreon,
   Paypal,
+  DigitalOcean,
 
   ChevronLeft,
   Copied,
