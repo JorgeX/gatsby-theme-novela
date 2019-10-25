@@ -12,7 +12,7 @@ interface AuthorHeroProps {
   author: IAuthor;
 }
 
-const AuthorHero = ({ author }: AuthorHeroProps) => {
+const AuthorHero: React.FC<AuthorHeroProps> = ({ author }) => {
   return (
     <Hero>
       <HeroImage>

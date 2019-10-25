@@ -9,16 +9,12 @@ import ArticlesContextProvider from '../../sections/articles/Articles.List.Conte
 
 import { globalStyles } from '@styles';
 
-interface LayoutProps {
-  children: React.ReactChild;
-}
-
 /**
  * <Layout /> needs to wrap every page as it provides styles, navigation,
  * and the main structure of each page. Within Layout we have the <Container />
  * which hides a lot of the mess we need to create our Desktop and Mobile experiences.
  */
-function Layout({ children }: LayoutProps) {
+const Layout: React.FC<{}> = ({ children }) => {
   const [colorMode] = useColorMode();
 
   useEffect(() => {

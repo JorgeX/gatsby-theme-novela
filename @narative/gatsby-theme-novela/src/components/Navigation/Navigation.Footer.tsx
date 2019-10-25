@@ -25,7 +25,7 @@ const siteQuery = graphql`
   }
 `;
 
-function Footer() {
+const Footer: React.FC<{}> = () => {
   const results = useStaticQuery(siteQuery);
   const { name, social } = results.allSite.edges[0].node.siteMetadata;
 
@@ -45,7 +45,7 @@ function Footer() {
       </Section>
     </>
   );
-}
+};
 
 export default Footer;
 

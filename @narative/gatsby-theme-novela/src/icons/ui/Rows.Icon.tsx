@@ -1,6 +1,8 @@
 import React from "react";
 
-const RowsIcon = ({ fill }) => (
+import { Icon } from '@types';
+
+const RowsIcon: Icon = ({ fill }) => (
   <svg
     width="26"
     height="26"

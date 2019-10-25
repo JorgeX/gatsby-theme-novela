@@ -25,7 +25,63 @@ const siteQuery = graphql`
   }
 `;
 
-function NavigationHeader() {
+const DarkModeToggle: React.FC<{}> = () => {
+  const [colorMode, setColorMode] = useColorMode();
+  const isDark = colorMode === `dark`;
+
+  function toggleColorMode(event) {
+    event.preventDefault();
+    setColorMode(isDark ? `light` : `dark`);
+  }
+
+  return (
+    <IconWrapper
+      isDark={isDark}
+      onClick={toggleColorMode}
+      data-a11y="false"
+      aria-label={isDark ? "Activate light mode" : "Activate dark mode"}
+      title={isDark ? "Activate light mode" : "Activate dark mode"}
+    >
+      <MoonOrSun isDark={isDark} />
+      <MoonMask isDark={isDark} />
+    </IconWrapper>
+  );
+};
+
+const SharePageButton: React.FC<{}> = () => {
+  const [hasCopied, setHasCopied] = useState<boolean>(false);
+  const [colorMode] = useColorMode();
+  const isDark = colorMode === `dark`;
+  const fill = isDark ? "#fff" : "#000";
+
+  function copyToClipboardOnClick() {
+    if (hasCopied) return;
+
+    copyToClipboard(window.location.href);
+    setHasCopied(true);
+
+    setTimeout(() => {
+      setHasCopied(false);
+    }, 1000);
+  }
+
+  return (
+    <IconWrapper
+      isDark={isDark}
+      onClick={copyToClipboardOnClick}
+      data-a11y="false"
+      aria-label="Copy URL to clipboard"
+      title="Copy URL to clipboard"
+    >
+      <Icons.Link fill={fill} />
+      <ToolTip isDark={isDark} hasCopied={hasCopied}>
+        Copied
+      </ToolTip>
+    </IconWrapper>
+  );
+};
+
+const NavigationHeader: React.FC<{}> = () => {
   const [showBackArrow, setShowBackArrow] = useState<boolean>(false);
   const [previousPath, setPreviousPath] = useState<string>("/");
   const { sitePlugin } = useStaticQuery(siteQuery);
@@ -86,65 +142,9 @@ function NavigationHeader() {
       </NavContainer>
     </Section>
   );
-}
+};
 
 export default NavigationHeader;
-
-function DarkModeToggle() {
-  const [colorMode, setColorMode] = useColorMode();
-  const isDark = colorMode === `dark`;
-
-  function toggleColorMode(event) {
-    event.preventDefault();
-    setColorMode(isDark ? `light` : `dark`);
-  }
-
-  return (
-    <IconWrapper
-      isDark={isDark}
-      onClick={toggleColorMode}
-      data-a11y="false"
-      aria-label={isDark ? "Activate light mode" : "Activate dark mode"}
-      title={isDark ? "Activate light mode" : "Activate dark mode"}
-    >
-      <MoonOrSun isDark={isDark} />
-      <MoonMask isDark={isDark} />
-    </IconWrapper>
-  );
-}
-
-function SharePageButton() {
-  const [hasCopied, setHasCopied] = useState<boolean>(false);
-  const [colorMode] = useColorMode();
-  const isDark = colorMode === `dark`;
-  const fill = isDark ? "#fff" : "#000";
-
-  function copyToClipboardOnClick() {
-    if (hasCopied) return;
-
-    copyToClipboard(window.location.href);
-    setHasCopied(true);
-
-    setTimeout(() => {
-      setHasCopied(false);
-    }, 1000);
-  }
-
-  return (
-    <IconWrapper
-      isDark={isDark}
-      onClick={copyToClipboardOnClick}
-      data-a11y="false"
-      aria-label="Copy URL to clipboard"
-      title="Copy URL to clipboard"
-    >
-      <Icons.Link fill={fill} />
-      <ToolTip isDark={isDark} hasCopied={hasCopied}>
-        Copied
-      </ToolTip>
-    </IconWrapper>
-  );
-}
 
 const BackArrowIconContainer = styled.div`
   transition: 0.2s transform var(--ease-out-quad);

@@ -2,14 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import styled from "@emotion/styled";
 import throttle from "lodash/throttle";
 
-interface OverlapProps {
-  children: React.ReactNode[];
-}
-
-interface OverlapState {
-  isOverlapping: boolean;
-}
-
 /**
  * <HandleOverlap />
  * This is similar to Medium's "show and hide" the sidebar if it's overlapping an
@@ -20,10 +12,9 @@ interface OverlapState {
  * and decides wether or not they're overlapping (with some buffer). If they are overlapping
  * we want to hide the top element.
  */
-
-function HandleOverlap(props: OverlapProps) {
+const HandleOverlap: React.FC<{}> = (props) => {
   const asideRef = useRef<HTMLDivElement>(null);
-  const [isOverlapping, setIsOverlapping] = useState<OverlapState>(false);
+  const [isOverlapping, setIsOverlapping] = useState(false);
 
   // Is the current element within the window's frame? That's all we care about!
   function isVisible(element: HTMLElement): boolean {

@@ -14,7 +14,7 @@ interface ArticleHeroProps {
   authors: IAuthor[];
 }
 
-const ArticleHero = ({ article, authors }: ArticleHeroProps) => {
+const ArticleHero: React.FC<ArticleHeroProps> = ({ article, authors }) => {
   const hasCoAUthors = authors.length > 1;
   const hasHeroImage =
     Object.keys(article.hero.full).length !== 0 &&

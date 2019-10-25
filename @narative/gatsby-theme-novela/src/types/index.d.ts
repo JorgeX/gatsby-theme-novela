@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import React from "react";
 
 export interface IPaginator {
   pageCount: number;
@@ -66,3 +66,19 @@ export interface IProgress {
   mode: string;
   onClose?: () => void;
 }
+
+export type Icon = React.FC<{
+  fill: string
+}>
+
+// todo : Is anything here optional?
+export type Template = React.FC<{
+  pageContext: {
+    article: IArticle;
+    authors: IAuthor[];
+    // todo : Is this the correct type?
+    mailchimp: boolean;
+    next: IArticle[];
+  };
+  location: Location;
+}>

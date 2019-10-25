@@ -1,6 +1,8 @@
 import React from "react";
 
-const PatreonIcon = ({ fill = "white" }) => (
+import { Icon } from '@types';
+
+const PatreonIcon: Icon = ({ fill = "white" }) => (
   <svg
     width="14"
     height="14"

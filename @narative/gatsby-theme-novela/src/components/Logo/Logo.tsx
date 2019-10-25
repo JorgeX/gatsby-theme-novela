@@ -3,7 +3,9 @@ import styled from "@emotion/styled";
 
 import mediaqueries from "@styles/media";
 
-const Logo = ({ fill = "#fff" }: { fill?: string }) => {
+import { Icon } from '@types';
+
+const Logo: Icon = ({ fill = "white" }) => {
   return (
     <LogoContainer>
       <svg

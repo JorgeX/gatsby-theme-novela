@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, ReactNode } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styled from "@emotion/styled";
 import throttle from "lodash/throttle";
 
@@ -8,7 +8,6 @@ import mediaqueries from "@styles/media";
 import { clamp } from "@utils";
 
 interface AsideProps {
-  children: ReactNode[] | ReactNode;
   contentHeight: number;
 }
 
@@ -27,7 +26,7 @@ interface AsideProps {
  *                  |  content  |
  *
  */
-function Aside({ contentHeight, children }: AsideProps) {
+const Aside: React.FC<AsideProps> = ({ contentHeight, children }) => {
   const progressRef = useRef<HTMLDivElement>(null);
 
   const [progress, setProgress] = useState<number>(0);

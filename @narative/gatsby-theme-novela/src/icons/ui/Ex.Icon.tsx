@@ -1,6 +1,8 @@
 import React from "react";
 
-const ExIcon = ({ fill = "#08080B" }) => (
+import { Icon } from '@types';
+
+const ExIcon: Icon = ({ fill = "#08080B" }) => (
   <svg
     width="24"
     height="25"

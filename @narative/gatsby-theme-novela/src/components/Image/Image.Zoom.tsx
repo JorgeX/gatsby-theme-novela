@@ -15,7 +15,7 @@ function handleImageZoomBackground(background: string) {
   });
 }
 
-function ImageZoom(props) {
+const ImageZoom: React.FC<{}> = (props) => {
   const { theme } = useThemeUI();
 
   const image = {
@@ -40,6 +40,6 @@ function ImageZoom(props) {
       }}
     />
   );
-}
+};
 
 export default ImageZoom;

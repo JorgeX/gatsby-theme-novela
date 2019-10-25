@@ -20,15 +20,17 @@ const siteQuery = graphql`
   }
 `;
 
-function ArticleSEO({
+interface ArticleSEOProps {
+  article: IArticle;
+  authors: IAuthor[];
+  location: Location;
+}
+
+const ArticleSEO: React.FC<ArticleSEOProps> = ({
   article,
   authors,
   location,
-}: {
-  article: IArticle;
-  authors: IAuthor[];
-  location: any;
-}) {
+}) => {
   const results = useStaticQuery(siteQuery);
   const name = results.allSite.edges[0].node.siteMetadata.name;
   const siteUrl = results.allSite.edges[0].node.siteMetadata.siteUrl;
@@ -88,6 +90,6 @@ function ArticleSEO({
       <script type="application/ld+json">{microdata}</script>
     </SEO>
   );
-}
+};
 
 export default ArticleSEO;

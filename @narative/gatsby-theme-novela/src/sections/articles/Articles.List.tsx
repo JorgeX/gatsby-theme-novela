@@ -35,7 +35,10 @@ interface ArticlesListItemProps {
   narrow?: boolean;
 }
 
-function ArticlesList({ articles, alwaysShowAllDetails }: ArticlesListProps) {
+const ArticlesList: React.FC<ArticlesListProps> = ({
+  articles,
+  alwaysShowAllDetails
+}) => {
   if (!articles) return null;
 
   const hasOnlyOneArticle = articles.length === 1;
@@ -80,11 +83,11 @@ function ArticlesList({ articles, alwaysShowAllDetails }: ArticlesListProps) {
       })}
     </ArticlesListContainer>
   );
-}
+};
 
 export default ArticlesList;
 
-const ListItem = ({ article, narrow }: ArticlesListItemProps) => {
+const ListItem: React.FC<ArticlesListItemProps> = ({ article, narrow }) => {
   if (!article) return null;
 
   const { gridLayout } = useContext(GridLayoutContext);

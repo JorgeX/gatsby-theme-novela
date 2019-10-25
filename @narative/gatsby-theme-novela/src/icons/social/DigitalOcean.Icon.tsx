@@ -1,6 +1,8 @@
 import React from "react";
 
-const DigitalOceanIcon = ({ fill = "white" }) => (
+import { Icon } from '@types';
+
+const DigitalOceanIcon: Icon = ({ fill = "white" }) => (
     <svg
         width="14"
         height="14"

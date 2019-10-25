@@ -8,7 +8,7 @@ export interface IProgress {
   contentHeight: number;
 }
 
-function Progress({ contentHeight }: IProgress) {
+const Progress: React.FC<IProgress> = ({ contentHeight }) => {
   const [progress, setProgress] = useState<number>(0);
 
   useEffect(() => {
@@ -35,7 +35,7 @@ function Progress({ contentHeight }: IProgress) {
       </Trackline>
     </ProgressContainer>
   );
-}
+};
 
 export default Progress;
 

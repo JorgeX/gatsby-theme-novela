@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Highlight, { defaultProps } from "prism-react-renderer";
+import Highlight, { defaultProps, Language } from 'prism-react-renderer'
 import styled from "@emotion/styled";
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
 import theme from "prism-react-renderer/themes/oceanicNext";
@@ -7,6 +7,39 @@ import theme from "prism-react-renderer/themes/oceanicNext";
 import Icons from "@icons";
 import mediaqueries from "@styles/media";
 import { copyToClipboard } from "@utils";
+
+interface CopyProps {
+  toCopy: string
+}
+
+const Copy: React.FC<CopyProps> = ({ toCopy }) => {
+  const [hasCopied, setHasCopied] = useState<boolean>(false);
+
+  function copyToClipboardOnClick() {
+    if (hasCopied) return;
+
+    copyToClipboard(toCopy);
+    setHasCopied(true);
+
+    setTimeout(() => {
+      setHasCopied(false);
+    }, 2000);
+  }
+
+  return (
+    <CopyButton onClick={copyToClipboardOnClick} data-a11y="false">
+      {hasCopied ? (
+        <>
+          Copied <Icons.Copied fill="#6f7177" />
+        </>
+      ) : (
+        <>
+          Copy <Icons.Copy fill="#6f7177" />
+        </>
+      )}
+    </CopyButton>
+  );
+};
 
 const RE = /{([\d,-]+)}/;
 
@@ -28,7 +61,18 @@ function calculateLinesToHighlight(meta) {
   }
 }
 
-function CodePrism({ codeString, language, metastring, ...props }) {
+interface CodePrismProps {
+  codeString: string;
+  language: Language;
+  metastring?: string;
+}
+
+const CodePrism: React.FC<CodePrismProps> = ({
+  codeString,
+  language,
+  metastring,
+  ...props
+}) => {
   const shouldHighlightLine = calculateLinesToHighlight(metastring);
 
   if (props["live"]) {
@@ -86,35 +130,6 @@ function CodePrism({ codeString, language, metastring, ...props }) {
 }
 
 export default CodePrism;
-
-function Copy({ toCopy }: { toCopy: string }) {
-  const [hasCopied, setHasCopied] = useState<boolean>(false);
-
-  function copyToClipboardOnClick() {
-    if (hasCopied) return;
-
-    copyToClipboard(toCopy);
-    setHasCopied(true);
-
-    setTimeout(() => {
-      setHasCopied(false);
-    }, 2000);
-  }
-
-  return (
-    <CopyButton onClick={copyToClipboardOnClick} data-a11y="false">
-      {hasCopied ? (
-        <>
-          Copied <Icons.Copied fill="#6f7177" />
-        </>
-      ) : (
-        <>
-          Copy <Icons.Copy fill="#6f7177" />
-        </>
-      )}
-    </CopyButton>
-  );
-}
 
 const CopyButton = styled.button`
   position: absolute;
