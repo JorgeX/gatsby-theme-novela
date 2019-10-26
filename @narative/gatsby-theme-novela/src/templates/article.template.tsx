@@ -19,7 +19,7 @@ import ArticlesNext from "../sections/article/Article.Next";
 import ArticleSEO from "../sections/article/Article.SEO";
 import ArticleShare from "../sections/article/Article.Share";
 
-import { Template } from "../types";
+import { Template } from "@types";
 
 const siteQuery = graphql`
   {
