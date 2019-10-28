@@ -511,6 +511,7 @@ It is recommended to use the Default options, but if your project requires somet
 | contentAuthors         | content/authors |                                         Define where you want to pull your Author data from                                         |
 | authorsPage            |      false      |                                                         Create Author pages                                                         |
 | authorsPath            |    /authors     |                                                   Where should Author pages live?                                                   |
+| rootPath               |        /        |                                                   Define the index of your site                                                     |
 | basePath               |        /        |                      Where should the site be served from? `/blog` will change all paths to start with `/blog`                      |
 | articlePermalinkFormat |      :slug      | Define the format of the article permalink. Possible values: `:slug`, `:year`, `:month`, `:day`. Example: `:year/:month/:day/:slug` |
 | mailchimp              |      false      |                                             Enable Mailchimp subscriptions on each Post                                             |
@@ -526,6 +527,7 @@ plugins: [
     options: {
       contentPosts: 'content/posts',
       contentAuthors: 'content/authors',
+      rootPath: '/',
       basePath: '/',
       mailchimp: true,
       sources: {
