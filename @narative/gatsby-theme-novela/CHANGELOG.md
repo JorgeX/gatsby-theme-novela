@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.7](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.9.6...@narative/gatsby-theme-novela@0.9.7) (2019-11-01)
+
+**Note:** Version bump only for package @narative/gatsby-theme-novela
+
+
+
+
+
 ## [0.9.6](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.9.5...@narative/gatsby-theme-novela@0.9.6) (2019-10-23)
 
 **Note:** Version bump only for package @narative/gatsby-theme-novela
