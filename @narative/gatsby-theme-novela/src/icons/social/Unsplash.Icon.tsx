@@ -1,6 +1,8 @@
 import React from "react";
 
-const UnsplashIcon = ({ fill = "white" }) => (
+import { Icon } from '@types';
+
+const UnsplashIcon: Icon = ({ fill = "white" }) => (
   <svg
     width="15"
     height="15"

@@ -27,7 +27,7 @@ const authorQuery = graphql`
   }
 `;
 
-function ArticlesHero({ authors }: IAuthor) {
+const ArticlesHero: React.FC<IAuthor> = ({ authors }) => {
   const { gridLayout = 'tiles', hasSetGridLayout, setGridLayout } = useContext(
     GridLayoutContext,
   );
@@ -74,7 +74,7 @@ function ArticlesHero({ authors }: IAuthor) {
       </SubheadingContainer>
     </Section>
   );
-}
+};
 
 export default ArticlesHero;
 

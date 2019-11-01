@@ -1,9 +1,5 @@
 import React, { createContext, useState } from "react";
 
-interface GridLayoutProviderProps {
-  children: React.ReactChild;
-}
-
 export const GridLayoutContext = createContext({
   gridLayout: "tiles",
   hasSetGridLayout: false,
@@ -11,7 +7,7 @@ export const GridLayoutContext = createContext({
   getGridLayout: () => {},
 });
 
-function GridLayoutProvider({ children }: GridLayoutProviderProps) {
+const GridLayoutProvider: React.FC<{}> = ({ children }) => {
   const initialLayout = "tiles";
 
   const [gridLayout, setGridLayout] = useState<string>(initialLayout);
@@ -39,6 +35,6 @@ function GridLayoutProvider({ children }: GridLayoutProviderProps) {
       {children}
     </GridLayoutContext.Provider>
   );
-}
+};
 
 export default GridLayoutProvider;

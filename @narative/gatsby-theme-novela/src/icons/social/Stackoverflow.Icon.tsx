@@ -1,6 +1,8 @@
 import React from "react";
 
-const StackoverflowIcon = ({fill = "white"}) => (
+import { Icon } from '@types';
+
+const StackoverflowIcon: Icon = ({ fill = "white" }) => (
     <svg
       width="15"
       height="15"

@@ -22,7 +22,6 @@ import Helmet from 'react-helmet';
 import { graphql, useStaticQuery } from 'gatsby';
 
 interface HelmetProps {
-  children?: React.ReactChildren;
   title: string;
   description?: string;
   pathname: string;
@@ -68,7 +67,7 @@ const themeUIDarkModeWorkaroundScript = [
   },
 ];
 
-function SEO({
+const SEO: React.FC<HelmetProps> = ({
   title,
   description,
   children,
@@ -77,7 +76,7 @@ function SEO({
   published,
   pathname,
   timeToRead,
-}: HelmetProps) {
+}) => {
   const results = useStaticQuery(seoQuery);
   const site = results.allSite.edges[0].node.siteMetadata;
   const twitter = site.social.find(option => option.name === 'twitter') || {};
@@ -151,6 +150,6 @@ function SEO({
       {children}
     </Helmet>
   );
-}
+};
 
 export default SEO;

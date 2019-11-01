@@ -42,7 +42,11 @@ const components = {
   td: Tables.Cell
 };
 
-function MDX({ content, children, ...props }) {
+interface MDXProps {
+  content: React.ReactNode;
+}
+
+const MDX: React.FC<MDXProps> = ({ content, children, ...props }) => {
   const [colorMode] = useColorMode();
 
   return (
@@ -55,7 +59,7 @@ function MDX({ content, children, ...props }) {
       </MDXBody>
     </MDXProvider>
   );
-}
+};
 
 export default MDX;
 

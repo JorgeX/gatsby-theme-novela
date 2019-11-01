@@ -10,7 +10,7 @@ interface AuthorArticlesProps {
   articles: IArticle[];
 }
 
-const AuthorArticles = ({ articles }: AuthorArticlesProps) => {
+const AuthorArticles: React.FC<AuthorArticlesProps> = ({ articles }) => {
   return (
     <AuthorArticlesContainer>
       <ArticlesList articles={articles} alwaysShowAllDetails />

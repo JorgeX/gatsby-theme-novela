@@ -19,7 +19,7 @@ const Container = styled.div`
   `}
 `;
 
-function ImagePlaceholder(props) {
+const ImagePlaceholder: React.FC<{}> = (props) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
@@ -40,6 +40,6 @@ function ImagePlaceholder(props) {
       </div>
     </Container>
   );
-}
+};
 
 export default ImagePlaceholder;

@@ -28,7 +28,7 @@ function preToCodeBlock(preProps) {
   }
 }
 
-function CodePre(preProps) {
+const CodePre: React.FC<{}> = (preProps) => {
   const props = preToCodeBlock(preProps);
 
   if (props) {
@@ -36,6 +36,6 @@ function CodePre(preProps) {
   } else {
     return <pre {...preProps} />;
   }
-}
+};
 
 export default CodePre;

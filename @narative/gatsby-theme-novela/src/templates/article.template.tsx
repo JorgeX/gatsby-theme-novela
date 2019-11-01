@@ -19,6 +19,8 @@ import ArticlesNext from "../sections/article/Article.Next";
 import ArticleSEO from "../sections/article/Article.SEO";
 import ArticleShare from "../sections/article/Article.Share";
 
+import { Template } from "@types";
+
 const siteQuery = graphql`
   {
     allSite {
@@ -33,7 +35,7 @@ const siteQuery = graphql`
   }
 `;
 
-function Article({ pageContext, location }) {
+const Article: Template = ({ pageContext, location }) => {
   const contentSectionRef = useRef<HTMLElement>(null);
 
   const [hasCalculated, setHasCalculated] = useState<boolean>(false);
@@ -103,7 +105,7 @@ function Article({ pageContext, location }) {
       )}
     </Layout>
   );
-}
+};
 
 export default Article;
 

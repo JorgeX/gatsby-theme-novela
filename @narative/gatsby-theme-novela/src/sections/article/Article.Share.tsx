@@ -26,7 +26,7 @@ interface MenuFloatState {
 const MENU_WIDTH: number = 225;
 const MENU_HEIGHT: number = 46;
 
-function ArticelShare() {
+const ArticleShare: React.FC<{}> = () => {
   const [colorMode] = useColorMode();
   const [text, setText] = useState("");
   const [focus, setFocus] = useState(false);
@@ -181,9 +181,9 @@ function ArticelShare() {
       </MenuButton>
     </MenuFloat>
   );
-}
+};
 
-export default ArticelShare;
+export default ArticleShare;
 
 function ReferralLink({ disabled, share, children }) {
   function handleClick(event) {

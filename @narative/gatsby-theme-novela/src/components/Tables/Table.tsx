@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "@emotion/styled";
 import mediaqueries from "@styles/media";
 
@@ -29,12 +30,12 @@ const StyledTable = styled.table`
   `};
 `;
 
-function Table({ children }) {
+const Table: React.FC<{}> = ({ children }) => {
   return (
     <div style={{ overflowX: "auto", padding: "0 20px" }}>
       <StyledTable>{children}</StyledTable>
     </div>
   );
-}
+};
 
 export default Table;

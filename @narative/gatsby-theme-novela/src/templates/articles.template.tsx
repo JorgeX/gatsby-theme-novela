@@ -9,7 +9,9 @@ import Paginator from "@components/Navigation/Navigation.Paginator";
 import ArticlesHero from "../sections/articles/Articles.Hero";
 import ArticlesList from "../sections/articles/Articles.List";
 
-function ArticlesPage({ location, pageContext }) {
+import { Template } from "@types";
+
+const ArticlesPage: Template = ({ location, pageContext }) => {
   const articles = pageContext.group;
   const authors = pageContext.additionalContext.authors;
 
@@ -26,7 +28,7 @@ function ArticlesPage({ location, pageContext }) {
       <ArticlesGradient />
     </Layout>
   );
-}
+};
 
 export default ArticlesPage;
 

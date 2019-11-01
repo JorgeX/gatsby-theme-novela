@@ -4,12 +4,11 @@ import { keyframes } from "@emotion/core";
 
 interface CSSFadeInProps {
   as?: string;
-  children: React.ReactChildren;
 }
 
-function CSSFadeIn({ as, children }: CSSFadeInProps) {
+const CSSFadeIn: React.FC<CSSFadeInProps> = ({ as, children }) => {
   return <Transition as={as}>{children}</Transition>;
-}
+};
 
 export default CSSFadeIn;
 

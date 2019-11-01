@@ -33,7 +33,10 @@ const getHostname = url => {
   return new URL(url.toLowerCase()).hostname.replace('www.', '').split('.')[0];
 };
 
-function SocialLinks({ links, fill = '#73737D' }: SocialLinksProps) {
+const SocialLinks: React.FC<SocialLinksProps> = ({
+  links,
+  fill = '#73737D'
+}) => {
   if (!links) return null;
 
   return (
@@ -62,7 +65,7 @@ function SocialLinks({ links, fill = '#73737D' }: SocialLinksProps) {
       })}
     </>
   );
-}
+};
 
 export default SocialLinks;
 

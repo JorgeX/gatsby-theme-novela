@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 import Image from '@components/Image';
 import { IAuthor } from '@types';
 
-function Bio({ author }: IAuthor) {
+const Bio: React.FC<IAuthor> = ({ author }) => {
   return (
     <BioContainer>
       <BioAvatar
@@ -21,7 +21,7 @@ function Bio({ author }: IAuthor) {
       <BioText dangerouslySetInnerHTML={{ __html: author.bio }} />
     </BioContainer>
   );
-}
+};
 
 export default Bio;
 

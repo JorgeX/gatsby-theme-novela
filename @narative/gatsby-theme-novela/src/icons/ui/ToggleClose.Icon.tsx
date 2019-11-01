@@ -1,6 +1,8 @@
 import React from "react";
 
-const ToggleClose = ({ fill }) => (
+import { Icon } from '@types';
+
+const ToggleClose: Icon = ({ fill }) => (
   <svg
     width="17"
     height="17"

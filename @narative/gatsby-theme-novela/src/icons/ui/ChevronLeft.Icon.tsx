@@ -1,6 +1,8 @@
 import React from "react";
 
-const ChevronLeft = ({ fill }) => (
+import { Icon } from '@types';
+
+const ChevronLeft: Icon = ({ fill }) => (
   <svg
     width="24"
     height="24"

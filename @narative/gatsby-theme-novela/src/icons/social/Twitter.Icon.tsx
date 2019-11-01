@@ -1,6 +1,8 @@
 import React from "react";
 
-const TwitterIcon = ({ fill = "white", ...props }) => (
+import { Icon } from '@types';
+
+const TwitterIcon: Icon = ({ fill = "white", ...props }) => (
   <svg
     width="16"
     height="13"

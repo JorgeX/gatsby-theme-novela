@@ -7,7 +7,7 @@ import Headings from "@components/Headings";
 import styled from "@emotion/styled";
 import mediaqueries from "@styles/media";
 
-const Subscription: React.FunctionComponent<{}> = () => {
+const Subscription: React.FC<{}> = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [subscribed, setSubscribed] = useState(false);

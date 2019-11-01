@@ -9,16 +9,18 @@ import Paginator from "@components/Navigation/Navigation.Paginator";
 import AuthorHero from "../sections/author/Author.Hero";
 import AuthorArticles from "../sections/author/Author.Articles";
 
-function ArticlesPage({ location, pageContext }) {
+import { Template } from "@types";
+
+const ArticlesPage: Template = ({ location, pageContext }) => {
   const author = pageContext.additionalContext.author;
   const articles = pageContext.group;
 
   return (
     <Layout>
-      <SEO 
+      <SEO
         pathname={location.pathname}
         title={author.name}
-        description={author.bio} 
+        description={author.bio}
       />
       <Section narrow>
         <AuthorHero author={author} />

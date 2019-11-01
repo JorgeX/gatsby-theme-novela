@@ -1,6 +1,8 @@
 import React from "react";
 
-const TilesIcon = ({ fill }) => (
+import { Icon } from '@types';
+
+const TilesIcon: Icon = ({ fill }) => (
   <svg
     width="26"
     height="26"

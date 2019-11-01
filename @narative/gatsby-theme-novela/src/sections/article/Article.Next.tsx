@@ -10,6 +10,10 @@ import mediaqueries from "@styles/media";
 
 import { IArticle } from "@types";
 
+interface ArticlesNextProps {
+  articles: IArticle[]
+}
+
 /**
  * Sits at the bottom of our Article page. Shows the next 2 on desktop and the
  * next 1 on mobile!
@@ -22,7 +26,7 @@ import { IArticle } from "@types";
  * as the next one suggested article, which requires special styling we didn't want to
  * mix into the generic list component.
  */
-const ArticlesNext = ({ articles }: { articles: IArticle[] }) => {
+const ArticlesNext: React.FC<ArticlesNextProps> = ({ articles }) => {
   if (!articles) return null;
   const numberOfArticles = articles.length;
   return (
@@ -35,13 +39,12 @@ const ArticlesNext = ({ articles }: { articles: IArticle[] }) => {
 
 export default ArticlesNext;
 
-const GridItem = ({
-  article,
-  narrow,
-}: {
+interface GridItemProps {
   article: IArticle;
   narrow?: boolean;
-}) => {
+}
+
+const GridItem: React.FC<GridItemProps> = ({ article, narrow }) => {
   if (!article) return null;
 
   const hasOverflow = narrow && article.title.length > 35;

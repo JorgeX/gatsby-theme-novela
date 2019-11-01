@@ -1,6 +1,8 @@
 import React from "react";
 
-const PaypalIcon = ({ fill = "white" }) => (
+import { Icon } from '@types';
+
+const PaypalIcon: Icon = ({ fill = "white" }) => (
   <svg
     width="14"
     height="14"

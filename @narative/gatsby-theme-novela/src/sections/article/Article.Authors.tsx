@@ -10,34 +10,27 @@ import mediaqueries from "@styles/media";
 import { IAuthor } from "@types";
 
 /**
- * Novela supports multiple authors and therefore we need to ensure
- * we render the right UI when there are varying amount of authors.
+ * When generating the author names we're also checking to see how long the
+ * number of authors are. If it's only 2 authors we'll show the fullnames.
+ * Otherwise it'll only preview the first names of each author.
  */
-function ArticleAuthors({ authors }: { authors: IAuthor[] }) {
-  const hasCoAuthors = authors.length > 1;
-
-  // Special dropdown UI for multiple authors
-  if (hasCoAuthors) {
-    return <CoAuthors authors={authors} />;
-  } else {
-    return (
-      <AuthorLink
-        as={authors[0].authorsPage ? Link : "div"}
-        to={authors[0].slug}
-      >
-        <AuthorAvatar>
-          <Image src={authors[0].avatar.small} />
-        </AuthorAvatar>
-        <strong>{authors[0].name}</strong>
-        <HideOnMobile>,&nbsp;</HideOnMobile>
-      </AuthorLink>
-    );
-  }
+function generateAuthorNames(authors: IAuthor[]) {
+  return authors
+    .map(author => {
+      if (authors.length > 2) {
+        return author.name.split(" ")[0];
+      } else {
+        return author.name;
+      }
+    })
+    .join(", ");
 }
 
-export default ArticleAuthors;
+interface AuthorsProps {
+  authors: IAuthor[]
+}
 
-function CoAuthors({ authors }: { authors: IAuthor[] }) {
+const CoAuthors: React.FC<AuthorsProps> = ({ authors }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [colorMode] = useColorMode();
   const names = generateAuthorNames(authors);
@@ -83,24 +76,35 @@ function CoAuthors({ authors }: { authors: IAuthor[] }) {
       )}
     </CoAuthorsContainer>
   );
-}
+};
 
 /**
- * When generating the author names we're also checking to see how long the
- * number of authors are. If it's only 2 authors we'll show the fullnames.
- * Otherwise it'll only preview the first names of each author.
+ * Novela supports multiple authors and therefore we need to ensure
+ * we render the right UI when there are varying amount of authors.
  */
-function generateAuthorNames(authors: IAuthor[]) {
-  return authors
-    .map(author => {
-      if (authors.length > 2) {
-        return author.name.split(" ")[0];
-      } else {
-        return author.name;
-      }
-    })
-    .join(", ");
-}
+const ArticleAuthors: React.FC<AuthorsProps> = ({ authors }) => {
+  const hasCoAuthors = authors.length > 1;
+
+  // Special dropdown UI for multiple authors
+  if (hasCoAuthors) {
+    return <CoAuthors authors={authors} />;
+  } else {
+    return (
+      <AuthorLink
+        as={authors[0].authorsPage ? Link : "div"}
+        to={authors[0].slug}
+      >
+        <AuthorAvatar>
+          <Image src={authors[0].avatar.small} />
+        </AuthorAvatar>
+        <strong>{authors[0].name}</strong>
+        <HideOnMobile>,&nbsp;</HideOnMobile>
+      </AuthorLink>
+    );
+  }
+};
+
+export default ArticleAuthors;
 
 const AuthorAvatar = styled.div`
   height: 25px;
