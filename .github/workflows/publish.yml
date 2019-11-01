@@ -12,6 +12,13 @@ jobs:
     steps:
     - name: Checkout repo
       uses: actions/checkout@v1.0.0
+    - name: Git Identity
+      run: |
+          git config --global user.name '@jpvalery'
+          git config --global user.email 'jpvalery@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{GITHUB_TOKEN}}@github.com/$GITHUB_REPOSITORY
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Prepare repository
       run: git checkout "${GITHUB_REF:11}"
     - name: Pulling
@@ -20,10 +27,7 @@ jobs:
       run: yarn
     - name: Build
       run: yarn build
-    - name: Git Identity
-      run: git config user.email "github.actions@narative.co" && git config user.name "GitHub Actions Publishing"
     - name: Publish with Lerna
       run: yarn lerna publish --yes --registry https://registry.npmjs.org/:_authToken=${NPM_TOKEN}
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}
