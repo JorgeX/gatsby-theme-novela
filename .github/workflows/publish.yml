@@ -13,10 +13,7 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v1.0.0
     - name: Git Identity
-      run: |
-          git config --global user.name '@jpvalery'
-          git config --global user.email 'jpvalery@users.noreply.github.com'
-          git remote set-url origin https://x-access-token:${{GITHUB_TOKEN}}@github.com/$GITHUB_REPOSITORY
+      run: git config --global user.name '@jpvalery' && git config --global user.email 'jpvalery@users.noreply.github.com' && git remote set-url origin https://x-access-token:${{GITHUB_TOKEN}}@github.com/$GITHUB_REPOSITORY
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Prepare repository
