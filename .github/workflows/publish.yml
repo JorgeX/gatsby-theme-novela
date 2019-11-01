@@ -20,6 +20,8 @@ jobs:
       run: yarn
     - name: Build
       run: yarn build
+    - name: Git Identity
+      run: git config user.email "github.actions@narative.co" && git config user.name "GitHub Actions Publishing"
     - name: Publish with Lerna
       run: yarn lerna publish --yes --registry https://registry.npmjs.org/:_authToken=${NPM_TOKEN}
       env:
