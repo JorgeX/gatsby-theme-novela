@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import mediaqueries from "@styles/media";
+import styled from '@emotion/styled';
+import mediaqueries from '@styles/media';
 
 const UnorderedList = styled.ul`
   list-style: none;
@@ -46,7 +46,7 @@ const UnorderedList = styled.ul`
     }
   }
 
-  li > * {
+  li > :not(ol, ul) {
     display: inline;
   }
 
@@ -58,7 +58,7 @@ const UnorderedList = styled.ul`
   }
 
   li::before {
-    content: "";
+    content: '';
     position: absolute;
     left: -30px;
     top: 8px;

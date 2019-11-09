@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import mediaqueries from "@styles/media";
+import styled from '@emotion/styled';
+import mediaqueries from '@styles/media';
 
 const OrderedList = styled.ol`
   list-style: none;
@@ -46,7 +46,7 @@ const OrderedList = styled.ol`
     }
   }
 
-  li > * {
+  li > :not(ol, ul) {
     display: inline;
   }
 
@@ -59,7 +59,7 @@ const OrderedList = styled.ol`
 
   li::before {
     counter-increment: list;
-    content: counter(list) ".";
+    content: counter(list) '.';
     font-weight: 600;
     position: absolute;
     left: -3rem;
