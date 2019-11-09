@@ -151,8 +151,6 @@ module.exports = ({
                     }
                   }
                 }
-              }
-              {
                 allContentfulPost(sort: {order: DESC, fields: date}) {
                   edges {
                     node {
