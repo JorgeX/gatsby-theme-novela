@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.10.0...@narative/gatsby-theme-novela@0.10.1) (2019-11-09)
+
+
+### Bug Fixes
+
+* merge allArticle and allContentfulPost queries ([f2fc225](https://github.com/narative/gatsby-theme-novela/commit/f2fc225)), closes [#198](https://github.com/narative/gatsby-theme-novela/issues/198)
+* nest nested Lists ([14f5529](https://github.com/narative/gatsby-theme-novela/commit/14f5529)), closes [#200](https://github.com/narative/gatsby-theme-novela/issues/200)
+
+
+
+
+
 # [0.10.0](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.9.7...@narative/gatsby-theme-novela@0.10.0) (2019-11-03)
 
 
