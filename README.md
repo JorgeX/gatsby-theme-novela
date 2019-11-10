@@ -649,7 +649,7 @@ module.exports = {
         url: `https://dribbble.com/narativestudio`,
       },
       {
-        name: 'stackoverflow'
+        name: 'stackoverflow',
         url: `https://bit.ly/1x0885j`,
       },
     ],
@@ -667,7 +667,7 @@ Choose between a variable width grid or a simpler list style to display each sto
 
 ### Mailchimp integration
 
-Start building an audiene and grow your blog with Mailchimp audiences.
+Start building an audience and grow your blog subscribers with Mailchimp.
 
 ### Toggleable Light and Dark Mode
 
@@ -677,7 +677,7 @@ Out of the box, Novela includes both light and dark designs that can be toggled 
 
 ### Simple Customization with [Theme UI](https://theme-ui.com/)
 
-Consistent, easy-to-read code let you quickly customize every color and setting.
+Consistent, easy-to-read code lets you quickly customize every color and setting.
 
 ### Show code effortlessly
 
