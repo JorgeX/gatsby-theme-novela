@@ -60,10 +60,10 @@ const Image: React.FC<IImg> = ({ src, alt, ...props }) => {
   imgProps[keyForSrc] = src;
 
   // We don't want to CSS blur tracedSVG images! Only regular blur-ups.
-  const Compontent = src.tracedSVG ? GatsbyImg : StyledGatsbyImag;
+  const Component = src.tracedSVG ? GatsbyImg : StyledGatsbyImag;
 
   // Retrun either the GatsbyImg component or a regular img tag with the spread props
-  return isGatsby ? <Compontent {...imgProps} /> : <img {...imgProps} />;
+  return isGatsby ? <Component {...imgProps} /> : <img {...imgProps} />;
 };
 
 export default Image;
