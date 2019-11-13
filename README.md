@@ -213,7 +213,7 @@ excerpt: This is a love story about Narative and Gatsby
 
 ### Step 6: Configuring siteMetadata
 
-In order to configure the theme to properly genreate the pages and meta tags you must add specific data to `siteMetadata`.
+In order to configure the theme to properly generate the pages and meta tags you must add specific data to `siteMetadata`.
 
 The fields that are unique to Novela are `hero.heading`, `hero.maxWidth`, and `social`.
 
@@ -261,13 +261,13 @@ If you ran into problems you can reference the [example repository](https://gith
 
 # Data Sources
 
-With the flexibility of Gatsby, Novela is able to pull different data sources to build your website. Right now we support Contentful and your local file system. All data sources can be combined together or used seperately.
+With the flexibility of Gatsby, Novela is able to pull different data sources to build your website. Right now we support Contentful and your local file system. All data sources can be combined together or used separately.
 
 ### Local
 
-Local is the default data source for Novela. Write MDX and YAML in order to generate posts and authors. This is the fastest and simplist way to get started.
+Local is the default data source for Novela. Write MDX and YAML in order to generate posts and authors. This is the fastest and simplest way to get started.
 
-To learn how to use the local file system the [Installation](#installation) steps.
+To learn how to use the local file system, read the [Installation](#installation) steps.
 
 ### Contentful
 
