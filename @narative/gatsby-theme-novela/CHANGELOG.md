@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.3](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.10.2...@narative/gatsby-theme-novela@0.10.3) (2019-11-13)
+
+
+### Bug Fixes
+
+* typo in Image.tsx ([384f754](https://github.com/narative/gatsby-theme-novela/commit/384f754))
+
+
+
+
+
 ## [0.10.2](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.10.1...@narative/gatsby-theme-novela@0.10.2) (2019-11-13)
 
 **Note:** Version bump only for package @narative/gatsby-theme-novela
