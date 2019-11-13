@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "www",
-  "version": "1.2.9",
+  "version": "1.2.10",
   "license": "MIT",
   "scripts": {
     "build": "gatsby build && cp -R _redirects public/",
@@ -9,7 +9,7 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "@narative/gatsby-theme-novela": "^0.10.1",
+    "@narative/gatsby-theme-novela": "^0.10.2",
     "dotenv": "^8.0.0",
     "gatsby": "^2.13.41",
     "gatsby-plugin-google-analytics": "^2.1.6",
