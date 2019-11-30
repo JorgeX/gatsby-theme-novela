@@ -16,6 +16,7 @@ import Lists from "@components/Lists";
 import Paragraph from "@components/Paragraph";
 import Tables from "@components/Tables";
 import { ImageZoom } from "@components/Image";
+import Figcaption from "@components/Figcaption";
 
 import mediaqueries from "@styles/media";
 import { toKebabCase } from "@utils";
@@ -39,7 +40,8 @@ const components = {
   table: Tables.Table,
   thead: Tables.Head,
   th: Tables.HeadCell,
-  td: Tables.Cell
+  td: Tables.Cell,
+  figcaption: Figcaption,
 };
 
 interface MDXProps {
