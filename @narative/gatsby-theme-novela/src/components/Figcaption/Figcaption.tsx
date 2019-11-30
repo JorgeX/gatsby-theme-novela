@@ -5,6 +5,7 @@ const Figcaption = styled.figcaption`
   font-size: 14px;
   text-align: center;
   width: 100%;
+  padding-top: 6px;
 `;
 
 export default Figcaption;
