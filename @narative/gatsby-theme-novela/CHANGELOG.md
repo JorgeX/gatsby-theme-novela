@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.4](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.10.3...@narative/gatsby-theme-novela@0.10.4) (2019-12-02)
+
+
+### Bug Fixes
+
+* **Navigation.Footer:** wrong year ([18d4dd7](https://github.com/narative/gatsby-theme-novela/commit/18d4dd7))
+
+
+
+
+
 ## [0.10.3](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.10.2...@narative/gatsby-theme-novela@0.10.3) (2019-11-13)
 
 
