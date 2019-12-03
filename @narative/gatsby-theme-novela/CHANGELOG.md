@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.10.4...@narative/gatsby-theme-novela@0.11.0) (2019-12-03)
+
+
+### Features
+
+* Add figcaption component and update MDX & post ([b0bc436](https://github.com/narative/gatsby-theme-novela/commit/b0bc436))
+* Add figcaption component and update MDX & post ([2aabb9d](https://github.com/narative/gatsby-theme-novela/commit/2aabb9d))
+
+
+
+
+
 ## [0.10.4](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.10.3...@narative/gatsby-theme-novela@0.10.4) (2019-12-02)
 
 
