@@ -187,6 +187,10 @@ In `authors.yml` add an Author. There **must** be at least one `featured` Author
     You should follow him on Twitter.
   avatar: ./avatars/brotzky-avatar.jpg
   featured: true
+  social:
+    - url: https://unsplash.com
+    - url: https://stackoverflow.com
+    - url: https://github.com
 ```
 
 ### Step 5: Adding a Post
