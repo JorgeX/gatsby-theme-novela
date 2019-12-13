@@ -16,7 +16,7 @@ const AuthorHero: React.FC<AuthorHeroProps> = ({ author }) => {
   return (
     <Hero>
       <HeroImage>
-        <Image src={author.avatar.large} />
+        <RoundedImage src={author.avatar.large} />
       </HeroImage>
       <Heading>{author.name}</Heading>
       <Subheading>{author.bio}</Subheading>
@@ -60,6 +60,10 @@ const HeroImage = styled.div`
     height: 136px;
     margin-bottom: 25px;
   `}
+`;
+
+const RoundedImage = styled(Image)`
+  border-radius: 50%;
 `;
 
 const Heading = styled.h1`
