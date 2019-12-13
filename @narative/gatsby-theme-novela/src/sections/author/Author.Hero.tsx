@@ -1,12 +1,12 @@
-import React from 'react';
-import styled from '@emotion/styled';
+import React from "react";
+import styled from "@emotion/styled";
 
-import Image from '@components/Image';
+import Image from "@components/Image";
 
-import mediaqueries from '@styles/media';
-import { IAuthor } from '@types';
+import mediaqueries from "@styles/media";
+import { IAuthor } from "@types";
 
-import SocialLinks from '@components/SocialLinks';
+import SocialLinks from "@components/SocialLinks";
 
 interface AuthorHeroProps {
   author: IAuthor;
