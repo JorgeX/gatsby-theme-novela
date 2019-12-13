@@ -1,12 +1,12 @@
-import React from "react";
-import styled from "@emotion/styled";
+import React from 'react';
+import styled from '@emotion/styled';
 
-import Image from "@components/Image";
+import Image from '@components/Image';
 
-import mediaqueries from "@styles/media";
-import { IAuthor } from "@types";
+import mediaqueries from '@styles/media';
+import { IAuthor } from '@types';
 
-import SocialLinks from "@components/SocialLinks";
+import SocialLinks from '@components/SocialLinks';
 
 interface AuthorHeroProps {
   author: IAuthor;
@@ -16,7 +16,7 @@ const AuthorHero: React.FC<AuthorHeroProps> = ({ author }) => {
   return (
     <Hero>
       <HeroImage>
-        <Image src={author.avatar.large} />
+        <RoundedImage src={author.avatar.large} />
       </HeroImage>
       <Heading>{author.name}</Heading>
       <Subheading>{author.bio}</Subheading>
@@ -60,6 +60,10 @@ const HeroImage = styled.div`
     height: 136px;
     margin-bottom: 25px;
   `}
+`;
+
+const RoundedImage = styled(Image)`
+  border-radius: 50%;
 `;
 
 const Heading = styled.h1`
