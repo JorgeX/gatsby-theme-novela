@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.2](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.11.1...@narative/gatsby-theme-novela@0.11.2) (2019-12-13)
+
+
+### Bug Fixes
+
+* round loading image container ([5b0520d](https://github.com/narative/gatsby-theme-novela/commit/5b0520d))
+
+
+
+
+
 ## [0.11.1](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.11.0...@narative/gatsby-theme-novela@0.11.1) (2019-12-10)
 
 **Note:** Version bump only for package @narative/gatsby-theme-novela
