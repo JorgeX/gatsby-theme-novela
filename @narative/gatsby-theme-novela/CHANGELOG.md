@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.11.2...@narative/gatsby-theme-novela@0.12.0) (2019-12-20)
+
+
+### Features
+
+* adding dev.to icon to social icons ([d51b244](https://github.com/narative/gatsby-theme-novela/commit/d51b244))
+
+
+
+
+
 ## [0.11.2](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.11.1...@narative/gatsby-theme-novela@0.11.2) (2019-12-13)
 
 
