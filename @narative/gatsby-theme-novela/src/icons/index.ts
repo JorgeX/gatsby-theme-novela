@@ -1,6 +1,7 @@
 // Social
 import Behance from './social/Behance.Icon';
 import Dribbble from './social/Dribbble.Icon';
+import DevTo from './social/DevTo.Icon';
 import Facebook from './social/Facebook.Icon';
 import Instagram from './social/Instagram.Icon';
 import Twitter from './social/Twitter.Icon';
@@ -28,6 +29,7 @@ import Tiles from './ui/Tiles.Icon';
 export default {
   Behance,
   Dribbble,
+  DevTo,
   Facebook,
   Instagram,
   Twitter,
