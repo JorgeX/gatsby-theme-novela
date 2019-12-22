@@ -381,7 +381,7 @@ export default {
 
 > This feature allows users to override a component in order to customize its rendering.
 
-> Component Shadowing let’s you replace the theme’s original file, gatsby-theme-novela/src/components/Logo.js, with your own to implement any changes you need.
+> Component Shadowing lets you replace the theme’s original file, gatsby-theme-novela/src/components/Logo.js, with your own to implement any changes you need.
 
 Any [component](https://github.com/narative/gatsby-theme-novela/tree/master/%40narative/gatsby-theme-novela/src/components) or [section](https://github.com/narative/gatsby-theme-novela/tree/master/%40narative/gatsby-theme-novela/src/sections) is able to be replaced with your own custom component.
 
