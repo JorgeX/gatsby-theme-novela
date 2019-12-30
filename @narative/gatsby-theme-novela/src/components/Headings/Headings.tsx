@@ -15,6 +15,7 @@ const commonStyles = p => css`
 `;
 
 const h1 = styled.h1`
+  word-break: keep-all;
   font-size: 52px;
   line-height: 1.15;
   ${commonStyles};
@@ -31,6 +32,7 @@ const h1 = styled.h1`
 `;
 
 const h2 = styled.h2`
+  word-break: keep-all;
   font-size: 32px;
   line-height: 1.333;
   ${commonStyles};
@@ -50,6 +52,7 @@ const h2 = styled.h2`
 `;
 
 const h3 = styled.h3`
+  word-break: keep-all;
   font-size: 24px;
   line-height: 1.45;
   ${commonStyles};
@@ -64,6 +67,7 @@ const h3 = styled.h3`
 `;
 
 const h4 = styled.h4`
+  word-break: keep-all;
   font-size: 18px;
   line-height: 1.45;
   ${commonStyles};
@@ -74,6 +78,7 @@ const h4 = styled.h4`
 `;
 
 const h5 = styled.h5`
+  word-break: keep-all;  
   font-size: 18px;
   line-height: 1.45;
   ${commonStyles};
@@ -84,6 +89,7 @@ const h5 = styled.h5`
 `;
 
 const h6 = styled.h6`
+  word-break: keep-all;
   font-size: 16px;
   line-height: 1.45;
   ${commonStyles};
