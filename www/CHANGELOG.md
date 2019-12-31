@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.5](https://github.com/narative/gatsby-theme-novela/compare/www@1.3.4...www@1.3.5) (2019-12-31)
+
+
+### Bug Fixes
+
+* (gatsby-theme-novela/www/gatsby-config.js) Remove duplicate stackoverflow link in footer ([91c2fb7](https://github.com/narative/gatsby-theme-novela/commit/91c2fb7))
+
+
+
+
+
 ## [1.3.4](https://github.com/narative/gatsby-theme-novela/compare/www@1.3.3...www@1.3.4) (2019-12-30)
 
 **Note:** Version bump only for package www
