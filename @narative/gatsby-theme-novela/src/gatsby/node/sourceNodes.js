@@ -10,6 +10,7 @@ module.exports = ({ actions }) => {
       body: String!
       hero: File @fileByRelativePath
       timeToRead: Int
+      categories: [String!]
     }
   `);
 };
