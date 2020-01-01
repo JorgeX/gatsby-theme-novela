@@ -9,6 +9,13 @@ const siteMetadata = {
     heading: `Welcome to Novela, the simplest way to start publishing with Gatsby.`,
     maxWidth: 652,
   },
+  basePath:'/',
+  categories:[
+    {label:"UX/UI" , slug:"ux-ui"},
+    {label:"Dev",    slug:"dev"},
+    {label:"Mobile", slug:"mobile"},
+    {label:"DevOps" ,slug:"devops"},
+    {label:"Design", slug:"design"}],
   social: [
     {
       url: `https://twitter.com/narative`,
