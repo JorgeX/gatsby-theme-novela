@@ -25,6 +25,7 @@ module.exports.local = {
           secret
           title
           author
+          categories
           date(formatString: "MMMM Do, YYYY")
           dateForSEO: date
           timeToRead
@@ -85,6 +86,20 @@ module.exports.local = {
               fluid(maxWidth: 328, quality: 100) {
                 ${GatsbyFluid_withWebp}
               }
+            }
+          }
+        }
+      }
+    }
+  }`,
+  categories: `{
+    allSite {
+      edges {
+        node {
+          siteMetadata {
+            categories {
+              label
+              slug
             }
           }
         }

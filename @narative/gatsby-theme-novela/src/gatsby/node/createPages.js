@@ -62,9 +62,10 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
 
   let authors;
   let articles;
+  let categories;
 
   const dataSources = {
-    local: { authors: [], articles: [] },
+    local: { authors: [], articles: [], categories: [] },
     contentful: { authors: [], articles: [] },
     netlify: { authors: [], articles: [] },
   };
@@ -83,6 +84,7 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
       log('Querying Authors & Articles source:', 'Local');
       const localAuthors = await graphql(query.local.authors);
       const localArticles = await graphql(query.local.articles);
+      const localCategories = await graphql(query.local.categories);
 
       dataSources.local.authors = localAuthors.data.authors.edges.map(
         normalize.local.authors,
@@ -91,6 +93,8 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
       dataSources.local.articles = localArticles.data.articles.edges.map(
         normalize.local.articles,
       );
+      dataSources.local.categories =
+        localCategories.data.allSite.edges[0].node.siteMetadata.categories;
     } catch (error) {
       console.error(error);
     }
@@ -132,6 +136,7 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
     ],
     'name',
   );
+  categories = [...dataSources.local.categories];
 
   if (articles.length === 0 || authors.length === 0) {
     throw new Error(`
@@ -163,6 +168,42 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
       skip: pageLength,
       limit: pageLength,
     },
+  });
+
+  /**
+   * need to create a Paginated pages for every category
+   * that have pagination.
+   * /category
+   * /category/page/1
+   * ...
+   */
+
+  log('Creating', 'categories  pages');
+
+  categories.forEach(({ slug, label }) => {
+    // filter articles with the correct category
+
+    const categoryArticles = articles.filter(article =>
+      article.categories.includes(label),
+    );
+    if (categoryArticles.length !== 0) {
+      log('Creating category page : ', label);
+      const pathPrefix = basePath === '/' ? `/${slug}` : `${basePath}/${slug}`;
+      createPaginatedPages({
+        edges: categoryArticles,
+        pathPrefix,
+        createPage,
+        pageLength,
+        pageTemplate: templates.articles,
+        buildPath: buildPaginatedPath,
+        context: {
+          authors,
+          basePath,
+          skip: pageLength,
+          limit: pageLength,
+        },
+      });
+    }
   });
 
   /**
