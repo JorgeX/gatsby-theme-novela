@@ -2,7 +2,7 @@
   "name": "@narative/gatsby-theme-novela",
   "author": "dennis@narative.co",
   "repository": "https://github.com/narative/gatsby-theme-novela",
-  "version": "0.10.4",
+  "version": "0.11.3",
   "main": "index.js",
   "license": "MIT",
   "keywords": [
@@ -22,7 +22,6 @@
     "contentful:export": "contentful space export --config contentful.json --skip-content --skip-roles --skip-webhooks",
     "contentful:export:model": "contentful space export --config contentful.json",
     "contentful:import": "contentful space import --config contentful.json",
-    "develop": "gatsby develop",
     "publish": "npm publish --access public"
   },
   "peerDependencies": {
@@ -75,6 +74,7 @@
     "react-outside-click-handler": "^1.2.4",
     "remark-slug": "^5.1.2",
     "request": "^2.88.0",
+    "slugify": "^1.3.6",
     "theme-ui": "^0.2.40",
     "typeface-merriweather": "^0.0.72"
   }

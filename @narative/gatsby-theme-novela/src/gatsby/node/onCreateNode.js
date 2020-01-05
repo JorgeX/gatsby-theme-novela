@@ -1,6 +1,7 @@
 /* eslint-disable no-prototype-builtins */
 
 const crypto = require(`crypto`);
+const slugify = require('slugify');
 
 // Create fields for post slugs and source
 // This will change with schema customization with work
@@ -15,15 +16,6 @@ module.exports = ({ node, actions, getNode, createNodeId }, themeOptions) => {
   const source = fileNode && fileNode.sourceInstanceName;
 
   // ///////////////// Utility functions ///////////////////
-
-  function slugify(string) {
-    return string
-      .toLowerCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036F]/g, '')
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/(^-|-$)+/g, '');
-  }
 
   function generateArticlePermalink(slug, date) {
     const [year, month, day] = date.match(/\d{4}-\d{2}-\d{2}/)[0].split('-');
