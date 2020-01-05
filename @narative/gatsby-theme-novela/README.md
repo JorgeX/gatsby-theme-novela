@@ -1,4 +1,4 @@
-<a href="https://gatsby-theme-novela.netlify.com" target="_blank">
+<a href="https://www.narative.co/labs/novela/" target="_blank">
 <img src="https://raw.githubusercontent.com/narative/gatsby-theme-novela-example/master/assets/gatsby-theme-novela-hero.jpg" alt="gatsby-novela-theme hero image" />
 </a>
 
@@ -11,7 +11,7 @@ With minimal styling and maximum features — including multiple homepage layout
 Novela is built by the team at [Narative](https://www.narative.co), and built for everyone that loves the web.
 
 <div>
-<a href="https://gatsby-theme-novela.netlify.com" target="_blank">
+<a href="https://www.narative.co/labs/novela/" target="_blank">
 <img src="https://raw.githubusercontent.com/narative/gatsby-theme-novela-example/master/assets/gatsby-theme-novela-cta-demo.jpg" alt="gatsby-novela-theme live demo" width="295px" />
 </a>
 </div>
@@ -155,7 +155,7 @@ You must add `@narative/gatsby-theme-novela` as a plugin in `gatsby-config.js`.
 // gatsby-config.js
 
 module.exports = {
-  plugins: ["@narative/gatsby-theme-novela"],
+  plugins: ['@narative/gatsby-theme-novela'],
 };
 ```
 
@@ -187,6 +187,10 @@ In `authors.yml` add an Author. There **must** be at least one `featured` Author
     You should follow him on Twitter.
   avatar: ./avatars/brotzky-avatar.jpg
   featured: true
+  social:
+    - url: https://unsplash.com
+    - url: https://stackoverflow.com
+    - url: https://github.com
 ```
 
 ### Step 5: Adding a Post
@@ -213,7 +217,7 @@ excerpt: This is a love story about Narative and Gatsby
 
 ### Step 6: Configuring siteMetadata
 
-In order to configure the theme to properly genreate the pages and meta tags you must add specific data to `siteMetadata`.
+In order to configure the theme to properly generate the pages and meta tags you must add specific data to `siteMetadata`.
 
 The fields that are unique to Novela are `hero.heading`, `hero.maxWidth`, and `social`.
 
@@ -245,7 +249,7 @@ module.exports = {
       },
     ],
   },
-  plugins: ["@narative/gatsby-theme-novela"],
+  plugins: ['@narative/gatsby-theme-novela'],
 };
 ```
 
@@ -261,13 +265,13 @@ If you ran into problems you can reference the [example repository](https://gith
 
 # Data Sources
 
-With the flexibility of Gatsby, Novela is able to pull different data sources to build your website. Right now we support Contentful and your local file system. All data sources can be combined together or used seperately.
+With the flexibility of Gatsby, Novela is able to pull different data sources to build your website. Right now we support Contentful and your local file system. All data sources can be combined together or used separately.
 
 ### Local
 
-Local is the default data source for Novela. Write MDX and YAML in order to generate posts and authors. This is the fastest and simplist way to get started.
+Local is the default data source for Novela. Write MDX and YAML in order to generate posts and authors. This is the fastest and simplest way to get started.
 
-To learn how to use the local file system the [Installation](#installation) steps.
+To learn how to use the local file system, read the [Installation](#installation) steps.
 
 ### Contentful
 
@@ -295,18 +299,18 @@ CONTENTFUL_ACCESS_TOKEN=
 #### `gatsby-config.js`
 
 ```js
-require("dotenv").config();
+require('dotenv').config();
 
 plugins: [
   {
-    resolve: "gatsby-source-contentful",
+    resolve: 'gatsby-source-contentful',
     options: {
       spaceId: process.env.CONTENTFUL_SPACE_ID,
       accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
     },
   },
   {
-    resolve: "@narative/gatsby-theme-novela",
+    resolve: '@narative/gatsby-theme-novela',
     options: {
       sources: {
         contentful: true,
@@ -332,13 +336,13 @@ The technique we have used is called Component Shadowing and is a core feature o
 
 ### Enabling Author pages
 
-By default Author pages are not enabled. They can be enabled through the plugin option `authorsPage`
+By default Author pages are not enabled. They can be enabled through the plugin option `authorsPage`. If you decided to enable Author pages please make sure you have all the required for each author you add.
 
 ```js
 module.exports = {
   plugins: [
     {
-      resolve: "@narative/gatsby-theme-novela",
+      resolve: '@narative/gatsby-theme-novela',
       options: {
         authorsPage: true,
       },
@@ -357,18 +361,18 @@ First, you must create a theme file and then you can override `novelaTheme` valu
 ```js
 // src/gatsby-plugin-theme-ui/index.js
 
-import novelaTheme from "@narative/gatsby-theme-novela/src/gatsby-plugin-theme-ui";
+import novelaTheme from '@narative/gatsby-theme-novela/src/gatsby-plugin-theme-ui';
 
 export default {
   ...novelaTheme,
   initialColorMode: `dark`,
   colors: {
     ...novelaTheme.colors,
-    primary: "#000",
-    secondary: "#73737D",
-    accent: "#6166DC",
-    grey: "#73737D",
-    background: "#fff",
+    primary: '#000',
+    secondary: '#73737D',
+    accent: '#6166DC',
+    grey: '#73737D',
+    background: '#fff',
   },
 };
 ```
@@ -377,7 +381,7 @@ export default {
 
 > This feature allows users to override a component in order to customize its rendering.
 
-> Component Shadowing let’s you replace the theme’s original file, gatsby-theme-novela/src/components/Logo.js, with your own to implement any changes you need.
+> Component Shadowing lets you replace the theme’s original file, gatsby-theme-novela/src/components/Logo.js, with your own to implement any changes you need.
 
 Any [component](https://github.com/narative/gatsby-theme-novela/tree/master/%40narative/gatsby-theme-novela/src/components) or [section](https://github.com/narative/gatsby-theme-novela/tree/master/%40narative/gatsby-theme-novela/src/sections) is able to be replaced with your own custom component.
 
@@ -405,11 +409,11 @@ Images can be added to Posts and customized to fit your content. Define a regula
 </div>
 ```
 
-| Size   |   Class Name    |          Desciption           |
-| ------ | :-------------: | :---------------------------: |
-| small  | Image\_\_Small  |       Width of the text       |
+| Size   | Class Name      | Desciption                    |
+| ------ | :-------------- | :---------------------------- |
+| small  | Image\_\_Small  | Width of the text             |
 | medium | Image\_\_Medium | Larger than width of the text |
-| large  | Image\_\_Large  |       Full width image        |
+| large  | Image\_\_Large  | Full width image              |
 
 ### Adding your logo
 
@@ -430,7 +434,7 @@ Start by creating the component file at:
 It is important you create the exact folder structure so Gatsby knows to shadow this component. Once the file is created you can create your Logo component.
 
 ```jsx
-import React from "react";
+import React from 'react';
 
 /**
  * Paste in your SVG logo and return it from this component.
@@ -463,18 +467,18 @@ Then configure the plugins
 ```js
 plugins: [
   {
-    resolve: "@narative/gatsby-theme-novela",
+    resolve: '@narative/gatsby-theme-novela',
     options: {
-      contentPosts: "content/posts",
-      contentAuthors: "content/authors",
-      basePath: "/",
+      contentPosts: 'content/posts',
+      contentAuthors: 'content/authors',
+      basePath: '/',
       mailchimp: true, // make sure this is true!
     },
   },
   {
-    resolve: "gatsby-plugin-mailchimp",
+    resolve: 'gatsby-plugin-mailchimp',
     options: {
-      endpoint: "", // add your MC list endpoint here; see plugin repo for instructions
+      endpoint: '', // add your MC list endpoint here; see plugin repo for instructions
     },
   },
 ];
@@ -505,27 +509,30 @@ You will want to override it here:
 
 It is recommended to use the Default options, but if your project requires something else you can configure them to your need.
 
-| Option             |     Default     |                                        Description                                        |
-| ------------------ | :-------------: | :---------------------------------------------------------------------------------------: |
-| contentPosts       |  content/posts  |                     Define where you want to pull your Post data from                     |
-| contentAuthors     | content/authors |                    Define where you want to pull your Author data from                    |
-| authorsPage        |      false      |                                    Create Author pages                                    |
-| authorsPath        |    /authors     |                              Where should Author pages live?                              |
-| basePath           |        /        | Where should the site be served from? `/blog` will change all paths to start with `/blog` |
-| mailchimp          |      false      |                        Enable Mailchimp subscriptions on each Post                        |
-| sources.local      |      true       |                           Enable local file system data source                            |
-| sources.contentful |      false      |                               Enable Contentful data source                               |
+| Option                 | Default         | Description                                                                                                                         |
+| ---------------------- | :-------------- | :---------------------------------------------------------------------------------------------------------------------------------- |
+| contentPosts           | content/posts   | Define where you want to pull your Post data from                                                                                   |
+| contentAuthors         | content/authors | Define where you want to pull your Author data from                                                                                 |
+| authorsPage            | false           | Create Author pages                                                                                                                 |
+| authorsPath            | /authors        | Where should Author pages live?                                                                                                     |
+| rootPath               | /               | Define the index of your site                                                                                                       |
+| basePath               | /               | Where should the site be served from? `/blog` will change all paths to start with `/blog`                                           |
+| articlePermalinkFormat | :slug           | Define the format of the article permalink. Possible values: `:slug`, `:year`, `:month`, `:day`. Example: `:year/:month/:day/:slug` |
+| mailchimp              | false           | Enable Mailchimp subscriptions on each Post                                                                                         |
+| sources.local          | true            | Enable local file system data source                                                                                                |
+| sources.contentful     | false           | Enable Contentful data source                                                                                                       |
 
 [View Theme option example](https://github.com/narative/gatsby-theme-novela-example/blob/master/gatsby-config.js#L36)
 
 ```js
 plugins: [
   {
-    resolve: "@narative/gatsby-theme-novela",
+    resolve: '@narative/gatsby-theme-novela',
     options: {
-      contentPosts: "content/posts",
-      contentAuthors: "content/authors",
-      basePath: "/",
+      contentPosts: 'content/posts',
+      contentAuthors: 'content/authors',
+      rootPath: '/',
+      basePath: '/',
       mailchimp: true,
       sources: {
         local: true,
@@ -540,13 +547,14 @@ plugins: [
 
 [View Author example](https://github.com/narative/gatsby-theme-novela-example/blob/master/content/authors/authors.yml)
 
-| Key      | Required |  Type   |                                                                 Desciption                                                                 |
-| -------- | :------: | :-----: | :----------------------------------------------------------------------------------------------------------------------------------------: |
-| name     | required | String  |                                The Author's full name which is used should be used as a reference in Posts                                 |
-| bio      | required | String  |                                            The Author's bio which is displayed on the home page                                            |
-| avatar   | required |  Image  |                                                            The Author's avatar                                                             |
-| featured | optional | Boolean |                                              If `true` the Author will appear on the homepage                                              |
-| social   | optional |  Array  | A list of social accounts and urls. Supported names include github, twitter, linkedin, facebook, instagram, youtube, medium, and dribbble. |
+| Key      | Required | Type    | Desciption                                                                                                                                                                                                              |
+| -------- | :------: | :------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| name     | required | String  | The Author's full name which is used should be used as a reference in Posts                                                                                                                                             |
+| bio      | required | String  | The Author's bio which is displayed on the home page                                                                                                                                                                    |
+| avatar   | required | Image   | The Author's avatar                                                                                                                                                                                                     |
+| featured | optional | Boolean | If `true` the Author will appear on the homepage                                                                                                                                                                        |
+| slug     | optional | String  | Override the autogenerated slug based on the Author's name. Do not include any slashes.                                                                                                                                 |
+| social   | required | Array   | A list of social accounts and urls. [View supported icon/name combinations](https://github.com/narative/gatsby-theme-novela/blob/master/%40narative/gatsby-theme-novela/src/components/SocialLinks/SocialLinks.tsx#L15) |
 
 ```yml
 - name: Dennis Brotzky
@@ -568,16 +576,16 @@ plugins: [
 
 ## Post
 
-| Key          | Required |    Type    |                                          Description                                          |
-| ------------ | :------: | :--------: | :-------------------------------------------------------------------------------------------: |
-| title        | required |   String   |                  Used as title and generates a default slug. Must be unique.                  |
-| slug         | optional |   String   |                Define a custom slug that will override the default title slug.                |
+| Key          | Required | Type       | Description                                                                                   |
+| ------------ | :------: | :--------- | :-------------------------------------------------------------------------------------------- |
+| title        | required | String     | Used as title and generates a default slug. Must be unique.                                   |
+| slug         | optional | String     | Define a custom slug that will override the default title slug.                               |
 | author       | required | String Ref | Must **match** a defined Author name. Co-author posts by adding comma seperated Author names. |
-| date         | required |    Date    |                                       YYYY-MM-DD format                                       |
-| hero         | required |   Image    |                               1200px minimum width recommended                                |
-| excerpt      | required |   String   |                                      140 character limit                                      |
-| subscription | optional |   String   |          If mailchimp is enabled disable the subscription box on an individual Post           |
-| secret       | optional |  Boolean   |           If secret the Post will not appear in paginated lists. Defaults to false.           |
+| date         | required | Date       | YYYY-MM-DD format                                                                             |
+| hero         | required | Image      | 1200px minimum width recommended                                                              |
+| excerpt      | required | String     | 140 character limit                                                                           |
+| subscription | optional | String     | If mailchimp is enabled disable the subscription box on an individual Post                    |
+| secret       | optional | Boolean    | If secret the Post will not appear in paginated lists. Defaults to false.                     |
 
 [View Post example](https://github.com/narative/gatsby-theme-novela-example/blob/master/content/posts/2019-04-31-understanding-the-gatsby-lifecycle/index.mdx)
 
@@ -598,15 +606,15 @@ excerpt: This is a love story about Narative and Gatsby
 
 ## Site Metadata
 
-| Key           | Required |    Type    |                                                                Description                                                                 |
-| ------------- | :------: | :--------: | :----------------------------------------------------------------------------------------------------------------------------------------: |
-| title         | required |   String   |                                                        Used for the <title></title>                                                        |
-| name          | required | String Ref |                                       Used in multiple locations including meta tags and site footer                                       |
-| siteUrl       | required |    Date    |                                                             Used in meta tags                                                              |
-| description   | required |   Image    |                                                             Used in meta tags                                                              |
-| hero.heading  | required |   String   |                                                              Used in the Hero                                                              |
-| hero.maxWidth | optional |   number   |                                                     Used in the Hero. Defaults to 652                                                      |
-| social        | required |   Array    | [{ url}]. Supported names include github, twitter, linkedin, facebook, instagram, youtube, and dribbble. Used in site footer and meta tags |
+| Key           | Required | Type       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| ------------- | :------: | :--------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| title         | required | String     | Used for the <title></title>                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| name          | required | String Ref | Used in multiple locations including meta tags and site footer                                                                                                                                                                                                                                                                                                                                                                                    |
+| siteUrl       | required | Date       | Used in meta tags                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| description   | required | String     | Used in meta tags                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| hero.heading  | required | String     | Used in the Hero                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| hero.maxWidth | optional | number     | Used in the Hero. Defaults to 652                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| social        | required | Array      | [View supported icon/name combinations](https://github.com/narative/gatsby-theme-novela/blob/master/%40narative/gatsby-theme-novela/src/components/SocialLinks/SocialLinks.tsx#L15). `url` is required and the icon is chosen based on the url. If you also provide `name`, then the icon will be the same as the name you provided as long as the name equals one of the supported icons (See example bellow). Used in site footer and meta tags |
 
 [View Site Metadata example](https://github.com/narative/gatsby-theme-novela-example/blob/master/gatsby-config.js)
 
@@ -644,6 +652,10 @@ module.exports = {
       {
         url: `https://dribbble.com/narativestudio`,
       },
+      {
+        name: 'stackoverflow',
+        url: `https://bit.ly/1x0885j`,
+      },
     ],
   },
 };
@@ -659,7 +671,7 @@ Choose between a variable width grid or a simpler list style to display each sto
 
 ### Mailchimp integration
 
-Start building an audiene and grow your blog with Mailchimp audiences.
+Start building an audience and grow your blog subscribers with Mailchimp.
 
 ### Toggleable Light and Dark Mode
 
@@ -669,7 +681,7 @@ Out of the box, Novela includes both light and dark designs that can be toggled 
 
 ### Simple Customization with [Theme UI](https://theme-ui.com/)
 
-Consistent, easy-to-read code let you quickly customize every color and setting.
+Consistent, easy-to-read code lets you quickly customize every color and setting.
 
 ### Show code effortlessly
 
