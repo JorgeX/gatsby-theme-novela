@@ -43,7 +43,7 @@ const CoAuthors: React.FC<AuthorsProps> = ({ authors }) => {
       <CoAuthorsList style={listWidth}>
         {authors.map((author, index) => (
           <CoAuthorAvatar style={{ left: `${index * 15}px` }} key={author.name}>
-            <Image src={author.avatar.small} />
+            <RoundedImage src={author.avatar.small} />
           </CoAuthorAvatar>
         ))}
       </CoAuthorsList>
@@ -65,7 +65,7 @@ const CoAuthors: React.FC<AuthorsProps> = ({ authors }) => {
                   to={author.slug}
                 >
                   <CoAuthorAvatarOpen>
-                    <Image src={author.avatar.small} />
+                    <RoundedImage src={author.avatar.small} />
                   </CoAuthorAvatarOpen>
                   <AuthorNameOpen>{author.name}</AuthorNameOpen>
                 </AuthorLink>
@@ -95,7 +95,7 @@ const ArticleAuthors: React.FC<AuthorsProps> = ({ authors }) => {
         to={authors[0].slug}
       >
         <AuthorAvatar>
-          <Image src={authors[0].avatar.small} />
+          <RoundedImage src={authors[0].avatar.small} />
         </AuthorAvatar>
         <strong>{authors[0].name}</strong>
         <HideOnMobile>,&nbsp;</HideOnMobile>
@@ -121,6 +121,10 @@ const AuthorAvatar = styled.div`
   ${mediaqueries.phablet`
     display: none;
   `}
+`;
+
+const RoundedImage = styled(Image)`
+  border-radius: 50%;
 `;
 
 const AuthorLink = styled.div`

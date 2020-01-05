@@ -32,9 +32,6 @@ const siteMetadata = {
       url: `https://youtube.com`,
     },
     {
-      url: `https://stackoverflow.com`,
-    },
-    {
       name: 'stackoverflow',
       url: `https://bit.ly/1x0885j`,
     },

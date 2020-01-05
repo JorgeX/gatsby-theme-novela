@@ -3,6 +3,60 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.5](https://github.com/narative/gatsby-theme-novela/compare/www@1.3.4...www@1.3.5) (2019-12-31)
+
+
+### Bug Fixes
+
+* (gatsby-theme-novela/www/gatsby-config.js) Remove duplicate stackoverflow link in footer ([91c2fb7](https://github.com/narative/gatsby-theme-novela/commit/91c2fb7))
+
+
+
+
+
+## [1.3.4](https://github.com/narative/gatsby-theme-novela/compare/www@1.3.3...www@1.3.4) (2019-12-30)
+
+**Note:** Version bump only for package www
+
+
+
+
+
+## [1.3.3](https://github.com/narative/gatsby-theme-novela/compare/www@1.3.2...www@1.3.3) (2019-12-20)
+
+**Note:** Version bump only for package www
+
+
+
+
+
+## [1.3.2](https://github.com/narative/gatsby-theme-novela/compare/www@1.3.1...www@1.3.2) (2019-12-13)
+
+**Note:** Version bump only for package www
+
+
+
+
+
+## [1.3.1](https://github.com/narative/gatsby-theme-novela/compare/www@1.3.0...www@1.3.1) (2019-12-10)
+
+**Note:** Version bump only for package www
+
+
+
+
+
+# [1.3.0](https://github.com/narative/gatsby-theme-novela/compare/www@1.2.12...www@1.3.0) (2019-12-03)
+
+
+### Features
+
+* Add figcaption component and update MDX & post ([2aabb9d](https://github.com/narative/gatsby-theme-novela/commit/2aabb9d))
+
+
+
+
+
 ## [1.2.12](https://github.com/narative/gatsby-theme-novela/compare/www@1.2.11...www@1.2.12) (2019-12-02)
 
 **Note:** Version bump only for package www

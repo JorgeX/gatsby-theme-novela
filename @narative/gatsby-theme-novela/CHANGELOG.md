@@ -3,6 +3,56 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.1](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.12.0...@narative/gatsby-theme-novela@0.12.1) (2019-12-30)
+
+**Note:** Version bump only for package @narative/gatsby-theme-novela
+
+
+
+
+
+# [0.12.0](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.11.2...@narative/gatsby-theme-novela@0.12.0) (2019-12-20)
+
+
+### Features
+
+* adding dev.to icon to social icons ([d51b244](https://github.com/narative/gatsby-theme-novela/commit/d51b244))
+
+
+
+
+
+## [0.11.2](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.11.1...@narative/gatsby-theme-novela@0.11.2) (2019-12-13)
+
+
+### Bug Fixes
+
+* round loading image container ([5b0520d](https://github.com/narative/gatsby-theme-novela/commit/5b0520d))
+
+
+
+
+
+## [0.11.1](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.11.0...@narative/gatsby-theme-novela@0.11.1) (2019-12-10)
+
+**Note:** Version bump only for package @narative/gatsby-theme-novela
+
+
+
+
+
+# [0.11.0](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.10.4...@narative/gatsby-theme-novela@0.11.0) (2019-12-03)
+
+
+### Features
+
+* Add figcaption component and update MDX & post ([b0bc436](https://github.com/narative/gatsby-theme-novela/commit/b0bc436))
+* Add figcaption component and update MDX & post ([2aabb9d](https://github.com/narative/gatsby-theme-novela/commit/2aabb9d))
+
+
+
+
+
 ## [0.10.4](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.10.3...@narative/gatsby-theme-novela@0.10.4) (2019-12-02)
 
 

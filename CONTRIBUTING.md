@@ -12,7 +12,7 @@ This project uses [Yarn Workspaces](https://yarnpkg.com/lang/en/docs/workspaces/
   yarn
 ```
 
-Once you've downloaded the repository and installed all the depedencies you can run the project locally.
+Once you've downloaded the repository and installed all the dependencies you can run the project locally.
 
 ```sh
   yarn start
