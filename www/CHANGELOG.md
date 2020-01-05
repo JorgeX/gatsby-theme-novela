@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.6](https://github.com/narative/gatsby-theme-novela/compare/www@1.3.5...www@1.3.6) (2020-01-05)
+
+
+### Bug Fixes
+
+* **readme:** new readme updates ([a479ae0](https://github.com/narative/gatsby-theme-novela/commit/a479ae097dc2749c5ef264d92bbfd7dbd9b221fb))
+
+
+
+
+
 ## [1.3.5](https://github.com/narative/gatsby-theme-novela/compare/www@1.3.4...www@1.3.5) (2019-12-31)
 
 

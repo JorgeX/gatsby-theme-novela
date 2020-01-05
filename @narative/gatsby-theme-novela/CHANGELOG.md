@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.12.1...@narative/gatsby-theme-novela@0.13.0) (2020-01-05)
+
+
+### Bug Fixes
+
+* **readme:** new readme updates ([a479ae0](https://github.com/narative/gatsby-theme-novela/commit/a479ae097dc2749c5ef264d92bbfd7dbd9b221fb))
+
+
+### Features
+
+* **slugs:** Adding diverse language support ([477d4c0](https://github.com/narative/gatsby-theme-novela/commit/477d4c03ab8f5f837855db105273d6e2fbd65688))
+* **slugs:** Adding diverse language support ([09fbb47](https://github.com/narative/gatsby-theme-novela/commit/09fbb47f33f7e10451575f220dd523c930288468))
+
+
+
+
+
 ## [0.12.1](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.12.0...@narative/gatsby-theme-novela@0.12.1) (2019-12-30)
 
 **Note:** Version bump only for package @narative/gatsby-theme-novela
