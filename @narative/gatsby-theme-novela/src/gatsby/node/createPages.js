@@ -57,8 +57,9 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
     mailchimp = '',
   } = themeOptions;
 
+  console.log(sources);
   // Defaulting to look at the local MDX files as sources.
-  const { local = true, contentful = false } = sources;
+  const { local, contentful } = sources;
 
   let authors;
   let articles;
