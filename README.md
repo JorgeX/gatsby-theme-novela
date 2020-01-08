@@ -292,8 +292,8 @@ Then pass in the enviroment variables `.env` to the plugin
 #### `.env`
 
 ```
-CONTENTFUL_SPACE_ID=
-CONTENTFUL_ACCESS_TOKEN=
+CONTENTFUL_SPACE_ID= (Your Contentful Space ID)
+CONTENTFUL_ACCESS_TOKEN= (Your Content Delivery API - access token)
 ```
 
 #### `gatsby-config.js`
@@ -327,6 +327,8 @@ Finally, import the Contentful Model from Novela to get started. Novela Contentf
 [Contentful space import docs](https://github.com/contentful/contentful-cli/tree/master/docs/space/import)
 
 Once you have your project setup with `gatsby-source-contentful` and `@narative/gatsby-theme-novela` and your Contentful space is setup with the imported model you are good to go.
+
+⚠️ Please make sure you have at least one Media Asset uploaded or you will run into a GraphQL error: https://github.com/gatsbyjs/gatsby/issues/15397
 
 # Customization
 
