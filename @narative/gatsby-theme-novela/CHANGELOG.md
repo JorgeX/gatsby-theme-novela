@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.1](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.13.0...@narative/gatsby-theme-novela@0.13.1) (2020-01-08)
+
+
+### Bug Fixes
+
+* **menu:** fixing menu highlight on prism code ([295c23d](https://github.com/narative/gatsby-theme-novela/commit/295c23d6262bfa5305ce95adb7d6c9d872af4b34))
+
+
+
+
+
 # [0.13.0](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.12.1...@narative/gatsby-theme-novela@0.13.0) (2020-01-05)
 
 
