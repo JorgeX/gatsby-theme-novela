@@ -28,13 +28,13 @@ jobs:
     - name: Build
       run: yarn build
     - name: Authenticate with Registry
-        run: |
+      run: |
           yarn logout
           echo "@narative/gatsby-theme-novela:registry=http://registry.npmjs.org/" > .npmrc
           echo "registry=http://registry.npmjs.org/" >> .npmrc
           echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
           npm whoami
-        env:
+      env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     - name: Publish with Lerna
       run: yarn lerna publish --yes --message 'chore: release new version'
