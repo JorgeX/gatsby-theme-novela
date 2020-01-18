@@ -13,7 +13,10 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v1.0.0
     - name: Git Identity
-      run: git config --global user.name '@jpvalery' && git config --global user.email 'jpvalery@users.noreply.github.com' && git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/$GITHUB_REPOSITORY
+      run: |
+        git config --global user.name '@jpvalery'
+        git config --global user.email 'jpvalery@users.noreply.github.com'
+        git remote set-url origin https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Prepare repository
@@ -24,8 +27,18 @@ jobs:
       run: yarn
     - name: Build
       run: yarn build
+    - name: Authenticate with Registry
+        run: |
+          yarn logout
+          echo "@narative/gatsby-theme-novela:registry=http://registry.npmjs.org/" > .npmrc
+          echo "registry=http://registry.npmjs.org/" >> .npmrc
+          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
+          npm whoami
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     - name: Publish with Lerna
-      run: yarn lerna publish --yes --registry https://registry.npmjs.org/:_authToken=${NPM_TOKEN}
+      run: yarn lerna publish --yes --message 'chore: release new version'
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
