@@ -52,8 +52,8 @@ const plugins = [
       authorsPage: true,
       mailchimp: true,
       sources: {
-        local: false,
-        contentful: true,
+        local: true,
+        contentful: false,
       },
     },
   },
