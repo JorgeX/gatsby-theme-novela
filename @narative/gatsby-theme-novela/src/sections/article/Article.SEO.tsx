@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import SEO from "@components/SEO";
+import SEO from '@components/SEO';
 
-import { IArticle, IAuthor } from "@types";
-import { graphql, useStaticQuery } from "gatsby";
+import { IArticle, IAuthor } from '@types';
+import { graphql, useStaticQuery } from 'gatsby';
 
 const siteQuery = graphql`
   {
@@ -36,7 +36,7 @@ const ArticleSEO: React.FC<ArticleSEOProps> = ({
   const siteUrl = results.allSite.edges[0].node.siteMetadata.siteUrl;
 
   const authorsData = authors.map(author => ({
-    "@type": "Person",
+    '@type': 'Person',
     name: author.name,
   }));
 
@@ -67,16 +67,16 @@ const ArticleSEO: React.FC<ArticleSEOProps> = ({
     }
   }
 `.replace(/"[^"]+"|(\s)/gm, function(matched, group1) {
-  if (!group1) {
-    return matched;
-  } else {
-    return "";
-  }
-});
-/**
- * See here for the explanation of the regex above:
- * https://stackoverflow.com/a/23667311
- */
+    if (!group1) {
+      return matched;
+    } else {
+      return '';
+    }
+  });
+  /**
+   * See here for the explanation of the regex above:
+   * https://stackoverflow.com/a/23667311
+   */
 
   return (
     <SEO
@@ -86,6 +86,7 @@ const ArticleSEO: React.FC<ArticleSEOProps> = ({
       timeToRead={article.timeToRead}
       published={article.date}
       pathname={location.href}
+      canonicalUrl={article.canonicalUrl}
     >
       <script type="application/ld+json">{microdata}</script>
     </SEO>
