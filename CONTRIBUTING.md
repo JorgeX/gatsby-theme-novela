@@ -1,4 +1,4 @@
-## How to Contribute
+# How to Contribute
 
 ### Setting Up Your Local Dev Environment
 
@@ -32,16 +32,17 @@ We're more than happy with PRs that fix typos, syntax errors, and types. You do 
 
 In order for our publishing workflows with Lerna to properly function, we strictly follow our [.commitlintrc.yml](https://github.com/narative/gatsby-theme-novela/blob/master/.commitlintrc.yml); itself based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0-beta.2/).
 
-Commit should start with a type and the header shouldn't have more than 72 characters. 
+Commit should start with a type and the header shouldn't have more than 72 characters.
 
 ### Possible types
-* `chore`:    Change build process, tooling or dependencies.
-* `ci`:       Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)
-* `feat`:     Adds a new feature.
-* `fix`:      Solves a bug.
-* `docs`:     Adds or alters documentation.
-* `style`:    Improves formatting, white-space.
-* `refactor`: Rewrites code without feature, performance or bug changes.
-* `perf`:     Improves performance.
-* `test`:     Adds or modifies tests.
-* `revert`:   Changes that reverting other changes
+
+- `chore`: Change build process, tooling or dependencies.
+- `ci`: Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)
+- `feat`: Adds a new feature.
+- `fix`: Solves a bug.
+- `docs`: Adds or alters documentation.
+- `style`: Improves formatting, white-space.
+- `refactor`: Rewrites code without feature, performance or bug changes.
+- `perf`: Improves performance.
+- `test`: Adds or modifies tests.
+- `revert`: Changes that reverting other changes
