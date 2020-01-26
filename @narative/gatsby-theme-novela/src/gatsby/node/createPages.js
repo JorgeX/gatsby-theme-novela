@@ -214,6 +214,7 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
         slug: article.slug,
         id: article.id,
         title: article.title,
+        canonicalUrl: article.canonical_url,
         mailchimp,
         next,
       },

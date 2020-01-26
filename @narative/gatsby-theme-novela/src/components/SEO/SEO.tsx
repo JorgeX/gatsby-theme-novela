@@ -27,7 +27,7 @@ interface HelmetProps {
   pathname: string;
   image?: string;
   url?: string;
-  canonical?: string;
+  canonicalUrl?: string;
   published?: string;
   timeToRead?: string;
 }
@@ -74,8 +74,8 @@ const SEO: React.FC<HelmetProps> = ({
   url,
   image,
   published,
-  pathname,
   timeToRead,
+  canonicalUrl,
 }) => {
   const results = useStaticQuery(seoQuery);
   const site = results.allSite.edges[0].node.siteMetadata;
@@ -100,10 +100,6 @@ const SEO: React.FC<HelmetProps> = ({
     {
       name: 'theme-color',
       content: '#fff',
-    },
-    {
-      rel: 'canonical',
-      href: fullURL(pathname),
     },
     { itemprop: 'name', content: title || site.title },
     { itemprop: 'description', content: description || site.description },
@@ -147,6 +143,7 @@ const SEO: React.FC<HelmetProps> = ({
         href="https://fonts.googleapis.com/css?family=Merriweather:700,700i&display=swap"
         rel="stylesheet"
       />
+      <link rel="canonical" href={canonicalUrl} />
       {children}
     </Helmet>
   );
