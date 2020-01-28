@@ -14,8 +14,7 @@
 * [ ] New feature (_adding a feature following a feature-request issue_)
 * [ ] Improvement (_improving an existing feature - includes `style:` and `perf:`commits_)
 * [ ] Refactor (_rewriting existing code without any feature change_)
-
-* [ ] This change is or requires a documentation update
+* [ ] (!) This change is or requires a documentation update
 
 # Description
 
