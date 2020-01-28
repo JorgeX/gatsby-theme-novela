@@ -2,34 +2,42 @@
 name: Bug report
 about: Create a report to help us improve
 title: ''
-labels: ''
+labels: 'bug'
 assignees: ''
 
 ---
+# Prerequisites
+* [ ] Have you searched the issue tracker for similar issues (either past or present)?
+* [ ] Can you reproduce the issue consistently?
+* [ ] Are you reporting to the correct repository?
+* [ ] Is this something you can **debug and fix**? Send a pull request! Bug fixes and documentation fixes are welcome.
 
-**Version of Novela you are using**
+# Description
 
-**Number of posts you have and which data source**
-(Local, Contentful options)
+### Version of Novela you are using
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+### Number of posts you have and which data source
+* [ ] Local
+* [ ] Contentful
 
-**To Reproduce**
+### Describe the bug
+_A clear and concise description of what the bug is._
+
+### To Reproduce
 Steps to reproduce the behavior:
 1. Go to '...'
 2. Click on '....'
 3. Scroll down to '....'
 4. See error
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+### Expected behavior
+_A clear and concise description of what you expected to happen._
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+### Screenshots
+_If applicable, add screenshots to help explain your problem._
 
-**Browser**
- - Browser [e.g. chrome, safari, iOS safari]
+### Browser
+_Browser [e.g. Chrome, Safari, iOS Safari]_
 
-**Additional context**
-Add any other context about the problem here.
+### Additional context
+_Add any other context about the problem here._
