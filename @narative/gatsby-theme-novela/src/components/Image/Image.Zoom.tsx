@@ -19,10 +19,6 @@ const ImageZoom: React.FC<{}> = props => {
     },
   };
 
-  const handleImgLoad = useCallback(() => {
-    setIsZoomed(true);
-  }, []);
-
   const handleZoomChange = useCallback(shouldZoom => {
     setIsZoomed(shouldZoom);
   }, []);
