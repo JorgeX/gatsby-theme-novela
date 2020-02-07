@@ -28,6 +28,7 @@ const icons = {
   patreon: Icons.Patreon,
   paypal: Icons.Paypal,
   digitalocean: Icons.DigitalOcean,
+  tripadvisor: Icons.TripAdvisor,
 };
 
 const getHostname = url => {
@@ -36,7 +37,7 @@ const getHostname = url => {
 
 const SocialLinks: React.FC<SocialLinksProps> = ({
   links,
-  fill = '#73737D'
+  fill = '#73737D',
 }) => {
   if (!links) return null;
 
