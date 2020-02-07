@@ -14,6 +14,7 @@ import YouTube from './social/YouTube.Icon';
 import Patreon from './social/Patreon.Icon';
 import Paypal from './social/Paypal.Icon';
 import DigitalOcean from './social/DigitalOcean.Icon';
+import TripAdvisor from './social/TripAdvisor.Icon';
 
 // UI
 import ChevronLeft from './ui/ChevronLeft.Icon';
@@ -42,6 +43,7 @@ export default {
   Patreon,
   Paypal,
   DigitalOcean,
+  TripAdvisor,
 
   ChevronLeft,
   Copied,

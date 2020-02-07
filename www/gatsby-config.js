@@ -38,6 +38,9 @@ const siteMetadata = {
     {
       url: `https://digitalocean.com`,
     },
+    {
+      url: `https://tripadvisor.com`,
+    },
   ],
 };
 
