@@ -1,7 +1,7 @@
-exports.createPages = require('./src/gatsby/node/createPages');
-exports.createResolvers = require('./src/gatsby/node/createResolvers');
-exports.onCreateNode = require('./src/gatsby/node/onCreateNode');
-exports.onCreateWebpackConfig = require('./src/gatsby/node/onCreateWebpackConfig');
-exports.onPreBootstrap = require('./src/gatsby/node/onPreBootstrap');
-exports.sourceNodes = require('./src/gatsby/node/sourceNodes');
-exports.createSchemaCustomization = require('./src/gatsby/node/createSchemaCustomization');
+exports.createPages = require('@narative/gatsby-theme-novela/src/gatsby/node/createPages');
+exports.createResolvers = require('@narative/gatsby-theme-novela/src/gatsby/node/createResolvers');
+exports.onCreateNode = require('@narative/gatsby-theme-novela/src/gatsby/node/onCreateNode');
+exports.onCreateWebpackConfig = require('@narative/gatsby-theme-novela/src/gatsby/node/onCreateWebpackConfig');
+exports.onPreBootstrap = require('@narative/gatsby-theme-novela/src/gatsby/node/onPreBootstrap');
+exports.sourceNodes = require('@narative/gatsby-theme-novela/src/gatsby/node/sourceNodes');
+exports.createSchemaCustomization = require('@narative/gatsby-theme-novela/src/gatsby/node/createSchemaCustomization');
