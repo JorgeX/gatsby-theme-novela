@@ -53,6 +53,10 @@ export const globalStyles = css`
     height: 100%;
   }
 
+  article {
+    word-break: break-word;
+  }
+
   button,
   a {
     text-decoration: none;
