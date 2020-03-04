@@ -58,14 +58,14 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
   } = themeOptions;
 
   const { data } = await graphql(`
-  query siteQuery {
-    site {
-      siteMetadata {
-        siteUrl
+    query siteQuery {
+      site {
+        siteMetadata {
+          siteUrl
+        }
       }
     }
-  }
-  `)
+  `);
 
   console.log(sources);
   // Defaulting to look at the local MDX files as sources.
