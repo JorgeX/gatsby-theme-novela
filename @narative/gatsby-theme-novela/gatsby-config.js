@@ -65,7 +65,7 @@ module.exports = ({
                       date: edge.node.date,
                       url: site.siteMetadata.siteUrl + edge.node.slug,
                       guid: site.siteMetadata.siteUrl + edge.node.slug,
-                      // custom_elements: [{ "content:encoded": edge.node.body }],
+                      custom_elements: [{ "content:encoded": edge.node.body }],
                       author: edge.node.author,
                     };
                   });
@@ -77,10 +77,10 @@ module.exports = ({
                       ...edge.node,
                       description: edge.node.excerpt,
                       date: edge.node.date,
-                      url: site.siteMetadata.siteUrl + edge.node.slug,
-                      guid: site.siteMetadata.siteUrl + edge.node.slug,
-                      // custom_elements: [{ "content:encoded": edge.node.body }],
-                      author: edge.node.author,
+                      url: site.siteMetadata.siteUrl + '/' + edge.node.slug,
+                      guid: site.siteMetadata.siteUrl + '/' + edge.node.slug,
+                      custom_elements: [{ "content:encoded": edge.node.body.childMarkdownRemark.html }],
+                      author: edge.node.author ? edge.node.author.name : '',
                     };
                   });
               } else {
@@ -95,7 +95,7 @@ module.exports = ({
                       url: site.siteMetadata.siteUrl + edge.node.slug,
                       guid: site.siteMetadata.siteUrl + edge.node.slug,
                       // custom_elements: [{ "content:encoded": edge.node.body }],
-                      author: edge.node.author,
+                      author: edge.node.author ? edge.node.author.name : '',
                     };
                   });
               }
@@ -107,6 +107,7 @@ module.exports = ({
                 allArticle(sort: {order: DESC, fields: date}) {
                   edges {
                     node {
+                      body
                       excerpt
                       date
                       slug
@@ -128,6 +129,11 @@ module.exports = ({
                       date
                       slug
                       title
+                      body {
+                        childMarkdownRemark {
+                          html
+                        }
+                      }
                       author {
                         name
                       }
@@ -142,6 +148,7 @@ module.exports = ({
                 allArticle(sort: {order: DESC, fields: date}) {
                   edges {
                     node {
+                      body
                       excerpt
                       date
                       slug
@@ -158,6 +165,11 @@ module.exports = ({
                       date
                       slug
                       title
+                      body {
+                        childMarkdownRemark {
+                          html
+                        }
+                      }
                       author {
                         name
                       }
