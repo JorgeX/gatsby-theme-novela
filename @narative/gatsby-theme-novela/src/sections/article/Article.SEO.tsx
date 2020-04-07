@@ -24,12 +24,14 @@ interface ArticleSEOProps {
   article: IArticle;
   authors: IAuthor[];
   location: Location;
+  imagelocation?: string;
 }
 
 const ArticleSEO: React.FC<ArticleSEOProps> = ({
   article,
   authors,
   location,
+  imagelocation,
 }) => {
   const results = useStaticQuery(siteQuery);
   const name = results.allSite.edges[0].node.siteMetadata.name;
@@ -39,6 +41,13 @@ const ArticleSEO: React.FC<ArticleSEOProps> = ({
     '@type': 'Person',
     name: author.name,
   }));
+
+  // Checks if the source of the image is hosted on Contentful
+  if(`${article.hero.seo.src}`.includes('ctfassets')) {
+    imagelocation = `https:${article.hero.seo.src}`;
+  } else {
+    imagelocation = `${siteUrl + article.hero.seo.src}`;
+  }
 
   /**
    * For some reason `location.href` is undefined here when using `yarn build`.
@@ -52,7 +61,7 @@ const ArticleSEO: React.FC<ArticleSEOProps> = ({
       "@id": "${siteUrl + location.pathname}"
     },
     "headline": "${article.title}",
-    "image": "${siteUrl + article.hero.seo.src}",
+    "image": "${imagelocation}",
     "datePublished": "${article.dateForSEO}",
     "dateModified": "${article.dateForSEO}",
     "author": ${JSON.stringify(authorsData)},
@@ -82,7 +91,7 @@ const ArticleSEO: React.FC<ArticleSEOProps> = ({
     <SEO
       title={article.title}
       description={article.excerpt}
-      image={article.hero.seo.src}
+      image={imagelocation}
       timeToRead={article.timeToRead}
       published={article.date}
       pathname={location.href}
