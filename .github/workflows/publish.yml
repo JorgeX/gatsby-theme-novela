@@ -24,7 +24,7 @@ jobs:
     - name: Pulling
       run: git pull
     - name: Install dependencies
-      run: yarn
+      run: yarn install --pure-lockfile
     - name: Build
       run: yarn build
     - name: Authenticate with Registry
