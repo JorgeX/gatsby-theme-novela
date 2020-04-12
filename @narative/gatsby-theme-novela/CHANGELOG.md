@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.14.0](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.13.1...@narative/gatsby-theme-novela@0.14.0) (2020-04-12)
+
+
+### Bug Fixes
+
+* **css:** style break in mobile ([13cbb1f](https://github.com/narative/gatsby-theme-novela/commit/13cbb1fae17a25da1e9db1bb8d2fdaca139d4fd3))
+* fetch social name for twitter meta tags ([b98123f](https://github.com/narative/gatsby-theme-novela/commit/b98123f8c797aed0681e46b0f36e1ff2ba6e483a))
+* load fonts locally ([9860f3c](https://github.com/narative/gatsby-theme-novela/commit/9860f3c8cbf76cc5f7f1f7f1bf75be398592646c))
+* **contentful:** source works now without local ([3299592](https://github.com/narative/gatsby-theme-novela/commit/329959220705c095ba6ce7798a3779e022bb56d6))
+
+
+### Features
+
+* **blog:** add TripAdvisor in social links ([a55be90](https://github.com/narative/gatsby-theme-novela/commit/a55be901114096f3ec59c90df07760919de9f7b6))
+* Adds canonical_url support for articles ([4e2b438](https://github.com/narative/gatsby-theme-novela/commit/4e2b438a0a1c99016e36c1ff85ad4ae7eb5f1033))
+
+
+
+
+
 ## [0.13.1](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.13.0...@narative/gatsby-theme-novela@0.13.1) (2020-01-08)
 
 

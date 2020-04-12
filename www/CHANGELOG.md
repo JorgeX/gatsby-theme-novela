@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/narative/gatsby-theme-novela/compare/www@1.3.7...www@1.4.0) (2020-04-12)
+
+
+### Bug Fixes
+
+* Fix build by changing source to local for www ([9de7d0f](https://github.com/narative/gatsby-theme-novela/commit/9de7d0feb7aedb6105a308b12141b76aef4cf577))
+* **contentful:** source works now without local ([3299592](https://github.com/narative/gatsby-theme-novela/commit/329959220705c095ba6ce7798a3779e022bb56d6))
+
+
+### Features
+
+* **blog:** add TripAdvisor in social links ([a55be90](https://github.com/narative/gatsby-theme-novela/commit/a55be901114096f3ec59c90df07760919de9f7b6))
+* Adds canonical_url support for articles ([4e2b438](https://github.com/narative/gatsby-theme-novela/commit/4e2b438a0a1c99016e36c1ff85ad4ae7eb5f1033))
+
+
+
+
+
 ## [1.3.7](https://github.com/narative/gatsby-theme-novela/compare/www@1.3.6...www@1.3.7) (2020-01-08)
 
 **Note:** Version bump only for package www

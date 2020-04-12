@@ -1,15 +1,15 @@
 {
   "private": true,
   "name": "www",
-  "version": "1.3.7",
+  "version": "1.4.0",
   "license": "MIT",
   "scripts": {
-    "build": "echo 'removed build due to it failing: https://github.com/narative/gatsby-theme-novela/issues/249'", 
+    "build": "echo 'removed build due to it failing: https://github.com/narative/gatsby-theme-novela/issues/249'",
     "develop": "rm -rf .cache && gatsby develop",
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "@narative/gatsby-theme-novela": "^0.13.1",
+    "@narative/gatsby-theme-novela": "^0.14.0",
     "dotenv": "^8.0.0",
     "gatsby": "^2.13.41",
     "gatsby-plugin-google-analytics": "^2.1.6",
