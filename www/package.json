@@ -4,7 +4,7 @@
   "version": "1.3.7",
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build && cp -R _redirects public/",
+    "build": "echo 'removed build due to it failing: https://github.com/narative/gatsby-theme-novela/issues/249'", 
     "develop": "rm -rf .cache && gatsby develop",
     "clean": "gatsby clean"
   },
