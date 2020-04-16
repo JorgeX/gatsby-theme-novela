@@ -43,7 +43,7 @@ const ArticleSEO: React.FC<ArticleSEOProps> = ({
   }));
 
   // Checks if the source of the image is hosted on Contentful
-  if(`${article.hero.seo.src}`.includes('ctfassets')) {
+  if (`${article.hero.seo.src}`.includes('ctfassets')) {
     imagelocation = `https:${article.hero.seo.src}`;
   } else {
     imagelocation = `${siteUrl + article.hero.seo.src}`;
@@ -95,7 +95,7 @@ const ArticleSEO: React.FC<ArticleSEOProps> = ({
       timeToRead={article.timeToRead}
       published={article.date}
       pathname={location.href}
-      canonicalUrl={article.canonicalUrl}
+      canonicalUrl={article.canonical_url}
     >
       <script type="application/ld+json">{microdata}</script>
     </SEO>
