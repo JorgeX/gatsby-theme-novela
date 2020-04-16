@@ -86,7 +86,7 @@ const SEO: React.FC<HelmetProps> = ({
     path ? `${site.siteUrl}${path}` : site.siteUrl;
 
   // Checks if the source of the image is hosted on Contentful
-  if(`${image}`.includes('ctfassets')) {
+  if (`${image}`.includes('ctfassets')) {
     image = `https:${image}`;
   } else {
     image = fullURL(image);
@@ -147,7 +147,7 @@ const SEO: React.FC<HelmetProps> = ({
       script={themeUIDarkModeWorkaroundScript}
       meta={metaTags}
     >
-      <link rel="canonical" href={canonicalUrl} />
+      {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
       {children}
     </Helmet>
   );
