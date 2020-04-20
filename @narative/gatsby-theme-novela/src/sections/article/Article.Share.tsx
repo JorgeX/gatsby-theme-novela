@@ -280,7 +280,7 @@ const MenuFloat = styled.div<{ isDark: boolean }>`
 `;
 
 const MenuText = styled.span`
-  margin-right: 11px;
+  margin-right: 8px;
 `;
 
 const Hidden = styled.div`
