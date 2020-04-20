@@ -87,7 +87,7 @@ const SEO: React.FC<HelmetProps> = ({
 
   // Checks if the source of the image is hosted on Contentful
   if (`${image}`.includes('ctfassets')) {
-    image = `https:${image}`;
+    image = `${image}`;
   } else {
     image = fullURL(image);
   }
