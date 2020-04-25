@@ -72,7 +72,7 @@ const SEO: React.FC<HelmetProps> = ({
   title,
   description,
   children,
-  url,
+  pathname,
   image,
   published,
   timeToRead,
@@ -125,10 +125,11 @@ const SEO: React.FC<HelmetProps> = ({
     },
 
     { property: 'og:title', content: title || site.title },
-    { property: 'og:url', content: url },
+    { property: 'og:url', content: site.siteUrl + pathname },
     { property: 'og:image', content: image },
     { property: 'og:description', content: description || site.description },
-    { property: 'og:site_name', content: site.name },
+    { property: 'og:site_name', content: site.title },
+    { property: 'og:type', content: 'website' },
   ];
 
   if (published) {
