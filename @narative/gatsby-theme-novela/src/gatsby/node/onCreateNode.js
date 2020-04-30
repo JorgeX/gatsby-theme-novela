@@ -42,7 +42,9 @@ module.exports = ({ node, actions, getNode, createNodeId }, themeOptions) => {
   }
 
   function generateSlug(...arguments_) {
-    return `/${arguments_.join('/')}`.replace(/\/\/+/g, '/');
+    return `/${arguments_.join('/')}`
+      .toLowerCase()
+      .replace(/\/\/+/g, '/');
   }
 
   // ///////////////////////////////////////////////////////
