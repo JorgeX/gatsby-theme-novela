@@ -234,6 +234,20 @@
           "omitted": false
         },
         {
+          "id": "slug",
+          "name": "Slug",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "unique": true
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
           "id": "bio",
           "name": "Bio",
           "type": "Symbol",
