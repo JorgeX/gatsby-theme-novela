@@ -41,6 +41,10 @@ const siteMetadata = {
     {
       url: `https://tripadvisor.com`,
     },
+    {
+      name: `mailto`,
+      url: `mailto:`,
+    },
   ],
 };
 

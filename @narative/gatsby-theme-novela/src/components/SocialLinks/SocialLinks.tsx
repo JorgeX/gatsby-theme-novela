@@ -29,10 +29,15 @@ const icons = {
   paypal: Icons.Paypal,
   digitalocean: Icons.DigitalOcean,
   tripadvisor: Icons.TripAdvisor,
+  mailto: Icons.Mailto,
 };
 
 const getHostname = url => {
   return new URL(url.toLowerCase()).hostname.replace('www.', '').split('.')[0];
+};
+
+const getServicename = url => {
+  return url.toLowerCase().split(':')[0];
 };
 
 const SocialLinks: React.FC<SocialLinksProps> = ({
@@ -44,7 +49,7 @@ const SocialLinks: React.FC<SocialLinksProps> = ({
   return (
     <>
       {links.map(option => {
-        const name = option.name || getHostname(option.url);
+        const name = option.name || getHostname(option.url) || getServicename(option.url);
         const Icon = icons[name];
         if (!Icon) {
           throw new Error(
