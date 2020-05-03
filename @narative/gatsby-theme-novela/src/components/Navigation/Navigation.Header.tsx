@@ -97,10 +97,11 @@ const NavigationHeader: React.FC<{}> = () => {
     const prev = localStorage.getItem("previousPath");
     const previousPathWasHomepage =
       prev === (rootPath || basePath) || (prev && prev.includes("/page/"));
-    const isNotPaginated = !location.pathname.includes("/page/");
+    const currentPathIsHomepage =
+      location.pathname === (rootPath || basePath) || location.pathname.includes("/page/");
 
     setShowBackArrow(
-      previousPathWasHomepage && isNotPaginated && width <= phablet,
+      previousPathWasHomepage && !currentPathIsHomepage && width <= phablet,
     );
     setPreviousPath(prev);
   }, []);
