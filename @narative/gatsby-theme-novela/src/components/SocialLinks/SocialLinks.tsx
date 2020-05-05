@@ -34,7 +34,7 @@ const icons = {
 };
 
 const getHostname = url => {
-  return new URL(url.toLowerCase()).hostname.replace('www.', '').split('.')[0];
+  return new URL(url.toLowerCase()).hostname.replace(/[.-]|www|com|net|org/g,'').split('.')[0];
 };
 
 const getServicename = url => {
