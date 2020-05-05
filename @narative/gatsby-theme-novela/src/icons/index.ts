@@ -7,6 +7,7 @@ import Instagram from './social/Instagram.Icon';
 import Twitter from './social/Twitter.Icon';
 import LinkedIn from './social/LinkedIn.Icon';
 import Medium from './social/Medium.Icon';
+import Notion from './social/Notion.Icon';
 import Github from './social/Github.Icon';
 import Stackoverflow from './social/Stackoverflow.Icon';
 import Unsplash from './social/Unsplash.Icon';
@@ -37,6 +38,7 @@ export default {
   Twitter,
   LinkedIn,
   Medium,
+  Notion,
   Github,
   Stackoverflow,
   Unsplash,
