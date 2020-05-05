@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.14.6...@narative/gatsby-theme-novela@0.15.0) (2020-05-05)
+
+
+### Features
+
+* **blog:** add Notion in social links ([da82a09](https://github.com/narative/gatsby-theme-novela/commit/da82a0919ab23f7cdf8794febb10d9be491b7210))
+
+
+
+
+
 ## [0.14.6](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.14.5...@narative/gatsby-theme-novela@0.14.6) (2020-05-03)
 
 **Note:** Version bump only for package @narative/gatsby-theme-novela
