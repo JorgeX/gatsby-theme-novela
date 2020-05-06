@@ -48,7 +48,7 @@ module.exports = ({ node, actions, getNode, createNodeId }, themeOptions) => {
   // ///////////////////////////////////////////////////////
 
   if (node.internal.type === `AuthorsYaml`) {
-    const slug = node.slug ? `/${node.slug}` : slugify(node.name);
+    const slug = node.slug ? `/${node.slug}` : slugify(node.name, {lower: true});
 
     const fieldData = {
       ...node,
@@ -120,7 +120,7 @@ module.exports = ({ node, actions, getNode, createNodeId }, themeOptions) => {
     createNodeField({
       node,
       name: `slug`,
-      value: generateSlug(basePath, 'authors', slugify(node.name)),
+      value: generateSlug(basePath, 'authors', slugify(node.name, {lower: true})),
     });
 
     createNodeField({
