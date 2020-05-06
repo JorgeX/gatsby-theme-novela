@@ -15,6 +15,7 @@ import Patreon from './social/Patreon.Icon';
 import Paypal from './social/Paypal.Icon';
 import DigitalOcean from './social/DigitalOcean.Icon';
 import TripAdvisor from './social/TripAdvisor.Icon';
+import Buymeacoffee from './social/Buymeacoffee.Icon';
 import Mailto from './social/Mailto.Icon';
 
 // UI
@@ -45,6 +46,7 @@ export default {
   Paypal,
   DigitalOcean,
   TripAdvisor,
+  Buymeacoffee,
   Mailto,
 
   ChevronLeft,
