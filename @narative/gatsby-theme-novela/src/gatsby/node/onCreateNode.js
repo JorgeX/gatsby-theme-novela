@@ -42,9 +42,7 @@ module.exports = ({ node, actions, getNode, createNodeId }, themeOptions) => {
   }
 
   function generateSlug(...arguments_) {
-    return `/${arguments_.join('/')}`
-      .toLowerCase()
-      .replace(/\/\/+/g, '/');
+    return `/${arguments_.join('/')}`.replace(/\/\/+/g, '/');
   }
 
   // ///////////////////////////////////////////////////////
@@ -89,7 +87,7 @@ module.exports = ({ node, actions, getNode, createNodeId }, themeOptions) => {
       slug: generateSlug(
         basePath,
         generateArticlePermalink(
-          slugify(node.frontmatter.slug || node.frontmatter.title),
+          slugify(node.frontmatter.slug || node.frontmatter.title, {lower: true}),
           node.frontmatter.date,
         ),
       ),
