@@ -30,6 +30,7 @@ const icons = {
   paypal: Icons.Paypal,
   digitalocean: Icons.DigitalOcean,
   tripadvisor: Icons.TripAdvisor,
+  buymeacoffee: Icons.Buymeacoffee,
   mailto: Icons.Mailto,
 };
 
