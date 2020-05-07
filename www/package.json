@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "www",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "license": "MIT",
   "scripts": {
     "build": "echo 'removed build due to it failing: https://github.com/narative/gatsby-theme-novela/issues/249'",
