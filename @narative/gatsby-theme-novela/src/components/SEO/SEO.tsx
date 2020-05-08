@@ -30,6 +30,10 @@ interface HelmetProps {
   canonicalUrl?: string;
   published?: string;
   timeToRead?: string;
+  dateforSEO?: string;
+  authorName?: string;
+  authorsSlug?: string;
+  isBlogPost: false;
 }
 
 const seoQuery = graphql`
@@ -45,6 +49,7 @@ const seoQuery = graphql`
             }
             siteUrl
             title
+            name
           }
         }
       }
@@ -72,15 +77,21 @@ const SEO: React.FC<HelmetProps> = ({
   title,
   description,
   children,
-  pathname,
   image,
   published,
   timeToRead,
   canonicalUrl,
+  dateforSEO,
+  authorName,
+  authorsSlug,
+  isBlogPost,
 }) => {
   const results = useStaticQuery(seoQuery);
   const site = results.allSite.edges[0].node.siteMetadata;
   const twitter = site.social.find(option => option.name === 'twitter') || {};
+  const github = site.social.find(option => option.name === 'github') || {};
+  const linkedin = site.social.find(option => option.name === 'linkedin') || {};
+  const medium = site.social.find(option => option.name === 'medium') || {};
 
   const fullURL = (path: string) =>
     path ? `${site.siteUrl}${path}` : site.siteUrl;
@@ -94,6 +105,230 @@ const SEO: React.FC<HelmetProps> = ({
   } else {
     image = fullURL(image);
   }
+
+  let siteSchema = `{
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "${site.siteUrl}/#organization",
+        "name": "${site.title}",
+        "url": "${site.siteUrl}",
+        "sameAs": [
+          "${twitter.url}",
+          "${github.url}",
+          "${linkedin.url}",
+          "${medium.url}"
+        ],
+        "logo": {
+          "@type": "ImageObject",
+          "@id": "${site.siteUrl}/#logo",
+          "inLanguage": "en-US",
+          "url": "${site.siteUrl}/icons/icon-512x512.png",
+          "width": 512,
+          "height": 512,
+          "caption": "${site.title}"
+        },
+        "image": {
+          "@id": "${site.siteUrl}/#logo"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "${site.siteUrl}/#website",
+        "url": "${site.siteUrl}",
+        "name": "${site.name}",
+        "description": "${site.description.replace(/"/g, '\\"')}",
+        "publisher": {
+          "@id": "${site.siteUrl}/#organization"
+        },
+        "inLanguage": "en-US"
+      },
+      {
+        "@type": [
+          "WebPage"
+        ],
+        "@id": "${site.siteUrl}/#webpage",
+        "url": "${site.siteUrl}",
+        "name": "${site.name}",
+        "isPartOf": {
+          "@id": "${site.siteUrl}/#website"
+        },
+        "about": {
+          "@id": "${site.siteUrl}/#organization"
+        },
+        "description": "${site.description.replace(/"/g, '\\"')}",
+        "inLanguage": "en-US"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "description": "Breadcrumbs list",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "item": "${site.siteUrl}",
+            "name": "Homepage",
+            "position": "1"
+          }
+        ],
+        "name": "Breadcrumbs"
+      }
+    ]
+  }
+`.replace(/"[^"]+"|(\s)/gm, function (matched, group1) {
+    if (!group1) {
+      return matched;
+    } else {
+      return '';
+    }
+  });
+
+  let blogSchema = `{
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "${site.siteUrl}/#organization",
+        "name": "${site.title}",
+        "url": "${site.siteUrl}",
+        "sameAs": [
+          "${twitter.url}",
+          "${github.url}",
+          "${linkedin.url}",
+          "${medium.url}"
+        ],
+        "logo": {
+          "@type": "ImageObject",
+          "@id": "${site.siteUrl}/#logo",
+          "inLanguage": "en-US",
+          "url": "${site.siteUrl}/icons/icon-512x512.png",
+          "width": 512,
+          "height": 512,
+          "caption": "${site.title}"
+        },
+        "image": {
+          "@id": "${site.siteUrl}/#logo"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "${site.siteUrl}/#website",
+        "url": "${site.siteUrl}",
+        "name": "${site.name}",
+        "description": "${site.description.replace(/"/g, '\\"')}",
+        "publisher": {
+          "@id": "${site.siteUrl}/#organization"
+        },
+        "inLanguage": "en-US"
+      },
+      {
+        "@type": "ImageObject",
+        "@id": "${canonicalUrl}/#primaryimage",
+        "inLanguage": "en-US",
+        "url": "${image}",
+        "width": 1200,
+        "height": 628
+      },
+      {
+        "@type": [
+          "WebPage"
+        ],
+        "@id": "${canonicalUrl}/#webpage",
+        "url": "${canonicalUrl}",
+        "name": "${title}",
+        "isPartOf": {
+          "@id": "${site.siteUrl}/#website"
+        },
+        "primaryImageOfPage": {
+          "@id": "${canonicalUrl}/#primaryimage"
+        },
+        "datePublished": "${dateforSEO}",
+        "dateModified": "${dateforSEO}",
+        "description": "${description}",
+        "breadcrumb": {
+          "@id": "${canonicalUrl}/#breadcrumb"
+        },
+        "inLanguage": "en-US"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "${canonicalUrl}/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "WebPage",
+              "@id": "${site.siteUrl}",
+              "url": "${site.siteUrl}",
+              "name": "Home"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "WebPage",
+              "@id": "${canonicalUrl}",
+              "url": "${canonicalUrl}",
+              "name": "${title}"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "Article",
+        "@id": "${canonicalUrl}/#article",
+        "isPartOf": {
+          "@id": "${canonicalUrl}/#webpage"
+        },
+        "author": {
+          "@id": "${site.siteUrl}/#/schema${authorsSlug}"
+        },
+        "headline": "${title}",
+        "datePublished": "${dateforSEO}",
+        "dateModified": "${dateforSEO}",
+        "mainEntityOfPage": {
+          "@id": "${canonicalUrl}/#webpage"
+        },
+        "publisher": {
+          "@id": "${site.siteUrl}/#organization"
+        },
+        "image": {
+          "@id": "${canonicalUrl}/#primaryimage"
+        },
+        "inLanguage": "en-US"
+      },
+      {
+        "@type": [
+          "Person"
+        ],
+        "@id": "${site.siteUrl}/#/schema${authorsSlug}",
+        "name": "${authorName}",
+        "image": {
+          "@type": "ImageObject",
+        "@id": "${site.siteUrl}/#personlogo",
+          "inLanguage": "en-US",
+          "caption": "${authorName}"
+        },
+        "sameAs": [
+          "${twitter.url}",
+          "${github.url}",
+          "${linkedin.url}",
+          "${medium.url}"
+        ]
+      }
+    ]
+  }
+`.replace(/"[^"]+"|(\s)/gm, function (matched, group1) {
+    if (!group1) {
+      return matched;
+    } else {
+      return '';
+    }
+  });
+
+  const schema = isBlogPost ? blogSchema : siteSchema
 
   const metaTags = [
     { charset: 'utf-8' },
@@ -124,12 +359,12 @@ const SEO: React.FC<HelmetProps> = ({
       content: image,
     },
 
+    { property: 'og:type', content: 'website' },
     { property: 'og:title', content: title || site.title },
-    { property: 'og:url', content: site.siteUrl + pathname },
+    { property: 'og:url', content: canonicalUrl || site.siteUrl },
     { property: 'og:image', content: image },
     { property: 'og:description', content: description || site.description },
-    { property: 'og:site_name', content: site.title },
-    { property: 'og:type', content: 'website' },
+    { property: 'og:site_name', content: site.name },
   ];
 
   if (published) {
@@ -148,7 +383,8 @@ const SEO: React.FC<HelmetProps> = ({
       script={themeUIDarkModeWorkaroundScript}
       meta={metaTags}
     >
-      {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+      <script type="application/ld+json">{schema}</script>
+      <link rel="canonical" href={canonicalUrl || site.siteUrl} />
       {children}
     </Helmet>
   );
