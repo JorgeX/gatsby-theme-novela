@@ -38,6 +38,7 @@ const ArticleSEO: React.FC<ArticleSEOProps> = ({
 
   const authorsName = authors.map(author => (author.name));
   const authorsSlug = authors.map(author => (author.slug));
+  const authorsBio = authors.map(author => (author.bio));
 
   // Checks if the source of the image is hosted on Contentful
   if (`${article.hero.seo.src}`.includes('ctfassets')) {
@@ -57,6 +58,7 @@ const ArticleSEO: React.FC<ArticleSEOProps> = ({
       dateforSEO={article.dateForSEO}
       authorName={authorsName}
       authorsSlug={authorsSlug}
+      authorsBio={authorsBio}
       isBlogPost={true}
     >
     </SEO>
