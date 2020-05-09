@@ -26,13 +26,13 @@ interface HelmetProps {
   description?: string;
   pathname: string;
   image?: string;
-  url?: string;
   canonicalUrl?: string;
   published?: string;
   timeToRead?: string;
   dateforSEO?: string;
   authorName?: string;
   authorsSlug?: string;
+  authorsBio?: string;
   isBlogPost: false;
 }
 
@@ -84,6 +84,7 @@ const SEO: React.FC<HelmetProps> = ({
   dateforSEO,
   authorName,
   authorsSlug,
+  authorsBio,
   isBlogPost,
 }) => {
   const results = useStaticQuery(seoQuery);
@@ -94,10 +95,10 @@ const SEO: React.FC<HelmetProps> = ({
   const medium = site.social.find(option => option.name === 'medium') || {};
 
   const fullURL = (path: string) =>
-    path ? `${site.siteUrl}${path}` : site.siteUrl;
+    path ? `${path}` : site.siteUrl;
 
   // If no image is provided lets looks for a default novela static image
-  image = image ? image : '/preview.jpg';
+  image = image ? image : `${site.siteUrl}/preview.jpg`;
 
   // Checks if the source of the image is hosted on Contentful
   if (`${image}`.includes('ctfassets')) {
@@ -311,6 +312,7 @@ const SEO: React.FC<HelmetProps> = ({
           "inLanguage": "en-US",
           "caption": "${authorName}"
         },
+        "description": "${authorsBio}",
         "sameAs": [
           "${twitter.url}",
           "${github.url}",
