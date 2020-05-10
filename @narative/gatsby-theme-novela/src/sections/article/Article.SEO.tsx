@@ -49,17 +49,18 @@ const ArticleSEO: React.FC<ArticleSEOProps> = ({
 
   return (
     <SEO
-      title={article.title}
+      authorName={authorsName}
+      authorsBio={authorsBio}
+      authorsSlug={authorsSlug}
+      canonicalUrl={article.canonical_url}
+      dateforSEO={article.dateForSEO}
       description={article.excerpt}
       image={imagelocation}
-      timeToRead={article.timeToRead}
-      published={article.date}
-      canonicalUrl={siteUrl + location.pathname.replace(/\/$/, "")}
-      dateforSEO={article.dateForSEO}
-      authorName={authorsName}
-      authorsSlug={authorsSlug}
-      authorsBio={authorsBio}
       isBlogPost={true}
+      pathName={siteUrl + location.pathname.replace(/\/$/, "")}
+      published={article.date}
+      timeToRead={article.timeToRead}
+      title={article.title}
     >
     </SEO>
   );
