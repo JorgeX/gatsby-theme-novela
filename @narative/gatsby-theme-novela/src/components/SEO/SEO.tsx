@@ -22,6 +22,7 @@ import Helmet from 'react-helmet';
 import { graphql, useStaticQuery } from 'gatsby';
 
 interface HelmetProps {
+  articlepathName?: string;
   authorName?: string;
   authorsBio?: string;
   authorsSlug?: string;
@@ -30,7 +31,7 @@ interface HelmetProps {
   description?: string;
   image?: string;
   isBlogPost: false;
-  articlepathName?: string;
+  pathname: string;
   published?: string;
   timeToRead?: string;
   title: string;
@@ -74,6 +75,7 @@ const themeUIDarkModeWorkaroundScript = [
 ];
 
 const SEO: React.FC<HelmetProps> = ({
+  articlepathName,
   authorName,
   authorsBio,
   authorsSlug,
@@ -83,7 +85,7 @@ const SEO: React.FC<HelmetProps> = ({
   description,
   image,
   isBlogPost,
-  articlepathName,
+  pathname,
   published,
   timeToRead,
   title,
@@ -94,6 +96,8 @@ const SEO: React.FC<HelmetProps> = ({
   const github = site.social.find(option => option.name === 'github') || {};
   const linkedin = site.social.find(option => option.name === 'linkedin') || {};
   const medium = site.social.find(option => option.name === 'medium') || {};
+
+  const pageUrl = site.siteUrl + pathname
 
   const fullURL = (path: string) =>
     path ? `${path}` : site.siteUrl;
@@ -140,7 +144,7 @@ const SEO: React.FC<HelmetProps> = ({
         "@id": "${site.siteUrl}/#website",
         "url": "${site.siteUrl}",
         "name": "${site.name}",
-        "description": "${site.description.replace(/"/g, '\\"')}",
+        "description": "${site.description}",
         "publisher": {
           "@id": "${site.siteUrl}/#organization"
         },
@@ -150,16 +154,16 @@ const SEO: React.FC<HelmetProps> = ({
         "@type": [
           "WebPage"
         ],
-        "@id": "${site.siteUrl}/#webpage",
-        "url": "${site.siteUrl}",
-        "name": "${site.name}",
+        "@id": "${pageUrl}/#webpage",
+        "url": "${pageUrl}",
+        "name": "${title || site.name}",
         "isPartOf": {
           "@id": "${site.siteUrl}/#website"
         },
         "about": {
           "@id": "${site.siteUrl}/#organization"
         },
-        "description": "${site.description.replace(/"/g, '\\"')}",
+        "description": "${description || site.description}",
         "inLanguage": "en-US"
       },
       {
@@ -364,7 +368,7 @@ const SEO: React.FC<HelmetProps> = ({
 
     { property: 'og:type', content: 'website' },
     { property: 'og:title', content: title || site.title },
-    { property: 'og:url', content: articlepathName || site.siteUrl },
+    { property: 'og:url', content: articlepathName || pageUrl },
     { property: 'og:image', content: image },
     { property: 'og:description', content: description || site.description },
     { property: 'og:site_name', content: site.name },
