@@ -30,7 +30,7 @@ interface HelmetProps {
   description?: string;
   image?: string;
   isBlogPost: false;
-  pathName?: string;
+  articlepathName?: string;
   published?: string;
   timeToRead?: string;
   title: string;
@@ -83,7 +83,7 @@ const SEO: React.FC<HelmetProps> = ({
   description,
   image,
   isBlogPost,
-  pathName,
+  articlepathName,
   published,
   timeToRead,
   title,
@@ -225,7 +225,7 @@ const SEO: React.FC<HelmetProps> = ({
       },
       {
         "@type": "ImageObject",
-        "@id": "${pathName}/#primaryimage",
+        "@id": "${articlepathName}/#primaryimage",
         "inLanguage": "en-US",
         "url": "${image}",
         "width": 1200,
@@ -235,26 +235,26 @@ const SEO: React.FC<HelmetProps> = ({
         "@type": [
           "WebPage"
         ],
-        "@id": "${pathName}/#webpage",
-        "url": "${pathName}",
+        "@id": "${articlepathName}/#webpage",
+        "url": "${articlepathName}",
         "name": "${title}",
         "isPartOf": {
           "@id": "${site.siteUrl}/#website"
         },
         "primaryImageOfPage": {
-          "@id": "${pathName}/#primaryimage"
+          "@id": "${articlepathName}/#primaryimage"
         },
         "datePublished": "${dateforSEO}",
         "dateModified": "${dateforSEO}",
         "description": "${description}",
         "breadcrumb": {
-          "@id": "${pathName}/#breadcrumb"
+          "@id": "${articlepathName}/#breadcrumb"
         },
         "inLanguage": "en-US"
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "${pathName}/#breadcrumb",
+        "@id": "${articlepathName}/#breadcrumb",
         "itemListElement": [
           {
             "@type": "ListItem",
@@ -271,8 +271,8 @@ const SEO: React.FC<HelmetProps> = ({
             "position": 2,
             "item": {
               "@type": "WebPage",
-              "@id": "${pathName}",
-              "url": "${pathName}",
+              "@id": "${articlepathName}",
+              "url": "${articlepathName}",
               "name": "${title}"
             }
           }
@@ -280,9 +280,9 @@ const SEO: React.FC<HelmetProps> = ({
       },
       {
         "@type": "Article",
-        "@id": "${pathName}/#article",
+        "@id": "${articlepathName}/#article",
         "isPartOf": {
-          "@id": "${pathName}/#webpage"
+          "@id": "${articlepathName}/#webpage"
         },
         "author": {
           "@id": "${site.siteUrl}/#/schema${authorsSlug}"
@@ -291,13 +291,13 @@ const SEO: React.FC<HelmetProps> = ({
         "datePublished": "${dateforSEO}",
         "dateModified": "${dateforSEO}",
         "mainEntityOfPage": {
-          "@id": "${pathName}/#webpage"
+          "@id": "${articlepathName}/#webpage"
         },
         "publisher": {
           "@id": "${site.siteUrl}/#organization"
         },
         "image": {
-          "@id": "${pathName}/#primaryimage"
+          "@id": "${articlepathName}/#primaryimage"
         },
         "inLanguage": "en-US"
       },
@@ -364,7 +364,7 @@ const SEO: React.FC<HelmetProps> = ({
 
     { property: 'og:type', content: 'website' },
     { property: 'og:title', content: title || site.title },
-    { property: 'og:url', content: pathName || site.siteUrl },
+    { property: 'og:url', content: articlepathName || site.siteUrl },
     { property: 'og:image', content: image },
     { property: 'og:description', content: description || site.description },
     { property: 'og:site_name', content: site.name },
