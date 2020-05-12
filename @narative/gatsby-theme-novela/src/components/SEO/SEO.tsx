@@ -22,18 +22,19 @@ import Helmet from 'react-helmet';
 import { graphql, useStaticQuery } from 'gatsby';
 
 interface HelmetProps {
-  title: string;
-  description?: string;
-  pathname: string;
-  image?: string;
+  articlepathName?: string;
+  authorName?: string;
+  authorsBio?: string;
+  authorsSlug?: string;
   canonicalUrl?: string;
+  dateforSEO?: string;
+  description?: string;
+  image?: string;
+  isBlogPost: false;
+  pathname: string;
   published?: string;
   timeToRead?: string;
-  dateforSEO?: string;
-  authorName?: string;
-  authorsSlug?: string;
-  authorsBio?: string;
-  isBlogPost: false;
+  title: string;
 }
 
 const seoQuery = graphql`
@@ -74,18 +75,20 @@ const themeUIDarkModeWorkaroundScript = [
 ];
 
 const SEO: React.FC<HelmetProps> = ({
-  title,
-  description,
+  articlepathName,
+  authorName,
+  authorsBio,
+  authorsSlug,
+  canonicalUrl,
   children,
+  dateforSEO,
+  description,
   image,
+  isBlogPost,
+  pathname,
   published,
   timeToRead,
-  canonicalUrl,
-  dateforSEO,
-  authorName,
-  authorsSlug,
-  authorsBio,
-  isBlogPost,
+  title,
 }) => {
   const results = useStaticQuery(seoQuery);
   const site = results.allSite.edges[0].node.siteMetadata;
@@ -93,6 +96,8 @@ const SEO: React.FC<HelmetProps> = ({
   const github = site.social.find(option => option.name === 'github') || {};
   const linkedin = site.social.find(option => option.name === 'linkedin') || {};
   const medium = site.social.find(option => option.name === 'medium') || {};
+
+  const pageUrl = site.siteUrl + pathname
 
   const fullURL = (path: string) =>
     path ? `${path}` : site.siteUrl;
@@ -139,7 +144,7 @@ const SEO: React.FC<HelmetProps> = ({
         "@id": "${site.siteUrl}/#website",
         "url": "${site.siteUrl}",
         "name": "${site.name}",
-        "description": "${site.description.replace(/"/g, '\\"')}",
+        "description": "${site.description}",
         "publisher": {
           "@id": "${site.siteUrl}/#organization"
         },
@@ -149,16 +154,16 @@ const SEO: React.FC<HelmetProps> = ({
         "@type": [
           "WebPage"
         ],
-        "@id": "${site.siteUrl}/#webpage",
-        "url": "${site.siteUrl}",
-        "name": "${site.name}",
+        "@id": "${pageUrl}/#webpage",
+        "url": "${pageUrl}",
+        "name": "${title || site.name}",
         "isPartOf": {
           "@id": "${site.siteUrl}/#website"
         },
         "about": {
           "@id": "${site.siteUrl}/#organization"
         },
-        "description": "${site.description.replace(/"/g, '\\"')}",
+        "description": "${description || site.description}",
         "inLanguage": "en-US"
       },
       {
@@ -224,7 +229,7 @@ const SEO: React.FC<HelmetProps> = ({
       },
       {
         "@type": "ImageObject",
-        "@id": "${canonicalUrl}/#primaryimage",
+        "@id": "${articlepathName}/#primaryimage",
         "inLanguage": "en-US",
         "url": "${image}",
         "width": 1200,
@@ -234,26 +239,26 @@ const SEO: React.FC<HelmetProps> = ({
         "@type": [
           "WebPage"
         ],
-        "@id": "${canonicalUrl}/#webpage",
-        "url": "${canonicalUrl}",
+        "@id": "${articlepathName}/#webpage",
+        "url": "${articlepathName}",
         "name": "${title}",
         "isPartOf": {
           "@id": "${site.siteUrl}/#website"
         },
         "primaryImageOfPage": {
-          "@id": "${canonicalUrl}/#primaryimage"
+          "@id": "${articlepathName}/#primaryimage"
         },
         "datePublished": "${dateforSEO}",
         "dateModified": "${dateforSEO}",
         "description": "${description}",
         "breadcrumb": {
-          "@id": "${canonicalUrl}/#breadcrumb"
+          "@id": "${articlepathName}/#breadcrumb"
         },
         "inLanguage": "en-US"
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "${canonicalUrl}/#breadcrumb",
+        "@id": "${articlepathName}/#breadcrumb",
         "itemListElement": [
           {
             "@type": "ListItem",
@@ -270,8 +275,8 @@ const SEO: React.FC<HelmetProps> = ({
             "position": 2,
             "item": {
               "@type": "WebPage",
-              "@id": "${canonicalUrl}",
-              "url": "${canonicalUrl}",
+              "@id": "${articlepathName}",
+              "url": "${articlepathName}",
               "name": "${title}"
             }
           }
@@ -279,9 +284,9 @@ const SEO: React.FC<HelmetProps> = ({
       },
       {
         "@type": "Article",
-        "@id": "${canonicalUrl}/#article",
+        "@id": "${articlepathName}/#article",
         "isPartOf": {
-          "@id": "${canonicalUrl}/#webpage"
+          "@id": "${articlepathName}/#webpage"
         },
         "author": {
           "@id": "${site.siteUrl}/#/schema${authorsSlug}"
@@ -290,13 +295,13 @@ const SEO: React.FC<HelmetProps> = ({
         "datePublished": "${dateforSEO}",
         "dateModified": "${dateforSEO}",
         "mainEntityOfPage": {
-          "@id": "${canonicalUrl}/#webpage"
+          "@id": "${articlepathName}/#webpage"
         },
         "publisher": {
           "@id": "${site.siteUrl}/#organization"
         },
         "image": {
-          "@id": "${canonicalUrl}/#primaryimage"
+          "@id": "${articlepathName}/#primaryimage"
         },
         "inLanguage": "en-US"
       },
@@ -363,7 +368,7 @@ const SEO: React.FC<HelmetProps> = ({
 
     { property: 'og:type', content: 'website' },
     { property: 'og:title', content: title || site.title },
-    { property: 'og:url', content: canonicalUrl || site.siteUrl },
+    { property: 'og:url', content: articlepathName || pageUrl },
     { property: 'og:image', content: image },
     { property: 'og:description', content: description || site.description },
     { property: 'og:site_name', content: site.name },
@@ -386,7 +391,7 @@ const SEO: React.FC<HelmetProps> = ({
       meta={metaTags}
     >
       <script type="application/ld+json">{schema}</script>
-      <link rel="canonical" href={canonicalUrl || site.siteUrl} />
+      {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
       {children}
     </Helmet>
   );
