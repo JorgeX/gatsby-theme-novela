@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.6](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.15.5...@narative/gatsby-theme-novela@0.15.6) (2020-05-18)
+
+
+### Bug Fixes
+
+* notion icon error due to replace regex not handling .so domain. ([6f52b59](https://github.com/narative/gatsby-theme-novela/commit/6f52b59bb1a2e12ea158b47fbfa36ada9dcb95a4))
+
+
+
+
+
 ## [0.15.5](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.15.4...@narative/gatsby-theme-novela@0.15.5) (2020-05-12)
 
 **Note:** Version bump only for package @narative/gatsby-theme-novela
