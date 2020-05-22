@@ -48,7 +48,11 @@ module.exports = ({ node, actions, getNode, createNodeId }, themeOptions) => {
   // ///////////////////////////////////////////////////////
 
   if (node.internal.type === `AuthorsYaml`) {
-    const slug = node.slug ? `/${node.slug}` : slugify(node.name, {lower: true});
+    const slug = node.slug
+      ? `/${node.slug}`
+      : slugify(node.name, {
+          lower: true,
+        });
 
     const fieldData = {
       ...node,
@@ -87,7 +91,9 @@ module.exports = ({ node, actions, getNode, createNodeId }, themeOptions) => {
       slug: generateSlug(
         basePath,
         generateArticlePermalink(
-          slugify(node.frontmatter.slug || node.frontmatter.title, {lower: true}),
+          slugify(node.frontmatter.slug || node.frontmatter.title, {
+            lower: true,
+          }),
           node.frontmatter.date,
         ),
       ),
@@ -120,7 +126,13 @@ module.exports = ({ node, actions, getNode, createNodeId }, themeOptions) => {
     createNodeField({
       node,
       name: `slug`,
-      value: generateSlug(basePath, 'authors', slugify(node.name, {lower: true})),
+      value: generateSlug(
+        basePath,
+        'authors',
+        slugify(node.name, {
+          lower: true,
+        }),
+      ),
     });
 
     createNodeField({
