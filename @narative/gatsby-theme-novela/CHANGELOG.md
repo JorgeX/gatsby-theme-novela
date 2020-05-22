@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.7](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.15.6...@narative/gatsby-theme-novela@0.15.7) (2020-05-22)
+
+
+### Bug Fixes
+
+* remove unprocessed JS content from local articles in RSS ([18d3390](https://github.com/narative/gatsby-theme-novela/commit/18d339011a1b0e22d2ef54b90f8f4b46e15c2735))
+
+
+
+
+
 ## [0.15.6](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.15.5...@narative/gatsby-theme-novela@0.15.6) (2020-05-18)
 
 
