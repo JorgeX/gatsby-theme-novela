@@ -315,8 +315,8 @@ const ImageCSS = css`
 
 /**
  * MDXBody
- * Here we"re applying "global" selectors to make sure we maintain an article
- * body type feel. We"re also applying all the Prism selecotors and styles within
+ * Here we're applying "global" selectors to make sure we maintain an article
+ * body type feel. We're also applying all the Prism selecotors and styles within
  * the MDXBody.
  */
 const MDXBody = styled.div`
