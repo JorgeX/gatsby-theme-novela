@@ -68,7 +68,7 @@ export default MDX;
 const IMAGE_WIDTHS = {
   regular: "680px",
   large: "1004px",
-  full: "100vw"
+  full: "100vw",
 };
 
 const ARTICLE_WIDTH = css`
@@ -229,7 +229,8 @@ const ImageCSS = css`
   }
 
   div.Image__Small {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
     position: relative;
     max-width: 100%;
     height: auto;
