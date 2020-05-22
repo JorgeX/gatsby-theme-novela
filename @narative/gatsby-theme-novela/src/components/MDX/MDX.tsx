@@ -1,25 +1,25 @@
-import React from 'react';
+import React from "react";
 
-import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { MDXProvider } from '@mdx-js/react';
+import { MDXRenderer } from "gatsby-plugin-mdx";
+import { MDXProvider } from "@mdx-js/react";
 
-import styled from '@emotion/styled';
-import { css } from '@emotion/core';
-import { useColorMode } from 'theme-ui';
+import styled from "@emotion/styled";
+import { css } from "@emotion/core";
+import { useColorMode } from "theme-ui";
 
-import Anchor from '@components/Anchor';
-import Blockquote from '@components/Blockquote';
-import Code from '@components/Code';
-import Headings from '@components/Headings';
-import HorizontalRule from '@components/HorizontalRule';
-import Lists from '@components/Lists';
-import Paragraph from '@components/Paragraph';
-import Tables from '@components/Tables';
-import { ImageZoom } from '@components/Image';
-import Figcaption from '@components/Figcaption';
+import Anchor from "@components/Anchor";
+import Blockquote from "@components/Blockquote";
+import Code from "@components/Code";
+import Headings from "@components/Headings";
+import HorizontalRule from "@components/HorizontalRule";
+import Lists from "@components/Lists";
+import Paragraph from "@components/Paragraph";
+import Tables from "@components/Tables";
+import { ImageZoom } from "@components/Image";
+import Figcaption from "@components/Figcaption";
 
-import mediaqueries from '@styles/media';
-import { toKebabCase } from '@utils';
+import mediaqueries from "@styles/media";
+import { toKebabCase } from "@utils";
 
 const components = {
   img: ImageZoom,
@@ -54,7 +54,7 @@ const MDX: React.FC<MDXProps> = ({ content, children, ...props }) => {
   return (
     <MDXProvider components={components}>
       <MDXBody>
-        <MDXRenderer isDark={colorMode === 'dark'} {...props}>
+        <MDXRenderer isDark={colorMode === "dark"} {...props}>
           {content}
         </MDXRenderer>
         {children}
@@ -66,9 +66,9 @@ const MDX: React.FC<MDXProps> = ({ content, children, ...props }) => {
 export default MDX;
 
 const IMAGE_WIDTHS = {
-  regular: '680px',
-  large: '1004px',
-  full: '100vw',
+  regular: "680px",
+  large: "1004px",
+  full: "100vw",
 };
 
 const ARTICLE_WIDTH = css`
@@ -229,7 +229,8 @@ const ImageCSS = css`
   }
 
   div.Image__Small {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
     position: relative;
     max-width: 100%;
     height: auto;
@@ -314,8 +315,8 @@ const ImageCSS = css`
 
 /**
  * MDXBody
- * Here we're applying "global" selectors to make sure we maintain an article
- * body type feel. We're also applying all the Prism selecotors and styles within
+ * Here we"re applying "global" selectors to make sure we maintain an article
+ * body type feel. We"re also applying all the Prism selecotors and styles within
  * the MDXBody.
  */
 const MDXBody = styled.div`
