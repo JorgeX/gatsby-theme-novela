@@ -299,6 +299,7 @@ const ImageCSS = css`
     margin: 25px auto 60px;
     pointer-events: none;
 
+    /* To allow interaction for all external interactions: YouTube, Twitter, Gist */
     iframe {
       pointer-events: all;
     }
