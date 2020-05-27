@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.16.0](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.15.8...@narative/gatsby-theme-novela@0.16.0) (2020-05-27)
+
+
+### Features
+
+* mdx media blocks ([770618e](https://github.com/narative/gatsby-theme-novela/commit/770618e1bef93f08ea5f951c2230ac5104e967c9))
+
+
+
+
+
 ## [0.15.8](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.15.7...@narative/gatsby-theme-novela@0.15.8) (2020-05-27)
 
 
