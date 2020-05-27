@@ -36,6 +36,7 @@
     "react-dom": "^16.8.6"
   },
   "dependencies": {
+    "@blocks/kit": "^0.0.28",
     "@emotion/core": "^10.0.14",
     "@emotion/styled": "^10.0.14",
     "@mdx-js/mdx": "^1.1.0",
