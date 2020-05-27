@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.8](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.15.7...@narative/gatsby-theme-novela@0.15.8) (2020-05-27)
+
+
+### Bug Fixes
+
+* **MDXRenderer:** adding full-width for .gif ([2127daa](https://github.com/narative/gatsby-theme-novela/commit/2127daa0f6b89f62b992181dfda64d3a8550794b))
+
+
+
+
+
 ## [0.15.7](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.15.6...@narative/gatsby-theme-novela@0.15.7) (2020-05-22)
 
 
