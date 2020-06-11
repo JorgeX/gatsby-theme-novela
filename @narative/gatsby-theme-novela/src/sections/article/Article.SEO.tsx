@@ -61,6 +61,7 @@ const ArticleSEO: React.FC<ArticleSEOProps> = ({
       published={article.date}
       timeToRead={article.timeToRead}
       title={article.title}
+      isSecret={article.secret}
     >
     </SEO>
   );
