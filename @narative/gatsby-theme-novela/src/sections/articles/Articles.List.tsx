@@ -99,7 +99,7 @@ const ListItem: React.FC<ArticlesListItemProps> = ({ article, narrow }) => {
     imageSource.constructor === Object;
 
   return (
-    <ArticleLink to={article.slug} data-a11y="false">
+    <ArticleLink to={"/"+article.slug} data-a11y="false">
       <Item gridLayout={gridLayout}>
         <ImageContainer narrow={narrow} gridLayout={gridLayout}>
           {hasHeroImage ? <Image src={imageSource} /> : <ImagePlaceholder />}
