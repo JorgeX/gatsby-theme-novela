@@ -401,7 +401,7 @@ Images can be added to Posts and customized to fit your content. Define a regula
 ![This is the alt text for small image](./images/small.jpg)
 
 <div className="Image__Small">
-  <img src="./images/medium.jpg" alt="This is the alt text small image" />
+  <img src="./images/small.jpg" alt="This is the alt text small image" />
 </div>
 
 <div className="Image__Medium">
