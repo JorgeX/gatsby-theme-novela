@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.16.3](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.16.2...@narative/gatsby-theme-novela@0.16.3) (2020-06-17)
+
+
+### Bug Fixes
+
+* [#363](https://github.com/narative/gatsby-theme-novela/issues/363) add noindex meta tag to secret article ([2faeac4](https://github.com/narative/gatsby-theme-novela/commit/2faeac4458f25e1e12a5c30f274786141f13176f))
+
+
+
+
+
 ## [0.16.2](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.16.1...@narative/gatsby-theme-novela@0.16.2) (2020-06-15)
 
 **Note:** Version bump only for package @narative/gatsby-theme-novela
