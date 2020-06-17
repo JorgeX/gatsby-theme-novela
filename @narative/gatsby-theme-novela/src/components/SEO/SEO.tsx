@@ -35,6 +35,7 @@ interface HelmetProps {
   published?: string;
   timeToRead?: string;
   title: string;
+  isSecret: false;
 }
 
 const seoQuery = graphql`
@@ -89,6 +90,7 @@ const SEO: React.FC<HelmetProps> = ({
   published,
   timeToRead,
   title,
+  isSecret,
 }) => {
   const results = useStaticQuery(seoQuery);
   const site = results.allSite.edges[0].node.siteMetadata;
@@ -381,6 +383,10 @@ const SEO: React.FC<HelmetProps> = ({
   if (timeToRead) {
     metaTags.push({ name: 'twitter:label1', value: 'Reading time' });
     metaTags.push({ name: 'twitter:data1', value: `${timeToRead} min read` });
+  }
+
+  if (isSecret) {
+    metaTags.push({ name: 'robots', content: 'noindex' });
   }
 
   return (
