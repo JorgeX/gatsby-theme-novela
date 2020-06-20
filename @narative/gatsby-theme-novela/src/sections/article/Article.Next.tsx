@@ -52,7 +52,7 @@ const GridItem: React.FC<GridItemProps> = ({ article, narrow }) => {
 
   return (
     <ArticleLink
-      to={"/"+article.slug}
+      to={article.slug}
       data-a11y="false"
       narrow={narrow ? "true" : "false"}
     >
