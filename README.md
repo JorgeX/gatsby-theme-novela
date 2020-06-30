@@ -35,7 +35,7 @@ Special thanks to [@jpvalery](https://github.com/jpvalery) for helping maintain 
     - [Installation](#step-1-starter-installation)
     - [Develop & Build](#step-2-develop--build)
 
-  - From scatch
+  - From scratch
 
     - [Installation](#step-1-installation)
     - [Folder structure](#step-2-folder-structure)
@@ -121,7 +121,7 @@ You can also view the completed [example repository](https://github.com/narative
 # Create an empty directory and go into it
 mkdir novela-site && cd novela-site
 
-# Add all required depedencies
+# Add all required dependencies
 yarn add react react-dom gatsby @narative/gatsby-theme-novela
 ```
 
@@ -289,7 +289,7 @@ In order to use Contentful you must first install the plugin and `dotenv` in you
 yarn add gatsby-source-contentful dotenv
 ```
 
-Then pass in the enviroment variables `.env` to the plugin
+Then pass in the environment variables `.env` to the plugin
 
 #### `.env`
 
@@ -413,7 +413,7 @@ Images can be added to Posts and customized to fit your content. Define a regula
 </div>
 ```
 
-| Size   |   Class Name    |          Desciption           |
+| Size   |   Class Name    |          Description           |
 | ------ | :-------------- | :---------------------------- |
 | small  | Image\_\_Small  |       Width of the text       |
 | medium | Image\_\_Medium | Larger than width of the text |
@@ -444,7 +444,7 @@ import React from 'react';
  * Paste in your SVG logo and return it from this component.
  * Make sure you have a height set for your logo.
  * It is recommended to keep the height within 25-35px.
- * Logo comes with a property vallue called `fill`. `fill` is useful 
+ * Logo comes with a property value called `fill`. `fill` is useful 
  * when you want to change your logo depending on the theme you are on. 
  */
 export default function Logo({ fill }) {
@@ -493,7 +493,7 @@ plugins: [
 That's it. You will now have subscription boxes on each of your Posts.
 To disable the subscription box on individual Posts you can set `subscription: false` on the Post.
 
-You can shadow the Subscription component to customize the text displayed. It is recommneded to copy and paste the current component and only alter the text.
+You can shadow the Subscription component to customize the text displayed. It is recommended to copy and paste the current component and only alter the text.
 
 You will want to override it here:
 
@@ -555,7 +555,7 @@ plugins: [
 
 [View Author example](https://github.com/narative/gatsby-theme-novela-example/blob/master/content/authors/authors.yml)
 
-| Key      | Required |  Type   |                                                                 Desciption                                                                 |
+| Key      | Required |  Type   |                                                                 Description                                                                 |
 | -------- | :------: | :----- | :---------------------------------------------------------------------------------------------------------------------------------------- |
 | name     | required | String  |                                The Author's full name which is used should be used as a reference in Posts                                 |
 | bio      | required | String  |                                            The Author's bio which is displayed on the home page                                            |
