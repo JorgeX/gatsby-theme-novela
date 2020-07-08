@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.5](https://github.com/narative/gatsby-theme-novela/compare/www@1.6.4...www@1.6.5) (2020-07-08)
+
+**Note:** Version bump only for package www
+
+
+
+
+
 ## [1.6.4](https://github.com/narative/gatsby-theme-novela/compare/www@1.6.3...www@1.6.4) (2020-06-20)
 
 **Note:** Version bump only for package www
