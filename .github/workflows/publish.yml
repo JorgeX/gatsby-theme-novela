@@ -11,7 +11,10 @@ jobs:
 
     steps:
     - name: Checkout repo
-      uses: actions/checkout@v1.0.0
+      uses: actions/checkout@v2
+      with:
+        # pulls all commits (needed for lerna / semantic release to correctly version) — see https://github.com/lerna/lerna/issues/2542
+        fetch-depth: "0"
     - name: Git Identity
       run: |
         git config --global user.name '@jpvalery'
@@ -21,6 +24,9 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Prepare repository
       run: git checkout "${GITHUB_REF:11}"
+    - name: Fetch
+      # see https://github.com/lerna/lerna/issues/2542
+      run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
     - name: Pulling
       run: git pull
     - name: Install dependencies
@@ -30,7 +36,7 @@ jobs:
     - name: Authenticate with Registry
       run: |
           yarn logout
-          echo "@narative/gatsby-theme-novela:registry=http://registry.npmjs.org/" > .npmrc
+#         echo "@narative/gatsby-theme-novela:registry=http://registry.npmjs.org/" > .npmrc
           echo "registry=http://registry.npmjs.org/" >> .npmrc
           echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
           npm whoami
