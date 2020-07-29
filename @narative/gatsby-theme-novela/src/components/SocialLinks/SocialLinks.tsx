@@ -53,7 +53,7 @@ const SocialLinks: React.FC<SocialLinksProps> = ({
     <>
       {links.map(option => {
         const name = option.name || getHostname(option.url) || getServicename(option.url);
-        const Icon = icons[name]
+        const Icon = icons[name] ? icons[name] : icons["url"]
         if (!Icon) {
           throw new Error(
             `unsupported social link name=${name} / url=${option.url}`,
