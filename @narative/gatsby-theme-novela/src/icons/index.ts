@@ -18,6 +18,7 @@ import DigitalOcean from './social/DigitalOcean.Icon';
 import TripAdvisor from './social/TripAdvisor.Icon';
 import Buymeacoffee from './social/Buymeacoffee.Icon';
 import Mailto from './social/Mailto.Icon';
+import Url from './social/Url.Icon';
 
 // UI
 import ChevronLeft from './ui/ChevronLeft.Icon';
@@ -50,6 +51,7 @@ export default {
   TripAdvisor,
   Buymeacoffee,
   Mailto,
+  Url,
 
   ChevronLeft,
   Copied,
