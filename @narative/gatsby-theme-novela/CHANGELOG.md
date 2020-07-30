@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.17.0](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.16.5...@narative/gatsby-theme-novela@0.17.0) (2020-07-30)
+
+
+### Features
+
+* Add Url Icon ([b1a1a34](https://github.com/narative/gatsby-theme-novela/commit/b1a1a3439f82f9a80f9859ff1cfb1553983c6b3b))
+
+
+
+
+
 ## [0.16.5](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.16.4...@narative/gatsby-theme-novela@0.16.5) (2020-07-08)
 
 
