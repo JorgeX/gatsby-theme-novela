@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.18.0](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.17.0...@narative/gatsby-theme-novela@0.18.0) (2020-09-14)
+
+
+### Bug Fixes
+
+* **contentful:** update starter data model ([82f1973](https://github.com/narative/gatsby-theme-novela/commit/82f1973f0106cce9be8786e98251e46b8c795b0f))
+
+
+### Features
+
+* Added ability to implement a custom article footer ([3031fef](https://github.com/narative/gatsby-theme-novela/commit/3031fef7914f1d146c97d05a9e3a5a1422123afb))
+
+
+
+
+
 # [0.17.0](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.16.5...@narative/gatsby-theme-novela@0.17.0) (2020-07-30)
 
 
