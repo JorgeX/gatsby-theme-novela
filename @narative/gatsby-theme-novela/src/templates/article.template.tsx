@@ -18,6 +18,7 @@ import ArticleControls from "../sections/article/Article.Controls";
 import ArticlesNext from "../sections/article/Article.Next";
 import ArticleSEO from "../sections/article/Article.SEO";
 import ArticleShare from "../sections/article/Article.Share";
+import ArticleFooter from './article.footer.template';
 
 import { Template } from "@types";
 
@@ -44,7 +45,7 @@ const Article: Template = ({ pageContext, location }) => {
   const results = useStaticQuery(siteQuery);
   const name = results.allSite.edges[0].node.siteMetadata.name;
 
-  const { article, authors, mailchimp, next } = pageContext;
+  const { article, authors, next } = pageContext;
 
   useEffect(() => {
     const calculateBodySize = throttle(() => {
@@ -95,7 +96,7 @@ const Article: Template = ({ pageContext, location }) => {
           <ArticleShare />
         </MDXRenderer>
       </ArticleBody>
-      {mailchimp && article.subscription && <Subscription />}
+      <ArticleFooter pageContext={pageContext} />
       {next.length > 0 && (
         <NextArticle narrow>
           <FooterNext>More articles from {name}</FooterNext>
