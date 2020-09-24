@@ -56,7 +56,7 @@
           "name": "Secret",
           "type": "Boolean",
           "localized": false,
-          "required": false,
+          "required": true,
           "validations": [
           ],
           "disabled": false,
@@ -117,7 +117,7 @@
           "name": "Date",
           "type": "Date",
           "localized": false,
-          "required": false,
+          "required": true,
           "validations": [
           ],
           "disabled": false,
@@ -252,7 +252,7 @@
           "name": "Bio",
           "type": "Symbol",
           "localized": false,
-          "required": false,
+          "required": true,
           "validations": [
           ],
           "disabled": false,
@@ -280,7 +280,7 @@
           "name": "Featured",
           "type": "Boolean",
           "localized": false,
-          "required": false,
+          "required": true,
           "validations": [
           ],
           "disabled": false,
@@ -291,7 +291,7 @@
           "name": "Social",
           "type": "Array",
           "localized": false,
-          "required": false,
+          "required": true,
           "validations": [
           ],
           "disabled": false,
