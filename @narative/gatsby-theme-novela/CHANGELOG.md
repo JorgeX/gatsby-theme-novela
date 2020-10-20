@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.2](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.18.1...@narative/gatsby-theme-novela@0.18.2) (2020-10-20)
+
+
+### Bug Fixes
+
+* **Articles.List:** broken margin on phablet ([b72b5ac](https://github.com/narative/gatsby-theme-novela/commit/b72b5ac0caa200b07f5400a8657ad125b2c68dbc))
+
+
+
+
+
 ## [0.18.1](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.18.0...@narative/gatsby-theme-novela@0.18.1) (2020-10-20)
 
 
