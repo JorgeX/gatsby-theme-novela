@@ -317,7 +317,7 @@ const Excerpt = styled.p<{
   `}
 
   ${mediaqueries.phablet`
-    margin-bottom; 15px;
+    margin-bottom: 15px;
   `}
 
   ${mediaqueries.phablet`
