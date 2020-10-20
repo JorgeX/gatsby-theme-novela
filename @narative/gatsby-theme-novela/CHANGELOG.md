@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.1](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.18.0...@narative/gatsby-theme-novela@0.18.1) (2020-10-20)
+
+
+### Bug Fixes
+
+* Long words, text, or URL links could break the article layout into small resolutions. ([6e8871b](https://github.com/narative/gatsby-theme-novela/commit/6e8871b5cda4625266e8bbb02a0045316cd88f35))
+
+
+
+
+
 # [0.18.0](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.17.0...@narative/gatsby-theme-novela@0.18.0) (2020-09-14)
 
 
