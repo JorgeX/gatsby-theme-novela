@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.3](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.18.2...@narative/gatsby-theme-novela@0.18.3) (2020-10-27)
+
+
+### Bug Fixes
+
+* word-break inside TableCell ([088d992](https://github.com/narative/gatsby-theme-novela/commit/088d9920328c444304b106c35eb5ae08582ce858))
+
+
+
+
+
 ## [0.18.2](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.18.1...@narative/gatsby-theme-novela@0.18.2) (2020-10-20)
 
 
