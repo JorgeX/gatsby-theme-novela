@@ -4,6 +4,7 @@ import mediaqueries from "@styles/media";
 const Cell = styled.td`
   border-top: 1px solid ${p => p.theme.colors.horizontalRule};
   padding: 15px 30px;
+  word-break: keep-all;
   font-size: 16px;
   background: ${p => p.theme.colors.card};
 
