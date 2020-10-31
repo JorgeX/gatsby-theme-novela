@@ -40,7 +40,6 @@ export const globalStyles = css`
     text-rendering: optimizeLegibility;
     cursor: default;
     font-size: 0.625rem;
-    line-break: anywhere;
     line-height: 1.4;
   }
 
