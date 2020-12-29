@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.5](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.18.4...@narative/gatsby-theme-novela@0.18.5) (2020-12-29)
+
+
+### Bug Fixes
+
+* Update gatsby-plugin-emotion option ([17f9453](https://github.com/narative/gatsby-theme-novela/commit/17f9453d67b4a4110085b1841779a0db6883a0e8))
+* url icon alignment at authors page link ([5aecfbd](https://github.com/narative/gatsby-theme-novela/commit/5aecfbd63c895347ae93a2505932643f71168839))
+
+
+
+
+
 ## [0.18.4](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.18.3...@narative/gatsby-theme-novela@0.18.4) (2020-10-31)
 
 **Note:** Version bump only for package @narative/gatsby-theme-novela
