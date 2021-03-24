@@ -11,7 +11,6 @@ module.exports = ({ actions }) => {
       hero: File @fileByRelativePath
       timeToRead: Int
       canonical_url: String
-      frontmatter: MarkdownRemarkFrontmatter
     }
   `);
 };

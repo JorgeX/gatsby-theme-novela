@@ -1,5 +1,10 @@
 // helper that grabs the mdx resolver when given a string fieldname
-const mdxResolverPassthrough = (fieldName) => async (source, arguments_, context, info) => {
+const mdxResolverPassthrough = fieldName => async (
+  source,
+  arguments_,
+  context,
+  info,
+) => {
   const type = info.schema.getType(`Mdx`);
   const mdxNode = context.nodeModel.getNodeById({
     id: source.parent,
@@ -23,9 +28,6 @@ module.exports = ({ createResolvers }) => {
       },
       timeToRead: {
         resolve: mdxResolverPassthrough(`timeToRead`),
-      },
-      frontmatter: {
-        resolve: mdxResolverPassthrough(`frontmatter`),
       },
     },
   });
