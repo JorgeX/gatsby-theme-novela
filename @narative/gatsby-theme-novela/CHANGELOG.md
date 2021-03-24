@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.7](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.18.6...@narative/gatsby-theme-novela@0.18.7) (2021-03-24)
+
+
+### Bug Fixes
+
+* frontmatter gatsby develop bug ([eb30527](https://github.com/narative/gatsby-theme-novela/commit/eb3052740073e6b9f5eb292b33b861acffaecc92))
+
+
+
+
+
 ## [0.18.6](https://github.com/narative/gatsby-theme-novela/compare/@narative/gatsby-theme-novela@0.18.5...@narative/gatsby-theme-novela@0.18.6) (2021-02-11)
 
 **Note:** Version bump only for package @narative/gatsby-theme-novela
