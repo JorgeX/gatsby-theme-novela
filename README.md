@@ -12,6 +12,13 @@ Novela is built by the team at [Narative](https://www.narative.co), and built fo
 
 Special thanks to [@jpvalery](https://github.com/jpvalery) for helping maintain Novela.
 
+## Maintenance
+
+We have stopped maintainig this project. There will be occassional PR reviews and merges of significant errors but do not expect any changes or responses to support questions in the future. Thank you to everyone that has contributed and continues to use and learn from Novela.
+
+<br/>
+<br/>
+
 <div>
 <a href="https://www.narative.co/labs/novela/" target="_blank">
 <img src="https://raw.githubusercontent.com/narative/gatsby-theme-novela-example/master/assets/gatsby-theme-novela-cta-demo.jpg" alt="gatsby-novela-theme live demo" width="295px" />
