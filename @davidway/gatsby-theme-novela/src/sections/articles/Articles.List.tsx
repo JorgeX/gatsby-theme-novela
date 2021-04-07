@@ -41,6 +41,8 @@ const ArticlesList: React.FC<ArticlesListProps> = ({
 }) => {
   if (!articles) return null;
 
+  console.log('articles', articles)
+
   const hasOnlyOneArticle = articles.length === 1;
   const { gridLayout = 'tiles', hasSetGridLayout, getGridLayout } = useContext(
     GridLayoutContext,

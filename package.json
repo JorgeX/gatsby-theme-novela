@@ -13,7 +13,7 @@
     "publish": "yarn lerna version && yarn lerna publish"
   },
   "workspaces": [
-    "@narative/gatsby-theme-novela",
+    "@davidway/gatsby-theme-novela",
     "www"
   ],
   "devDependencies": {
