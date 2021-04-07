@@ -1,5 +1,11 @@
 # How to Contribute
 
+## Publish command 
+```
+cd @davidway/gastby-theme-novela
+npm publish --access public
+```
+
 ### Setting Up Your Local Dev Environment
 
 This project uses [Yarn Workspaces](https://yarnpkg.com/lang/en/docs/workspaces/) so you can run the Novela locally with an example site.
