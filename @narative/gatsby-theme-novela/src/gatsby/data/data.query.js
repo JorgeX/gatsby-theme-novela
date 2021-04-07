@@ -21,6 +21,7 @@ module.exports.local = {
       edges {
         node {
           id
+          postType
           slug
           secret
           title
