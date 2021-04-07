@@ -84,6 +84,7 @@ module.exports = ({ node, actions, getNode, createNodeId }, themeOptions) => {
 
   if (node.internal.type === `Mdx` && source === contentPath) {
     const fieldData = {
+      postType: node.frontmatter.postType || 'article',
       author: node.frontmatter.author,
       date: node.frontmatter.date,
       hero: node.frontmatter.hero,
