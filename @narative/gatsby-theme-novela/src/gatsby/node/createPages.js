@@ -69,7 +69,7 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
 
   console.log(sources);
   // Defaulting to look at the local MDX files as sources.
-  const { local = true, contentful = false } = sources;
+  const { local = true } = sources;
 
   let authors;
   let articles;
@@ -101,24 +101,6 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
 
       dataSources.local.articles = localArticles.data.articles.edges.map(
         normalize.local.articles,
-      );
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  if (contentful) {
-    try {
-      log('Querying Authors & Articles source:', 'Contentful');
-      const contentfulAuthors = await graphql(query.contentful.authors);
-      const contentfulArticles = await graphql(query.contentful.articles);
-
-      dataSources.contentful.authors = contentfulAuthors.data.authors.edges.map(
-        normalize.contentful.authors,
-      );
-
-      dataSources.contentful.articles = contentfulArticles.data.articles.edges.map(
-        normalize.contentful.articles,
       );
     } catch (error) {
       console.error(error);
