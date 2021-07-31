@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.19.0 (2021-07-31)
+
+
+### Features
+
+* add section component as shortcode ([7e863a8](https://github.com/David-Way/gatsby-theme-novela/commit/7e863a8d39da3cd98a3299d0e600ccbe6246f3e2))
+* section shortcode with dark variant ([3f28efc](https://github.com/David-Way/gatsby-theme-novela/commit/3f28efc5dcf486f2c2a6676ea0390a9519538dcf))
+
+
+
+
+
 ## [0.18.7](https://github.com/narative/gatsby-theme-novela/compare/@davidway/gatsby-theme-novela@0.18.6...@davidway/gatsby-theme-novela@0.18.7) (2021-03-24)
 
 

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/David-Way/gatsby-theme-novela/compare/www@1.6.14...www@1.7.0) (2021-07-31)
+
+
+### Bug Fixes
+
+* remove contentful code ([912c9d7](https://github.com/David-Way/gatsby-theme-novela/commit/912c9d72a7f626eaa7fb83df5bf02bf3bb8c5112))
+
+
+### Features
+
+* postType property to articles ([4495f1f](https://github.com/David-Way/gatsby-theme-novela/commit/4495f1fecc89d0ebc747aff334f1d8925e795c85))
+
+
+
+
+
 ## [1.6.14](https://github.com/narative/gatsby-theme-novela/compare/www@1.6.13...www@1.6.14) (2021-03-24)
 
 **Note:** Version bump only for package www

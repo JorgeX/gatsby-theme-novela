@@ -8,7 +8,7 @@ const PostSection = styled.section<{ dark?: boolean }>`
   margin: 25px auto 60px;
 
   ${({ dark }) => dark && `
-    background: #1D2128;
+    background: #8d8d8d;
 
     > * {
       color: white;
