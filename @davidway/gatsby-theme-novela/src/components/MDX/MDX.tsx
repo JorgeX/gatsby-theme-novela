@@ -21,11 +21,13 @@ import * as shortcodes from '@blocks/kit';
 import mediaqueries from '@styles/media';
 import { toKebabCase } from '@utils';
 import PostSection from '@components/PostSection';
+import Carousel from '@components/Carousel';
 
 const components = {
   ...shortcodes,
   img: ImageZoom,
   section: PostSection,
+  carousel: Carousel,
   a: Anchor,
   blockquote: Blockquote,
   h1: Headings.h2, // h1 reserved article title

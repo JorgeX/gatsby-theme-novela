@@ -4,6 +4,14 @@
 
 <br/>
 
+
+# Development
+
+```
+// at root of project
+yarn start
+```
+
 # Novela — A Gatsby theme by Narative
 
 With minimal styling and maximum features — including multiple homepage layouts, built-in social sharing and dark mode — Novela makes it easy to start publishing beautiful articles and stories with Gatsby.
