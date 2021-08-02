@@ -2,7 +2,7 @@
   "name": "@davidway/gatsby-theme-novela",
   "author": "david_way@live.ie",
   "repository": "https://github.com/David-Way/gatsby-theme-novela",
-  "version": "0.20.1",
+  "version": "0.21.1",
   "main": "index.js",
   "license": "MIT",
   "keywords": [
@@ -71,6 +71,7 @@
     "react-live": "^2.2.0",
     "react-medium-image-zoom": "^4.0.2",
     "react-outside-click-handler": "^1.2.4",
+    "react-slick": "^0.28.1",
     "remark-slug": "^5.1.2",
     "request": "^2.88.0",
     "slugify": "^1.3.6",
