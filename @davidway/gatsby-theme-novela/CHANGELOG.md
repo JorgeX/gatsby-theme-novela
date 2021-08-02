@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.23.0 (2021-08-02)
+
+
+### Bug Fixes
+
+* color adjustment ([a286186](https://github.com/David-Way/gatsby-theme-novela/commit/a2861861f3c36b3b8d598a66431f113694df590c))
+
+
+### Features
+
+* add carousel component and shortcode ([5d7f6ae](https://github.com/David-Way/gatsby-theme-novela/commit/5d7f6ae24185a3efe99788b96c7fe1164a2cc521))
+* add section component as shortcode ([7e863a8](https://github.com/David-Way/gatsby-theme-novela/commit/7e863a8d39da3cd98a3299d0e600ccbe6246f3e2))
+* section shortcode with dark variant ([3f28efc](https://github.com/David-Way/gatsby-theme-novela/commit/3f28efc5dcf486f2c2a6676ea0390a9519538dcf))
+
+
+
+
+
 # 0.22.0 (2021-08-02)
 
 

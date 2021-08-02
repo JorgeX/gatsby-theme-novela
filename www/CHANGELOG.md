@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.10.0](https://github.com/David-Way/gatsby-theme-novela/compare/www@1.6.14...www@1.10.0) (2021-08-02)
+
+
+### Bug Fixes
+
+* color adjustment ([a286186](https://github.com/David-Way/gatsby-theme-novela/commit/a2861861f3c36b3b8d598a66431f113694df590c))
+* remove contentful code ([912c9d7](https://github.com/David-Way/gatsby-theme-novela/commit/912c9d72a7f626eaa7fb83df5bf02bf3bb8c5112))
+
+
+### Features
+
+* add carousel component and shortcode ([5d7f6ae](https://github.com/David-Way/gatsby-theme-novela/commit/5d7f6ae24185a3efe99788b96c7fe1164a2cc521))
+* postType property to articles ([4495f1f](https://github.com/David-Way/gatsby-theme-novela/commit/4495f1fecc89d0ebc747aff334f1d8925e795c85))
+
+
+
+
+
 # [1.9.0](https://github.com/David-Way/gatsby-theme-novela/compare/www@1.6.14...www@1.9.0) (2021-08-02)
 
 
