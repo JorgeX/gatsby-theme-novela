@@ -233,7 +233,7 @@ const ImageCSS = css`
     `};
   }
 
-  div.Image__Small {
+  .Image__Small {
     display: flex;
     flex-direction: column;
     position: relative;
@@ -271,7 +271,7 @@ const ImageCSS = css`
     box-shadow: 0px 15px 60px rgba(0, 0, 0, 0.15);
   }
 
-  div.Image__Medium {
+  .Image__Medium {
     position: relative;
     margin: 15px auto 50px;
     width: 100%;
@@ -296,12 +296,13 @@ const ImageCSS = css`
     `};
   }
 
-  div.Image__Large {
+  .Image__Large {
     position: relative;
     left: -68px;
     width: ${IMAGE_WIDTHS.full};
     margin: 25px auto 60px;
-    pointer-events: none;
+    // pointer-events: none;
+    overflow: hidden;
 
     /* To allow interaction for all external interactions: YouTube, Twitter, Gist */
     iframe {
