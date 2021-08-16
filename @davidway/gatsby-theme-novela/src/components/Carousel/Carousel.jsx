@@ -10,6 +10,8 @@ const Carousel = ({ children }) => {
     slidesToScroll: 1
   };
 
+  if (!Array.isArray(children)) return null;
+
   const content = children.map((child) => {
     return (child && typeof child === 'object' && (<div>{child}</div>));
   });
