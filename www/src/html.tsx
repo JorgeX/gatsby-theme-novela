@@ -13,6 +13,7 @@ export default props => (
       <script
         dangerouslySetInnerHTML={{ __html: `document.domain = "narative.co"` }}
       />
+      <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,600" rel="stylesheet"></link>
       {props.headComponents}
     </head>
     <body {...props.bodyAttributes}>

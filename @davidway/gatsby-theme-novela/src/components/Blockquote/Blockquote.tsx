@@ -5,7 +5,7 @@ const Blockquote = styled.blockquote`
   transition: ${p => p.theme.colorModeTransition};
   margin: 15px auto 50px;
   color: ${p => p.theme.colors.articleText};
-  font-family: ${p => p.theme.fonts.serif};
+  font-family: ${p => p.theme.fonts.sanSerif};
   font-style: italic;
 
   ${mediaqueries.tablet`
@@ -13,7 +13,7 @@ const Blockquote = styled.blockquote`
   `};
 
   & > p {
-    font-family: ${p => p.theme.fonts.serif};
+    font-family: ${p => p.theme.fonts.sanSerif};
     max-width: 880px !important;
     padding-right: 100px;
     padding-bottom: 0;
