@@ -280,7 +280,7 @@ const ImageContainer = styled.div<{ narrow: boolean; gridLayout: string }>`
 
 const Title = styled(Headings.h2)`
   font-size: 21px;
-  font-family: ${p => p.theme.fonts.serif};
+  font-family: ${p => p.theme.fonts.sanSerif};
   margin-bottom: ${p =>
     p.hasOverflow && p.gridLayout === 'tiles' ? '35px' : '10px'};
   transition: color 0.3s ease-in-out;

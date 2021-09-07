@@ -7,7 +7,7 @@ const Head = styled.thead`
   line-height: 1.756;
   font-weight: 600;
   color: ${p => p.theme.colors.primary};
-  font-family: ${p => p.theme.fonts.serif};
+  font-family: ${p => p.theme.fonts.sanSerif};
   transition: ${p => p.theme.colorModeTransition};
 `;
 
