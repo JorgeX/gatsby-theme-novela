@@ -176,11 +176,10 @@ const Title = styled(Headings.h3)`
 `;
 
 const Excerpt = styled.p<{ narrow: boolean; hasOverflow: boolean }>`
-  ${limitToTwoLines};
   font-size: 16px;
   margin-bottom: 10px;
   color: ${p => p.theme.colors.grey};
-  display: ${p => (p.hasOverflow ? "none" : "box")};
+  display: box;
   max-width: ${p => (p.narrow ? "415px" : "515px")};
 
   ${mediaqueries.desktop`

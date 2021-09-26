@@ -310,7 +310,7 @@ const Excerpt = styled.p<{
   font-size: 16px;
   margin-bottom: 10px;
   color: ${p => p.theme.colors.grey};
-  display: ${p => (p.hasOverflow && p.gridLayout === 'tiles' ? 'none' : 'box')};
+  display: box;
   max-width: ${p => (p.narrow ? '415px' : '515px')};
 
   ${mediaqueries.desktop`

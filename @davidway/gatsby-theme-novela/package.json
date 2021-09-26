@@ -2,7 +2,7 @@
   "name": "@davidway/gatsby-theme-novela",
   "author": "david_way@live.ie",
   "repository": "https://github.com/David-Way/gatsby-theme-novela",
-  "version": "0.24.1",
+  "version": "0.24.3",
   "main": "index.js",
   "license": "MIT",
   "keywords": [
