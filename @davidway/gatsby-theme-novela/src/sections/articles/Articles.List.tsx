@@ -307,7 +307,6 @@ const Excerpt = styled.p<{
   narrow: boolean;
   gridLayout: string;
 }>`
-  ${limitToTwoLines};
   font-size: 16px;
   margin-bottom: 10px;
   color: ${p => p.theme.colors.grey};
