@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { graphql, Link, useStaticQuery } from 'gatsby';
+import mediaqueries from '@styles/media';
 
 const siteQuery = graphql`
   {
@@ -20,8 +21,8 @@ const siteQuery = graphql`
   }
 `;
 
-import mediaqueries from '@styles/media';
-
+import Search from '../../components/Search/Search';
+const searchIndices = [{ name: `posts`, title: `posts` }]
 const Categories = () => {
   const results = useStaticQuery(siteQuery);
   const categories = results.allSite.edges[0].node.siteMetadata.categories;
@@ -30,6 +31,7 @@ const Categories = () => {
   console.log(categories);
   return (
     <CategoriesContainer>
+      <Search indices={searchIndices}/>
       <LinksContainer>
         {categories.map(({ label, slug }, i) => {
           const path = basePath === '/' ? `/${slug}` : `${basePath}/${slug}`;

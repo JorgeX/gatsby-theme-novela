@@ -1,5 +1,5 @@
 /* eslint-disable */
-
+require("dotenv").config()
 module.exports = ({
   contentAuthors = 'content/authors',
   contentPosts = 'content/posts',
@@ -19,6 +19,14 @@ module.exports = ({
     `gatsby-transformer-remark`,
     `gatsby-transformer-yaml`,
     `gatsby-plugin-theme-ui`,
+    {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        queries: require("./src/utils/algolia.ts"),
+      },
+    },
     {
       resolve: `gatsby-plugin-feed`,
       options: {
