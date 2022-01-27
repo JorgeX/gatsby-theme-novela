@@ -1,5 +1,6 @@
 import Headings from '@components/Headings';
 import styled from '@emotion/styled';
+import { Link } from "gatsby"
 import { default as React } from 'react';
 import {
   Highlight,
@@ -9,42 +10,40 @@ import {
   connectStateResults,
 } from 'react-instantsearch-dom';
 
-export default function SearchResult ({ indices, className })  {
+export default function SearchResult ({ indices })  {
   return (
+    <StyledResults>
   <Results>
-    <div className={className}>
+    <div >
       {indices.map(index => (
         <HitsInIndex index={index} key={index.name} />
       ))}
     </div>
   </Results>
+  </StyledResults>
 
 )};
 const HitsInIndex = ({ index }) => (
   <Index indexName={index.name}>
-    <Hits className="Hits" hitComponent={PageHit} />
+    <StyledHits className="Hits" hitComponent={PageHit} />
   </Index>
 );
 
-const NoResult = ({ text }) => (
-  <div className="no-results">
-    <p>{text}</p>
-  </div>
-);
+
 const Results = connectStateResults(
   ({ searchState, searchResults, children }) =>
     searchResults && searchResults.query === '' ? (
-      <NoResult text="Something in your mind? search it!" />
+      <NoResult> Search for your favorite article!</NoResult>
     ) : searchResults && searchResults.nbHits !== 0 ? (
       children
     ) : (
-      <NoResult text="No search results." />
+      <NoResult>No Search Result</NoResult>
     ),
 );
 
 
 const PageHit = ({ hit }) => (
-  <div>
+  <PageHitContainer>
     <Link to={hit.slug}>
       <Headings.h4>
         <Highlight attribute="title" hit={hit} tagName="mark" />
@@ -53,29 +52,35 @@ const PageHit = ({ hit }) => (
         <Snippet attribute="excerpt" hit={hit} tagName="mark" />
       </Excerpt>
     </Link>
-  </div>
+  </PageHitContainer>
 )
+const StyledResults=styled.div`
+flex: 1;
+display: flex;
+justify-content: center;
+margin: 2.5rem;
+`
 const StyledHits = styled(Hits)`
   ul {
     list-style: none;
     margin-left: 0;
   }
-  li.ais-Hits-item {
-    margin-bottom: 1em;
-    color: var(--text-color);
-    a {
-      // color: #fff;
-      color: var(--text-color);
-      h5 {
-        margin-bottom: 0.2em;
-      }
-    }
-    padding-bottom: 15px;
-    border-bottom: 1px solid var(--text-color);
-  }
 `;
 const Excerpt = styled.p`
   font-size: 16px;
-  color: #73737d;
+   color: #73737d;
+   margin-top: 0.5rem;
 `;
-const PageHitContainer = styled.div``;
+const PageHitContainer = styled.div`
+padding-bottom: 1rem ;
+margin-top: 2.5rem;
+border-bottom: 1px solid #73737d;
+`;
+const NoResult=styled.p`
+font-weight: 600;
+font-size: 18px;
+flex: 1;
+display: flex;
+align-items:center;
+text-align:center;
+`

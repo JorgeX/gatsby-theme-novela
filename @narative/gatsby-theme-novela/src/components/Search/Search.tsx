@@ -6,6 +6,7 @@ import SearchResult from "./SearchResult"
 import SearchBox from "./SearchBox"
 import Popup from "reactjs-popup";
 import SearchIcon from "../../icons/ui/Search.Icon";
+import mediaqueries from '@styles/media';
 
 export default function Search({ indices }) {
   const searchClient = useMemo(
@@ -30,19 +31,17 @@ export default function Search({ indices }) {
       }
       modal
     >
-      {(close) => (
         <SearchPopupContent>
           <InstantSearch
             searchClient={searchClient}
             indexName={indices[0].name}
             stalledSearchDelay={1000}
           >
-            <SearchBox className="sticky" />
-            <StyledSearchResult className="result" indices={indices} />
-            <PoweredByContainer />
+            <SearchBox  />
+            <SearchResult  indices={indices} />
+            <PoweredBy/>
           </InstantSearch>
         </SearchPopupContent>
-      )}
     </Popup>
   )
 }
@@ -61,6 +60,7 @@ const SearchButtonContainer = styled.div`
     color: #fafafa;
     border-color: #fd7d4a;
   }
+
 `;
 const SearchButton=styled.button`
 font-weight: 600;
@@ -69,7 +69,7 @@ display: flex;
 align-items: center;
 `
 const Icon=styled(SearchIcon)`
-margin-right: 5px;
+margin-right: 10px;
 `
 const SearchPopupContent=styled.div`
 display: flex;
@@ -82,16 +82,12 @@ overflow: hidden;
 padding: 1rem;
 height: 70vh;
 width: 50vw;
+overflow: scroll;
+${mediaqueries.phablet`
+height: 60vh;
+width: 90vw;
+padding: 0.5rem;
+
+  `}
 `;
-const  PoweredByContainer=styled(PoweredBy)`
-position: absolute;
-bottom: 1rem;
-right: 1rem;
-z-index: 999;
-`
-const StyledSearchResult=styled(SearchResult)`
-background: #03a5fc;
-overflow: auto;
-padding: 2rem;
-flex: 1;
-`
+
