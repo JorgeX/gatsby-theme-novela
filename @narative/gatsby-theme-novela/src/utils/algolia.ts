@@ -15,17 +15,15 @@ const queries = [
           node {
             id
             excerpt
-            date
             slug
             title
-            author
           }
         }
       }
     }`,
     transformer: ({ data }) => data.allArticle.edges.map(pageToAlgoliaRecord),
     indexName: 'posts',
-    settings: { attributesToSnippet: [`excerpt:20`] },
+    settings: { attributesToSnippet: [`excerpt:30`] },
   },
 ];
 module.exports = queries;
